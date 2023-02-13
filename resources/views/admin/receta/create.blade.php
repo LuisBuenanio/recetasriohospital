@@ -1,0 +1,50 @@
+@extends('adminlte::page')
+
+@section('title', 'Recetas Rio Hospital')
+
+@section('content_header')
+    <h1>Crear nueva Receta</h1>
+@stop
+
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            {!! Form::open(['route' => 'admin.receta.store', 'autocomplete' => 'off', 'files' => true])!!}
+
+                {!! Form::hidden('users_id', auth()->user()->id) !!}
+
+               
+                @include('admin.receta.partials.form')
+
+                {!! Form:: submit('Crear  Receta',['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+
+        </div>
+
+    </div>
+@stop
+
+
+
+@section('js')
+    <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
+    <script>
+        $(document).ready( function() {
+            $("#nombre").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+
+        ClassicEditor
+            .create( document.querySelector( '#observaciones' ) )
+            .catch( error => {
+                console.error( error );
+        } );
+
+    </script>
+@stop

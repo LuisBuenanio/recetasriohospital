@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Livewire\Admin;
+
+use Livewire\Component;
+
+use App\Models\Receta;
+
+use Livewire\WithPagination;
+
+
+class RecetaIndex extends Component
+{
+    use WithPagination;
+
+    protected $paginationTheme = "bootstrap";
+
+    public $search;
+
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
+    public function render()
+    {
+        $recetas = Receta::where('users_id', auth()->user()->id)
+                ->where('codigo', 'LIKE', '%'. $this->search . '%' )
+                ->latest('id')
+                ->paginate(10);
+        /* $recetas = Receta::latest('id')
+        ->where('codigo', 'LIKE', '%'. $this->search . '%' )
+        ->paginate(10); */
+        return view('livewire.admin.receta-index', compact('recetas'));
+    }
+}
