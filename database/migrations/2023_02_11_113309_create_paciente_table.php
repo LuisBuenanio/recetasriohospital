@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('paciente', function (Blueprint $table) {
             $table->id();
             $table->string('cedula', 10)->nullable(); 
-            $table->string('nombre');  
-            $table->string('slug')->nullable();                        
-            $table->integer('edad')->nullable();   
+            $table->string('nombre');                         
+            $table->date('fecha_nacimiento')->nullable();               
+            $table->integer('edad')->nullable();  
             $table->string('telefono')->nullable();            
             $table->string('email')->unique();         
             $table->string('direccion')->unique(); 
@@ -29,13 +29,6 @@ return new class extends Migration
                     ->references('id')
                     ->on('sexo')
                     ->onDelete('cascade');
-            
-             //RELACION HACIA LOS MEDICOS
-             $table->unsignedBigInteger('users_id');
-             $table->foreign('users_id')
-                     ->references('id')
-                     ->on('users')
-                     ->onDelete('cascade');  
             $table->timestamps();
         });
     }

@@ -25,6 +25,7 @@ class Diagnosticoscie10Index extends Component
     {
         $diagnosticoscie10s = Diagnosticoscie10::latest('id')
         ->where('clave', 'LIKE', '%'. $this->search . '%' )
+        ->orWhere('descripcion', 'LIKE', '%'. $this->search . '%' )
         ->paginate(10);
         return view('livewire.admin.diagnosticoscie10-index', compact('diagnosticoscie10s'));
     }  

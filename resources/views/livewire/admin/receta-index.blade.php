@@ -9,13 +9,13 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Código</th>
+                        <th>Num de Receta</th>
                         <th>Ciudad</th>
                         <th>Fecha</th>
                         <th>Médico</th>
-                        <th>CIE -10 </th>
+                        <th>Dianóstico </th>
                         <th>Paciente</th>
+                        <th>Historia</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -23,12 +23,12 @@
                         @foreach ($recetas as $receta)
                             <tr>
                                 <td>{{$receta->id}}</td>
-                                <td>{{$receta->codigo}}</td>
                                 <td>{{$receta->ciudad}}</td>
                                 <td>{{$receta->fecha}}</td>
                                 <td>{!!$receta->users->name!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
-                                <td>{!!$receta->paciente->nombre!!}</td>                           
+                                <td>{!!$receta->paciente->nombre!!}</td>                                 
+                                <td>{{$receta->historia}}</td>                          
                                 <td with="10px">
                                     @can('admin.receta.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta)}}">Detalle</a>

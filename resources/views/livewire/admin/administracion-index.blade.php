@@ -13,7 +13,6 @@
                         <th>Dósis</th>
                         <th>Horario</th>
                         <th>Hora</th>
-                        <th>Tipo Administración</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -24,7 +23,6 @@
                                 <td>{{$administracion->dosis}}</td>
                                 <td>{{$administracion->hora}}</td>
                                 <td>{!!$administracion->horario!!}</td>
-                                <td>{!!$administracion->tipo_administracion->descripcion!!}</td>
                                 <td with="10px">
                                     @can('admin.administracion.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.administracion.edit', $administracion)}}">Editar</a>

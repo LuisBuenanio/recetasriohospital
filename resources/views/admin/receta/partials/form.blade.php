@@ -1,33 +1,23 @@
-<div class="form-group">
-    {!! Form::label('codigo', 'Código:') !!}
-    {!! Form::text('codigo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de la Receta']) !!} 
 
-    @error('codigo')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
 
-</div>
-<div class="form-group">
-    {!! Form::label('ciudad', 'Ciudad:') !!}
-    {!! Form::text('ciudad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!} 
-
-    @error('ciudad')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-
-</div>
 
 <div class="form-group">
     {!! Form::label('fecha', 'Fecha:') !!}
-    {!! Form::date('fecha', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la fecha de la Receta']) !!} 
+    {!! Form::date('fecha', \Carbon\Carbon::now(), [
+        'class' => 'form-control',
+        'placeholder' => 'Ingrese la fecha de la Receta',
+    ]) !!}
+
 
     @error('fecha')
-        <small class="text-danger">{{$message}}</small>
+        <small class="text-danger">{{ $message }}</small>
     @enderror
 
 </div>
+
+
 <div class="form-group">
-    {!! Form::label('diagnosticoscie10_id', 'CIE-10:') !!}
+    {!! Form::label('diagnosticoscie10_id', 'Diagnóstico:') !!}
     {!! Form::select('diagnosticoscie10_id', $diagnosticoscie10, null, ['class' => 'form-control']) !!} 
 
     @error('diagnosticoscie10_id')
@@ -46,68 +36,104 @@
 
 </div>
 
-{{-- <div class="form-group">
-    {!! Form::label('$paciente->nombre', 'Paciente:') !!}
-    {!! Form::select('$paciente->nombre', $pacientes, null, ['class' => 'form-control']) !!} 
-
-    @error('paciente_id')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-
-</div> --}}
-
-{{-- <div class="form-group">
-    <p class="font-weight-bold">Datos del Paciente</p>
-
-    @foreach ($pacientes as $paciente)
-
-        <label class="mr-2">
-            {!! Form::checkbox('pacientes[]', $paciente->id, null) !!}
-            {{$paciente->nombre}}    
-        </label>
-        
-    @endforeach
-
-</div> --}}
-
-
 <div class="form-group">
-    {!! Form::label('alergia_id', 'Alergía:') !!}
-    {!! Form::select('alergia_id', $alergium, null, ['class' => 'form-control']) !!} 
+    {!! Form::label('historia', 'Historia Clínica:') !!}
+    {!! Form::text('historia', null, [
+        'class' => 'form-control',
+        'placeholder' => 'Ingrese la Historia Clínica del Paciente',
+    ]) !!}
 
-    @error('alergia_id')
-        <small class="text-danger">{{$message}}</small>
+    @error('historia')
+        <small class="text-danger">{{ $message }}</small>
     @enderror
 
 </div>
 
 <div class="form-group">
-    {!! Form::label('medicamento_id', 'Medicamento:') !!}
-    {!! Form::select('medicamento_id', $medicamento, null, ['class' => 'form-control']) !!} 
+    <p class="font-weight-bold">Alergia</p>
 
-    @error('medicamento_id')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
+    <label class="mr-2" id="si">
+        {!! Form::radio('aler', 1, true) !!}
+        SI
+    </label>
+    <label class="mr-2" id="no">
+        {!! Form::radio('aler', 2) !!}
+        NO
+    </label id="alergia">
+    {!! Form::text('alergia', null, [
+        'class ' => 'form-control',
+        'id' => 'alergia',
+        'placeholder' => 'Ingrese Alergia del Paciente',
+    ]) !!}
 
-</div>
-
-<div class="form-group">
-    {!! Form::label('administracion_id', 'Administración:') !!}
-    {!! Form::select('administracion_id', $administracion, null, ['class' => 'form-control']) !!} 
-
-    @error('administracion_id')
-        <small class="text-danger">{{$message}}</small>
+    @error('alergia')
+        <small class="text-danger">{{ $message }}</small>
     @enderror
 
 </div>
 
 
 <div class="form-group">
-    {!! Form::label('observaciones', 'Observaciones Generales:') !!}
-    {!! Form::textarea('observaciones', null, ['class' => 'form-control', 'placeholder' => 'Ingrese alguna observacion de la Receta']) !!} 
+    <div class="card">
+        <div class="card-header">
+            {!! Form::label('', 'Medicamentos:') !!}
+        </div>
+        <div class="card-body">
 
-    @error('observaciones')
-        <small class="text-danger">{{$message}}</small>
+
+
+            <table class="table table-bordered mt-3" id="medicamento_table">
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Dósis</th>
+                        <th>Horario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="medicamento0">
+                        <td>
+                            <select name="medicamentos[]" class="form-control">
+                                <option value="">Seleccione un Medicamento</option>
+                                @foreach ($medicamentos as $medicamento)
+                                    <option value="{{ $medicamento->id }}">
+                                        {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
+                                    </option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                        </td>
+                        <td>
+                            <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                        </td>
+                    </tr>
+                    <tr id="medicamento1"></tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="add_row" class="btn btn-success float-left">+ Agregar
+                        medicamento</button>
+                    <button type="button" id='delete_row' class="float-right btn btn-danger">- Eliminar
+                        medicamento</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
+    {!! Form::text('sugerencia', null, [
+        'class' => 'form-control',
+        'placeholder' => 'Ingrese la sugerencia no Framacológica de la Receta',
+    ]) !!}
+
+    @error('sugerencia')
+        <small class="text-danger">{{ $message }}</small>
     @enderror
 
 </div>

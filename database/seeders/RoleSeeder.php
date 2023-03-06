@@ -38,22 +38,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.paciente.edit','description' => 'Editar Paciente'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.paciente.destroy','description' => 'Eliminar Paciente'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'admin.tipomedicamento.index','description' => 'Ver listado de Tipo Medicamento'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipomedicamento.create','description' => 'Crear Tipo Medicamento'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipomedicamento.edit','description' => 'Editar Tipo Medicamento'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipomedicamento.destroy','description' => 'Eliminar Tipo Medicamento'])->syncRoles([$role1]);
-        
+                
         Permission::create(['name' => 'admin.medicamento.index','description' => 'Ver listado de  Medicamento'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.medicamento.create','description' => 'Crear  Medicamento'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.medicamento.edit','description' => 'Editar  Medicamento'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.medicamento.destroy','description' => 'Eliminar  Medicamento'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'admin.tipoadministracion.index','description' => 'Ver listado de Tipo Administración'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipoadministracion.create','description' => 'Crear Tipo Administración'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipoadministracion.edit','description' => 'Editar Tipo Administración'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.tipoadministracion.destroy','description' => 'Eliminar Tipo Administración'])->syncRoles([$role1]);
-        
-        
+                
         Permission::create(['name' => 'admin.administracion.index','description' => 'Ver listado de  Administración'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.administracion.create','description' => 'Crear  Administración'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.administracion.edit','description' => 'Editar  Administración'])->syncRoles([$role1]);

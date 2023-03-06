@@ -17,7 +17,6 @@
             
             {!! Form::model($paciente,['route' => ['admin.paciente.update',$paciente], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-                {!! Form::hidden('users_id', auth()->user()->id) !!}
                 
                 @include('admin.paciente.partials.form')
                     

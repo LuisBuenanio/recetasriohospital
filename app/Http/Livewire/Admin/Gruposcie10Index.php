@@ -24,6 +24,7 @@ class Gruposcie10Index extends Component
     {
         $gruposcie10s = Gruposcie10::latest('id')
         ->where('clave', 'LIKE', '%'. $this->search . '%' )
+        ->orWhere('descripcion', 'LIKE', '%'. $this->search . '%' )
         ->paginate(10);
         return view('livewire.admin.gruposcie10-index', compact('gruposcie10s'));  
     }

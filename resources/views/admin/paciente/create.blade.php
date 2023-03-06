@@ -11,8 +11,7 @@
         <div class="card-body">
             {!! Form::open(['route' => 'admin.paciente.store', 'autocomplete' => 'off', 'files' => true])!!}
 
-                {!! Form::hidden('users_id', auth()->user()->id) !!}
-                
+                 
                 @include('admin.paciente.partials.form')
 
                 {!! Form:: submit('Crear  Paciente',['class' => 'btn btn-primary']) !!}

@@ -4,15 +4,10 @@
 
 @section('content_header')
     </td with="10px">
-    <a class="btn btn-primary btn-sm float-right" href="{{route('admin.pdf.index')}}">IMPRIMIR RECETA</a>
-    {{-- <a href="{{url('admin.pdf.show' , $recetum->id)}}"><button class="btn btn-c">descargar pdf</button></a>
-    --}} 
+    <a class="btn btn-primary btn-sm float-right" href="{{route('admin.imprimirpdf', $receta->id)}}">IMPRIMIR RECETA</a>
+   
     </td with="10px"> 
-    {{-- <td with="10px">
-        @can('admin.receta.edit')
-            <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta)}}">Detalle</a>
-        @endcan
-    </td with="10px">   --}}
+    
     <h1>Detalle de Receta</h1>
 @stop
 

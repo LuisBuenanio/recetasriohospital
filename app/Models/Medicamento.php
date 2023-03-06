@@ -13,35 +13,30 @@ class Medicamento extends Model
 
 
     protected $fillable = [
-        'codigo',
         'nombre',
-        'slug',
-        'fabricante',
-        'gramos',
-        'tipo_medicamento_id'
+        'concentracion',
+        'tipo',
+        'users_id',
+        'paciente_id'
         
     ];
     
     
     protected $hidden = [
         'id',
-        'tipo_medicamento_id',
      ];
      
     public $timestamps = false;
 
-    /*   Relacion de uno a muchos inversa */
-    public function tipo_medicamento(){
-        return $this->belongsTo(TipoMedicamento::class);
-    }
+    
 
     //Relacion de uno a muchos
-    public function receta(){
-        return $this->hasMany(Receta::class);
-    }
+    public function recetas(){
+        return $this->belongsToMany(Receta::class)->withPivot('dosis', 'horario')->withTimestamps();
+    } 
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'nombre';
     }
 }

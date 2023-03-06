@@ -13,11 +13,9 @@ class PacienteRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->users_id == auth()->user()->id){
-            return true;
-        }else{
-            return false;
-        }
+        
+        return true;
+    
     }
 
     /**
@@ -31,9 +29,8 @@ class PacienteRequest extends FormRequest
 
         $rules =[
             'cedula' => 'required|unique:paciente,cedula',           
-            'nombre' => 'required',
-            'slug' => 'required|unique:paciente,slug',           
-            'edad' => 'required',
+            'nombre' => 'required',          
+            'fecha_nacimiento' => 'required',
             'telefono' => 'required',
             'email' => 'required',
             'direccion' => 'required',           
@@ -42,7 +39,7 @@ class PacienteRequest extends FormRequest
         if($paciente){
             
             $rules['cedula'] = 'required|unique:paciente,cedula,' .$paciente->id;
-            $rules['slug'] = 'required|unique:paciente,slug,' .$paciente->id;
+            
         }
         
         return $rules;

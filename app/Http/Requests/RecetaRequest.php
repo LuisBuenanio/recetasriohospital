@@ -30,15 +30,41 @@ class RecetaRequest extends FormRequest
         $recetum = $this->route()->parameter('recetum');
 
         $rules =[
-            'codigo' => 'required|unique:receta,codigo',           
+            'medicamentos' => [
+                'array',
+            ],
+            'medicamentos.*' => [
+                'required'
+            ],
+            'dosiss' => [
+                'array',
+            ],
+            'dosiss.*' => [
+                'required'
+            ],
+            
+            'horarios' => [
+                'array',
+            ],
+            'horarios.*' => [
+                'required'
+            ],
             'ciudad' => 'required',
             'fecha' => 'required',
+            'historia' => 'required|unique:receta,historia',         
+            'aler' => 'required',   
         ];
 
         if($recetum){
-            $rules['codigo'] = 'required|unique:receta,codigo,' .$recetum->id;
+            $rules['historia'] = 'required|unique:receta,historia,' .$recetum->id;
         }
-        
+
+        if ($this-> aler == 1){
+            $rules = array_merge($rules, [
+                    'alergia' => 'required',
+            ]);
+            
+        }
         return $rules;
     }
 }

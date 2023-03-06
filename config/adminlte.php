@@ -370,25 +370,7 @@ return [
                 
             ],
         ],
-        [
-            'text'    => 'Tipo Medicamento',
-            'icon'    => ' fas fa-fw fa-book-medical',
-            'can'   => 'admin.tipomedicamento.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Tipo Medicamentos',
-                    'route'  => 'admin.tipomedicamento.index',
-                    'icon' => 'fas fa-fw fa-book-medical',
-                    
-                ],
-                [
-                    'text' => 'Crear Tipo de Medicamento',
-                    'route'  => 'admin.tipomedicamento.create',
-                    'icon' => 'fas fa-fw fa-book-medical',
-                ],
-                
-            ],
-        ],
+        
         [
             'text'    => 'Medicamento',
             'icon'    => 'fas fa-fw fa-first-aid',
@@ -407,64 +389,7 @@ return [
                 ],
                 
             ],
-        ],
-        [
-            'text'    => 'Tipos de Administración',
-            'icon'    => 'fas fa-fw fa-syringe',
-            'can'   => 'admin.tipoadministracion.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Tipos de Administración',
-                    'route'  => 'admin.tipoadministracion.index',
-                    'icon' => 'fas fa-fw fa-syringe',
-                    
-                ],
-                [
-                    'text' => 'Crear Tipo Administración',
-                    'route'  => 'admin.tipoadministracion.create',
-                    'icon' => 'fas fa-fw fa-syringe',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => 'Administración',
-            'icon'    => 'fas fa-fw fa-capsules',
-            'can'   => 'admin.administracion.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Administración',
-                    'route'  => 'admin.administracion.index',
-                    'icon' => 'fas fa-fw fa-capsules',
-                    
-                ],
-                [
-                    'text' => 'Crear  Administración',
-                    'route'  => 'admin.administracion.create',
-                    'icon' => 'fas fa-fw fa-capsules',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => 'Alergias',
-            'icon'    => 'fas fa-fw fa-allergies',
-            'can'   => 'admin.alergia.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Alergias',
-                    'route'  => 'admin.alergia.index',
-                    'icon' => 'fas fa-fw fa-allergies',
-                    
-                ],
-                [
-                    'text' => 'Crear  Alergias',
-                    'route'  => 'admin.alergia.create',
-                    'icon' => 'fas fa-fw fa-allergies',
-                ],
-                
-            ],
-        ],
+        ],          
         [
             'text'    => 'Grupos CIE-10',
             'icon'    => 'fas fa-fw fa-object-group',

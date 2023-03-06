@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Paciente extends Model
 {
@@ -15,20 +16,24 @@ class Paciente extends Model
 	protected $fillable = [
 		'cedula',
         'nombre',
-        'slug',
+        'fecha_nacimiento',
         'edad',
         'telefono',
         'email',
         'direccion',
-        'sexo_id',
-        'users_id'
+        'sexo_id'
 	];
 
      protected $hidden = [
        'id',
-       'sexo_id',
-       'users_id',
+       'sexo_id'
     ];
+
+    public function setFechaNacimientoAttribute($value)
+    {
+        $this->attributes['fecha_nacimiento'] = $value;
+        $this->attributes['edad'] = Carbon::parse($value)->age;
+    }
     
     /*   Relacion de uno a muchos inversa */
     public function sexo(){
@@ -36,13 +41,13 @@ class Paciente extends Model
     }
     
     
-    /* Relacion de uno a muchos */
+    /* /* Relacion de uno a muchos 
     public function receta(){
         return $this->hasMany(Receta::class);
-    }
+    } */
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'nombre';
     }
 }

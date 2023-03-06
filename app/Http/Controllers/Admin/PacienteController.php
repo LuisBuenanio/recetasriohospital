@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PacienteRequest;
 use App\Models\Paciente;
-use App\Models\User;
 use App\Models\Sexo;
 use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
 
 class PacienteController extends Controller
 {
@@ -29,16 +29,27 @@ class PacienteController extends Controller
 
      public function create()
     {
-        $users = User::pluck('name', 'id');
         $sexo = Sexo::pluck('descripcion', 'id');
-        return view('admin.paciente.create', compact('users','sexo'));
+        return view('admin.paciente.create', compact('sexo'));
   
     }
     public function store(PacienteRequest $request)
     {
-        Paciente::create($request->all());
         
+        $paciente = Paciente::create($request->all()); 
+
+        $paciente->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento);
+       
+        
+        /* $carbon_fecha_nacimiento = new Carbon($fecha_nacimiento);
+        $edad = $carbon_fecha_nacimiento->diffInYears(Carbon::now()); */
+        /* $paciente->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento); */
+        /* $fechaNacimiento = Carbon::createFromFormat('Y-m-d', $request->input('fecha_nacimiento'));
+        $edad = $fechaNacimiento->diffInYears(Carbon::now());
+        */ 
+        $paciente->save();
         Cache::flush();
+        
         return redirect()->route('admin.paciente.index')-> with('info', 'Paciente Creado correctamente');;
 
     }
@@ -46,16 +57,13 @@ class PacienteController extends Controller
    
     public function edit(Paciente $paciente)
     {
-        $this->authorize('author', $paciente);
         
-        $users = User::pluck('name', 'id');
         $sexo = Sexo::pluck('descripcion', 'id');
-        return view('admin.paciente.edit', compact('paciente','users', 'sexo'));
+        return view('admin.paciente.edit', compact('paciente','sexo'));
     }
 
     public function update(PacienteRequest $request, Paciente $paciente)
     {
-        $this->authorize('author', $paciente);
         
         $paciente->update($request->all());
         Cache::flush();
@@ -65,8 +73,7 @@ class PacienteController extends Controller
 
      public function destroy(Paciente $paciente)
     {
-        $this->authorize('author', $paciente);
-        
+         
         $paciente->delete();
         
         Cache::flush();
