@@ -15,11 +15,14 @@ return new class extends Migration
     {
         
         Schema::create('receta', function (Blueprint $table) {
-            $table->id(); 
-            $table->string('codigo',15)->nullable();
-            $table->string('ciudad')->nullable();
+             
+            $table->id();  //       
+             $table->string('ciudad')->nullable();
             $table->date('fecha')->nullable();  
-            $table->longtext('observaciones')->nullable();  
+            $table->string('historia',10)->nullable();           
+            $table->enum('aler',[1,2])->default(1); 
+            $table->string('alergia')->nullable();                      
+            $table->longtext('sugerencia')->nullable();  
             
             
             //RELACION HACIA LOS MEDICOS
@@ -27,30 +30,12 @@ return new class extends Migration
             $table->foreign('users_id')
                     ->references('id')
                     ->on('users')
-                    ->onDelete('cascade');  
+                    ->onDelete('cascade');       
+            
+                    
             
             
-            //RELACION HACIA LAS ALERGIAS
-            $table->unsignedBigInteger('alergia_id');
-            $table->foreign('alergia_id')
-                    ->references('id')
-                    ->on('alergia')
-                    ->onDelete('cascade');  
-            
-            //RELACION HACIA LOS MEDICAMENTOS
-            $table->unsignedBigInteger('medicamento_id');
-            $table->foreign('medicamento_id')
-                    ->references('id')
-                    ->on('medicamento')
-                    ->onDelete('cascade');  
-            
-            //RELACION HACIA LOS via administracion
-            $table->unsignedBigInteger('administracion_id');
-            $table->foreign('administracion_id')
-                    ->references('id')
-                    ->on('administracion')
-                    ->onDelete('cascade');  
-            
+                        
             //RELACION HACIA LOS CIE-10
             $table->unsignedBigInteger('diagnosticoscie10_id');
             $table->foreign('diagnosticoscie10_id')

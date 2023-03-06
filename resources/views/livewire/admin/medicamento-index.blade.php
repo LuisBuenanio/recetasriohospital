@@ -10,11 +10,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Código</th>
                         <th>Nombre</th>
-                        <th>Fabricante</th>
-                        <th>Gramos</th>
-                        <th>Tipo Medicamento</th>
+                        <th>Concentración</th>
+                        <th>Tipo de Medicamento</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -22,12 +20,10 @@
                         @foreach ($medicamentos as $medicamento)
                             <tr>
                                 <td>{{$medicamento->id}}</td>
-                                <td>{{$medicamento->codigo}}</td>
                                 <td>{{$medicamento->nombre}}</td>
-                                <td>{!!$medicamento->fabricante!!}</td>
-                                <td>{!!$medicamento->gramos!!}</td>
-                                <td>{!!$medicamento->tipo_medicamento->descripcion!!}</td>
-                                <td with="10px">
+                                <td>{!!$medicamento->concentracion!!}</td>
+                                <td>{!!$medicamento->tipo!!}</td>
+                               <td with="10px">
                                     @can('admin.medicamento.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.medicamento.edit', $medicamento)}}">Editar</a>
                                     @endcan

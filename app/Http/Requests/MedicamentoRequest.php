@@ -13,7 +13,11 @@ class MedicamentoRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if($this->users_id == auth()->user()->id){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -26,16 +30,12 @@ class MedicamentoRequest extends FormRequest
         $medicamento = $this->route()->parameter('medicamento');
 
         $rules =[
-            'codigo' => 'required',
             'nombre' => 'required',
-            'slug' => 'required|unique:medicamento,slug',           
-            'fabricante' => 'required',
-            'gramos' => 'required',
+            'concentracion' => 'required',           
+            'tipo' => 'required',
         ];
 
-        if($medicamento){
-            $rules['slug'] = 'required|unique:medicamento,slug,' .$medicamento->id;
-        }
+        
         
         return $rules;
     }

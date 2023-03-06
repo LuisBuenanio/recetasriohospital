@@ -15,7 +15,7 @@
             <strong>{{session('info')}}</strong>
         </div>
     @endif
-    
+                
     @livewire('admin.medicamento-index')
     
 @stop

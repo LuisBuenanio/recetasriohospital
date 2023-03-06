@@ -2,17 +2,17 @@
     <h3 class="center">Datos Generales</h3>
         <thead>
             <tr>
-                <th>Código</th>
+                <th>Número de Receta</th>
                 <th>Ciudad</th>
                 <th>Fecha</th>                
             </tr>
 
             <tbody>
                     <tr>
-                        <td>{{$recetum->codigo}}</td>
-                        <td>{{$recetum->ciudad}}</td>
-                        <td>{{$recetum->fecha}}</td>
-                                       
+                        <td>{{$receta->id}}</td>
+                        <td>{{$receta->ciudad}}</td>
+                        <td>{{$receta->fecha}}</td>
+                        <th colspan="2"></th>               
                     </tr>  
             </tbody>
 
@@ -24,7 +24,7 @@
     <thead>
         <tr>
             
-            <th>Cedula</th>
+            <th>Cédula</th>
             <th>Nombres y Apellidos</th>
             <th>Edad</th>
             <th>Teléfono</th>
@@ -36,13 +36,63 @@
 
         <tbody>
                 <tr>
-                    <td>{!!$recetum->paciente->cedula!!}</td>
-                    <td>{!!$recetum->paciente->nombre!!}</td>
-                    <td>{!!$recetum->paciente->edad!!}</td>
-                    <td>{!!$recetum->paciente->telefono!!}</td>
-                    <td>{!!$recetum->paciente->email!!}</td> 
-                    <td>{!!$recetum->paciente->direccion!!}</td>   
-                    <td>{!!$recetum->paciente->sexo->descripcion!!}</td>                       
+                    <td>{!!$receta->paciente->cedula!!}</td>
+                    <td>{!!$receta->paciente->nombre!!}</td>
+                    <td>{!!$receta->paciente->edad!!}</td>
+                    <td>{!!$receta->paciente->telefono!!}</td>
+                    <td>{!!$receta->paciente->email!!}</td> 
+                    <td>{!!$receta->paciente->direccion!!}</td>   
+                    <td>{!!$receta->paciente->sexo->descripcion!!}</td>  
+            <th colspan="2"></th>                     
+                </tr>  
+        </tbody>
+
+    </thead>
+
+</table>
+<div class="card-body">
+    <table class="table table-striped">
+        <h2 class="center">Medicamento</h2>
+            <thead>
+                <tr>
+                    <th>Medicamento</th>
+                    <th>Concentración</th>
+                    <th>Tipo Medicamento </th>
+                    <th>Dósis</th>
+                    <th>Horario </th>
+
+                    <th colspan="2"></th>
+                </tr>
+                
+                <tbody>
+                    @foreach ($receta->medicamentos as $medicamento)
+                        <tr>                                
+                            <td>{!!$medicamento->nombre!!}</td>  
+                            <td>{!!$medicamento->concentracion!!}</td>
+                            <td>{!!$medicamento->tipo!!}</td>  
+                            <td>{!!$medicamento->pivot->dosis!!}</td> 
+                            <td>{!!$medicamento->pivot->horario!!}</td>  
+                            <th colspan="2"></th>  
+                        </tr>                    
+                    @endforeach
+                </tbody>             
+            </thead>
+        </table>
+    </div>
+
+<table class="table table-striped">
+    <h3 class="center">Sugerencia No Farmacológica</h3>
+    <thead>
+        <tr>
+                     
+            <th colspan="2"></th>
+        </tr>
+
+        <tbody>
+                <tr>
+                    
+                    <td>{!!$receta->sugerencia!!}</td> 
+                    <th colspan="2"></th>
                 </tr>  
         </tbody>
 
@@ -51,33 +101,19 @@
 </table>
 
 <table class="table table-striped">
-    <h2 class="center">Medicamento</h2>
+    <h3 class="center">DATOS DEL MÉDICO</h3>
     <thead>
         <tr>
-            
-            <th>Medicamento</th>
-            <th>Laboratorio</th>
-            <th>Concentración</th>
-            <th>Tipo Medicamento </th>
-            <th>Dosis</th>
-            <th>Frecuencia</th>
-            <th>Cada Hora</th>
-            <th>Via de Adminstración </th>
-
+            <td>Administrado por:</td>         
             <th colspan="2"></th>
         </tr>
 
         <tbody>
                 <tr>
                     
-                    <td>{!!$recetum->medicamento->nombre!!}</td>
-                    <td>{!!$recetum->medicamento->fabricante!!}</td>
-                    <td>{!!$recetum->medicamento->gramos!!}</td>  
-                    <td>{!!$recetum->medicamento->tipo_medicamento->descripcion!!}</td>  
-                    <td>{!!$recetum->administracion->dosis!!}</td> 
-                    <td>{!!$recetum->administracion->hora!!}</td> 
-                    <td>{!!$recetum->administracion->horario!!}</td> 
-                    <td>{!!$recetum->administracion->tipo_administracion->descripcion!!}</td>                      
+                                     
+                    <td>{!!$receta->users->name!!}</td>  
+                    <th colspan="2"></th>
                 </tr>  
         </tbody>
 
@@ -85,26 +121,6 @@
 
 </table>
 
-<table class="table table-striped">
-    <h3 class="center">Indicaciones Generales</h3>
-    <thead>
-        <tr>
-            <th>Observaciones</th>
-            <th>Correo Electrónico</th>
-            <th colspan="2"></th>
-        </tr>
-
-        <tbody>
-                <tr>
-                    
-                    <td>{!!$recetum->observaciones!!}</td> 
-                    <td>{!!$recetum->users->name!!}</td> 
-                </tr>  
-        </tbody>
-
-    </thead>
-
-</table>
 
 
 

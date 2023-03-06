@@ -25,6 +25,7 @@ class Categoriascie10Index extends Component
     {
         $categoriascie10s = Categoriascie10::latest('id')
         ->where('clave', 'LIKE', '%'. $this->search . '%' )
+        ->orWhere('descripcion', 'LIKE', '%'. $this->search . '%' )
         ->paginate(10);
         return view('livewire.admin.categoriascie10-index', compact('categoriascie10s'));
     }  

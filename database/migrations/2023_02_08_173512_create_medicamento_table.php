@@ -15,20 +15,17 @@ return new class extends Migration
     {
         Schema::create('medicamento', function (Blueprint $table) {
             $table->id(); 
-            $table->string('codigo', 20);
-            $table->string('nombre');
-            $table->string('slug')->nullable(); 
-            $table->string('fabricante')->nullable();                    
-            $table->integer('gramos')->nullable();  
+            $table->string('nombre'); 
+            $table->string('concentracion')->nullable();                    
+            $table->string('tipo')->nullable();  
 
-
-            $table->unsignedBigInteger('tipo_medicamento_id');
-
-
-            $table->foreign('tipo_medicamento_id')
+            //RELACION HACIA LOS MEDICOS
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')
                     ->references('id')
-                    ->on('tipo_medicamento')
-                    ->onDelete('cascade');
+                    ->on('users')
+                    ->onDelete('cascade');  
+
             $table->timestamps();
 
         });

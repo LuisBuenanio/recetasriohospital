@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::label('cedula', 'cedula:') !!}
+    {!! Form::label('cedula', 'Cédula:') !!}
     {!! Form::text('cedula', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la cédula del Paciente']) !!} 
 
     @error('cedula')
@@ -18,23 +18,52 @@
 
 </div>
 
-<div class="form-group">
-    {!! Form::label('slug', 'Slug:') !!}
-    {!! Form::text('slug', null,['class' => 'form-control', 'placeholder' => 'Ingrese el slug del Paciente', 'readonly']) !!}
 
-    @error('slug')
+<div class="form-group">
+    {!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento:') !!}
+    {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control']) !!} 
+
+    @error('fecha_nacimiento')
         <small class="text-danger">{{$message}}</small>
     @enderror
+
 </div>
-<div class="form-group">
+
+{{-- <div class="form-group">
+    <p>Fecha de nacimiento: {{ $paciente->edad }}</p>
+
+</div> --}}
+
+
+{{-- <div class="form-group">
+    
+    {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control']) !!} 
+
+        
+    @php
+        $fecha_nacimiento = new DateTime($fecha_nacimiento);
+        $hoy = new DateTime();
+        $edad = $hoy->diff($fecha_nacimiento)->y;
+    @endphp
+
+
+</div>
+ --}}
+
+
+{{-- <p>Fecha de nacimiento: {{ $paciente->fecha_nacimiento }}</p>
+<p>Edad: {{ \Carbon\Carbon::parse($paciente->fecha_nacimiento)->age }}</p> --}}
+
+
+{{-- <div class="form-group">
     {!! Form::label('edad', 'Edad:') !!}
-    {!! Form::number('edad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la edad del Paciente']) !!} 
+    {!! Form::number('edad', \Carbon\Carbon::createFromDate('fecha_nacimiento')->age, ['class' => 'form-control', 'placeholder' => 'Ingrese la edad del Paciente']) !!} 
 
     @error('edad')
         <small class="text-danger">{{$message}}</small>
     @enderror
 
-</div>
+</div> --}}
 
 <div class="form-group">
     {!! Form::label('telefono', 'Teléfono:') !!}
@@ -45,6 +74,8 @@
     @enderror
 
 </div>
+
+
 <div class="form-group">
     {!! Form::label('email', 'Correo Electrónico:') !!}
     {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el email del Paciente']) !!} 

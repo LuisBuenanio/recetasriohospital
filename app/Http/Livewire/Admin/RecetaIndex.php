@@ -24,7 +24,7 @@ class RecetaIndex extends Component
     public function render()
     {
         $recetas = Receta::where('users_id', auth()->user()->id)
-                ->where('codigo', 'LIKE', '%'. $this->search . '%' )
+                ->where('historia', 'LIKE', '%'. $this->search . '%' )
                 ->latest('id')
                 ->paginate(10);
         /* $recetas = Receta::latest('id')

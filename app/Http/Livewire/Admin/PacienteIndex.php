@@ -21,14 +21,14 @@ class PacienteIndex extends Component
 
     public function render()
     {
-        $pacientes = Paciente::where('users_id', auth()->user()->id)
+        /* $pacientes = Paciente::where('users_id', auth()->user()->id)
                 ->where('cedula', 'LIKE', '%'. $this->search . '%' )
                 ->latest('id')
-                ->paginate(10);
+                ->paginate(10); */
         
-       /*  $pacientes = Paciente::latest('id')
+        $pacientes = Paciente::latest('id')
         ->where('cedula', 'LIKE', '%'. $this->search . '%' )
-        ->paginate(10); */
+        ->paginate(10); 
         return view('livewire.admin.paciente-index', compact('pacientes'));  
     }
 }
