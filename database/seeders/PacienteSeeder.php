@@ -17,12 +17,12 @@ class PacienteSeeder extends Seeder
     {
         Paciente::create([
             'cedula' => '0605329606',
-            'nombre' => 'JOSE LUIS BUENAÑO',  
+            'nombre' => 'USUARIO DE PRUEBA ',  
             'fecha_nacimiento' => '1996-08-31', 
             'edad' => '26',              
             'telefono' => '0987654321',     
-            'email' => 'luis@gmail.com',     
-            'direccion' => 'LICAN',     
+            'email' => 'prueba@prueba.com',     
+            'direccion' => 'RIOBAMBA',     
             'sexo_id' => '1',          
         ]); 
     }

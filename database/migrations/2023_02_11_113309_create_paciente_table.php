@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('edad')->nullable();  
             $table->string('telefono')->nullable();            
             $table->string('email')->unique();         
-            $table->string('direccion')->unique(); 
+            $table->string('direccion')->nullable(); 
 
             
             $table->unsignedBigInteger('sexo_id');

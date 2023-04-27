@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\MedicamentoRecetaController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
- Route::resource('users', UserController::class)->except('show')->names('admin.users');
+ Route::resource('users', UserController::class)->names('admin.users');
 
  Route::resource('roles', RoleController::class)->names('admin.roles');
 

@@ -9,6 +9,7 @@ use App\Models\Paciente;
 use App\Models\Sexo;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
+use App\Rules\ValidarCedulaEc;
 
 class PacienteController extends Controller
 {
@@ -35,7 +36,11 @@ class PacienteController extends Controller
     }
     public function store(PacienteRequest $request)
     {
-        
+                
+
+        $request->validate([
+            'cedula' => ['required', new ValidarCedulaEc],
+        ]);
         $paciente = Paciente::create($request->all()); 
 
         $paciente->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento);
@@ -65,7 +70,13 @@ class PacienteController extends Controller
     public function update(PacienteRequest $request, Paciente $paciente)
     {
         
+        
+        $request->validate([
+            'cedula' => ['required', new ValidarCedulaEc],
+        ]);
+
         $paciente->update($request->all());
+
         Cache::flush();
         return redirect()->route('admin.paciente.index')-> with('info', 'Paciente Actualizado correctamente');
   

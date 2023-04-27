@@ -20,6 +20,10 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
+    protected $table = 'users';
+	protected $primaryKey = 'id';
+
+    public $timestamps = false;
     
     protected $fillable = [
         'name',
@@ -29,6 +33,7 @@ class User extends Authenticatable
 
     
     protected $hidden = [
+        
         'password',
         'remember_token',
         'two_factor_recovery_codes',

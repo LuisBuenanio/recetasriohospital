@@ -3,11 +3,21 @@
 @section('title', 'Recetas Rio Hospital')
 
 @section('content_header')
-    <h1>Lista de Usuarios</h1>
+    @can('admin.receta.create')
+        <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.users.create')}}">Crear Nuevo Médico</a>
+    @endcan
+    <h1>Lista de Médicos</h1>
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
+        </div>
+    @endif
+
     @livewire('admin.users-index')
+
 @stop
 
 
