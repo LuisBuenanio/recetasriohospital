@@ -1,7 +1,10 @@
 <div class="form-group">
     {!! Form::label('cedula', 'Cédula:') !!}
     {!! Form::text('cedula', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la cédula del Paciente']) !!} 
-
+    
+    {{--{!! Form::text('cedula', null, ['class' => 'form-control', 'placeholder' => 'Ingrese su cédula', 'required', 'pattern' => '\d{10}', 'data-validation-pattern-message' => 'La cédula debe tener 10 dígitos']) !!}
+    {!! $errors->first('cedula', '<p class="help-block">:message</p>') !!}--}}
+    
     @error('cedula')
         <small class="text-danger">{{$message}}</small>
     @enderror

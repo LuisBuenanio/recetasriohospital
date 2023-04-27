@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Receta1Controller;
-use App\Http\Controllers\Medicamento1Controller;
-use App\Http\Controllers\Medicamento1Receta1Controller;
 
 /* use App\Http\Controllers\Admin\HomeController; */
 
@@ -32,6 +29,3 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 });
 
 
-Route::resource('recetas1', Receta1Controller::class);
-Route::resource('medicamentos1', Medicamento1Controller::class);
-Route::resource('medicamentos1recetas1', Medicamento1Receta1Controller::class);

@@ -26,7 +26,13 @@ class MedicamentoSeeder extends Seeder
             'concentracion' => '1 gramos',  
             'tipo' => 'Tableta',              
             'users_id' => '1',          
-        ]);  
+        ]);    
+        Medicamento::create([
+            'nombre' => 'AMPIBEX',
+            'concentracion' => '100 gramos',  
+            'tipo' => 'Capsula',              
+            'users_id' => '1',          
+        ]);
 
     }
 }
