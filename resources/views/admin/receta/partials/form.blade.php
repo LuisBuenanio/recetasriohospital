@@ -1,9 +1,17 @@
 
+<div class="form-group">
+                {!! Form::label('ciudad', 'Ciudad:') !!}
+                {!! Form::text('ciudad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
 
+                @error('ciudad')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
 
 <div class="form-group">
     {!! Form::label('fecha', 'Fecha:') !!}
-    {!! Form::date('fecha', \Carbon\Carbon::now(), [
+    {!! Form::date('fecha',[
         'class' => 'form-control',
         'placeholder' => 'Ingrese la fecha de la Receta',
     ]) !!}
