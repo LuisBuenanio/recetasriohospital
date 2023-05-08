@@ -41,6 +41,8 @@ Route::resource('paciente', PacienteController::class)->except('show')->names('a
 Route::resource('receta', RecetaController::class)->names('admin.receta');
 Route::post('/receta/getPacientes/','App\Http\Controllers\Admin\RecetaController@getPacientes')->name('admin.receta.getPacientes');
 Route::post('/receta/getDiagnosticoscie10/','App\Http\Controllers\Admin\RecetaController@getDiagnosticoscie10')->name('admin.receta.getDiagnosticoscie10');
+Route::post('/receta/getMedicamentos/','App\Http\Controllers\Admin\RecetaController@getMedicamentos')->name('admin.receta.getMedicamentos');
+
 
 
 Route::get('/imprimir/{id}', [ImprimirRecetaController::class, 'imprimirpdf'])->name('admin.imprimirpdf');
