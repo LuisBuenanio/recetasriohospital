@@ -89,11 +89,12 @@ class RecetaController extends Controller
         $horarios = $request->input('horarios', []);
 
 
-        for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
-            if ($medicamentos[$medicamento] != '') {
-                $receta->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
-            }
-        }     
+        foreach ($request->input('medicamentos') as $medicamento) {
+            $receta->medicamentos()->attach($medicamento['id'], [
+                'dosis' => $medicamento['dosis'],
+                'horario' => $medicamento['horario']
+            ]);
+        }    
         
        $receta->save();
         return redirect()->route('admin.receta.index')-> with('info', 'Receta Creada correctamente');;
@@ -133,9 +134,8 @@ class RecetaController extends Controller
         
         $this->authorize('author', $recetum);
 
-        $users = User::pluck('name', 'id'); 
-        $medicamentos = Medicamento::all(); /* 
-        $medicamentos = Medicamento::pluck('nombre', 'id'); */
+        $users = User::pluck('name', 'id');
+        $medicamentos = Medicamento::all();
         $medicamentos_id = $recetum->medicamentos()->pluck('medicamento.id');
         $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
         $paciente = Paciente::pluck('nombre','id');
@@ -151,18 +151,23 @@ class RecetaController extends Controller
     {
         $this->authorize('author', $recetum);
         
-        $recetum->update($request->all());
-
-        $medicamentos = $request->input('medicamentos', []);
-        $dosiss = $request->input('dosiss', []);
-        $horarios = $request->input('horarios', []);
+        $recetum->update($request->all());     
 
 
-        for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
-            if ($medicamentos[$medicamento] != '') {
-                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
-            }
-        }    
+         
+      
+    $medicamentos = [];
+    foreach ($request->input('medicamentos', []) as $medicamento_id) {
+        if (isset($request->input('dosis')[$medicamento_id])) {
+            $recetum->medicamentos()->attach($medicamento_id, [
+                'dosis' => $request->input('dosis')[$medicamento_id],
+                'horario' => $request->input('horario')[$medicamento_id]
+            ]);
+        } else {
+            // Mostrar un mensaje de error al usuario o asignar un valor predeterminado
+        }
+    }
+    $recetum->medicamentos()->sync($medicamentos);  
 
         
         

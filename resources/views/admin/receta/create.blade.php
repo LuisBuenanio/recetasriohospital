@@ -166,12 +166,13 @@
                                     <th>Medicamento</th>
                                     <th>Dósis</th>
                                     <th>Horario</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr id="medicamento0">
                                     <td>
-                                        <select name="medicamentos[]" class="form-control">
+                                        <select name="medicamentos[]" class="form-control select2">
                                             <option value="">Seleccione un Medicamento</option>
                                             @foreach ($medicamentos as $medicamento)
                                                 <option value="{{ $medicamento->id }}">
@@ -186,22 +187,48 @@
                                     <td>
                                         <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
                                     </td>
+                                    
+                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
                                 </tr>
                                 <tr id="medicamento1"></tr>
                             </tbody>
                         </table>
+                        <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-12">
                                 <button type="button" id="add_row" class="btn btn-success float-left">+ Agregar
                                     medicamento</button>
                                 <button type="button" id='delete_row' class="float-right btn btn-danger">- Eliminar
                                     medicamento</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
+
+            {{-- <div class="form-group">
+                {!! Form::label('medicamentos', 'Medicamentos') !!}
+                <table class="table table-bordered" id="medicamentos-table">
+                    <thead>
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Dosis</th>
+                            <th>Horario</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="medicamento-0">
+                            <td>{!! Form::select('medicamentos[]', $medicamentos, null, ['class' => 'form-control select2']) !!}</td>
+                            <td>{!! Form::text('dosis[]', null, ['class' => 'form-control']) !!}</td>
+                            <td>{!! Form::text('horario[]', null, ['class' => 'form-control']) !!}</td>
+                            <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
+            </div> --}}
 
             <div class="form-group">
                 {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
@@ -230,29 +257,47 @@
     <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script src="{{ asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js') }}" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 
     <script>
-        $(document).ready(function() {
-            let row_number = 1;
-            $("#add_row").click(function(e) {
-                e.preventDefault();
-                let new_row_number = row_number - 1;
-                $('#medicamento' + row_number).html($('#medicamento' + new_row_number).html()).find(
-                    'td:first-child');
-                $('#medicamento_table').append('<tr id="medicamento' + (row_number + 1) + '"></tr>');
-                row_number++;
-            });
 
-            $("#delete_row").click(function(e) {
-                e.preventDefault();
-                if (row_number > 1) {
-                    $("#medicamento" + (row_number - 1)).html('');
-                    row_number--;
-                }
-            });
+        // Inicializar Select2 en el campo de selección de medicamentos
+        $('.select2').select2();
+
+                 
+        let medicamentoIndex = 1;
+        $('#btn-add-medicamento').on('click', function() {
+            $('#medicamento_table tbody').append(`
+                <tr id="medicamento-${medicamentoIndex}">
+                    <td>
+                                        <select name="medicamentos[]" class="form-control select2">
+                                            <option value="">Seleccione un Medicamento</option>
+                                            @foreach ($medicamentos as $medicamento)
+                                                <option value="{{ $medicamento->id }}">
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                    </td>
+
+                     <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
+                </tr>
+            `);
+            // Inicializar Select2 en el nuevo campo de selección de medicamentos
+            $(`#medicamento-${medicamentoIndex} .select2`).select2();
+            medicamentoIndex++;
         });
-
+        $(document).on('click', '.btn-remove-medicamento', function() {
+            $(this).closest('tr').remove();
+        });
 
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -322,10 +367,6 @@
         });
 
 
-
-
-
-
         // Accedemos al botón
         var alergia = document.getElementById('alergia');
 
@@ -340,5 +381,9 @@
             console.log('Input deshabilitado');
             alergia.disabled = true;
         });
+
+        
+
+
     </script>
 @stop

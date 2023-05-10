@@ -55,49 +55,10 @@
     <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script src="{{ asset('vendor/jquery-ui-1.13.2/jquery-ui.min.js') }}" type="text/javascript"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 
     <script>
-
-        // Inicializar Select2 en el campo de selección de medicamentos
-        $('.select2').select2();
-
-              
-        let medicamentoIndex = 1;
-        $('#btn-add-medicamento').on('click', function() {
-            $('#medicamento_table tbody').append(`
-                <tr id="medicamento-${medicamentoIndex}">
-                    
-                                    <td><select name="medicamentos[]" class="form-control select2">
-                                            <option value="">Seleccione un Medicamento</option>
-                                            @foreach ($medicamentos as $medicamento)
-                                                <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>   
-                                    <td>
-                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
-                                    </td>
-                                    <td>
-                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
-                                    </td>
-
-                     <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
-                </tr>
-            `);
-            // Inicializar Select2 en el nuevo campo de selección de medicamentos
-            $(`#medicamento-${medicamentoIndex} .select2`).select2();
-            medicamentoIndex++;
-        });
-        $(document).on('click', '.btn-remove-medicamento', function() {
-            $(this).closest('tr').remove();
-        });
-
-        /* $(document).ready(function() {
+        $(document).ready(function() {
             let row_number = 1;
             $("#add_row").click(function(e) {
                 e.preventDefault();
@@ -115,7 +76,7 @@
                     row_number--;
                 }
             });
-        }); */
+        });
 
 
         // CSRF Token
