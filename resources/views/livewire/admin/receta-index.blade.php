@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <input wire:model="search" class="form-control" placeholder ="Ingrese el codigo de la Receta">
+        <input wire:model="search" class="form-control" placeholder ="Buscar Receta por: (Cédula, Nombre, N° historia del paciente )">
 
     </div>
         
@@ -9,11 +9,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Num de Receta</th>
+                        <th>N° Receta</th>
                         <th>Ciudad</th>
                         <th>Fecha</th>
                         <th>Médico</th>
                         <th>Dianóstico </th>
+                        <th>Paciente</th>
                         <th>Paciente</th>
                         <th>Historia</th>
                         <th colspan="2"></th>
@@ -27,7 +28,8 @@
                                 <td>{{$receta->fecha}}</td>
                                 <td>{!!$receta->users->name!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
-                                <td>{!!$receta->paciente->nombre!!}</td>                                 
+                                <td>{!!$receta->paciente->nombre!!}</td> 
+                                <td>{!!$receta->paciente->cedula!!}</td>                                     
                                 <td>{{$receta->historia}}</td>                          
                                 <td with="10px">
                                     @can('admin.receta.edit')

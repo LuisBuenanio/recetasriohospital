@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 {!! Form::label('ciudad', 'Ciudad:') !!}
-                {!! Form::text('ciudad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
+                {!! Form::text('ciudad', 'RIOBAMBA', ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
 
                 @error('ciudad')
                     <small class="text-danger">{{ $message }}</small>
