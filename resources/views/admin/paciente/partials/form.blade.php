@@ -78,27 +78,6 @@
 
 </div>
 
-
-<div class="form-group">
-    {!! Form::label('email', 'Correo Electrónico:') !!}
-    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el email del Paciente']) !!} 
-
-    @error('email')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-
-</div>
-
-<div class="form-group">
-    {!! Form::label('direccion', 'Dirección:') !!}
-    {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la dirección del Paciente']) !!} 
-
-    @error('direccion')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-
-</div>
-
 <div class="form-group">
     {!! Form::label('sexo_id', 'Sexo:') !!}
     {!! Form::select('sexo_id', $sexo, null, ['class' => 'form-control']) !!} 

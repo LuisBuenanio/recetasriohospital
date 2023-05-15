@@ -17,7 +17,7 @@
             
             {!! Form::model($medicamento,['route' => ['admin.medicamento.update',$medicamento], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-                {!! Form::hidden('users_id', auth()->user()->id) !!}
+                
                 
                 @include('admin.medicamento.partials.form')
                 

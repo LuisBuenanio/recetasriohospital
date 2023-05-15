@@ -14,7 +14,15 @@
           
         
     </div> 
+    <!-- Footer Content -->
+    <footer class="mt-4 px-3 py-2 text-sm font-medium flex justify-center bg-red-100 shadow ">
+        <div class=" text-black">
+            <p class="text-center text-sm font-medium">  © 2023 MEGASYSTEMS - RIOBAMBA </p>               
+            <p class="text-center">Desarrollado por: J.L SOLUTIONS S.A - 0992823863 </p>  
+        </div>          
+    </footer> 
 @stop
+
 @section('css')
     <style>
         .prueba{

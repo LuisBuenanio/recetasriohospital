@@ -11,14 +11,19 @@ class MedicamentoRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    /* public function authorize()
     {
         if($this->users_id == auth()->user()->id){
             return true;
         }else{
             return false;
         }
+    } */
+    public function authorize()
+    {
+        return true;
     }
+    
 
     /**
      * Get the validation rules that apply to the request.

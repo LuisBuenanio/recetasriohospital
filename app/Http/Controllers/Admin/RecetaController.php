@@ -126,7 +126,7 @@ class RecetaController extends Controller
         return $pdf->stream("registro-$recetum.pdf");
     }
 
-    public function edit(Receta $recetum)
+    /* public function edit(Receta $recetum)
     {
         
         $nextId = Receta::count();
@@ -134,20 +134,35 @@ class RecetaController extends Controller
         $this->authorize('author', $recetum);
 
         $users = User::pluck('name', 'id'); 
-        $medicamentos = Medicamento::all(); /* 
-        $medicamentos = Medicamento::pluck('nombre', 'id'); */
+        $medicamentos = Medicamento::all(); 
+        $medicamentos = Medicamento::pluck('nombre', 'id'); 
         $medicamentos_id = $recetum->medicamentos()->pluck('medicamento.id');
         $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
         $paciente = Paciente::pluck('nombre','id');
-        /* $pacientes = Paciente::all(); */
+        $pacientes = Paciente::all(); 
          
         return view('admin.receta.edit', compact('nextId','recetum', 'users', 'medicamentos','medicamentos_id', 'diagnosticoscie10', 'paciente'));
    
   
-    }
+    }*/
 
+    public function edit(Receta $recetum)
+    {
+        $nextId = Receta::count();
+
+        $users = User::pluck('name', 'id');/* 
+        $medicamentos = Medicamento::all(); *//* 
+        $medicamentos = Medicamento::pluck('nombre','id'); */
+        $medicamentos = Medicamento::selectRaw("CONCAT(nombre, ' (', concentracion, ') ', tipo) as nombre_concentracion, id")
+        ->pluck('nombre_concentracion', 'id');
+        $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
+        $paciente = Paciente::pluck('nombre','id');
+
+        return view('admin.receta.edit', compact('nextId', 'recetum', 'users', 'medicamentos', 'diagnosticoscie10', 'paciente'));
+    }
+ 
     
-    public function update(RecetaRequest $request, Receta $recetum)
+    /* public function update(RecetaRequest $request, Receta $recetum)
     {
         $this->authorize('author', $recetum);
         
@@ -170,6 +185,28 @@ class RecetaController extends Controller
         return redirect()->route('admin.receta.index')-> with('info', 'Datos Actualizados correctamente');;
 
     
+    } */
+
+    public function update(RecetaRequest $request, Receta $recetum)
+    {
+        $this->authorize('author', $recetum);        
+        $recetum->update($request->all());
+
+        //Eliminar las relaciones anteriores
+        $recetum->medicamentos()->detach();
+
+        // Actualizar relaciones
+        $medicamentos = $request->input('medicamentos', []);
+        $dosiss = $request->input('dosiss', []);
+        $horarios = $request->input('horarios', []);
+
+        for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
+            if ($medicamentos[$medicamento] != '') {
+                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
+            }
+        }
+        Cache::flush();
+        return redirect()->route('admin.receta.index')->with('info', 'Receta actualizada correctamente');
     }
 
     

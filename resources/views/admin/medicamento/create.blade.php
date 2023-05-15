@@ -11,8 +11,7 @@
         <div class="card-body">
             {!! Form::open(['route' => 'admin.medicamento.store', 'autocomplete' => 'off', 'files' => true])!!}
 
-                {!! Form::hidden('users_id', auth()->user()->id) !!}
-                
+                                
                 @include('admin.medicamento.partials.form')
 
                 {!! Form:: submit('Crear  Medicamento',['class' => 'btn btn-primary']) !!}

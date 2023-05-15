@@ -17,15 +17,7 @@ return new class extends Migration
             $table->id(); 
             $table->string('nombre'); 
             $table->string('concentracion')->nullable();                    
-            $table->string('tipo')->nullable();  
-
-            //RELACION HACIA LOS MEDICOS
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');  
-
+            $table->string('tipo')->nullable();
             $table->timestamps();
 
         });

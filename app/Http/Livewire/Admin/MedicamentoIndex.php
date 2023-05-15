@@ -24,7 +24,8 @@ class MedicamentoIndex extends Component
     public function render()
     {
         
-        $medicamentos = Medicamento::where('users_id', auth()->user()->id)
+        /* $medicamentos = Medicamento::where('users_id', auth()->user()->id) */
+        $medicamentos = Medicamento::latest('id')
         ->where('nombre', 'LIKE', '%'. $this->search . '%' )
         ->paginate(10);
         return view('livewire.admin.medicamento-index', compact('medicamentos'));

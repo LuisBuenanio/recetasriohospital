@@ -13,8 +13,6 @@
                         <th>Cédula</th>
                         <th>Nombre</th>
                         <th>Teléfono</th>
-                        <th>Email</th>
-                        <th>Dirección</th>
                         <th>Edad</th>
                         <th>Sexo</th>
                         <th colspan="2"></th>
@@ -27,8 +25,6 @@
                                 <td>{{$paciente->cedula}}</td>
                                 <td>{{$paciente->nombre}}</td>
                                 <td>{{$paciente->telefono}}</td>
-                                <td>{{$paciente->email}}</td>
-                                <td>{{$paciente->direccion}}</td>
                                 <td>{{$paciente->edad}}</td>
                                 <td>{!!$paciente->sexo->descripcion!!}</td>                           
                                 <td with="10px">

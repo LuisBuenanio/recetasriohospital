@@ -31,9 +31,7 @@ class PacienteRequest extends FormRequest
             'cedula' => 'required|unique:paciente,cedula',           
             'nombre' => 'required',          
             'fecha_nacimiento' => 'required',
-            'telefono' => 'required',
-            'email' => 'required',
-            'direccion' => 'required',           
+            'telefono' => 'required',         
         ];
 
         if($paciente){

@@ -107,6 +107,11 @@ class UserController extends Controller
         // Actualizar los datos del usuario
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        
+        //Permite cambiar la contraseña 
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
         $user->save();
 
         // Asignar roles y permisos al usuario

@@ -18,20 +18,17 @@ class MedicamentoSeeder extends Seeder
         Medicamento::create([
             'nombre' => 'PARACETAMOL',
             'concentracion' => '500 gramos',  
-            'tipo' => 'Jarabe',              
-            'users_id' => '1',          
+            'tipo' => 'Jarabe',          
         ]);  
         Medicamento::create([
             'nombre' => 'ASPIRINA',
             'concentracion' => '1 gramos',  
-            'tipo' => 'Tableta',              
-            'users_id' => '1',          
+            'tipo' => 'Tableta',         
         ]);    
         Medicamento::create([
             'nombre' => 'AMPIBEX',
             'concentracion' => '100 gramos',  
-            'tipo' => 'Capsula',              
-            'users_id' => '1',          
+            'tipo' => 'Capsula',        
         ]);
 
     }

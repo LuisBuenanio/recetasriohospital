@@ -15,8 +15,7 @@ class Medicamento extends Model
     protected $fillable = [
         'nombre',
         'concentracion',
-        'tipo',
-        'users_id',
+        'tipo',        
         'paciente_id'
         
     ];

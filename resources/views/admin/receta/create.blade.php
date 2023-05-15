@@ -176,7 +176,7 @@
                                             <option value="">Seleccione un Medicamento</option>
                                             @foreach ($medicamentos as $medicamento)
                                                 <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -195,40 +195,11 @@
                         </table>
                         <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
 
-                        {{-- <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" id="add_row" class="btn btn-success float-left">+ Agregar
-                                    medicamento</button>
-                                <button type="button" id='delete_row' class="float-right btn btn-danger">- Eliminar
-                                    medicamento</button>
-                            </div>
-                        </div> --}}
+                        
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="form-group">
-                {!! Form::label('medicamentos', 'Medicamentos') !!}
-                <table class="table table-bordered" id="medicamentos-table">
-                    <thead>
-                        <tr>
-                            <th>Medicamento</th>
-                            <th>Dosis</th>
-                            <th>Horario</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="medicamento-0">
-                            <td>{!! Form::select('medicamentos[]', $medicamentos, null, ['class' => 'form-control select2']) !!}</td>
-                            <td>{!! Form::text('dosis[]', null, ['class' => 'form-control']) !!}</td>
-                            <td>{!! Form::text('horario[]', null, ['class' => 'form-control']) !!}</td>
-                            <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
-            </div> --}}
+            
 
             <div class="form-group">
                 {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
@@ -276,7 +247,7 @@
                                             <option value="">Seleccione un Medicamento</option>
                                             @foreach ($medicamentos as $medicamento)
                                                 <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo}} 
                                                 </option>
                                             @endforeach
                                         </select>

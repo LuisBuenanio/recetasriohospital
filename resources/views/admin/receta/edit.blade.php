@@ -61,6 +61,8 @@
 
     <script>
 
+        
+
         // Inicializar Select2 en el campo de selección de medicamentos
         $('.select2').select2();
 
@@ -70,15 +72,8 @@
             $('#medicamento_table tbody').append(`
                 <tr id="medicamento-${medicamentoIndex}">
                     
-                                    <td><select name="medicamentos[]" class="form-control select2">
-                                            <option value="">Seleccione un Medicamento</option>
-                                            @foreach ($medicamentos as $medicamento)
-                                                <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>   
+                                    <td>{!! Form::select('medicamentos[]', $medicamentos, ['class' => 'form-control select2']) !!}</td>
+                                
                                     <td>
                                         <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
                                     </td>
@@ -97,27 +92,7 @@
             $(this).closest('tr').remove();
         });
 
-        /* $(document).ready(function() {
-            let row_number = 1;
-            $("#add_row").click(function(e) {
-                e.preventDefault();
-                let new_row_number = row_number - 1;
-                $('#medicamento' + row_number).html($('#medicamento' + new_row_number).html()).find(
-                    'td:first-child');
-                $('#medicamento_table').append('<tr id="medicamento' + (row_number + 1) + '"></tr>');
-                row_number++;
-            });
-
-            $("#delete_row").click(function(e) {
-                e.preventDefault();
-                if (row_number > 1) {
-                    $("#medicamento" + (row_number - 1)).html('');
-                    row_number--;
-                }
-            });
-        }); */
-
-
+        
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function() {
@@ -204,5 +179,8 @@
             console.log('Input deshabilitado');
             alergia.disabled = true;
         });
+
+
+       
     </script>
 @stop

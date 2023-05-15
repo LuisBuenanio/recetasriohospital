@@ -24,9 +24,19 @@ class RecetaIndex extends Component
     public function render()
     {
         $recetas = Receta::where('users_id', auth()->user()->id)
-                ->where('historia', 'LIKE', '%'. $this->search . '%' )
+                ->where(function ($query) {
+                    $query->where('historia', 'LIKE', '%'.$this->search.'%')
+                          ->orWhereHas('paciente', function ($query) {
+                              $query->where('cedula', 'LIKE', '%'.$this->search.'%')
+                                    ->orWhere('nombre', 'LIKE', '%'.$this->search.'%');
+                          });
+                })
                 ->latest('id')
                 ->paginate(10);
+        /* $recetas = Receta::where('users_id', auth()->user()->id)
+                ->where('historia', 'LIKE', '%'. $this->search . '%' )
+                ->latest('id')
+                ->paginate(10); */
         /* $recetas = Receta::latest('id')
         ->where('codigo', 'LIKE', '%'. $this->search . '%' )
         ->paginate(10); */

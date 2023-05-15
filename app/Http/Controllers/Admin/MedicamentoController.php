@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Medicamento;
-use App\Models\User;
 use App\Http\Requests\MedicamentoRequest;
 use Illuminate\Http\Request;
 
@@ -22,15 +21,14 @@ class MedicamentoController extends Controller
     
     public function index()
     {
-        /* $this->authorize('author', $medicamento); */
         $medicamentos = Medicamento::all();
         return view('admin.medicamento.index', compact('medicamentos'));
     }
 
      public function create()
     {
-        $users = User::pluck('name', 'id');
-        return view('admin.medicamento.create', compact('users'));
+        ;
+        return view('admin.medicamento.create');
     }
 
     public function store(MedicamentoRequest $request)
@@ -46,16 +44,16 @@ class MedicamentoController extends Controller
     
     public function edit(Medicamento $medicamento )
     {
-        $this->authorize('author', $medicamento);
         
-        $users = User::pluck('name', 'id');
-        return view('admin.medicamento.edit' , compact('medicamento', 'users'));
+        
+        
+        return view('admin.medicamento.edit' , compact('medicamento'));
    
     }
 
      public function update(MedicamentoRequest $request, Medicamento $medicamento)
     {
-        $this->authorize('author', $medicamento);
+        
        
         $medicamento->update($request->all());
         
@@ -68,7 +66,7 @@ class MedicamentoController extends Controller
     
     public function destroy(Medicamento $medicamento)
     {
-        $this->authorize('author', $medicamento);
+        
         
         $medicamento->delete();
 

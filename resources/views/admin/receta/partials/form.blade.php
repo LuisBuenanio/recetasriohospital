@@ -80,143 +80,67 @@
 
 </div>
 
-<div class="form-group">
-    <div class="card">
-        <div class="card-header">
-            {!! Form::label('', 'Medicamentos:') !!}
-        </div>
-        <table class="table table-bordered" id="medicamentos-table">
-            <thead>
-                <tr>
-                    <th>Medicamento</th>
-                    <th>Dosis</th>
-                    <th>Horario</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($recetum->medicamentos as $medicamento)
-                    <tr>
-                        <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
-                        <td>{!! Form::text('dosiss[]', $medicamento->pivot->dosis, ['class' => 'form-control']) !!}</td>
-                        <td>{!! Form::text('horarios[]', $medicamento->pivot->horario, ['class' => 'form-control']) !!}</td>
-                       {{--  <td>
-                            <select name="medicamentos[]" class="form-control select2">
-                                <option value="">Seleccione un Medicamento</option>
-                                @foreach ($medicamentos as $medicamento)
-                                    <option value="{{ $medicamento->id }}">
-                                        {{ $medicamento->nombre }} 
-                                    </option>
-                                @endforeach
-                            </select>
-                        </td>  --}}                       
-                        <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="card-body">
-
-
-
-            <table class="table table-bordered mt-3" id="medicamento_table">
-                <thead>
-                    <tr>
-                        <th>Medicamento</th>
-                        <th>Dósis</th>
-                        <th>Horario</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="medicamento0">
-                        {{-- <td>
-                            <select name="medicamentos[]" class="form-control select2">
-                                <option value="">Seleccione un Medicamento</option>
-                                @foreach ($medicamentos as $medicamento)
-                                    <option value="{{ $medicamento->id }}">
-                                        {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </td> --}}
-                        <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
-                       
-                        <td>
-                            <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
-                        </td>
-                        <td>
-                            <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
-                        </td>
-                        
-                    <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
-                    </tr>
-                    <tr id="medicamento1"></tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
-
-            {{-- <div class="row">
-                <div class="col-md-12">
-                    <button type="button" id="add_row" class="btn btn-success float-left">+ Agregar
-                        medicamento</button>
-                    <button type="button" id='delete_row' class="float-right btn btn-danger">- Eliminar
-                        medicamento</button>
+        <div class="form-group">
+            <div class="card">
+                <div class="card-header">
+                    {!! Form::label('', 'LISTADO DE MEDICAMENTOS AGREGADOS:') !!}
                 </div>
-            </div> --}}
-        </div>
-    </div>
-</div>
-{{-- <div class="form-group">
-    <div class="card">
-        <div class="card-header">
-            {!! Form::label('', 'Medicamentos:') !!}
-        </div>
-        <div class="card-body">
-
-            <table class="table table-bordered mt-3" id="medicamento_table">
-                <thead>
-                    <tr>
-                        <th>Medicamento</th>
-                        <th>Dósis</th>
-                        <th>Horario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="medicamento0">
-                        <td>
-                            <select name="medicamentos[]" class="form-control">
-                                <option value="">Seleccione un Medicamento</option>
-                                @foreach ($medicamentos as $medicamento)
-                                    <option value="{{ $medicamento->id }}">
-                                        {{ $medicamento->nombre }} ({{ $medicamento->concentracion }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
-                        </td>
-                        <td>
-                            <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
-                        </td>
-                    </tr>
-                    <tr id="medicamento1"></tr>
-                </tbody>
-            </table>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="button" id="add_row" class="btn btn-success float-left">+ Agregar
-                        medicamento</button>
-                    <button type="button" id='delete_row' class="float-right btn btn-danger">- Eliminar
-                        medicamento</button>
+                <table class="table table-bordered" id="medicamentos-table">
+                    <thead>
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Dosis</th>
+                            <th>Horario</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($recetum->medicamentos as $medicamento)
+                            <tr>
+                                <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
+                                <td>{!! Form::text('dosiss[]', $medicamento->pivot->dosis, ['class' => 'form-control']) !!}</td>
+                                <td>{!! Form::text('horarios[]', $medicamento->pivot->horario, ['class' => 'form-control']) !!}</td>
+                                                    
+                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="card-body">
+        
+        
+        
+                    <table class="table table-bordered mt-3" id="medicamento_table">
+                        <thead>
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Dósis</th>
+                                <th>Horario</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="medicamento0">
+                                
+                                <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
+                               
+                                <td>
+                                    <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                </td>
+                                <td>
+                                    <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                </td>
+                                
+                            <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
+                            </tr>
+                            <tr id="medicamento1"></tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
+                          
                 </div>
             </div>
         </div>
-    </div>
-</div>
- --}}
 <div class="form-group">
     {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
     {!! Form::text('sugerencia', null, [
@@ -229,3 +153,5 @@
     @enderror
 
 </div>
+
+
