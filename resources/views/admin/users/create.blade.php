@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Recetas Rio Hospital')
+@section('title', 'Médicos')
 
 @section('content_header')
     <h1>Crear nuevo Médico</h1>

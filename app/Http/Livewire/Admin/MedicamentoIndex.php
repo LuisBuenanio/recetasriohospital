@@ -25,8 +25,14 @@ class MedicamentoIndex extends Component
     {
         
         /* $medicamentos = Medicamento::where('users_id', auth()->user()->id) */
-        $medicamentos = Medicamento::latest('id')
-        ->where('nombre', 'LIKE', '%'. $this->search . '%' )
+        /* $medicamentos = Medicamento::latest('id')
+        ->where('nombre', 'LIKE', '%'. $this->search . '%' ) */
+        
+        $medicamentos = Medicamento::where(function ($query) {
+            $query->where('nombre', 'LIKE', '%' . $this->search . '%')
+                  ->orWhere('concentracion', 'LIKE', '%' . $this->search . '%')
+                  ->orWhere('tipo', 'LIKE', '%' . $this->search . '%');
+        })
         ->paginate(10);
         return view('livewire.admin.medicamento-index', compact('medicamentos'));
     }

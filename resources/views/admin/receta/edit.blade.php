@@ -1,19 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Recetas Rio Hospital ')
+@section('title', 'Recetas')
 
-@section('content_header')
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        
-    </head>
+@section('content_header')    
     <h1>Editar Receta</h1>
 @stop
 @section('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/jquery-ui-1.13.2/jquery-ui.min.css') }}">
 @stop
 
 @section('content')
@@ -24,29 +18,239 @@
     @endif
     <div class="card">
         <div class="card-body">
+            {!! Form::model($recetum,['route' => ['admin.receta.update', $recetum], 'autocomplete' => 'off', 'files' => true, 'method' => 'put']) !!}
+
+            {!! Form::hidden('users_id', auth()->user()->id) !!}
+
+            <div class="form-group">
+                {!! Form::label('id', 'Número de Receta:') !!}
+
+                {!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('ciudad', 'Ciudad:') !!}
+                {!! Form::text('ciudad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
+
+                @error('ciudad')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+
+            <div class="form-group">
+                {!! Form::label('fecha', 'Fecha:') !!}
+                {!! Form::date('fecha', null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la fecha de la Receta',
+                ]) !!}
+
+
+                @error('fecha')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('diagnosticoscie10_id', 'Diagnóstico:') !!}
+                {!! Form::select('diagnosticoscie10_id', $diagnosticoscie10, null, ['class' => 'form-control']) !!} 
             
-            {!! Form::model($recetum,['route' => ['admin.receta.update',$recetum], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+                @error('diagnosticoscie10_id')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+            
+            </div>
+            
+            <div class="form-group">
+                {!! Form::label('paciente_id', 'Paciente:') !!}
+                {!! Form::select('paciente_id', $paciente, null, ['class' => 'form-control']) !!} 
+            
+                @error('paciente_id')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+            
+            </div>
+            <div class="form-group">
+                {!! Form::label('historia', 'Historia Clínica:') !!}
+                {!! Form::text('historia', null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la Historia Clínica del Paciente',
+                ]) !!}
 
-                {!! Form::hidden('users_id', auth()->user()->id) !!}
-                
-                <div class="form-group">
-                    {!! Form::label('id', 'Número de Receta:') !!}  
-                       
-                    {!! Form::text('id', $nextId,['class' => 'form-control', 'readonly']) !!}
+                @error('historia')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+            <div class="form-group">
+                <p class="font-weight-bold">Alergia</p>
+
+                <label class="mr-2" id="si">
+                    {!! Form::radio('aler', 1, true) !!}
+                    SI
+                </label>
+                <label class="mr-2" id="no">
+                    {!! Form::radio('aler', 2) !!}
+                    NO
+                </label id="alergia">
+                {!! Form::text('alergia', null, [
+                    'class ' => 'form-control',
+                    'id' => 'alergia',
+                    'placeholder' => 'Ingrese Alergia del Paciente',
+                ]) !!}
+
+                @error('alergia')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+            <div class="form-group">
+                <div class="card">
+                    <div class="card-header">
+                        {!! Form::label('', 'LISTADO DE MEDICAMENTOS AGREGADOS:') !!}
+                    </div>
+                    <table class="table table-bordered" id="medicamentos-table">
+                        <thead>
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Dosis</th>
+                                <th>Horario</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($recetum->medicamentos as $medicamento)
+                                <tr>
+                                    <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
+                                    <td>{!! Form::text('dosiss[]', $medicamento->pivot->dosis, ['class' => 'form-control']) !!}</td>
+                                    <td>{!! Form::text('horarios[]', $medicamento->pivot->horario, ['class' => 'form-control']) !!}</td>
+                                                        
+                                    <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="card-body">
+            
+            
+            
+                        <table class="table table-bordered mt-3" id="medicamento_table">
+                            <thead>
+                                <tr>
+                                    <th>Medicamento</th>
+                                    <th>Dósis</th>
+                                    <th>Horario</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="medicamento0">
+                                    
+                                    <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
+                                   
+                                    <td>
+                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                    </td>
+                                    
+                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
+                                </tr>
+                                <tr id="medicamento1"></tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
+                              
+                    </div>
                 </div>
-                
-                @include('admin.receta.partials.form')
-                
+            </div>
+       
 
-                {!! Form:: submit('Actualizar Receta',['class' => 'btn btn-primary']) !!}
+            {{-- <div class="form-group">
+                <div class="card">
+                    <div class="card-header">
+                        {!! Form::label('', 'Medicamentos:') !!}
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <table class="table table-bordered mt-3" id="medicamento_table">
+                            <thead>
+                                <tr>
+                                    <th>Medicamento</th>
+                                    <th>Dósis</th>
+                                    <th>Horario</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="medicamento0">
+                                    <td>
+                                        <select name="medicamentos[]" class="form-control select2">
+                                            <option value="">Seleccione un Medicamento</option>
+                                            @foreach ($medicamentos as $medicamento)
+                                                <option value="{{ $medicamento->id }}">
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                    </td>
+                                    
+                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
+                                </tr>
+                                <tr id="medicamento1"></tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
+
+                        
+                    </div>
+                </div>
+            </div> --}}
+            
+
+            <div class="form-group">
+                {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
+                {!! Form::text('sugerencia', null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la sugerencia no Framacológica de la Receta',
+                ]) !!}
+
+                @error('sugerencia')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+            <div class="form-group">
+                {!! Form::label('medico', 'Médico Tratante:') !!}
+                {!! Form::text('medico', null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese el Médico Tratante la Receta',
+                ]) !!}
+
+                @error('medico')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+            {!! Form::submit('Actualizar  Receta', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
         </div>
 
     </div>
-
-    
 @stop
 
 @section('js')
@@ -61,20 +265,18 @@
 
     <script>
 
-        
-
         // Inicializar Select2 en el campo de selección de medicamentos
         $('.select2').select2();
 
-              
+                 
         let medicamentoIndex = 1;
         $('#btn-add-medicamento').on('click', function() {
             $('#medicamento_table tbody').append(`
                 <tr id="medicamento-${medicamentoIndex}">
                     
-                                    <td>{!! Form::select('medicamentos[]', $medicamentos, ['class' => 'form-control select2']) !!}</td>
+                                        <td>{!! Form::select('medicamentos[]', $medicamentos, ['class' => 'form-control select2']) !!}</td>
                                 
-                                    <td>
+                                        <td>
                                         <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
                                     </td>
                                     <td>
@@ -92,7 +294,6 @@
             $(this).closest('tr').remove();
         });
 
-        
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function() {
@@ -161,10 +362,6 @@
         });
 
 
-
-
-
-
         // Accedemos al botón
         var alergia = document.getElementById('alergia');
 
@@ -180,7 +377,8 @@
             alergia.disabled = true;
         });
 
+        
 
-       
+
     </script>
 @stop

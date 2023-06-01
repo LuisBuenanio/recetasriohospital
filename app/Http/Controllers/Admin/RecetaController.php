@@ -14,6 +14,7 @@ use App\Models\Paciente;
 use Illuminate\Support\Facades\Cache;
 use Dompdf\Dompdf;
 use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class RecetaController extends Controller
 {
@@ -31,7 +32,9 @@ class RecetaController extends Controller
         $recetas = Receta::all();
         return view('admin.receta.index', compact('recetas'));
  
-    }
+    }  
+
+
     public function getPacientes(Request $request){
 
         $search = $request->search;

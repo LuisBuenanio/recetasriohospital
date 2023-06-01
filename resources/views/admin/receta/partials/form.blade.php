@@ -141,6 +141,7 @@
                 </div>
             </div>
         </div>
+   
 <div class="form-group">
     {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
     {!! Form::text('sugerencia', null, [

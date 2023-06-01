@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Recetas Rio Hospital')
+@section('title', 'Roles')
 
 @section('content_header')
     <h1>Editar Rol</h1>

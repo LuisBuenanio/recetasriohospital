@@ -52,7 +52,8 @@ class RecetaRequest extends FormRequest
             'ciudad' => 'required',
             'fecha' => 'required',
             'historia' => 'required|unique:receta,historia',         
-            'aler' => 'required',   
+            'aler' => 'required',  
+            'medico' => 'required', 
         ];
 
         if($recetum){

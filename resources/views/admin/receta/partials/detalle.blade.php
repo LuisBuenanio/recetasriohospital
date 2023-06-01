@@ -101,10 +101,10 @@
 </table>
 
 <table class="table table-striped">
-    <h3 class="center">DATOS DEL MÉDICO</h3>
+    <h3 class="center">DATOS DEL MÉDICO TRATANTE</h3>
     <thead>
         <tr>
-            <td>Administrado por:</td>         
+            <td>Receta Administrada por:</td>         
             <th colspan="2"></th>
         </tr>
 
@@ -112,7 +112,7 @@
                 <tr>
                     
                                      
-                    <td>{!!$receta->users->name!!}</td>  
+                    <td>{!!$receta->medico!!}</td>  
                     <th colspan="2"></th>
                 </tr>  
         </tbody>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Recetas Rio Hospital') }}</title>
+        <title>{{ config('app.name', 'Recetas Electrónicas Rio Hospital') }}</title>
         <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
 

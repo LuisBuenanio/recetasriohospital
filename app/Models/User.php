@@ -54,4 +54,11 @@ class User extends Authenticatable
     public function receta(){
         return $this->hasMany(Receta::class);
     }
+
+    //Relacion de uno a muchos
+    public function adminlte_profile_url(){
+        return '/user/profile';
+    }
+    /* <a href="{{route('profile.show')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tu perfil</a>
+    */                    
 }

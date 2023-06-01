@@ -285,7 +285,7 @@
 
 	<footer>
 
-		<p>Esta receta médica ha sido emitida por el Dr. {{$receta->users->name}} el día {{$receta->fecha}}.</p>   
+		<p>Esta receta médica ha sido emitida por el Dr(a). {{$receta->medico}} el día {{$receta->fecha}}.</p>   
 		<h3 width="10px" style="text-align: center;">Sugerencia No Farmacológica</h3>
 		
 		<p style="text-align: center;">{{$receta->sugerencia}}</p> 		

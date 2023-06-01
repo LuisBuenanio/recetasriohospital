@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'Recetas Rio Hospital',
-    'title_prefix' => '',
+    'title' => '',
+    'title_prefix' => 'Recetas Electrónicas |',
     'title_postfix' => '',
 
     /*
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Recetas Rio Hospital</b>',
+    'logo' => '<b>Recetas Electrónicas Rio Hospital</b>',
     'logo_img' => 'img/logos/iconrh.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -134,7 +134,7 @@ return [
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------

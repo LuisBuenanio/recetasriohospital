@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('historia',10)->nullable();           
             $table->enum('aler',[1,2])->default(1); 
             $table->string('alergia')->nullable();                      
-            $table->longtext('sugerencia')->nullable();  
+            $table->longtext('sugerencia')->nullable(); 
+            $table->string('medico')->nullable();   
             
             
             //RELACION HACIA LOS MEDICOS

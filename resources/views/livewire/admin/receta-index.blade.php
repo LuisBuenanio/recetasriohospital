@@ -10,12 +10,12 @@
                 <thead>
                     <tr>
                         <th>N° Receta</th>
-                        <th>Ciudad</th>
-                        <th>Fecha</th>
                         <th>Médico</th>
+                        <th>Fecha</th>
+                        <th>Médico Tratante</th>
                         <th>Dianóstico </th>
                         <th>Paciente</th>
-                        <th>Paciente</th>
+                        <th>CI:</th>
                         <th>Historia</th>
                         <th colspan="2"></th>
                     </tr>
@@ -24,9 +24,9 @@
                         @foreach ($recetas as $receta)
                             <tr>
                                 <td>{{$receta->id}}</td>
-                                <td>{{$receta->ciudad}}</td>
-                                <td>{{$receta->fecha}}</td>
                                 <td>{!!$receta->users->name!!}</td> 
+                                <td>{{$receta->fecha}}</td>
+                                <td>{!!$receta->medico!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
                                 <td>{!!$receta->paciente->nombre!!}</td> 
                                 <td>{!!$receta->paciente->cedula!!}</td>                                     

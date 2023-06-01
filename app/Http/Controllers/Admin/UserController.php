@@ -119,7 +119,7 @@ class UserController extends Controller
         $user->syncPermissions($request->input('permissions', []));
 
         // Redirigir al usuario a la página de edición de usuarios
-        return redirect()->route('admin.users.index')->with('success', 'El usuario ha sido actualizado correctamente.');
+        return redirect()->route('admin.users.index')->with('info', 'El médico ha sido actualizado correctamente.');
     }
 
 

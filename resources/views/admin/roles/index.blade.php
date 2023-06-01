@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Recetas Rio Hospital')
+@section('title', 'Roles')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.roles.create')}}">Crear Nuevo Rol</a>

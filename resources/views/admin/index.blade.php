@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Recestas Rio Hospital')
+@section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Recetas Rio Hospital</h1>
+    <h1 class="text-center text-bold py-8">Recetas Electrónicas Rio Hospital</h1>
 @stop
 
 @section('content')
-    <p class="text-center text-bold py-8">Bienvenido al Panel de Administración.</p>
+    <p class="text-left text-bold py-8">Bienvenido al Panel de Administración.</p>
    
     <div class="text-center py-8">
-        <img class ="  object-cover  object-left-bottom" src="{{asset('img/logos/banner2.jpg')}}" alt="">
+        <img class =" object-fill  object-left-bottom" src="{{asset('img/logos/logo_admin.png')}}" alt="">
           
         
     </div> 

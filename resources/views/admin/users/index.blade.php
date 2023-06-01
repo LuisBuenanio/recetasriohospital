@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Recetas Rio Hospital')
+@section('title', 'Médicos')
 
 @section('content_header')
     @can('admin.receta.create')
@@ -29,7 +29,7 @@
         <script>
             Swal.fire(
                     '¡Eliminado!',
-                    'El usuario se eliminó correctamente.',
+                    'El médico se eliminó correctamente.',
                     'success'
             )
         </script>
@@ -42,7 +42,7 @@
     
             Swal.fire({
             title: '¿Estás Seguro?',
-            text: "Este usuario se eliminará definitivamente",
+            text: "Este médico se eliminará definitivamente",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
