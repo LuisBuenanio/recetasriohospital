@@ -88,13 +88,13 @@ class RecetaController extends Controller
         $receta = Receta::create($request->all());
         
         $medicamentos = $request->input('medicamentos', []);
-        $dosiss = $request->input('dosiss', []);
-        $horarios = $request->input('horarios', []);
+        $cantidades = $request->input('cantidades', []);
+        $indicaciones = $request->input('indicaciones', []);
 
 
         for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
             if ($medicamentos[$medicamento] != '') {
-                $receta->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
+                $receta->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
             }
         }     
         
@@ -156,7 +156,7 @@ class RecetaController extends Controller
         $users = User::pluck('name', 'id');/* 
         $medicamentos = Medicamento::all(); *//* 
         $medicamentos = Medicamento::pluck('nombre','id'); */
-        $medicamentos = Medicamento::selectRaw("CONCAT(nombre, ' (', concentracion, ') ', tipo) as nombre_concentracion, id")
+        $medicamentos = Medicamento::selectRaw("CONCAT(nombre, ' (', comercial, ') ', concentracion) as nombre_concentracion, id")
         ->pluck('nombre_concentracion', 'id');
         $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
         $paciente = Paciente::pluck('nombre','id');
@@ -172,13 +172,13 @@ class RecetaController extends Controller
         $recetum->update($request->all());
 
         $medicamentos = $request->input('medicamentos', []);
-        $dosiss = $request->input('dosiss', []);
-        $horarios = $request->input('horarios', []);
+        $cantidades = $request->input('cantidades', []);
+        $indicaciones = $request->input('indicaciones', []);
 
 
         for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
             if ($medicamentos[$medicamento] != '') {
-                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
+                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
             }
         }    
 
@@ -200,12 +200,12 @@ class RecetaController extends Controller
 
         // Actualizar relaciones
         $medicamentos = $request->input('medicamentos', []);
-        $dosiss = $request->input('dosiss', []);
-        $horarios = $request->input('horarios', []);
+        $cantidades = $request->input('cantidades', []);
+        $indicaciones = $request->input('indicaciones', []);
 
         for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
             if ($medicamentos[$medicamento] != '') {
-                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['dosis' => $dosiss[$medicamento], 'horario' => $horarios[$medicamento]]);
+                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
             }
         }
         Cache::flush();

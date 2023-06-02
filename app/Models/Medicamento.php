@@ -14,8 +14,8 @@ class Medicamento extends Model
 
     protected $fillable = [
         'nombre',
-        'concentracion',
-        'tipo',        
+        'comercial',
+        'concentracion',        
         'paciente_id'
         
     ];
@@ -31,7 +31,7 @@ class Medicamento extends Model
 
     //Relacion de uno a muchos
     public function recetas(){
-        return $this->belongsToMany(Receta::class)->withPivot('dosis', 'horario')->withTimestamps();
+        return $this->belongsToMany(Receta::class)->withPivot('cantidad', 'indicacion')->withTimestamps();
     } 
 
     public function getRouteKeyName()

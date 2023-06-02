@@ -89,8 +89,8 @@
                     <thead>
                         <tr>
                             <th>Medicamento</th>
-                            <th>Dosis</th>
-                            <th>Horario</th>
+                            <th>Cantidad</th>
+                            <th>Indicaciones</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -98,8 +98,8 @@
                         @foreach ($recetum->medicamentos as $medicamento)
                             <tr>
                                 <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
-                                <td>{!! Form::text('dosiss[]', $medicamento->pivot->dosis, ['class' => 'form-control']) !!}</td>
-                                <td>{!! Form::text('horarios[]', $medicamento->pivot->horario, ['class' => 'form-control']) !!}</td>
+                                <td>{!! Form::text('cantidades[]', $medicamento->pivot->cantidad, ['class' => 'form-control']) !!}</td>
+                                <td>{!! Form::text('indicaciones[]', $medicamento->pivot->indicacion, ['class' => 'form-control']) !!}</td>
                                                     
                                 <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
                             </tr>
@@ -114,8 +114,8 @@
                         <thead>
                             <tr>
                                 <th>Medicamento</th>
-                                <th>Dósis</th>
-                                <th>Horario</th>
+                                <th>Cantidad</th>
+                                <th>Indicaciones</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -125,10 +125,10 @@
                                 <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
                                
                                 <td>
-                                    <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                    <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
                                 </td>
                                 <td>
-                                    <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                    <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese las Indicaciones " value="" />
                                 </td>
                                 
                             <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  

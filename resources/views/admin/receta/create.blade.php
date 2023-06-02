@@ -164,8 +164,8 @@
                             <thead>
                                 <tr>
                                     <th>Medicamento</th>
-                                    <th>Dósis</th>
-                                    <th>Horario</th>
+                                    <th>Cantidad</th>
+                                    <th>Indicaciones</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -176,16 +176,16 @@
                                             <option value="">Seleccione un Medicamento</option>
                                             @foreach ($medicamentos as $medicamento)
                                                 <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo }}
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->comercial }}) {{ $medicamento->concentracion }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                        <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
                                     </td>
                                     <td>
-                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                        <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese las Indicaciones " value="" />
                                     </td>
                                     
                                 <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
@@ -259,16 +259,16 @@
                                             <option value="">Seleccione un Medicamento</option>
                                             @foreach ($medicamentos as $medicamento)
                                                 <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo}} 
+                                                    {{ $medicamento->nombre }} ({{ $medicamento->comercial }}) {{ $medicamento->concentracion}} 
                                                 </option>
                                             @endforeach
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="dosiss[]" class="form-control" placeholder="Ingrese la dósis " value="" />
+                                        <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
                                     </td>
                                     <td>
-                                        <input type="text" name="horarios[]" class="form-control" placeholder="Ingrese el horario " value="" />
+                                        <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese las Indicaciones " value="" />
                                     </td>
 
                      <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>

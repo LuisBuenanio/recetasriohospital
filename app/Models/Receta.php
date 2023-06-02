@@ -42,7 +42,7 @@ class Receta extends Model
 
      /*   Relacion de uno a muchos inversa Medicamento */
      public function medicamentos(){
-        return $this->belongsToMany(Medicamento::class)->withPivot('dosis', 'horario')->withTimestamps();
+        return $this->belongsToMany(Medicamento::class)->withPivot('cantidad', 'indicacion')->withTimestamps();
     }
 
      /*   Relacion de uno a muchos inversa Médicos*/

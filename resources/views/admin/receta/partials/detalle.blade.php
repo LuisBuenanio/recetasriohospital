@@ -28,8 +28,6 @@
             <th>Nombres y Apellidos</th>
             <th>Edad</th>
             <th>Teléfono</th>
-            <th>Correo Electrónico</th>
-            <th>Dirección</th>
             <th>Sexo</th>
             <th colspan="2"></th>
         </tr>
@@ -39,9 +37,7 @@
                     <td>{!!$receta->paciente->cedula!!}</td>
                     <td>{!!$receta->paciente->nombre!!}</td>
                     <td>{!!$receta->paciente->edad!!}</td>
-                    <td>{!!$receta->paciente->telefono!!}</td>
-                    <td>{!!$receta->paciente->email!!}</td> 
-                    <td>{!!$receta->paciente->direccion!!}</td>   
+                    <td>{!!$receta->paciente->telefono!!}</td>  
                     <td>{!!$receta->paciente->sexo->descripcion!!}</td>  
             <th colspan="2"></th>                     
                 </tr>  
@@ -55,11 +51,11 @@
         <h2 class="center">Medicamento</h2>
             <thead>
                 <tr>
-                    <th>Medicamento</th>
-                    <th>Concentración</th>
-                    <th>Tipo Medicamento </th>
-                    <th>Dósis</th>
-                    <th>Horario </th>
+                    <th>Nombre Genérico </th>
+                    <th>Nombre Comercial</th>
+                    <th>Concentración </th>
+                    <th>Cantidad</th>
+                    <th>Indicaciones </th>
 
                     <th colspan="2"></th>
                 </tr>
@@ -68,10 +64,10 @@
                     @foreach ($receta->medicamentos as $medicamento)
                         <tr>                                
                             <td>{!!$medicamento->nombre!!}</td>  
-                            <td>{!!$medicamento->concentracion!!}</td>
-                            <td>{!!$medicamento->tipo!!}</td>  
-                            <td>{!!$medicamento->pivot->dosis!!}</td> 
-                            <td>{!!$medicamento->pivot->horario!!}</td>  
+                            <td>{!!$medicamento->comercial!!}</td>
+                            <td>{!!$medicamento->concentracion!!}</td>  
+                            <td>{!!$medicamento->pivot->cantidad!!}</td> 
+                            <td>{!!$medicamento->pivot->indicacion!!}</td>  
                             <th colspan="2"></th>  
                         </tr>                    
                     @endforeach

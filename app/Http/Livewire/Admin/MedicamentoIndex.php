@@ -30,8 +30,8 @@ class MedicamentoIndex extends Component
         
         $medicamentos = Medicamento::where(function ($query) {
             $query->where('nombre', 'LIKE', '%' . $this->search . '%')
-                  ->orWhere('concentracion', 'LIKE', '%' . $this->search . '%')
-                  ->orWhere('tipo', 'LIKE', '%' . $this->search . '%');
+                  ->orWhere('comercial', 'LIKE', '%' . $this->search . '%')
+                  ->orWhere('concentracion', 'LIKE', '%' . $this->search . '%');
         })
         ->paginate(10);
         return view('livewire.admin.medicamento-index', compact('medicamentos'));

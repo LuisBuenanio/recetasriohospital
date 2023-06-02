@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
 
             
-            $table->string('dosis')->nullable();                                    
-            $table->string('horario')->nullable();  
+            $table->string('cantidad')->nullable();                                    
+            $table->string('indicaciones')->nullable();  
             //RELACION HACIA LOS MEDICAMENTOS
             $table->unsignedBigInteger('medicamento_id');
             $table->foreign('medicamento_id')

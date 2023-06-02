@@ -36,17 +36,17 @@ class RecetaRequest extends FormRequest
             'medicamentos.*' => [
                 'required'
             ],
-            'dosiss' => [
+            'cantidades' => [
                 'array',
             ],
-            'dosiss.*' => [
+            'cantidades.*' => [
                 'required'
             ],
             
-            'horarios' => [
+            'indicaciones' => [
                 'array',
             ],
-            'horarios.*' => [
+            'indicaciones.*' => [
                 'required'
             ],
             'ciudad' => 'required',

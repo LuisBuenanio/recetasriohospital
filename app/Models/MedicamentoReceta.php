@@ -13,8 +13,8 @@ class MedicamentoReceta extends Model
     
 
     protected $fillable = [
-        'dosis',
-        'horario',
+        'cantidad',
+        'indicaciones',
         'receta_id',
         'medicamento_id',
         

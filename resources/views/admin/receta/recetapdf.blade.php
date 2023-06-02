@@ -252,12 +252,14 @@
 		<thead>
 			<tr>
 				<th colspan="2">MEDICAMENTO</th>
+              	<th colspan="2">N COMERCIAL</th>
               	<th colspan="2">CONCENTRACIÓN</th>
-				<th colspan="6">DOSIS</th>				
+				  <th colspan="6"></th>		
+				<th colspan="6">Cantidad</th>				
 				<th colspan="6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </th>
 				<th colspan="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 				<th colspan="4">MEDICAMENTO</th>
-              	<th colspan="4">DOSIS</th>
+              	<th colspan="4">Cantidad</th>
               	<th  colspan="4">ADMINISTRACIÓN</th>
               	
 			</tr>
@@ -267,13 +269,14 @@
 			@foreach ($receta->medicamentos as $medicamento)
 			<tr>
 				<td colspan="2">{{$medicamento->nombre}}</td>
+				<td colspan="2">{{$medicamento->comercial}}</td>
 				<td colspan="2">{{$medicamento->concentracion}}</td>
-				<td colspan="6">{{$medicamento->pivot->dosis}}</td>				
+				<td colspan="6">{{$medicamento->pivot->cantidad}}</td>				
 				<td colspan="6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td>
 				<td colspan="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td colspan="4">{{$medicamento->nombre}}</td>
 				<td colspan="4">{{$medicamento->concentracion}}</td>
-              	<td font-size="15px" colspan="6" width="5px">{{$medicamento->pivot->horario}}</td>              	
+              	<td font-size="15px" colspan="6" width="5px">{{$medicamento->pivot->indicacion}}</td>              	
 			</tr>	
 			@endforeach		
 			

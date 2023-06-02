@@ -1,6 +1,6 @@
 <div class="form-group">
-    {!! Form::label('nombre', 'Nombre:') !!}
-    {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del Medicamento']) !!} 
+    {!! Form::label('nombre', 'Nombre Genérico:') !!}
+    {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Nombre Genérico del Medicamento']) !!} 
 
     @error('nombre')
         <small class="text-danger">{{$message}}</small>
@@ -9,6 +9,15 @@
 </div>
 
 
+<div class="form-group">
+    {!! Form::label('comercial', 'Nombre Comercial:') !!}
+    {!! Form::text('comercial', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Nombre Comercial del Medicamento']) !!} 
+
+    @error('comercial')
+        <small class="text-danger">{{$message}}</small>
+    @enderror
+
+</div>
 
 <div class="form-group">
     {!! Form::label('concentracion', 'Concentración:') !!}
@@ -20,13 +29,4 @@
 
 </div>
 
-<div class="form-group">
-    {!! Form::label('tipo', 'Tipo:') !!}
-    {!! Form::text('tipo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el tipo del Medicamento']) !!} 
-
-    @error('tipo')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-
-</div>
 
