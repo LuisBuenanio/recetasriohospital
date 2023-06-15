@@ -128,6 +128,7 @@ class RecetaController extends Controller
         
         return $pdf->stream("registro-$recetum.pdf");
     }
+    
 
     /* public function edit(Receta $recetum)
     {
