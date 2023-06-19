@@ -16,16 +16,7 @@ return new class extends Migration
         Schema::create('diagnosticoscie10', function (Blueprint $table) {
             $table->id();
             $table->string('clave',10)->nullable(); 
-            $table->string('descripcion')->nullable();  
-            
-            
-            
-            $table->unsignedBigInteger('categoriascie10_id');
-
-            $table->foreign('categoriascie10_id')
-                    ->references('id')
-                    ->on('categoriascie10')
-                    ->onDelete('cascade');
+            $table->string('descripcion')->nullable();     
         });
     }
 

@@ -12,7 +12,6 @@
                         <th>ID</th>
                         <th>Clave</th>
                         <th>Descripcion</th>
-                        <th>Categoría</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -22,7 +21,6 @@
                                 <td>{{$diagnosticoscie10->id}}</td>
                                 <td>{{$diagnosticoscie10->clave}}</td>
                                 <td>{{$diagnosticoscie10->descripcion}}</td>
-                                <td>{!!$diagnosticoscie10->categoriascie10->clave!!}</td>
                                 <td with="10px">
                                     @can('admin.diagnosticoscie10.edit')
                                     <a class="btn btn-primary btn-sm " href="{{route('admin.diagnosticoscie10.edit', $diagnosticoscie10)}}">Editar</a>

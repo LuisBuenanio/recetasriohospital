@@ -14,21 +14,15 @@ class Diagnosticoscie10 extends Model
     protected $fillable = [
 		'clave',
         'descripcion',
-        'categoriascie10_id'
 	];
 
     protected $hidden = [
         'id',
-        'categoriascie10_id',
     ];
 
     public $timestamps = false;
 
-    /*   Relacion de uno a muchos inversa */
-    public function categoriascie10(){
-        return $this->belongsTo(Categoriascie10::class);
-    }
-
+   
     //Relacion de uno a muchos
     public function receta(){
         return $this->hasMany(Receta::class);

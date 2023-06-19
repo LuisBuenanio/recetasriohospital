@@ -18,7 +18,7 @@
 
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('categoriascie10_id', 'Categoría CIE-10 :') !!}
     {!! Form::select('categoriascie10_id', $categoriascie10, null, ['class' => 'form-control']) !!} 
 
@@ -26,7 +26,7 @@
         <small class="text-danger">{{$message}}</small>
     @enderror
 
-</div>
+</div> --}}
 
 
 
