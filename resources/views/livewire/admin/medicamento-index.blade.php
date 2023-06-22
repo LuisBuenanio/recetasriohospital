@@ -25,12 +25,12 @@
                                 <td>{!!$medicamento->concentracion!!}</td>
                                <td with="10px">
                                     @can('admin.medicamento.edit')
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.medicamento.edit', $medicamento)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.medicamento.edit', $medicamento->id)}}">Editar</a>
                                     @endcan
                                 </td with="10px">  
                                 <td>
                                     @can('admin.medicamento.destroy')
-                                        <form action="{{route('admin.medicamento.destroy', $medicamento)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.medicamento.destroy', $medicamento->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
 

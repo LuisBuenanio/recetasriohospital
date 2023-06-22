@@ -351,15 +351,28 @@
                 <table>
                     @foreach ($receta->medicamentos as $medicamento)
                         <tr>
-                            <td style="text-align: center"> {{ $loop->iteration }}: </td>
+                            <td style="text-align: center"> <strong> {{ $loop->iteration }}.-<strong></td>
                             <td style="text-align: center">
-                                {{ $medicamento->nombre }}{{ $medicamento->comercial }}{{ $medicamento->concentracion }}
+                                {{ $medicamento->nombre }}&nbsp;({{ $medicamento->comercial }})&nbsp;{{ $medicamento->concentracion }}
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td style="text-align: center">{{ $medicamento->pivot->cantidad }}</td>
+                            
+                            <td style="text-align: center"><td style="text-align: center">
+                                @php
+                                $cantidad = (int)$medicamento->pivot->cantidad;
+                                $formatter = new \NumberFormatter('es', \NumberFormatter::SPELLOUT);
+                                $cantidadTexto = $formatter->format($cantidad);
+                                $cantidadTextoM = strtoupper($cantidadTexto);
+                                $cantidad = $medicamento->pivot->cantidad;
+                                $palabras = explode(' ', $cantidad);
+                                $palabrasInvertidas = array_reverse($palabras);
+                                $cantidadInvertida = implode(' ', $palabrasInvertidas);
+                                @endphp
+                                {{ $cantidadInvertida }} ({{ $cantidadTextoM }})
+                            </td>
                         </tr>
+                        
                     @endforeach
 
                 </table>
@@ -370,8 +383,11 @@
 
                     @foreach ($receta->medicamentos as $medicamento)
                         <tr>
-                            <td style="text-align: center"> {{ $loop->iteration }}: </td>
+                            <td style="text-align: center"> <strong>{{ $loop->iteration }} .-</strong> &nbsp; ({{ $medicamento->comercial }})</td>
                         </tr>
+                        {{-- <tr>
+                            <td style="text-align: center"> <strong>{{ $loop->iteration }} .-</strong></td>
+                        </tr> --}}
                         <tr>
                             <td style="text-align: center">{{ $medicamento->pivot->indicacion }}</td>
 

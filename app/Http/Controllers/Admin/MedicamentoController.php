@@ -42,18 +42,25 @@ class MedicamentoController extends Controller
 
     
     
-    public function edit(Medicamento $medicamento )
+   /*  public function edit(Medicamento $medicamento )
     {
         
         
         
         return view('admin.medicamento.edit' , compact('medicamento'));
    
+    } */
+    public function edit($id)
+    {
+        $medicamento = Medicamento::where('id', $id)->firstOrFail();
+        
+        return view('admin.medicamento.edit', compact('medicamento'));
     }
 
-     public function update(MedicamentoRequest $request, Medicamento $medicamento)
+     public function update(MedicamentoRequest $request, $id)
     {
-        
+        $medicamento = Medicamento::findOrFail($id);
+
        
         $medicamento->update($request->all());
         
@@ -64,10 +71,10 @@ class MedicamentoController extends Controller
     }
 
     
-    public function destroy(Medicamento $medicamento)
+    public function destroy($id)
     {
         
-        
+        $medicamento = Medicamento::findOrFail($id);
         $medicamento->delete();
 
         Cache::flush();

@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($medicamento,['route' => ['admin.medicamento.update',$medicamento], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($medicamento,['route' => ['admin.medicamento.update',$medicamento->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 
                 

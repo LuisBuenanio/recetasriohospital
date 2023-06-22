@@ -35,9 +35,7 @@ class MedicamentoRequest extends FormRequest
         $medicamento = $this->route()->parameter('medicamento');
 
         $rules =[
-            'nombre' => 'required',      
-            'comercial' => 'required',
-            'concentracion' => 'required',     
+            'nombre' => 'required',          
         ];
 
         
