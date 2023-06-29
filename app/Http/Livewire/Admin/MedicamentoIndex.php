@@ -39,7 +39,7 @@ class MedicamentoIndex extends Component
                   ->orWhere('comercial', 'LIKE', '%' . $this->search . '%')
                   ->orWhere('concentracion', 'LIKE', '%' . $this->search . '%');
         })
-        ->orderBy('id', 'desc') // Ordenar por fecha de creación en orden descendente
+        ->orderBy('nombre', 'asc') // Ordenar por fecha de creación en orden descendente
         ->paginate(10);
         
         return view('livewire.admin.medicamento-index', compact('medicamentos'));

@@ -51,6 +51,8 @@ class RecetaRequest extends FormRequest
             ],
             'ciudad' => 'required',
             'fecha' => 'required',
+            'diagnosticoscie10_id' => 'required',
+            'paciente_id' => 'required',
             'historia' => 'required|unique:receta,historia',         
             'aler' => 'required',  
             'medico' => 'required', 
