@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.medicamento.store', 'autocomplete' => 'off', 'files' => true])!!}
+            {!! Form::open(['route' => 'admin.medicamento.store1', 'autocomplete' => 'off', 'files' => true])!!}
 
                                 
                 @include('admin.medicamento.partials.form')

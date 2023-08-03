@@ -38,20 +38,11 @@ class PacienteController extends Controller
     {
                 
 
-        $request->validate([
-            'cedula' => ['required', new ValidarCedulaEc],
-        ]);
+        
         $paciente = Paciente::create($request->all()); 
 
         $paciente->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento);
        
-        
-        /* $carbon_fecha_nacimiento = new Carbon($fecha_nacimiento);
-        $edad = $carbon_fecha_nacimiento->diffInYears(Carbon::now()); */
-        /* $paciente->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento); */
-        /* $fechaNacimiento = Carbon::createFromFormat('Y-m-d', $request->input('fecha_nacimiento'));
-        $edad = $fechaNacimiento->diffInYears(Carbon::now());
-        */ 
         $paciente->save();
         Cache::flush();
         

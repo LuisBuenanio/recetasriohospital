@@ -29,4 +29,12 @@
 
 </div>
 
+<div class="form-group">
+    {!! Form::label('presentacion', 'Presentación:') !!}
+    {!! Form::text('presentacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Presentación del Medicamento']) !!} 
 
+    @error('presentacion')
+        <small class="text-danger">{{$message}}</small>
+    @enderror
+
+</div>

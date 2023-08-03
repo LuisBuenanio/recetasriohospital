@@ -53,14 +53,12 @@ class RecetaRequest extends FormRequest
             'fecha' => 'required',
             'diagnosticoscie10_id' => 'required',
             'paciente_id' => 'required',
-            'historia' => 'required|unique:receta,historia',         
+            'historia' => 'required',         
             'aler' => 'required',  
             'medico' => 'required', 
         ];
 
-        if($recetum){
-            $rules['historia'] = 'required|unique:receta,historia,' .$recetum->id;
-        }
+        
 
         if ($this-> aler == 1){
             $rules = array_merge($rules, [

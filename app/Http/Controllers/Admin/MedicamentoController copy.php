@@ -39,49 +39,25 @@ class MedicamentoController extends Controller
         return redirect()->route('admin.medicamento.index')-> with('info', 'Medicamento Creado correctamente');;
 
     } 
-    
-    public function lista()
-    {
-        $medicamentos = Medicamento::all(); // Suponiendo que tienes una tabla "medicamentos" en la base de datos
-
-        $medicamentoList = [];
-        foreach ($medicamentos as $medicamento) {
-            $medicamentoList[$medicamento->id] = $medicamento->nombre_completo;
-        }
-
-        return response()->json($medicamentoList);
-    }
-
-    
     public function store(Request $request)
-    {
-        // Realiza las validaciones necesarias para los campos del formulario
-        $request->validate([
-            'nombre' => 'required',
-            'comercial' => 'nullable',
-            'concentracion' => 'nullable',
-            'presentacion' => 'nullable',
-        ]);
+{
+    $request->validate([
+        'nombre' => 'required',
+        'comercial' => 'nullable',
+        'concentracion' => 'nullable',
+        'presentacion' => 'nullable',
+    ]);
 
-        // Crea una nueva instancia del modelo Medicamento y asigna los valores del formulario
-        $medicamento = new Medicamento();
-        $medicamento->nombre = $request->input('nombre');
-        $medicamento->comercial = $request->input('comercial');
-        $medicamento->concentracion = $request->input('concentracion');
-        $medicamento->presentacion = $request->input('presentacion');
+    $medicamento = Medicamento::create([
+        'nombre' => $request->nombre,
+        'comercial' => $request->comercial,
+        'concentracion' => $request->concentracion,
+        'presentacion' => $request->presentacion,
+    ]);
 
-        // Intenta guardar el medicamento en la base de datos
-        try {
-            $medicamento->save();
-        } catch (\Exception $e) {
-            // Si ocurre un error, devuelve una respuesta de error
-            return response()->json(['error' => 'Error al guardar el medicamento'], 500);
-        }
-
-        // Si se guardó exitosamente, devuelve una respuesta con el ID del nuevo medicamento
-        return response()->json(['medicamentoId' => $medicamento->id], 200);
-    }
-
+    return response()->json(['success' => true, 'medicamento' => $medicamento]);
+}
+   
     public function edit($id)
     {
         $medicamento = Medicamento::where('id', $id)->firstOrFail();
@@ -101,7 +77,8 @@ class MedicamentoController extends Controller
 
        
     }
-       
+
+    
     public function destroy($id)
     {
         

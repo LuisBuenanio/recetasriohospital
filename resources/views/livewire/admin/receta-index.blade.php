@@ -33,17 +33,17 @@
                                 <td>{{$receta->historia}}</td>                          
                                 <td with="10px">
                                     @can('admin.receta.edit')
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta)}}">Detalle</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta->id)}}">Detalle</a>
                                     @endcan
                                 </td with="10px">  
                                 <td with="10px">
                                     @can('admin.receta.edit')
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.receta.edit', $receta)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.receta.edit', $receta->id)}}">Editar</a>
                                     @endcan
                                 </td with="10px">  
                                 <td>
                                     @can('admin.receta.destroy')
-                                        <form action="{{route('admin.receta.destroy', $receta)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.receta.destroy', $receta->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
 

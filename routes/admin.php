@@ -27,6 +27,11 @@ Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->
  Route::resource('roles', RoleController::class)->names('admin.roles');
 
 Route::resource('medicamento', MedicamentoController::class)->except('show')->names('admin.medicamento');
+Route::post('/medicamento/agregar', [MedicamentoController::class, 'agregar'])->name('admin.medicamento.agregar');
+Route::post('/medicamento/store1', [MedicamentoController::class, 'store1'])->name('admin.medicamento.store1');
+
+Route::get('/medicamentos/lista', [MedicamentoController::class, 'lista'])->name('admin.medicamento.lista');
+
 
 
 Route::resource('gruposcie10', Gruposcie10Controller::class)->except('show')->names('admin.gruposcie10');
@@ -40,7 +45,11 @@ Route::resource('paciente', PacienteController::class)->except('show')->names('a
 
 Route::resource('receta', RecetaController::class)->names('admin.receta');
 Route::post('/receta/getPacientes/','App\Http\Controllers\Admin\RecetaController@getPacientes')->name('admin.receta.getPacientes');
+Route::post('/receta/getPacientes1/','App\Http\Controllers\Admin\RecetaController@getPacientes1')->name('admin.receta.getPacientes1');
 Route::post('/receta/getDiagnosticoscie10/','App\Http\Controllers\Admin\RecetaController@getDiagnosticoscie10')->name('admin.receta.getDiagnosticoscie10');
+Route::get('/receta/getDiagnosticoscie10Select2/','App\Http\Controllers\Admin\RecetaController@getDiagnosticoscie10Select2')->name('admin.receta.getDiagnosticoscie10Select2');
+
+
 Route::post('/receta/getMedicamentos/','App\Http\Controllers\Admin\RecetaController@getMedicamentos')->name('admin.receta.getMedicamentos');
 
 
@@ -49,15 +58,5 @@ Route::get('/imprimir/{id}', [ImprimirRecetaController::class, 'imprimirpdf'])->
 
 Route::post('receta/{id}/medicamentos', [MedicamentoRecetaController::class, 'store'])->name('admin.receta.medicamentos.store');
 
+
 Route::post('/receta/agregar-medicamento', [RecetaController::class, 'agregarMedicamento']);
-/* Route::get('/buscar/pacientes', [BuscarPacienteController::class, 'pacientes'])->name('admin.buscar.pacientes');
- 
-
-Route::get('buscar', [BuscarPacienteController::class, 'index'])->name('search');
-Route::get('autocomplete', [BuscarPacienteController::class, 'autocomplete'])->name('autocomplete');
-
-Route::get('/','App\Http\Controllers\EmployeesController@index');
-
-Route::post('/employees/getEmployees/','App\Http\Controllers\EmployeesController@getEmployees')->name('employees.getEmployees');
-
-Route::get('/example/{id}', [ExampleController::class, 'show'])->name('example.show'); */

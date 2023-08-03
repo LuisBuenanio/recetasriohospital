@@ -2,7 +2,7 @@
 
 @section('title', 'Recetas')
 
-@section('content_header')    
+@section('content_header')
     <h1>Editar Receta</h1>
 @stop
 @section('css')
@@ -13,19 +13,24 @@
 @section('content')
     @if (session('info'))
         <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
+            <strong>{{ session('info') }}</strong>
         </div>
     @endif
     <div class="card">
         <div class="card-body">
-            {!! Form::model($recetum,['route' => ['admin.receta.update', $recetum], 'autocomplete' => 'off', 'files' => true, 'method' => 'put']) !!}
+            {!! Form::model($receta, [
+                'route' => ['admin.receta.update', $receta->id],
+                'autocomplete' => 'off',
+                'files' => true,
+                'method' => 'put',
+            ]) !!}
 
             {!! Form::hidden('users_id', auth()->user()->id) !!}
 
             <div class="form-group">
                 {!! Form::label('id', 'Número de Receta:') !!}
 
-                {!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}
+                {!! Form::text('id', $receta->id, ['class' => 'form-control', 'readonly']) !!}
             </div>
 
             <div class="form-group">
@@ -55,22 +60,22 @@
 
             <div class="form-group">
                 {!! Form::label('diagnosticoscie10_id', 'Diagnóstico:') !!}
-                {!! Form::select('diagnosticoscie10_id', $diagnosticoscie10, null, ['class' => 'form-control']) !!} 
-            
+                {!! Form::select('diagnosticoscie10_id', $diagnosticoscie10, null, ['class' => 'form-control select2']) !!}
+
                 @error('diagnosticoscie10_id')
-                    <small class="text-danger">{{$message}}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
-            
+
             </div>
-            
+
             <div class="form-group">
                 {!! Form::label('paciente_id', 'Paciente:') !!}
-                {!! Form::select('paciente_id', $paciente, null, ['class' => 'form-control']) !!} 
-            
+                {!! Form::select('paciente_id', $paciente, null, ['class' => 'form-control select2']) !!}
+
                 @error('paciente_id')
-                    <small class="text-danger">{{$message}}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
-            
+
             </div>
             <div class="form-group">
                 {!! Form::label('historia', 'Historia Clínica:') !!}
@@ -107,130 +112,110 @@
                 @enderror
 
             </div>
-            <div class="form-group">
-                <div class="card">
-                    <div class="card-header">
-                        {!! Form::label('', 'LISTADO DE MEDICAMENTOS AGREGADOS:') !!}
-                    </div>
-                    <table class="table table-bordered" id="medicamentos-table">
-                        <thead>
-                            <tr>
-                                <th>Medicamento</th>
-                                <th>Cantidad</th>
-                                <th>Indicaciones</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($recetum->medicamentos as $medicamento)
-                                <tr>
-                                    <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
-                                    <td>{!! Form::text('cantidades[]', $medicamento->pivot->cantidad, ['class' => 'form-control']) !!}</td>
-                                    <td>{!! Form::text('indicaciones[]', $medicamento->pivot->indicacion, ['class' => 'form-control']) !!}</td>
-                                                        
-                                    <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div class="card-body">
             
+            <div class="card">
+                <div class="card-header">
+                    {!! Form::label('', 'Medicamentos:') !!}
+                </div>
+                <div class="card-body">
+                    <!-- Botón para abrir el modal -->
+                    {!! Form::button('Crear Medicamento', [
+                        'class' => 'btn btn-secondary',
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modalAgregarMedicamento',
+                    ]) !!}
             
+            <table class="table table-bordered mt-3" id="medicamento_table">
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Cantidad</th>
+                        <th>Indicaciones</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($medicamentosReceta as $index => $medicamentoReceta)
+                    <tr id="medicamento{{ $index }}">
+                        
+                        <td>
+                            {!! Form::select(
+                                'medicamentos[]',
+                                $medicamentosSelect,
+                                $medicamentoReceta->id,
+                                ['class' => 'form-control select2', 'data-placeholder' => 'Seleccione un Medicamento'],
+                            ) !!}
+                        </td>
+                        <td>
+                            {!! Form::text('cantidades[]', $medicamentoReceta->pivot->cantidad, ['class' => 'form-control', 'placeholder' => 'Ingrese la Cantidad']) !!}
+                        </td>
+                        <td>
+                            {!! Form::text('indicaciones[]', $medicamentoReceta->pivot->indicacion, ['class' => 'form-control', 'placeholder' => 'Ingrese las Indicaciones']) !!}
+                        </td>
+                        <td>{!! Form::button('Eliminar', ['type' => 'button', 'class' => 'btn btn-danger btn-remove-medicamento']) !!}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+                    {!! Form::button('Agregar medicamento', [
+                        'type' => 'button',
+                        'class' => 'btn btn-primary',
+                        'id' => 'btn-add-medicamento',
+                    ]) !!}
+                </div>
+            </div>
             
-                        <table class="table table-bordered mt-3" id="medicamento_table">
-                            <thead>
-                                <tr>
-                                    <th>Medicamento</th>
-                                    <th>Cantidad</th>
-                                    <th>Indicaciones</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr id="medicamento0">
-                                    
-                                    <td>{!! Form::select('medicamentos[]', $medicamentos, $medicamento->id, ['class' => 'form-control select2']) !!}</td>
-                                   
-                                    <td>
-                                        <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
-                                    </td>
-                                    <td>
-                                        <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese las Indicaciones " value="" />
-                                    </td>
-                                    
-                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
-                                </tr>
-                                <tr id="medicamento1"></tr>
-                            </tbody>
-                        </table>
-                        <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
-                              
+            <!-- Modal para agregar un nuevo medicamento -->
+            <div class="modal fade" id="modalAgregarMedicamento" tabindex="-1" role="dialog" aria-labelledby="modalAgregarMedicamentoLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalAgregarMedicamentoLabel">Crear Medicamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulario para agregar un nuevo medicamento -->
+                            <div class="form-group">
+                                {!! Form::label('nombre', 'Nombre Genérico:') !!}
+                                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Nombre Genérico']) !!}
+                                @error('nombre')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('comercial', 'Nombre Comercial:') !!}
+                                {!! Form::text('comercial', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Nombre Comercial']) !!}
+                                @error('comercial')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('concentracion', 'Concentración:') !!}
+                                {!! Form::text('concentracion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Concentración']) !!}
+                                @error('concentracion')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('presentacion', 'Presentación:') !!}
+                                {!! Form::text('presentacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Presentación']) !!}
+                                @error('presentacion')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <button type="button" class="btn btn-primary" id="btnGuardarMedicamento">Guardar Medicamento</button>
+                        </div>
                     </div>
                 </div>
             </div>
-       
-
-            {{-- <div class="form-group">
-                <div class="card">
-                    <div class="card-header">
-                        {!! Form::label('', 'Medicamentos:') !!}
-                    </div>
-                    <div class="card-body">
-
-
-
-                        <table class="table table-bordered mt-3" id="medicamento_table">
-                            <thead>
-                                <tr>
-                                    <th>Medicamento</th>
-                                    <th>Cantidad</th>
-                                    <th>indicacion</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr id="medicamento0">
-                                    <td>
-                                        <select name="medicamentos[]" class="form-control select2">
-                                            <option value="">Seleccione un Medicamento</option>
-                                            @foreach ($medicamentos as $medicamento)
-                                                <option value="{{ $medicamento->id }}">
-                                                    {{ $medicamento->nombre }} ({{ $medicamento->concentracion }}) {{ $medicamento->tipo }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
-                                    </td>
-                                    <td>
-                                        <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese el indicacion " value="" />
-                                    </td>
-                                    
-                                <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>  
-                                </tr>
-                                <tr id="medicamento1"></tr>
-                            </tbody>
-                        </table>
-                        <button type="button" class="btn btn-primary" id="btn-add-medicamento">Agregar medicamento</button>
-
-                        
-                    </div>
-                </div>
-            </div> --}}
             
 
+           
             <div class="form-group">
-                {!! Form::label('sugerencia', 'Sugerencia No Farmacológica:') !!}
-                {!! Form::text('sugerencia', null, [
-                    'class' => 'form-control',
-                    'placeholder' => 'Ingrese la sugerencia no Framacológica de la Receta',
-                ]) !!}
-
-                @error('sugerencia')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-
+                {!! Form::label('sugerencia', 'Sugerencia no Farmacológica:') !!}
+                {!! Form::textarea('sugerencia', null, ['rows' => 6, 'cols' => 50]) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('medico', 'Médico Tratante:') !!}
@@ -264,36 +249,6 @@
 
 
     <script>
-
-        // Inicializar Select2 en el campo de selección de medicamentos
-        $('.select2').select2();
-
-                 
-        let medicamentoIndex = 1;
-        $('#btn-add-medicamento').on('click', function() {
-            $('#medicamento_table tbody').append(`
-                <tr id="medicamento-${medicamentoIndex}">
-                    
-                                        <td>{!! Form::select('medicamentos[]', $medicamentos, ['class' => 'form-control select2']) !!}</td>
-                                
-                                        <td>
-                                        <input type="text" name="cantidades[]" class="form-control" placeholder="Ingrese la Cantidad " value="" />
-                                    </td>
-                                    <td>
-                                        <input type="text" name="indicaciones[]" class="form-control" placeholder="Ingrese las Indicaciones" value="" />
-                                    </td>
-
-                     <td><button type="button" class="btn btn-danger btn-remove-medicamento">Eliminar</button></td>
-                </tr>
-            `);
-            // Inicializar Select2 en el nuevo campo de selección de medicamentos
-            $(`#medicamento-${medicamentoIndex} .select2`).select2();
-            medicamentoIndex++;
-        });
-        $(document).on('click', '.btn-remove-medicamento', function() {
-            $(this).closest('tr').remove();
-        });
-
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function() {
@@ -377,8 +332,165 @@
             alergia.disabled = true;
         });
 
-        
+        $(document).ready(function() {
+            // Inicializar Select2
+            function inicializarSelect2() {
+                $('.select2').select2({
+                    width: '100%', // Ajusta el ancho del select al 100%
+                });
+            }
 
+            // Lógica para agregar dinámicamente más filas de medicamentos
+            $('#btn-add-medicamento').on('click', function() {
+                var nuevaFila = `
+            <tr id="medicamento${contadorMedicamentos}">
+                <td>
+                    {!! Form::select(
+                        'medicamentos[]',
+                        ['' => 'Seleccione un Medicamento'] + $medicamentos->pluck('nombre_completo', 'id')->all(),
+                        null,
+                        ['class' => 'form-control select2', 'data-placeholder' => 'Seleccione un Medicamento'],
+                    ) !!}
+                </td>
+                <td>
+                    {!! Form::text('cantidades[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Cantidad']) !!}
+                </td>
+                <td>
+                    {!! Form::text('indicaciones[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese las Indicaciones']) !!}
+                </td>
+                <td>
+                    {!! Form::button('Eliminar', ['type' => 'button', 'class' => 'btn btn-danger btn-remove-medicamento']) !!}
+                </td>
+            </tr>
+        `;
+                contadorMedicamentos++;
+                $('#medicamento_table tbody').append(nuevaFila);
+                inicializarSelect2(); // Reinicializar Select2 en el nuevo elemento
+            });
+
+            // Lógica para eliminar filas de medicamentos
+            $(document).on('click', '.btn-remove-medicamento', function() {
+                $(this).closest('tr').remove();
+            });
+
+            // Objeto para almacenar el medicamento seleccionado en cada fila
+        var medicamentosSeleccionados = {};
+
+// Resto del código sin cambios
+
+$('#btnGuardarMedicamento').on('click', function () {
+    // Obtener los datos del formulario del modal
+    var nombre = $('#nombre').val();
+    var comercial = $('#comercial').val();
+    var concentracion = $('#concentracion').val();
+    var presentacion = $('#presentacion').val();
+
+    console.log(nombre, comercial, concentracion, presentacion);
+
+    // Enviar la solicitud AJAX para guardar el medicamento
+    $.ajax({
+        type: 'POST',
+        url: '{{ route('admin.medicamento.store') }}',
+        data: {
+            nombre: nombre,
+            comercial: comercial,
+            concentracion: concentracion,
+            presentacion: presentacion,
+            _token: "{{ csrf_token() }}"
+        },
+        success: function (response) {
+            // Si la operación es exitosa, cierra el modal
+            $('#modalAgregarMedicamento').modal('hide');
+            agregarNuevoMedicamento(response.medicamentoId, nombre); // Agregar el nuevo medicamento a la tabla
+            actualizarSelect2Medicamentos(); // Actualizar el Select2 de medicamentos
+            console.log(response.medicamentoId);
+        },
+        error: function (xhr, status, error) {
+            // Si hay un error en la solicitud AJAX, muestra el mensaje de error (opcional)
+            console.log(xhr.responseText);
+        }
+    });
+});
+
+
+        function agregarNuevoMedicamento(medicamentoId, nombreMedicamento) {
+            // Verificar si ya existe una fila con el mismo ID de medicamento
+            if (medicamentosSeleccionados.hasOwnProperty(medicamentoId)) {
+                // Si existe, actualizar los datos en la fila existente
+                var filaExistente = medicamentosSeleccionados[medicamentoId];
+                var cantidad = $('#cantidad').val(); // Suponiendo que tienes un campo con ID "cantidad" para la cantidad del medicamento
+                var indicaciones = $('#indicaciones').val(); // Suponiendo que tienes un campo con ID "indicaciones" para las indicaciones del medicamento
+                
+                filaExistente.find('.cantidad').val(cantidad);
+                filaExistente.find('.indicaciones').val(indicaciones);
+            } else {
+                // Si no existe, crear una nueva fila con el medicamento seleccionado
+                var nuevaFila = `
+                    <tr id="medicamento${medicamentoId}">
+                        <td>
+                            <select name="medicamentos[]" class="form-control select2 select2-medicamentos" data-placeholder="Seleccione un Medicamento">
+                                <option value="${medicamentoId}" selected>${nombreMedicamento}</option>
+                                @foreach ($medicamentos as $medicamento)
+                                    <option value="{{ $medicamento->id }}">{{ $medicamento->nombre_completo }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="cantidades[]" class="form-control cantidad" placeholder="Ingrese la Cantidad">
+                        </td>
+                        <td>
+                            <input type="text" name="indicaciones[]" class="form-control indicaciones" placeholder="Ingrese las Indicaciones">
+                        </td>
+                        <td>
+                            {!! Form::button('Eliminar', ['type' => 'button', 'class' => 'btn btn-danger btn-remove-medicamento']) !!}
+                        </td>
+                    </tr>
+                `;
+                contadorMedicamentos++;
+                $('#medicamento_table tbody').append(nuevaFila);
+                inicializarSelect2(); // Reinicializar Select2 en el nuevo elemento
+
+                // Guardar la referencia a la nueva fila en el objeto de medicamentos seleccionados
+                medicamentosSeleccionados[medicamentoId] = $('#medicamento_table tbody').find(`tr#medicamento${medicamentoId}`);
+            }
+
+            // Restablecer los campos del formulario del modal
+            $('#cantidad').val('');
+            $('#indicaciones').val('');
+        }
+        function actualizarSelect2Medicamentos() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('admin.medicamento.lista') }}', // Ajusta la ruta según corresponda
+                dataType: 'json',
+                success: function (data) {
+                    // Obtener el Select2 de medicamentos
+                    var select2Medicamentos = $('.select2.select2-medicamentos');
+
+                    // Guardar la selección actual del Select2
+                    var selectedOption = select2Medicamentos.val();
+
+                    // Vaciar el Select2 y agregar las nuevas opciones
+                    select2Medicamentos.empty();
+                    select2Medicamentos.append($('<option></option>').attr('value', '').text('Seleccione un Medicamento'));
+                    $.each(data, function (key, value) {
+                        select2Medicamentos.append($('<option></option>').attr('value', key).text(value));
+                    });
+
+                    // Restaurar la selección anterior en el Select2
+                    select2Medicamentos.val(selectedOption).trigger('change');
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+
+        // Contador para identificar filas de medicamentos
+        var contadorMedicamentos = 1;
+        inicializarSelect2();
+    });
 
     </script>
 @stop

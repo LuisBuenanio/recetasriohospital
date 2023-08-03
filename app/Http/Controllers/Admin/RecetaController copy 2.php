@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Cache;
 use Dompdf\Dompdf;
 use PDF;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class RecetaController extends Controller
 {
@@ -72,10 +71,7 @@ class RecetaController extends Controller
     }
     public function create()
     {
-       
-        $maxRecetaId = Receta::max('id'); // Obtenemos el valor máximo actual del campo 'id' en la tabla 'Receta'
-        $nextId = $maxRecetaId + 1; // Incrementamos en uno para obtener el próximo número de receta
-
+        $nextId = Receta::count() + 1;
         $receta = new Receta();
         $users = User::pluck('name', 'id');
         $medicamentos = Medicamento::all();
@@ -113,11 +109,16 @@ class RecetaController extends Controller
 
     }
 
+
+
     public function show($id)
     {
         
         
         $receta = Receta::findOrFail($id);
+        /* $recetum = Receta::find($recetum->id); */
+        /*$recetum->medicamentos;/* 
+        return json_encode($recetum); */
         $medicamentos = $receta->medicamentos;
 
         
@@ -134,73 +135,116 @@ class RecetaController extends Controller
         $pdf->render();
         
         return $pdf->stream("registro-$recetum.pdf");
-    }  
-   
+    }
+    
 
+    /* public function edit(Receta $recetum)
+    {
+        
+        $nextId = Receta::count();
+        
+        $this->authorize('author', $recetum);
+
+        $users = User::pluck('name', 'id'); 
+        $medicamentos = Medicamento::all(); 
+        $medicamentos = Medicamento::pluck('nombre', 'id'); 
+        $medicamentos_id = $recetum->medicamentos()->pluck('medicamento.id');
+        $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
+        $paciente = Paciente::pluck('nombre','id');
+        $pacientes = Paciente::all(); 
+         
+        return view('admin.receta.edit', compact('nextId','recetum', 'users', 'medicamentos','medicamentos_id', 'diagnosticoscie10', 'paciente'));
    
+  
+    }*/
+
     public function edit($id)
     {
-        $receta = Receta::findOrFail($id);
+        $recetum = Receta::where('id', $id)->firstOrFail();
+        
+        $nextId = Receta::count();
+
         $users = User::pluck('name', 'id');
-        $medicamentos = Medicamento::all();
-        // Obtener los medicamentos asociados a la receta
-        $medicamentosReceta = $receta->medicamentos()->get();   
-        // Crear un arreglo asociativo para el select desplegable
-        // Obtener todos los medicamentos con sus campos necesarios
-        $medicamentosDisponibles = Medicamento::all();
-        $medicamentosSelect = ['' => 'Seleccione un Medicamento'];
-        foreach ($medicamentosDisponibles as $medicamento) {
-            $medicamentosSelect[$medicamento->id] = $medicamento->nombre_completo;
-        }
-        
-
-        
+        $sugerencias = explode("\n", $recetum->sugerencia);/* 
+        $medicamentos = Medicamento::all(); *//* 
+        $medicamentos = Medicamento::pluck('nombre','id'); */
+        $medicamentos = Medicamento::selectRaw("CONCAT(nombre, ' (', comercial, ') ', concentracion, ' ', presentacion) as nombre_concentracion, id")
+        ->pluck('nombre_concentracion', 'id');
         $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
-        $paciente = Paciente::pluck('nombre', 'id');
+        $paciente = Paciente::pluck('nombre','id');
 
-        return view('admin.receta.edit', compact('receta', 'users', 'medicamentos', 'medicamentosReceta','medicamentosSelect', 'diagnosticoscie10', 'paciente'));
+        return view('admin.receta.edit', compact('nextId', 'recetum', 'users', 'medicamentos', 'diagnosticoscie10', 'paciente'));
     }
  
-    public function update(Request $request, $id)
+    
+    /* public function update(RecetaRequest $request, Receta $recetum)
     {
+        $this->authorize('author', $recetum);
         
-        
+        $recetum->update($request->all());
 
-        // Obtener la receta existente por su ID
-        $receta = Receta::findOrFail($id);
-
-        // Actualizar los campos de la receta con los datos del formulario        
-         
-        
-        $sugerencias = explode("\n", $request->input('sugerencia'));
-        $sugerenciaString = implode("\n", $sugerencias); 
-        $receta->sugerencia = $sugerenciaString;
-        // Agrega aquí otros campos de la tabla Receta según tus necesidades
-        $receta->update($request->all());
-        // Guardar la receta actualizada en la base de datos
-        $receta->save();
-
-        // Lógica para manejar medicamentos asociados a la receta (similar a la lógica del método "store")
         $medicamentos = $request->input('medicamentos', []);
         $cantidades = $request->input('cantidades', []);
         $indicaciones = $request->input('indicaciones', []);
 
-        // Eliminar los medicamentos asociados a la receta existente para actualizarlos
-        $receta->medicamentos()->detach();
 
-        // Asociar los nuevos medicamentos a la receta actualizada
-        for ($i = 0; $i < count($medicamentos); $i++) {
-            if ($medicamentos[$i] != '') {
-                $receta->medicamentos()->attach($medicamentos[$i], [
-                    'cantidad' => $cantidades[$i],
-                    'indicacion' => $indicaciones[$i]
-                ]);
+        for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
+            if ($medicamentos[$medicamento] != '') {
+                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
+            }
+        }    
+
+        
+        
+        Cache::flush();
+        return redirect()->route('admin.receta.index')-> with('info', 'Datos Actualizados correctamente');;
+
+    
+    } */
+
+    public function update(RecetaRequest $request, $id)
+    {
+        $recetum = Receta::findOrFail($id);
+        
+        $this->authorize('author', $recetum);   
+        
+        $sugerencias = explode("\n", $request->input('sugerencia'));
+        $sugerenciaString = implode("\n", $sugerencias); 
+        $recetum->sugerencia = $sugerenciaString;    
+       
+           
+        $recetum->update($request->all());
+
+        //Eliminar las relaciones anteriores
+        $recetum->medicamentos()->detach();
+
+        // Actualizar relaciones
+        $medicamentos = $request->input('medicamentos', []);
+        $cantidades = $request->input('cantidades', []);
+        $indicaciones = $request->input('indicaciones', []);
+
+        for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
+            if ($medicamentos[$medicamento] != '') {
+                $recetum->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
             }
         }
-
+        Cache::flush();
         return redirect()->route('admin.receta.index')->with('info', 'Receta actualizada correctamente');
     }
-   
+
+   /*  public function update(MedicamentoRequest $request, $id)
+    {
+        $medicamento = Medicamento::findOrFail($id);
+
+       
+        $medicamento->update($request->all());
+        
+        Cache::flush();
+        return redirect()->route('admin.medicamento.index')-> with('info', 'Datos Actualizados correctamente');;
+
+       
+    } */
+
     
     public function destroy($id)
     {

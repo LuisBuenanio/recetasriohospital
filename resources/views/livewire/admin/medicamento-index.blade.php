@@ -13,6 +13,7 @@
                         <th>Nombre Genérico</th>
                         <th>Nombre Comercial</th>
                         <th>Concentración</th>
+                        <th>Presentación</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -23,6 +24,7 @@
                                 <td>{{$medicamento->nombre}}</td>
                                 <td>{!!$medicamento->comercial!!}</td>
                                 <td>{!!$medicamento->concentracion!!}</td>
+                                <td>{!!$medicamento->presentacion!!}</td>
                                <td with="10px">
                                     @can('admin.medicamento.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.medicamento.edit', $medicamento->id)}}">Editar</a>
