@@ -315,7 +315,14 @@
                         <tr>
                             <td>{{ $receta->diagnosticoscie10->descripcion }}</td>
                             <td>{{ $receta->diagnosticoscie10->clave }}</td>
-                            <td>{{ $receta->alergia }}</td>
+                            {{-- <td>{{ $receta->alergia }}</td> --}}
+                            <td>
+                                @if ($receta->alergia)
+                                    {{ $receta->alergia }}
+                                @else
+                                    NINGUNA
+                                @endif
+                            </td>
 
 
                         </tr>
@@ -356,15 +363,15 @@
                 <!-- Contenido de la primera parte -->
                 <table>
                     @foreach ($receta->medicamentos as $medicamento)
-                        <tr style=" border-color: white;">
+                        <tr style=" border-color: white; margin-bottom: 10px;">
                             
-                            <td style="text-align: center; border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
+                            <td style=" border-color: white; padding-bottom: 10px;"> <strong> {{ $loop->iteration }}.-<strong>
                                 &nbsp;{{ $medicamento->nombre }}&nbsp;({{ $medicamento->comercial }})&nbsp;{{ $medicamento->concentracion }}
                             </td>
                         </tr>
-                        <tr style=" border-color: white;">
+                        <tr style=" border-color: white; margin-bottom: 10px; ">
                             
-                            <td style="text-align: center; border-color: white;">
+                            <td style=" border-color: white; padding-bottom: 10px;">
                                 @php
                                 $cantidad = (int)$medicamento->pivot->cantidad;
                                 $formatter = new \NumberFormatter('es', \NumberFormatter::SPELLOUT);
@@ -386,7 +393,7 @@
                     @foreach ($receta->medicamentos as $medicamento)
                         <tr style=" border-color: white;">
                             
-                            <td style="text-align: center; border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
+                            <td style=" border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
                                 &nbsp;({{ $medicamento->comercial }})&nbsp;
                             </td>
                         </tr>
@@ -394,7 +401,7 @@
                             <td style="text-align: center"> <strong>{{ $loop->iteration }} .-</strong></td>
                         </tr> --}}
                         <tr>
-                            <td style="text-align: center; border-color: white;">{{ $medicamento->pivot->indicacion }}</td>
+                            <td style=" border-color: white;">{{ $medicamento->pivot->indicacion }}</td>
 
 
                         </tr>
@@ -439,7 +446,7 @@
                 <td style="width: 50%; border-collapse: collapse;
 				border-top: none; border-color: white;">
                     <!-- Contenido de la segunda parte -->
-                    <h3 width="10px" style="font-size: 8.7px; text-align: center;">Sugerencia No
+                    <h3 width="5px" style="font-size: 11px; text-align: center;">Sugerencia No
                         Farmacológica</h3>
                     <table>                        
                                                 
@@ -447,7 +454,7 @@
                             <tr>                                 
                                 @if ($receta->sugerencia)
                                 
-                                <ol style="font-size: 8.7px; text-align: center;">
+                                <ol style="font-size: 9px; text-align: center;">
                                     @foreach (explode("\n", $receta->sugerencia) as $sugerencia)
                                         <li >{{ $sugerencia }}</li>
                                     @endforeach

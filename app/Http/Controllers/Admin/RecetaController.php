@@ -53,14 +53,14 @@ class RecetaController extends Controller
   
         return response()->json($response);
     }
-    public function getDiagnosticoscie10(Request $request){
+   public function getDiagnosticoscie10(Request $request){
 
         $search = $request->search;
   
         if($search == ''){
-           $diagnosticoscie10s = Diagnosticoscie10::orderby('descripcion','asc')->select('id','clave','descripcion')->limit(5)->get();
+           $diagnosticoscie10s = Diagnosticoscie10::orderby('descripcion','asc')->select('id','clave','descripcion')->limit(15)->get();
         }else{
-           $diagnosticoscie10s = Diagnosticoscie10::orderby('descripcion','asc')->select('id', 'clave','descripcion')->where('descripcion', 'like', '%' .$search . '%')->limit(5)->get();
+           $diagnosticoscie10s = Diagnosticoscie10::orderby('descripcion','asc')->select('id', 'clave','descripcion')->where('descripcion', 'like', '%' .$search . '%')->limit(15)->get();
         }
   
         $response = array();
@@ -69,7 +69,10 @@ class RecetaController extends Controller
         }
   
         return response()->json($response);
-    }
+    } 
+    
+
+
     public function create()
     {
        
