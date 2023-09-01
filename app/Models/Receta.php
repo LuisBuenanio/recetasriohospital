@@ -18,6 +18,7 @@ class Receta extends Model
         'historia',        
         'aler',
         'alergia',
+        'signos',
         'sugerencia', 
         'medico',
         'paciente_id',

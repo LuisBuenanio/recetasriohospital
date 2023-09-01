@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <input wire:model="search" class="form-control" placeholder ="Buscar Receta por: (Cédula, Nombre, N° historia del paciente )">
+        <input wire:model="search" class="form-control" placeholder ="Buscar Receta por: (Cédula, Nombre, Diagnóstico, CIE-10 )">
 
     </div>
         
@@ -9,14 +9,14 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>N° Receta</th>
+                        <th>N°</th>
                         <th>Médico</th>
                         <th>Fecha</th>
                         <th>Médico Tratante</th>
                         <th>Dianóstico </th>
+                        <th>CIE-10 </th>
                         <th>Paciente</th>
                         <th>CI:</th>
-                        <th>Historia</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -28,24 +28,13 @@
                                 <td>{{$receta->fecha}}</td>
                                 <td>{!!$receta->medico!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
+                                <td>{!!$receta->diagnosticoscie10->clave!!}</td> 
                                 <td>{!!$receta->paciente->nombre!!}</td> 
-                                <td>{!!$receta->paciente->cedula!!}</td>                                     
-                                <td>{{$receta->historia}}</td> 
-                                <!-- Agrega una columna con el botón "Copiar y Crear Nuevo" -->
-                                {{-- <td>
-                                    <form action="{{ route('admin.receta.crearNuevaReceta') }}" method="POST">
-                                        @csrf
-                                        <!-- Campos de datos ocultos para copiar -->
-                                        <input type="hidden" name="ciudad" value="{{ $receta->ciudad }}">
-                                        <input type="hidden" name="historia" value="{{ $receta->historia }}">
-
-                                        <!-- Botón "Copiar y Crear Nuevo" -->
-                                        <button type="submit" class="btn btn-primary">Copiar y Crear Nuevo</button>
-                                    </form>
-                                </td>   --}}  
-                                <td>
-                                    <a href="{{ route('admin.receta.crearnuevaReceta', $receta->id) }}" class="btn btn-primary">Copiar</a>
-                                </td>                     
+                                <td>{!!$receta->paciente->cedula!!}</td>    
+                                
+                                <td with="10px">
+                                    <a href="{{ route('admin.receta.crearnuevaReceta', $receta->id) }}" class="btn btn-success btn-sm">Copiar</a>
+                                </td with="10px">                     
                                 <td with="10px">
                                     @can('admin.receta.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta->id)}}">Detalle</a>

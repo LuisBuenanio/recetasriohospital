@@ -20,39 +20,6 @@
 
     @include('admin.receta.partials.detalle')
     
-    {{-- <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Código</th>
-                <th>Ciudad</th>
-                <th>Fecha</th>
-                <th>Médico</th>
-                <th>CIE -10 </th>
-                <th>Paciente</th>
-                <th colspan="2"></th>
-            </tr>
-
-            <tbody>
-                    <tr>
-                        <td>{{$recetum->fecha}}</td>-- 
-                        <td>{{$recetum->codigo}}</td>
-                        <td>{{$recetum->ciudad}}</td>
-                        <td>{{$recetum->fecha}}</td>
-                        <td>{!!$recetum->users->name!!}</td> 
-                        <td>{!!$recetum->diagnosticoscie10->descripcion!!}</td> 
-                        <td>{!!$recetum->paciente->nombre!!}</td>  
-                        
-                        <td>{!!$recetum->users->email!!}</td> 
-                        <td>{!!$recetum->diagnosticoscie10->categoriascie10->descripcion!!}</td> 
-                        <td>{!!$recetum->paciente->edad!!}</td>                      
-                    </tr>  
-            </tbody>
-
-        </thead>
-
-    </table> --}}
-    
 @stop
 
 

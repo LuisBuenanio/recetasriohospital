@@ -236,7 +236,7 @@
                             <th>DÍA</th>
                             <th>MES</th>
                             <th>AÑO</th>
-                            <th colspan="2">RECETA</th>
+                            <th colspan="2">RECETA N°</th>
 
                         </tr>
                     </thead>
@@ -246,7 +246,8 @@
                             <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('d') }}</td>
                             <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('m') }}</td>
                             <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('Y') }}</td>
-                            <td colspan="2">{{ $receta->id }}</td>
+                            <td colspan="2" style="color: red; text-align: center">{{ $receta->id }}</td>
+
                         </tr>
 
                     </tbody>
@@ -354,24 +355,24 @@
     {{-- 	MEDICAMANETOS --}}
 
     <table class="tabla_medicamentos" style="width: 100%;">
-        <td style="border-color: white; font-weight: bold; font-size: 20px; font-style: italic; ">RP.</td>
+         <td style="border-color: white; font-weight: bold; font-size: 20px; font-style: italic; padding-left: 15px;">RP.</td>
 
 
         <tr>
             <td style="width: 50%; border-collapse: collapse;
-				border-top: none; border-color: white;">
+				border-top: none; border-color: white; padding-left: 15px;">
                 <!-- Contenido de la primera parte -->
                 <table>
                     @foreach ($receta->medicamentos as $medicamento)
                         <tr style=" border-color: white; margin-bottom: 10px;">
                             
-                            <td style=" border-color: white; padding-bottom: 10px;"> <strong> {{ $loop->iteration }}.-<strong>
+                            <td style=" border-color: white; padding-bottom: 2px;"> <strong> {{ $loop->iteration }}.-<strong>
                                 &nbsp;{{ $medicamento->nombre }}&nbsp;({{ $medicamento->comercial }})&nbsp;{{ $medicamento->concentracion }}
                             </td>
                         </tr>
-                        <tr style=" border-color: white; margin-bottom: 10px; ">
+                        <tr style=" border-color: white; margin-bottom: 8px; ">
                             
-                            <td style=" border-color: white; padding-bottom: 10px;">
+                            <td style=" border-color: white; padding: 1px; padding-bottom: 10px; padding-left: 25px;">
                                 @php
                                 $cantidad = (int)$medicamento->pivot->cantidad;
                                 $formatter = new \NumberFormatter('es', \NumberFormatter::SPELLOUT);
@@ -386,22 +387,19 @@
 
                 </table>
             </td>
-            <td style="width: 50%; border-color: white;">
+            <td style="width: 50%; border-color: white; padding-left: 15px; ">
                 <!-- Contenido de la segunda parte -->
                 <table>
 
                     @foreach ($receta->medicamentos as $medicamento)
-                        <tr style=" border-color: white;">
+                        <tr style=" border-color: white; margin: 0; padding-bottom: 10px; padding-left: 25px;">
                             
                             <td style=" border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
                                 &nbsp;({{ $medicamento->comercial }})&nbsp;
                             </td>
-                        </tr>
-                        {{-- <tr>
-                            <td style="text-align: center"> <strong>{{ $loop->iteration }} .-</strong></td>
-                        </tr> --}}
+                        </tr>                        
                         <tr>
-                            <td style=" border-color: white;">{{ $medicamento->pivot->indicacion }}</td>
+                            <td style="font-size: 12px; padding-bottom: 10px; padding-left: 25px; border-color: white;">{{ $medicamento->pivot->indicacion }}</td>
 
 
                         </tr>
@@ -414,61 +412,56 @@
 
 
     <footer>
-
-
         {{-- 	DATOS DEL PACIENTE --}}
 
-        <table style="width: 100%; border-color: white;">
-            <tr>
-                <td style="width: 50%; border-collapse: collapse;
-				border-top: none; border-color: white;">
-                    <!-- Contenido de la primera parte -->
-                    <table>
-                        <thead>
-                            <tr>
-
-
-
-                                <p style="font-size: 8.7px; text-align: center;">Esta receta médica ha sido emitida por
-                                    el Dr(a). {{ $receta->medico }} el día
-                                    {{ $receta->fecha }}.</p>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%; border-collapse: collapse;
+            border-top: none; border-color: white;">
+                <!-- Contenido de la primera parte -->
+                <table>
+                    
+                    <tbody>
+                        <tr>
+                            <p style="font-size: 9px; text-align: center;">Esta receta médica ha sido emitida por
+                                el Dr(a). {{ $receta->medico }} el día
+                                {{ $receta->fecha }}.</p>  
                                 <br>
                                 <br>
+                                <p style="margin: 6; padding: 0; font-size: 9px; text-align: center;">___________________________</p>
+                                <p style="font-size: 9px; text-align: center;">Firma y Sello</p>
 
-                                <p style="font-size: 8.7px; text-align: center;">___________________________</p>
-                                <p style="font-size: 8.7px; text-align: center;">Firma y Sello</p>
-
-
-                            </tr>
-                        </thead>
-                    </table>
-                </td>
-                <td style="width: 50%; border-collapse: collapse;
-				border-top: none; border-color: white;">
-                    <!-- Contenido de la segunda parte -->
-                    <h3 width="5px" style="font-size: 11px; text-align: center;">Sugerencia No
-                        Farmacológica</h3>
-                    <table>                        
-                                                
-                            
-                            <tr>                                 
-                                @if ($receta->sugerencia)
-                                
-                                <ol style="font-size: 9px; text-align: center;">
-                                    @foreach (explode("\n", $receta->sugerencia) as $sugerencia)
-                                        <li >{{ $sugerencia }}</li>
-                                    @endforeach
-                                </ol>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 50%; border-collapse: collapse;
+            border-top: none; border-color: white;">
+                <!-- Contenido de la segunda parte -->
+                <table>                                    
+                        
+                            @if ($receta->sugerencia)
+                                <div style="padding: 0; font-size: 9px; text-align: left;">
+                                    <p style="margin: 6; padding: 0; font-size: 13px;"><strong style="font-size: 13px;">Signos de Alarma: </strong>{{ $receta->signos }}</p>
+                                    <p style="margin: 6; padding: 0; font-size: 13px; line-height: 1;"><strong>Sugerencia No Farmacológica:</strong> <ol style="margin: 5; padding: 3; font-size: 13px; list-style-type: none; columns: 2; line-height: 1;">
+                                        @foreach (explode("\n", $receta->sugerencia) as $index => $sugerencia)
+                                            {{ $index + 1 }}. {{ $sugerencia }}
+                                        @endforeach
+                                    </ol>
+                                </p>
+                                    
+                                </div>
                             @endif
-                            </tr>
+                    
+                </table>
+                
+                
+                
+            </td>
+        </tr>
+    </table>
 
 
-                       
-
-                    </table>
-                </td>
-            </tr>
-        </table>
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">

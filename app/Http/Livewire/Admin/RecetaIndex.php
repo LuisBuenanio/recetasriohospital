@@ -48,7 +48,11 @@ class RecetaIndex extends Component
                       ->orWhereHas('paciente', function ($query) {
                           $query->where('cedula', 'LIKE', '%'.$this->search.'%')
                                 ->orWhere('nombre', 'LIKE', '%'.$this->search.'%');
-                      });
+                      })
+                      ->orWhereHas('diagnosticoscie10', function ($query) {
+                        $query->where('clave', 'LIKE', '%'.$this->search.'%')
+                        ->orWhere('descripcion', 'LIKE', '%'.$this->search.'%'); // Reemplaza 'nombre' con el nombre real del campo en la tabla 'diagnosticoscie10'
+                    });;
             } else {
                 $query->where('users_id', $user->id)
                       ->where(function ($query) {
@@ -56,6 +60,10 @@ class RecetaIndex extends Component
                                 ->orWhereHas('paciente', function ($query) {
                                     $query->where('cedula', 'LIKE', '%'.$this->search.'%')
                                           ->orWhere('nombre', 'LIKE', '%'.$this->search.'%');
+                                })
+                                ->orWhereHas('diagnosticoscie10', function ($query) {
+                                    $query->where('clave', 'LIKE', '%'.$this->search.'%')
+                                    ->orWhere('descripcion', 'LIKE', '%'.$this->search.'%'); // Reemplaza 'nombre' con el nombre real del campo en la tabla 'diagnosticoscie10'
                                 });
                       });
             }

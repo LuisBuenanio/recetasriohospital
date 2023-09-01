@@ -142,6 +142,7 @@ class RecetaController extends Controller
             'historia' => $recetaOriginal->historia,
             'aler' => $recetaOriginal->aler,
             'alergia' => $recetaOriginal->alergia,
+            'signos' => $recetaOriginal->signos,
             'sugerencia' => $recetaOriginal->sugerencia,
             'medico' => $recetaOriginal->medico,
             'users_id' => auth()->user()->id, // O asigna el ID del usuario actual
@@ -151,7 +152,7 @@ class RecetaController extends Controller
 
         // Guarda la nueva receta en la base de datos
         $nuevaReceta->save();
-        
+
         // Copia los medicamentos de la receta original a la nueva receta
         foreach ($recetaOriginal->medicamentos as $medicamento) {
         $nuevaReceta->medicamentos()->attach($medicamento->id, [

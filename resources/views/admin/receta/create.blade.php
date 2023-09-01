@@ -266,6 +266,19 @@
             </div>
         </div>
     
+        
+        <div class="form-group">
+            {!! Form::label('signos', 'Signos de Alarma:') !!}
+            {!! Form::text('signos', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Ingrese los signos de Alarma',
+            ]) !!}
+
+            @error('signos')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+
+        </div>
         <div class="form-group">
             {!! Form::label('sugerencia', 'Sugerencia no Farmacológica:') !!}
             {!! Form::textarea('sugerencia', null, ['rows' => 4, 'cols' => 50]) !!}
@@ -282,6 +295,7 @@
             @enderror
 
         </div>
+        
     {!! Form::submit('Crear  Receta', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}

@@ -99,8 +99,27 @@
         </thead>
     </table>
 
-
+    <table class="table table-striped">
+        <h2 class="center">Signos de Alarma</h2>
+        <thead>
+            <tr>   
+                <th>Signos de Alarma</th>
+                <th colspan="2"></th>
+            </tr>
+    
+        <tbody>
+            <tr>
+                <td>{!! $receta->signos !!}</td>                
+                <th colspan="2"></th>
+            </tr>
+        </tbody>
+    
+        </thead>
+    
+    </table>
+    
 <table class="table table-striped">
+    
     <h3 class="center">Sugerencia No Farmacológica</h3>
     <thead>
         <tr>
