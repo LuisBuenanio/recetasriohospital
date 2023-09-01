@@ -116,6 +116,56 @@ class RecetaController extends Controller
 
     }
 
+    /* public function crearNuevaReceta(Request $request)
+    {
+        // Validación de datos si es necesario
+        
+        // Crear un nuevo registro utilizando los datos del formulario
+        $nuevoReceta = new Receta();
+        $nuevoReceta->ciudad = $request->input('ciudad');
+        $nuevoReceta->historia = $request->input('historia');
+        // Agregar otros campos si es necesario
+        $nuevoReceta->save();
+
+        // Redirigir a la página de listado de registros u otra página
+        return redirect()->route('admin.receta.index')->with('success', 'Registro copiado y creado exitosamente.');
+    } */
+    public function crearnuevaReceta($id)
+    {
+        // Obtén la receta existente que deseas copiar
+        $recetaOriginal = Receta::findOrFail($id);
+
+        // Crea un nuevo objeto Receta con los datos de la receta original
+        $nuevaReceta = new Receta([
+            'ciudad' => $recetaOriginal->ciudad,
+            'fecha' => $recetaOriginal->fecha,
+            'historia' => $recetaOriginal->historia,
+            'aler' => $recetaOriginal->aler,
+            'alergia' => $recetaOriginal->alergia,
+            'sugerencia' => $recetaOriginal->sugerencia,
+            'medico' => $recetaOriginal->medico,
+            'users_id' => auth()->user()->id, // O asigna el ID del usuario actual
+            'diagnosticoscie10_id' => $recetaOriginal->diagnosticoscie10_id,
+            'paciente_id' => $recetaOriginal->paciente_id,
+        ]);
+
+        // Guarda la nueva receta en la base de datos
+        $nuevaReceta->save();
+        
+        // Copia los medicamentos de la receta original a la nueva receta
+        foreach ($recetaOriginal->medicamentos as $medicamento) {
+        $nuevaReceta->medicamentos()->attach($medicamento->id, [
+            'cantidad' => $medicamento->pivot->cantidad,
+            'indicacion' => $medicamento->pivot->indicacion,
+        ]);
+    }
+
+        // Redirige al usuario a la vista de edición o cualquier otra vista que desees
+        return redirect()->route('admin.receta.edit', $nuevaReceta->id);
+    }
+
+
+
     public function show($id)
     {
         

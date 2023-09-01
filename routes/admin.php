@@ -49,6 +49,9 @@ Route::post('/receta/getPacientes1/','App\Http\Controllers\Admin\RecetaControlle
 Route::post('/receta/getDiagnosticoscie10/','App\Http\Controllers\Admin\RecetaController@getDiagnosticoscie10')->name('admin.receta.getDiagnosticoscie10');
 Route::get('/receta/getDiagnosticoscie10Select2/','App\Http\Controllers\Admin\RecetaController@getDiagnosticoscie10Select2')->name('admin.receta.getDiagnosticoscie10Select2');
 
+Route::get('/receta/crearnuevaReceta/{id}', 'App\Http\Controllers\Admin\RecetaController@crearnuevaReceta')->name('admin.receta.crearnuevaReceta');
+
+
 
 Route::post('/receta/getMedicamentos/','App\Http\Controllers\Admin\RecetaController@getMedicamentos')->name('admin.receta.getMedicamentos');
 

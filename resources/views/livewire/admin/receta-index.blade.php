@@ -30,7 +30,22 @@
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
                                 <td>{!!$receta->paciente->nombre!!}</td> 
                                 <td>{!!$receta->paciente->cedula!!}</td>                                     
-                                <td>{{$receta->historia}}</td>                          
+                                <td>{{$receta->historia}}</td> 
+                                <!-- Agrega una columna con el botón "Copiar y Crear Nuevo" -->
+                                {{-- <td>
+                                    <form action="{{ route('admin.receta.crearNuevaReceta') }}" method="POST">
+                                        @csrf
+                                        <!-- Campos de datos ocultos para copiar -->
+                                        <input type="hidden" name="ciudad" value="{{ $receta->ciudad }}">
+                                        <input type="hidden" name="historia" value="{{ $receta->historia }}">
+
+                                        <!-- Botón "Copiar y Crear Nuevo" -->
+                                        <button type="submit" class="btn btn-primary">Copiar y Crear Nuevo</button>
+                                    </form>
+                                </td>   --}}  
+                                <td>
+                                    <a href="{{ route('admin.receta.crearnuevaReceta', $receta->id) }}" class="btn btn-primary">Copiar</a>
+                                </td>                     
                                 <td with="10px">
                                     @can('admin.receta.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.receta.show', $receta->id)}}">Detalle</a>
