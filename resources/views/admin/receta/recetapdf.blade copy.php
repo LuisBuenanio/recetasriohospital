@@ -11,7 +11,7 @@
         @page {
             margin-left: 0.5cm;
             margin-right: 0.5cm;
-            margin-top: 0.2cm;
+            margin-top: 0.3cm;
             margin-bottom: 0.3cm;
         }
 
@@ -62,20 +62,12 @@
             font-size: 11px;
         }
 
-        footer {
-            font-size: 9px;
-            color: #3e2001;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 125;
-            margin-top: 0%;
-        }
+
 
         .imagenes {
             display: flex;
             justify-content: center;
-            max-width: none;
+            margin-top: 13px;
         }
 
         .img-1 {
@@ -85,7 +77,6 @@
             margin-right: 200px;
             height: 45px;
             text-align: center;
-            max-width: none;
 
 
         }
@@ -94,19 +85,27 @@
 
             margin-left: 100px;
             height: 45px;
-            max-width: none;
 
 
         }
 
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .content {
+            margin-top: 240px; /* Ajusta el margen superior según sea necesario */
+            /* Otros estilos de tu contenido aquí */
+        }
+        /* Estilo para el pie de página */
+
+        
         footer {
             font-size: 9px;
             color: #3e2001;
-            /*
-   text-align: center; */
-            /* margin: 150;
-   margin-top: auto;
-   */
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -180,7 +179,7 @@
 
 <body>
     <header>
-        {{-- IMAGENES DE ENCABEZADO --}}
+        <!-- IMAGENES DE ENCABEZADO -->
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -198,58 +197,57 @@
 
                     </td>
                 </tr>
-
             </tbody>
         </table>
-        {{-- 	DATOS DE CIUDAD Y FECHA --}}
 
-        <table style="width: 100%; max-width: none;">
-            <tr style="max-width: none;">
-                <td style="width: 50%; ">
+        <!-- DATOS DE CIUDAD Y FECHA -->
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">
                     <!-- Contenido de la primera parte -->
                     <table>
                         <thead>
                             <tr>
-                                <th style="font-size: 9px">CIUDAD</th>
-                                <th style="font-size: 9px">DÍA</th>
-                                <th style="font-size: 9px">MES</th>
-                                <th style="font-size: 9px">AÑO</th>
-                                <th style="font-size: 9px">Edad</th>
-                                <th style="font-size: 9px">Sexo</th>
+                                <th>CIUDAD</th>
+                                <th>DÍA</th>
+                                <th>MES</th>
+                                <th>AÑO</th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="font-size: 9px">{{ $receta->ciudad }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('d') }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('m') }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('Y') }}</td>
-                                <td style="font-size: 9px">{{ $receta->paciente->edad }}</td>
-                                <td style="font-size: 9px">{{ $receta->paciente->sexo->descripcion }}</td>
+                                <td>{{ $receta->ciudad }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('d') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('m') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('Y') }}</td>
+                                <td>{{ $receta->paciente->edad }}</td>
+                                <td>{{ $receta->paciente->sexo->descripcion }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
-                <td style="width: 50%; max-width: none;">
+                <td style="width: 50%;">
                     <!-- Contenido de la segunda parte -->
-                    <table style="max-width: none;">
-                        <thead style="max-width: none;">
+                    <table>
+                        <thead>
                             <tr>
-                                <th style="font-size: 9px">CIUDAD</th>
-                                <th style="font-size: 9px">DÍA</th>
-                                <th style="font-size: 9px">MES</th>
-                                <th style="font-size: 9px">AÑO</th>
+                                <th>CIUDAD</th>
+                                <th>DÍA</th>
+                                <th>MES</th>
+                                <th>AÑO</th>
                                 <th colspan="2">RECETA N°</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="font-size: 9px">{{ $receta->ciudad }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('d') }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('m') }}</td>
-                                <td style="font-size: 9px">{{ \Carbon\Carbon::parse($receta->fecha)->format('Y') }}</td>
-                                <td colspan="2" style="color: red; text-align: center; font-size: 12px">{{ $receta->id }}</td>
+                                <td>{{ $receta->ciudad }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('d') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('m') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($receta->fecha)->format('Y') }}</td>
+                                <td colspan="2" style="color: red; text-align: center">{{ $receta->id }}</td>
 
                             </tr>
 
@@ -258,8 +256,8 @@
                 </td>
             </tr>
         </table>
-        {{-- 	DATOS DEL PACIENTE --}}
 
+        <!-- DATOS DEL PACIENTE -->
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">
@@ -267,16 +265,16 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="font-size: 9px">NOMBRES Y APELLIDOS</th>
-                                <th style="font-size: 9px">C.I</th>
-                                <th style="font-size: 9px">H.I</th>
+                                <th>NOMBRES Y APELLIDOS</th>
+                                <th>C.I</th>
+                                <th>H.I</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="font-size: 9px">{{ $receta->paciente->nombre }}</td>
-                                <td style="font-size: 9px">{{ $receta->paciente->cedula }}</td>
-                                <td style="font-size: 9px">{{ $receta->historia }}</td>
+                                <td>{{ $receta->paciente->nombre }}</td>
+                                <td>{{ $receta->paciente->cedula }}</td>
+                                <td>{{ $receta->historia }}</td>
 
                             </tr>
                         </tbody>
@@ -287,13 +285,13 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="text-align: center ; font-size: 9px">NOMBRES Y APELLIDOS</th>
+                                <th style="text-align: center">NOMBRES Y APELLIDOS</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="text-align: center; font-size: 9px">{{ $receta->paciente->nombre }}</td>
+                                <td style="text-align: center">{{ $receta->paciente->nombre }}</td>
                             </tr>
 
                         </tbody>
@@ -301,8 +299,8 @@
                 </td>
             </tr>
         </table>
-        {{-- 	DATOS DE DIAGNOSTICO --}}
 
+        <!-- DATOS DE DIAGNÓSTICO -->
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">
@@ -310,17 +308,17 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="font-size: 9px">DIAGNÓSTICO</th>
-                                <th style="font-size: 9px">CIE-10</th>
-                                <th style="font-size: 9px">ALERGÍAS</th>
+                                <th>DIAGNÓSTICO</th>
+                                <th>CIE-10</th>
+                                <th>ALERGÍAS</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="font-size: 9px">{{ $receta->diagnosticoscie10->descripcion }}</td>
-                                <td style="font-size: 9px">{{ $receta->diagnosticoscie10->clave }}</td>
+                                <td>{{ $receta->diagnosticoscie10->descripcion }}</td>
+                                <td>{{ $receta->diagnosticoscie10->clave }}</td>
                                 {{-- <td>{{ $receta->alergia }}</td> --}}
-                                <td style="font-size: 9px">
+                                <td>
                                     @if ($receta->alergia)
                                         {{ $receta->alergia }}
                                     @else
@@ -361,70 +359,62 @@
     <div class="content">
         {{-- 	MEDICAMANETOS --}}
 
-        <table class="tabla_medicamentos" style="width: 100%; border-collapse: collapse;">
-            <td
-                style="border-color: white; font-weight: bold; font-size: 20px; font-style: italic; padding-left: 15px;">
-                RP.</td>
+    <table class="tabla_medicamentos" style="width: 100%;">
+        <td style="border-color: white; font-weight: bold; font-size: 20px; font-style: italic; padding-left: 15px;">RP.</td>
 
 
-            <tr>
-                <td
-                    style="width: 50%; border-collapse: collapse;
-           border-top: none; border-color: white; padding-left: 15px;">
-                    <!-- Contenido de la primera parte -->
-                    <table>
-                        @foreach ($receta->medicamentos as $medicamento)
-                            <tr style=" border-color: white; margin-bottom: 1px; margin: 0; padding: 0;">
+       <tr>
+           <td style="width: 50%; border-collapse: collapse;
+               border-top: none; border-color: white; padding-left: 15px;">
+               <!-- Contenido de la primera parte -->
+               <table>
+                   @foreach ($receta->medicamentos as $medicamento)
+                       <tr style=" border-color: white; margin-bottom: 10px;">
+                           
+                           <td style=" border-color: white; padding-bottom: 2px;"> <strong> {{ $loop->iteration }}.-<strong>
+                               &nbsp;{{ $medicamento->nombre }}&nbsp;({{ $medicamento->comercial }})&nbsp;{{ $medicamento->concentracion }}
+                           </td>
+                       </tr>
+                       <tr style=" border-color: white; margin-bottom: 8px; ">
+                           
+                           <td style=" border-color: white; padding: 1px; padding-bottom: 10px; padding-left: 25px;">
+                               @php
+                               $cantidad = (int)$medicamento->pivot->cantidad;
+                               $formatter = new \NumberFormatter('es', \NumberFormatter::SPELLOUT);
+                               $cantidadTexto = $formatter->format($cantidad);
+                               $cantidadTextoM = strtoupper($cantidadTexto);
+                               @endphp
+                                {{ $medicamento->presentacion }}  # {{ $medicamento->pivot->cantidad }}  ({{ $cantidadTextoM }})
+                           </td>
+                       </tr>
+                       
+                   @endforeach
 
-                                <td style=" border-color: white; padding-bottom: 2px; margin: 0; padding: 0;"> <strong>
-                                        {{ $loop->iteration }}.-<strong>
-                                            &nbsp;{{ $medicamento->nombre }}&nbsp;({{ $medicamento->comercial }})&nbsp;{{ $medicamento->concentracion }}
-                                </td>
-                            </tr>
-                            <tr style=" border-color: white; margin-bottom: 1px; ">
+               </table>
+           </td>
+           <td style="width: 50%; border-color: white; padding-left: 15px; ">
+               <!-- Contenido de la segunda parte -->
+               <table>
 
-                                <td
-                                    style=" border-color: white; padding: 1px; padding-bottom: 10px; padding-left: 25px;">
-                                    @php
-                                        $cantidad = (int) $medicamento->pivot->cantidad;
-                                        $formatter = new \NumberFormatter('es', \NumberFormatter::SPELLOUT);
-                                        $cantidadTexto = $formatter->format($cantidad);
-                                        $cantidadTextoM = strtoupper($cantidadTexto);
-                                    @endphp
-                                    {{ $medicamento->presentacion }} # {{ $medicamento->pivot->cantidad }}
-                                    ({{ $cantidadTextoM }})
-                                </td>
-                            </tr>
-                        @endforeach
-
-                    </table>
-                </td>
-                <td style="width: 50%; border-color: white; padding-left: 15px; ">
-                    <!-- Contenido de la segunda parte -->
-                    <table>
-
-                        @foreach ($receta->medicamentos as $medicamento)
-                            <tr style=" border-color: white; margin: 0; padding-bottom: 10px; padding-left: 25px;">
-
-                                <td style=" border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
-                                            &nbsp;({{ $medicamento->comercial }})&nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="font-size: 12px; padding-bottom: 10px; padding-left: 25px; border-color: white;">
-                                    {{ $medicamento->pivot->indicacion }}</td>
+                   @foreach ($receta->medicamentos as $medicamento)
+                       <tr style=" border-color: white; margin: 0; padding-bottom: 10px; padding-left: 25px;">
+                           
+                           <td style=" border-color: white;"> <strong> {{ $loop->iteration }}.-<strong>
+                               &nbsp;({{ $medicamento->comercial }})&nbsp;
+                           </td>
+                       </tr>                        
+                       <tr>
+                           <td style="font-size: 12px; padding-bottom: 10px; padding-left: 25px; border-color: white;">{{ $medicamento->pivot->indicacion }}</td>
 
 
-                            </tr>
-                        @endforeach
-                    </table>
-                </td>
-            </tr>
-        </table>
+                       </tr>
+                   @endforeach
+               </table>
+           </td>
+       </tr>
+   </table>
 
     </div>
-
 
 
     <footer>

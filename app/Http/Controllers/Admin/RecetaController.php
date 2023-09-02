@@ -13,6 +13,7 @@ use App\Models\Diagnosticoscie10;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Cache;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 use PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -189,6 +190,39 @@ class RecetaController extends Controller
         
         return $pdf->stream("registro-$recetum.pdf");
     }  
+   
+
+    /* public function imprimirpdf($id)
+    {
+        $registro = Receta::findOrFail($id);
+        
+        // Configurar las opciones de Dompdf
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        
+        // Crear una instancia de Dompdf con las opciones
+        $pdf = new Dompdf($options);
+        
+        // Cargar la vista HTML
+        $html = view('registros.pdf', compact('registro'));
+        $pdf->loadHtml($html);
+        
+        // (opcional) Configurar el tamaño de papel y la orientación
+        $pdf->setPaper('A4', 'portrait');
+        
+        // Configurar el encabezado y el pie de página
+        $pdf->setOptions([
+            'isPhpEnabled' => true, // Habilitar PHP en la vista
+            'isHtml5ParserEnabled' => true,
+        ]);
+        
+        // Renderizar el PDF
+        $pdf->render();
+        
+        // Devolver el PDF al navegador
+        return $pdf->stream("registro-$receta.pdf");
+    } */
+
    
 
    
