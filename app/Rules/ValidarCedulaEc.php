@@ -7,16 +7,6 @@ use Illuminate\Contracts\Validation\Rule;
 class ValidarCedulaEc implements Rule
 {
     /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
@@ -25,34 +15,41 @@ class ValidarCedulaEc implements Rule
      */
     public function passes($attribute, $value)
     {
-        // Lógica para verificar la cédula ecuatoriana
-        $cedula = str_split($value);
-        $coeficientes = array(2, 1, 2, 1, 2, 1, 2, 1, 2);
-        $suma = 0;
-        $ultimo_digito = array_pop($cedula);
-
-        foreach ($cedula as $key => $digito) {
-            $valor = $digito * $coeficientes[$key];
-
-            if ($valor >= 10) {
-                $valor = array_sum(str_split($valor));
+        // Preguntar si la cédula tiene 10 dígitos y si son numéricos
+        if (preg_match('/^\d{10}$/', $value)) {
+            // Obtener los dos primeros dígitos de la cédula
+            $digitoRegion = substr($value, 0, 2);
+            // Validar si los dos primeros dígitos corresponden a una región válida
+            if ($digitoRegion >= 1 && $digitoRegion <= 24) {
+                // Obtener el último dígito de la cédula
+                $ultimoDigito = (int) substr($value, -1);
+                // Validar el último dígito
+                $suma = 0;
+                $multiplicador = 2;
+                for ($i = 8; $i >= 0; $i--) {
+                    $digito = (int) $value[$i];
+                    $producto = $digito * $multiplicador;
+                    if ($producto >= 10) {
+                        $suma += (int) substr((string) $producto, 0, 1) + (int) substr((string) $producto, 1, 1);
+                    } else {
+                        $suma += $producto;
+                    }
+                    $multiplicador = $multiplicador == 2 ? 1 : 2;
+                }
+                $resultado = (10 - ($suma % 10)) % 10;
+                return $resultado == $ultimoDigito;
             }
-
-            $suma += $valor;
         }
-
-        $digitos_validos = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-        $ultimo_digito_calculado = 10 - ($suma % 10);
-
-        if ($ultimo_digito_calculado == 10) {
-            $ultimo_digito_calculado = 0;
-        }
-
-        return in_array($ultimo_digito_calculado, $digitos_validos) && $ultimo_digito_calculado == $ultimo_digito;
+        return false;
     }
 
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
     public function message()
     {
-        return 'El número de cédula ingresado no es válido.';
+        return 'La cédula ingresada no es válida.';
     }
 }

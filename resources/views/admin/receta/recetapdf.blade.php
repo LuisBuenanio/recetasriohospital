@@ -274,7 +274,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="font-size: 9px">{{ $receta->paciente->nombre }}</td>
+                                <td style="font-size: 9px">{{ $receta->paciente->NombreCompleto }}</td>
                                 <td style="font-size: 9px">{{ $receta->paciente->cedula }}</td>
                                 <td style="font-size: 9px">{{ $receta->historia }}</td>
 

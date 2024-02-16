@@ -11,9 +11,6 @@ use App\Models\Medicamento;
 use App\Models\MedicamentoReceta;
 use App\Models\Diagnosticoscie10;
 use App\Models\Paciente;
-use App\Models\Sexo;
-use App\Models\Provincia;
-use App\Models\Ciudad;
 use Illuminate\Support\Facades\Cache;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -107,17 +104,9 @@ class RecetaController extends Controller
         // Obtener medicamentos disponibles para la selección
         $medicamentosDisponibles = Medicamento::pluck('nombre', 'id');
         $diagnosticoscie10 = Diagnosticoscie10::pluck('clave', 'id');
+        $paciente = Paciente::pluck('cedula','id');
 
-        $sexo = Sexo::pluck('descripcion', 'id');
-        $pacientes = Paciente::all();
-        $provincias = Provincia::all();
-        $ciudades = Ciudad::all(); // Obtener todas las ciudades
-    
-
-
-
-
-        return view('admin.receta.create', compact('nextId','users', 'sexo','medicamentos','medicamentosDisponibles', 'diagnosticoscie10', 'pacientes', 'ciudades', 'provincias'));
+        return view('admin.receta.create', compact('nextId','users', 'medicamentos','medicamentosDisponibles', 'diagnosticoscie10', 'paciente'));
   
     }
 
@@ -126,23 +115,40 @@ class RecetaController extends Controller
        
 
         $receta = Receta::create($request->all());
+
         $sugerencias = explode("\n", $request->input('sugerencia'));
-        $sugerenciaString = implode("\n", $sugerencias);        
+        $sugerenciaString = implode("\n", $sugerencias);
+        
         $medicamentos = $request->input('medicamentos', []);
         $cantidades = $request->input('cantidades', []);
         $indicaciones = $request->input('indicaciones', []);
+
 
         for ($medicamento = 0; $medicamento < count($medicamentos); $medicamento++) {
             if ($medicamentos[$medicamento] != '') {
                 $receta->medicamentos()->attach($medicamentos[$medicamento], ['cantidad' => $cantidades[$medicamento], 'indicacion' => $indicaciones[$medicamento]]);
             }
-        }             
+        }     
+        
        $receta->save();
         return redirect()->route('admin.receta.index')-> with('info', 'Receta Creada correctamente');;
 
     }
 
-    
+    /* public function crearNuevaReceta(Request $request)
+    {
+        // Validación de datos si es necesario
+        
+        // Crear un nuevo registro utilizando los datos del formulario
+        $nuevoReceta = new Receta();
+        $nuevoReceta->ciudad = $request->input('ciudad');
+        $nuevoReceta->historia = $request->input('historia');
+        // Agregar otros campos si es necesario
+        $nuevoReceta->save();
+
+        // Redirigir a la página de listado de registros u otra página
+        return redirect()->route('admin.receta.index')->with('success', 'Registro copiado y creado exitosamente.');
+    } */
     public function crearnuevaReceta($id)
     {
         // Obtén la receta existente que deseas copiar
@@ -253,16 +259,12 @@ class RecetaController extends Controller
             $medicamentosSelect[$medicamento->id] = $medicamento->nombre_completo;
         }
         
-        $sexo = Sexo::pluck('descripcion', 'id');
-        $pacientes = Paciente::all();
-        $provincias = Provincia::all();
-        $ciudades = Ciudad::all(); // Obtener todas las ciudades
-    
-        
-        $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');/* 
-        $paciente = Paciente::pluck('apellido_paterno', 'id'); */
 
-        return view('admin.receta.edit', compact('receta', 'users', 'medicamentos', 'medicamentosReceta','medicamentosSelect', 'diagnosticoscie10', 'pacientes', 'provincias', 'ciudades', 'sexo'));
+        
+        $diagnosticoscie10 = Diagnosticoscie10::pluck('descripcion', 'id');
+        $paciente = Paciente::pluck('apellido_paterno', 'id');
+
+        return view('admin.receta.edit', compact('receta', 'users', 'medicamentos', 'medicamentosReceta','medicamentosSelect', 'diagnosticoscie10', 'paciente'));
     }
  
     public function update(Request $request, $id)

@@ -148,13 +148,10 @@
                                                             'id' => 'cedula',
                                                             'placeholder' => 'Ingrese la Cédula del Paciente',
                                                         ]) !!}
-                                                        {!! Form::label('', '', ['id' => 'lbcedula', 'class' => 'text-danger']) !!} 
-
-                                            {!! Form::label('', '', ['id' => 'lbcedula']) !!} 
+                                            
                                                         @error('cedula')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-                                                        <small class="text-danger" id="error-cedula"></small>
                                             </div>
                                             
                                             
@@ -166,8 +163,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('apellido_paterno', 'Apellido Paterno:') !!}
                                                 {!! Form::text('apellido_paterno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Paterno del Paciente']) !!} 
-                                                
-                                                {!! Form::label('', '', ['id' => 'lbapellido_paterno']) !!}                                                
+                                            
                                                 @error('apellido_paterno')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -177,7 +173,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('apellido_materno', 'Apellido Materno:') !!}
                                                 {!! Form::text('apellido_materno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Materno del Paciente']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbapellido_materno']) !!} 
+                                            
                                                 @error('apellido_materno')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -187,7 +183,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('nombre', 'Nombres Completos:') !!}
                                                 {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese los nombres del Paciente']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbnombre']) !!} 
+                                            
                                                 @error('nombre')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -199,7 +195,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento:') !!}
                                                 {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbfecha_nacimiento']) !!} 
+                                            
                                                 @error('fecha_nacimiento')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -208,7 +204,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('direccion', 'Dirección de Residencia:') !!}
                                                 {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la dirección de residencia del Paciente']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbdireccion']) !!} 
+                                            
                                                 @error('direccion')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -218,13 +214,11 @@
                                         <div class="form-group">
                                                 {!! Form::label('provincia_id', 'Provincia') !!}
                                                 {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
-                                                {!! Form::label('', '', ['id' => 'lbprovincia_id']) !!} 
                                             </div>
                                             
                                             <div class="form-group">
                                                 {!! Form::label('ciudad_id', 'Ciudad') !!}
                                                 {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
-                                                {!! Form::label('', '', ['id' => 'lbciudad_id']) !!} 
                                             </div>
                                             
                                             
@@ -232,7 +226,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('estado_civil', 'Estado Civil:') !!}
                                                 {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbestado_civil']) !!} 
+                                            
                                                 @error('estado_civil')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -242,7 +236,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('instruccion', 'Instrucción:') !!}
                                                 {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbinstruccion']) !!} 
+                                            
                                                 @error('instruccion')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -253,7 +247,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('ocupacion', 'Ocupación:') !!}
                                                 {!! Form::text('ocupacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ocupación del Paciente']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbocupacion']) !!} 
+                                            
                                                 @error('ocupacion')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -265,7 +259,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('telefono', 'Teléfono:') !!}
                                                 {!! Form::number('telefono', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del Paciente', 'maxlength' => 10]) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbtelefono']) !!} 
+                                            
                                                 @error('telefono')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
@@ -275,17 +269,14 @@
                                             <div class="form-group">
                                                 {!! Form::label('sexo_id', 'Sexo:') !!}
                                                 {!! Form::select('sexo_id', $sexo, null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbsexo_id']) !!} 
+                                            
                                                 @error('sexo_id')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
                                             
                                             </div>
 
-                                            <div id="mensaje-exito" class="alert alert-success" style="display: none;"></div>
 
-                                            <div id="mensaje-error" class="alert alert-danger" style="display: none;"></div>
-                
                                             
                                             <!-- Otros campos del paciente según tus necesidades -->
                                         </div>
@@ -327,11 +318,11 @@
                             <div class="form-group">
                                 <p class="font-weight-bold">Alergia</p>
 
-                                <label class="mr-2" id="sialer">
+                                <label class="mr-2" id="si">
                                     {!! Form::radio('aler', 1, true) !!}
                                     SI
                                 </label>
-                                <label class="mr-2" id="noaler">
+                                <label class="mr-2" id="no">
                                     {!! Form::radio('aler', 2) !!}
                                     NO
                                 </label id="alergia">
@@ -464,7 +455,7 @@
                             </div>
 
 
-                            <div class="form-group"> 
+                            <div class="form-group">
                                 {!! Form::label('signos', 'Signos de Alarma:') !!}
                                 {!! Form::text('signos', null, [
                                     'class' => 'form-control',
@@ -524,138 +515,51 @@
 $(document).ready(function() {
     // Evento para guardar un paciente
     $('#btnGuardarPaciente').on('click', function() {
-        // Obtener los datos del formulario del modal
+        // Obtener los datos del formulario del modal        
         var nacionalidad = $('#nacionalidad').val();
+            
         var apellido_paterno = $('#apellido_paterno').val();
         var apellido_materno = $('#apellido_materno').val();
         var nombre = $('#nombre').val();
         var fecha_nacimiento = $('#fecha_nacimiento').val();
-        var telefono = $('#telefono').val();
-        var direccion = $('#direccion').val();
-        var ocupacion = $('#ocupacion').val();
+        var telefono = $('#telefono').val();       
+        var direccion = $('#direccion').val();   
+        var ocupacion = $('#ocupacion').val(); 
         var estado_civil = $('#estado_civil').val();
-        var instruccion = $('#instruccion').val();
+        var instruccion = $('#instruccion').val();  
         var sexo_id = $('#sexo_id').val();
-        var ciudad_id = $('#ciudad_id').val();
+        var ciudad_id = $('#ciudad_id').val();  
         var provincia_id = $('#provincia_id').val();
+        // Agrega aquí los demás campos del formulario según tus necesidades
+
         var ced = $('#ced').val();
-        var cedula = $('#cedula').val();
+    var cedula = '';
+    if ($('#si input').is(':checked')) {
+        cedula = $('#cedula').val();
+    }
+
 
         // Validar si los campos requeridos están vacíos
-        if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !telefono || !direccion || !ocupacion || !estado_civil || !instruccion || !sexo_id || !ciudad_id || !provincia_id) {
+        if ( !nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !telefono || !direccion || !ocupacion || !estado_civil || !instruccion || !sexo_id || !ciudad_id || !provincia_id ||($('#si input').is(':checked') && !cedula)) {
             // Mostrar mensaje de error si hay campos vacíos
+            console.log('Nacionalidad:', nacionalidad);
+            console.log('Ced:', ced);
+            console.log('Cedula:', cedula);
+            console.log('Apellido Paterno:', apellido_paterno);
+            console.log('Apellido Materno:', apellido_materno);
+            console.log('nOMBRE:', nombre);
+            console.log('Fecha Nac:', fecha_nacimiento); console
+            console.log('Telf:', telefono);
+            console.log('direccion:', direccion);
+            console.log('Ocupacion:', ocupacion);
+            console.log('Estado Civil:', estado_civil);
+            console.log('Instruccion:', instruccion);
+            console.log('Sexi:', sexo_id);
+            console.log('Ciudad:', ciudad_id);
+            console.log('Provincia:', provincia_id);
             mostrarMensajeError('Por favor, complete todos los campos obligatorios.');
             return;
         }
-        /* if (apellido_paterno =='') {
-            $('#lbapellido_paterno').html("<span style='color:red;'>Complete el campo Apellido Paterno</span>");
-
-            // Limpiar el mensaje después de 2 segundos (2000 milisegundos)
-            setTimeout(function () {
-                $('#lbapellido_paterno').empty(); // Eliminar el contenido del label
-            }, 2000);           
-
-            $("#apellido_paterno").focus();
-            return false;
-
-                } else  if (apellido_materno =='') {
-                    $('#lbapellido_materno').html("<span style='color:red;'>Complete el campo Apellido Materno</span>");
-                
-                    setTimeout(function(){
-                        $('#lbapellido_materno').empty();
-                    },2000);
-
-                    $("#apellido_materno").focus();
-                    return false;
-                } else  if (nombre =='') {
-                    $('#lbnombre').html("<span style='color:red;'>Complete el campo Nombres</span>");
-                    setTimeout(function(){
-                        $('#lbnombre').empty();
-                    },2000);
-
-                    $("#nombre").focus();
-                    return false;
-                } else if (fecha_nacimiento =='') {
-                    $('#lbfecha_nacimiento').html("<span style='color:red;'>Complete el campo Fecha de Nacimiento</span>");
-                    setTimeout(function(){
-                        $('#lbfecha_nacimiento').empty();
-                    },2000);
-                    $("#fecha_nacimiento").focus();
-                    return false;
-                } else  if (direccion =='') {
-                    $('#lbdireccion').html("<span style='color:red;'>Complete el campo Dirección</span>");
-                
-                    setTimeout(function(){
-                        $('#lbdireccion').empty();
-                    },2000);
-
-                    $("#direccion").focus();
-                    return false;
-                } else  if (provincia_id =='') {
-                    $('#lbprovincia_id').html("<span style='color:red;'>Complete el campo Provincia</span>");
-                
-                    setTimeout(function(){
-                        $('#lbprovincia_id').empty();
-                    },2000);
-
-                    $("#provincia_id").focus();
-                    return false;
-                } else  if (ciudad_id =='') {
-                    $('#lbciudad_id').html("<span style='color:red;'>Complete el campo Ciudad</span>");
-                
-                    setTimeout(function(){
-                        $('#lbciudad_id').empty();
-                    },2000);
-
-                    $("#ciudad_id").focus();
-                    return false;
-                } else  if (estado_civil =='') {
-                    $('#lbestado_civil').html("<span style='color:red;'>Complete el campo Estado Civil</span>");
-                
-                    setTimeout(function(){
-                        $('#lbestado_civil').empty();
-                    },2000);
-
-                    $("#estado_civil").focus();
-                    return false;
-                } else  if (instruccion =='') {
-                    $('#lbinstruccion').html("<span style='color:red;'>Complete el campo Instruccion</span>");
-                
-                    setTimeout(function(){
-                        $('#lbinstruccion').empty();
-                    },2000);
-
-                    $("#instruccion").focus();
-                    return false;
-                }else  if (ocupacion =='') {
-                    $('#lbocupacion').html("<span style='color:red;'>Complete el campo Ocupacion</span>");
-                
-                    setTimeout(function(){
-                        $('#lbocupacion').empty();
-                    },2000);
-
-                    $("#ocupacion").focus();
-                    return false;
-                } else  if (telefono =='') {
-                    $('#lbtelefono').html("<span style='color:red;'>Complete el campo Ocupacion</span>");
-                
-                    setTimeout(function(){
-                        $('#lbtelefono').empty();
-                    },2000);
-
-                    $("#lbtelefono").focus();
-                    return false;
-                } else  if (sexo_id =='') {
-                    $('#lbsexo_id').html("<span style='color:red;'>Complete el campo Ocupacion</span>");
-                
-                    setTimeout(function(){
-                        $('#lbsexo_id').empty();
-                    },2000);
-
-            $("#sexo_id").focus();
-            return false;
-        } */
-    
 
         // Realizar la solicitud AJAX para guardar el paciente
         $.ajax({
@@ -663,52 +567,34 @@ $(document).ready(function() {
             url: '{{ route('admin.paciente.store1') }}',
             data: {
                 nacionalidad: nacionalidad,
-                cedula: cedula,
+                cedula: cedula,        
                 apellido_paterno: apellido_paterno,
                 apellido_materno: apellido_materno,
                 nombre: nombre,
-                fecha_nacimiento: fecha_nacimiento,
-                telefono: telefono,
+                fecha_nacimiento: fecha_nacimiento,   
+                telefono: telefono,     
                 direccion: direccion,
-                ocupacion: ocupacion,
+                ocupacion: ocupacion, 
                 estado_civil: estado_civil,
-                instruccion: instruccion,
+                instruccion: instruccion,  
                 sexo_id: sexo_id,
-                ciudad_id: ciudad_id,
-                provincia_id: provincia_id,
+                ciudad_id: ciudad_id,  
+                provincia_id: provincia_id,  
+                // Agrega aquí los demás campos del formulario según tus necesidades
                 _token: "{{ csrf_token() }}"
             },
             success: function(response) {
                 // Mostrar mensaje de éxito si se guarda correctamente
                 mostrarMensajeExito('Paciente agregado correctamente');
-                // Agregar el nuevo paciente al select2
-                $('#select-paciente').append($('<option>', {
-                    value: response.pacienteId,
-                    text: nombre +' '+ apellido_paterno +' ' + apellido_materno + '  ' + cedula, // Incluir la cédula en el nombre completo
-                    selected: true
-                }));
-                // Actualizar el select2 para reflejar los cambios
-                $('#select-paciente').trigger('change');
-                // Limpiar los campos del modal
-                $('#modalAgregarPaciente input[type="text"], #modalAgregarPaciente input[type="date"]').val('');
-                $('#modalAgregarPaciente select').val('');
-                // Cerrar el modal después de 2 segundos
+                // Cierra el modal después de 2 segundos
                 setTimeout(function() {
                     $('#modalAgregarPaciente').modal('hide');
                 }, 2000);
             },
             error: function(xhr, status, error) {
-    console.log(xhr.responseJSON); // Muestra toda la respuesta JSON del servidor en la consola
-
-    if (xhr.responseJSON && xhr.responseJSON.errors) {
-        // Mostrar el mensaje de error en el label lbcedula
-        $('#lbcedula').html("<span style='color:red;'>" + xhr.responseJSON.error + "</span>");
-    } else {
-        // Si no hay errores específicos de validación en la respuesta del servidor, muestra un mensaje genérico de error
-        $('#lbcedula').html("<span style='color:red;'>Cédula ya registrada o Incorrecta.</span>");
-    }
-
-    }
+                // Mostrar mensaje de error si ocurre un error en la solicitud AJAX
+                mostrarMensajeError('Error al guardar el paciente. Inténtelo de nuevo más tarde.');
+            }
         });
     });
 
@@ -722,7 +608,6 @@ $(document).ready(function() {
         $('#mensaje-exito').text(mensaje).fadeIn().delay(2000).fadeOut();
     }
 });
-
 
                         /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -768,13 +653,13 @@ $(document).ready(function() {
                         var alergia = document.getElementById('alergia');
 
                         // evento para el input radio del "si"
-                        document.getElementById('sialer').addEventListener('click', function(e) {
+                        document.getElementById('si').addEventListener('click', function(e) {
                             console.log('Escribir Alergia');
                             alergia.disabled = false;
                         });
 
                         // evento para el input radio del "no"
-                        document.getElementById('noaler').addEventListener('click', function(e) {
+                        document.getElementById('no').addEventListener('click', function(e) {
                             console.log('Input deshabilitado');
                             alergia.disabled = true;
                         });

@@ -27,8 +27,12 @@ class PacienteIndex extends Component
                 ->paginate(10); */
         
         $pacientes = Paciente::latest('id')
-        ->where('cedula', 'LIKE', '%'. $this->search . '%' )
-        ->paginate(10); 
-        return view('livewire.admin.paciente-index', compact('pacientes'));  
+            ->where(function($query) {
+                $query->where('cedula', 'LIKE', '%'. $this->search . '%')
+                    ->orWhere('nombre', 'LIKE', '%'. $this->search . '%');
+            })
+        ->paginate(8);
+            
+    return view('livewire.admin.paciente-index', compact('pacientes'));
     }
 }

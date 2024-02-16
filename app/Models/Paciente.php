@@ -14,14 +14,23 @@ class Paciente extends Model
 	protected $primaryKey = 'id';
 
 	protected $fillable = [
-		'cedula',
+		'nacionalidad',
+        'ced',
+        'cedula',
+        'apellido_paterno',
+        'apellido_materno',
         'nombre',
         'fecha_nacimiento',
         'edad',
         'telefono',
         'email',
         'direccion',
-        'sexo_id'
+        'ocupacion',  
+        'estado_civil', 
+        'instruccion',     
+        'sexo_id',
+        'provincia_id',
+        'ciudad_id',
 	];
 
      protected $hidden = [
@@ -45,6 +54,30 @@ class Paciente extends Model
     public function receta(){
         return $this->hasMany(Receta::class);
     } */
+
+    public function getNombreCompletoAttribute()
+    {
+        $apellidoPaterno = $this->apellido_paterno ? $this->apellido_paterno : '';
+        $apellidoMaterno = $this->apellido_materno ? "{$this->apellido_materno}" : '';
+        $nombre = $this->nombre;
+    
+        return "{$nombre} {$apellidoPaterno} {$apellidoMaterno} ";
+    }
+
+    public function getNombreCompletoCedulaAttribute()
+    {
+        $NombreCompleto = $this->nombre_completo;
+        $cedula = $this->cedula ? "{$this->cedula}" : '';
+        // Concatenar la cédula al nombre completo
+        $nombreCompletoCedula = "{$NombreCompleto} - {$this->cedula}";
+
+        return $nombreCompletoCedula;
+    }
+
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class);
+    }
 
     public function getRouteKeyName()
     {

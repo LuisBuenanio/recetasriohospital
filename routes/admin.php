@@ -42,6 +42,14 @@ Route::resource('diagnosticoscie10', Diagnosticoscie10Controller::class)->except
 
 Route::resource('paciente', PacienteController::class)->except('show')->names('admin.paciente');
 
+Route::post('/paciente/agregar', [PacienteController::class, 'agregar'])->name('admin.paciente.agregar');
+Route::post('/paciente/store1', [PacienteController::class, 'store1'])->name('admin.paciente.store1');
+
+Route::post('/paciente/store', [PacienteController::class, 'store'])->name('admin.paciente.store');
+
+Route::get('/paciente/lista', [PacienteController::class, 'lista'])->name('admin.paciente.lista');
+
+
 
 Route::resource('receta', RecetaController::class)->names('admin.receta');
 Route::post('/receta/getPacientes/','App\Http\Controllers\Admin\RecetaController@getPacientes')->name('admin.receta.getPacientes');
@@ -63,3 +71,7 @@ Route::post('receta/{id}/medicamentos', [MedicamentoRecetaController::class, 'st
 
 
 Route::post('/receta/agregar-medicamento', [RecetaController::class, 'agregarMedicamento']);
+
+
+
+Route::get('/obtener-ciudades/{provinciaId}', [PacienteController::class, 'CiudadesPorProvincia']);

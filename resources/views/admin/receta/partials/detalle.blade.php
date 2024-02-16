@@ -35,7 +35,7 @@
     <tbody>
         <tr>
             <td>{!! $receta->paciente->cedula !!}</td>
-            <td>{!! $receta->paciente->nombre !!}</td>
+            <td>{!! $receta->paciente->NombreCompleto !!}</td>
             <td>{!! $receta->paciente->edad !!}</td>
             <td>{!! $receta->paciente->telefono !!}</td>
             <td>{!! $receta->paciente->sexo->descripcion !!}</td>

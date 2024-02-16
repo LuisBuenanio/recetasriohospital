@@ -29,7 +29,7 @@
                                 <td>{!!$receta->medico!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->descripcion!!}</td> 
                                 <td>{!!$receta->diagnosticoscie10->clave!!}</td> 
-                                <td>{!!$receta->paciente->nombre!!}</td> 
+                                <td>{!!$receta->paciente->NombreCompleto!!}</td> 
                                 <td>{!!$receta->paciente->cedula!!}</td>    
                                 
                                 <td with="10px">

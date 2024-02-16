@@ -12,7 +12,7 @@ class Receta extends Model
     protected $primaryKey = 'id';
 
 
-    protected $fillable = [
+   /*  protected $fillable = [
         'ciudad',
         'fecha',
         'historia',        
@@ -26,7 +26,7 @@ class Receta extends Model
         'medicamento_id',
         'diagnosticoscie10_id',
         
-    ];
+    ]; */
     
     
     /* protected $hidden = [
@@ -37,9 +37,9 @@ class Receta extends Model
         'paciente_id'
      ]; */
      
-    public $timestamps = false;
+    /* public $timestamps = fals */
 
-
+    protected $guarded = ['id','created_at','update_at'];
 
      /*   Relacion de uno a muchos inversa Medicamento */
      public function medicamentos(){

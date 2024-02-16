@@ -11,7 +11,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Cédula</th>
-                        <th>Nombre</th>
+                        <th>Nombres</th>
                         <th>Teléfono</th>
                         <th>Edad</th>
                         <th>Sexo</th>
@@ -22,8 +22,8 @@
                         @foreach ($pacientes as $paciente)
                             <tr>
                                 <td>{{$paciente->id}}</td>
-                                <td>{{$paciente->cedula}}</td>
-                                <td>{{$paciente->nombre}}</td>
+                                <td>{{ $paciente->cedula ? $paciente->cedula : 'Sin cédula' }}</td>
+                                <td>{{$paciente->NombreCompleto}}</td>
                                 <td>{{$paciente->telefono}}</td>
                                 <td>{{$paciente->edad}}</td>
                                 <td>{!!$paciente->sexo->descripcion!!}</td>                           
@@ -34,7 +34,7 @@
                                 </td with="10px">  
                                 <td>
                                     @can('admin.paciente.destroy')
-                                        <form action="{{route('admin.paciente.destroy', $paciente)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.paciente.destroy', $paciente->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
 

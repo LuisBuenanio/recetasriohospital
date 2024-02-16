@@ -104,21 +104,20 @@
 
 </div> --}}
 
+
 <div class="form-group">
     {!! Form::label('provincia_id', 'Provincia') !!}
-    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
+    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), $paciente->ciudad->provincia_id, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('ciudad_id', 'Ciudad') !!}
-    {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
+    {!! Form::select('ciudad_id', $ciudades->pluck('descripcion', 'id'), $paciente->ciudad_id, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
 </div>
-
-
 
 <div class="form-group">
     {!! Form::label('estado_civil', 'Estado Civil:') !!}
-    {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
+    {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], $paciente->estado_civil, ['class' => 'form-control']) !!} 
 
     @error('estado_civil')
         <small class="text-danger">{{$message}}</small>
@@ -128,7 +127,7 @@
 
 <div class="form-group">
     {!! Form::label('instruccion', 'Instrucción:') !!}
-    {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
+    {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], $paciente->instruccion, ['class' => 'form-control']) !!} 
 
     @error('instruccion')
         <small class="text-danger">{{$message}}</small>

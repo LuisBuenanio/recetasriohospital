@@ -30,6 +30,31 @@ return new class extends Migration
                     ->on('sexo')
                     ->onDelete('cascade');
             $table->timestamps();
+
+
+            /* $table->string('apellido_paterno');
+            $table->string('apellido_materno');
+
+            // Agregar campos de información adicional del paciente
+            $table->string('nacionalidad')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('ocupacion')->nullable();
+
+            
+            $table->unsignedBigInteger('ciudad_id')->nullable();
+            $table->unsignedBigInteger('canton_id')->nullable();
+            $table->enum('estado_civil', ['Soltero/a', 'Casado/a', 'Divorciado/a', 'Viudo/a', 'Unión libre'])->nullable();
+            $table->enum('instruccion', ['Sin instrucción', 'Básica', 'Bachiller', 'Superior', 'Especialidad'])->nullable();
+         
+
+            // Modificar campo 'cedula' para que pueda ser nulo y no tenga restricción de longitud
+            $table->string('cedula')->nullable()->change();
+
+            // Definir las relaciones con las tablas 'ciudad' y 'canton'
+            $table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade');
+            $table->foreign('canton_id')->references('id')->on('cantones')->onDelete('cascade');
+       */
+
         });
     }
 
