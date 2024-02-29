@@ -22,32 +22,36 @@
 
             {!! Form::hidden('users_id', auth()->user()->id) !!}
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>{!! Form::label('id', 'Número de Receta:') !!} </th>
-                        <th>{!! Form::label('ciudad', 'Ciudad:') !!}</th>
-                        <th>{!! Form::label('fecha', 'Fecha:') !!}</th>
+            <div class="form-group">
+                {!! Form::label('id', 'Número de Receta:') !!}
 
-                    </tr>
+                {!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}
+            </div>
 
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}</td>
-                        <td>{!! Form::text('ciudad', 'RIOBAMBA', ['class' => 'form-control', 'readonly']) !!}</td>
-                        <td>{!! Form::date('fecha', \Carbon\Carbon::now(), [
-                            'class' => 'form-control',
-                            'placeholder' => 'Ingrese la fecha de la Receta',
-                        ]) !!}
-                        @error('fecha')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
+            <div class="form-group">
+                {!! Form::label('ciudad', 'Ciudad:') !!}
+                {!! Form::text('ciudad', 'RIOBAMBA', ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
+
+                @error('ciudad')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+
+            <div class="form-group">
+                {!! Form::label('fecha', 'Fecha:') !!}
+                {!! Form::date('fecha', \Carbon\Carbon::now(), [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la fecha de la Receta',
+                ]) !!}
+
+
+                @error('fecha')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
 
             <!-- For defining autocomplete -->
             <div class="form-group">

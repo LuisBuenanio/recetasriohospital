@@ -107,12 +107,13 @@
 
 <div class="form-group">
     {!! Form::label('provincia_id', 'Provincia') !!}
-    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), $paciente->ciudad->provincia_id, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
+    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), $paciente->ciudad ? $paciente->ciudad->provincia_id : null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
+
 </div>
 
 <div class="form-group">
     {!! Form::label('ciudad_id', 'Ciudad') !!}
-    {!! Form::select('ciudad_id', $ciudades->pluck('descripcion', 'id'), $paciente->ciudad_id, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
+    {!! Form::select('ciudad_id', $ciudades ? $ciudades->pluck('descripcion', 'id') : [], $paciente->ciudad_id, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
 </div>
 
 <div class="form-group">

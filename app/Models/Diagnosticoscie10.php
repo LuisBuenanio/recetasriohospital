@@ -28,6 +28,11 @@ class Diagnosticoscie10 extends Model
         return $this->hasMany(Receta::class);
     }
 
+    //Relacion de uno a muchos
+    public function formulario008(){
+        return $this->hasMany(formulario008::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'descripcion';

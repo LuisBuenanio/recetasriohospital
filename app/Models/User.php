@@ -56,6 +56,11 @@ class User extends Authenticatable
     }
 
     //Relacion de uno a muchos
+    public function formulario008(){
+        return $this->hasMany(Formulario008::class);
+    }
+
+    //Relacion de uno a muchos
     public function adminlte_profile_url(){
         return '/user/profile';
     }

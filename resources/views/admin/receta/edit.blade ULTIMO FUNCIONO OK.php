@@ -28,34 +28,35 @@
             {!! Form::hidden('users_id', auth()->user()->id) !!}
 
             <div class="form-group">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>{!! Form::label('id', 'Número de Receta:') !!}</th>
-                            <th>{!! Form::label('ciudad', 'Ciudad:') !!}</th>
-                            <th>{!! Form::label('fecha', 'Fecha:') !!}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{!! Form::text('id', $receta->id, ['class' => 'form-control', 'readonly']) !!}</td>
-                            <td>{!! Form::text('ciudad', null, ['class' => 'form-control', 'readonly']) !!}</td>
-                            <td>{!! Form::date('fecha', null, [
-                                'class' => 'form-control',
-                                'placeholder' => 'Ingrese la fecha de la Receta',
-                            ]) !!}
-            
-            
-                            @error('fecha')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </td>
-                        </tr>
-                    </tbody>
-                </table>
+                {!! Form::label('id', 'Número de Receta:') !!}
+
+                {!! Form::text('id', $receta->id, ['class' => 'form-control', 'readonly']) !!}
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('ciudad', 'Ciudad:') !!}
+                {!! Form::text('ciudad', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
+
+                @error('ciudad')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
 
             </div>
 
+
+            <div class="form-group">
+                {!! Form::label('fecha', 'Fecha:') !!}
+                {!! Form::date('fecha', null, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la fecha de la Receta',
+                ]) !!}
+
+
+                @error('fecha')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
 
             <div class="form-group">
                 {!! Form::label('diagnosticoscie10_id', 'Diagnóstico:') !!}
@@ -193,74 +194,72 @@
                                                 @enderror
                                             
                                             </div>
-                                            {{-- 
-                                                <div class="form-group">
-                                                    {!! Form::label('direccion', 'Dirección de Residencia:') !!}
-                                                    {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la dirección de residencia del Paciente']) !!} 
-                                                    {!! Form::label('', '', ['id' => 'lbdireccion']) !!} 
-                                                    @error('direccion')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                    @enderror
-                                                
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                    {!! Form::label('provincia_id', 'Provincia') !!}
-                                                    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
-                                                    {!! Form::label('', '', ['id' => 'lbprovincia_id']) !!} 
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                    {!! Form::label('ciudad_id', 'Ciudad') !!}
-                                                    {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
-                                                    {!! Form::label('', '', ['id' => 'lbciudad_id']) !!} 
-                                                </div>
-                                                
+                                            <div class="form-group">
+                                                {!! Form::label('direccion', 'Dirección de Residencia:') !!}
+                                                {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la dirección de residencia del Paciente']) !!} 
+                                                {!! Form::label('', '', ['id' => 'lbdireccion']) !!} 
+                                                @error('direccion')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
                                             
+                                            </div>
+                                                
+                                        <div class="form-group">
+                                                {!! Form::label('provincia_id', 'Provincia') !!}
+                                                {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
+                                                {!! Form::label('', '', ['id' => 'lbprovincia_id']) !!} 
+                                            </div>
                                             
-                                                <div class="form-group">
-                                                    {!! Form::label('estado_civil', 'Estado Civil:') !!}
-                                                    {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
-                                                    {!! Form::label('', '', ['id' => 'lbestado_civil']) !!} 
-                                                    @error('estado_civil')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                    @enderror
-                                                
-                                                </div>
-                                            
-                                                <div class="form-group">
-                                                    {!! Form::label('instruccion', 'Instrucción:') !!}
-                                                    {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
-                                                    {!! Form::label('', '', ['id' => 'lbinstruccion']) !!} 
-                                                    @error('instruccion')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                    @enderror
-                                                
-                                                </div>
-                                            
-                                                
-                                                <div class="form-group">
-                                                    {!! Form::label('ocupacion', 'Ocupación:') !!}
-                                                    {!! Form::text('ocupacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ocupación del Paciente']) !!} 
-                                                    {!! Form::label('', '', ['id' => 'lbocupacion']) !!} 
-                                                    @error('ocupacion')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                    @enderror
-                                                
-                                                </div>
+                                            <div class="form-group">
+                                                {!! Form::label('ciudad_id', 'Ciudad') !!}
+                                                {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
+                                                {!! Form::label('', '', ['id' => 'lbciudad_id']) !!} 
+                                            </div>
                                             
                                             
                                             
-                                                <div class="form-group">
-                                                    {!! Form::label('telefono', 'Teléfono:') !!}
-                                                    {!! Form::number('telefono', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del Paciente', 'maxlength' => 10]) !!} 
-                                                    {!! Form::label('', '', ['id' => 'lbtelefono']) !!} 
-                                                    @error('telefono')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                    @enderror
-                                                
-                                                </div> 
-                                            --}}
+                                            <div class="form-group">
+                                                {!! Form::label('estado_civil', 'Estado Civil:') !!}
+                                                {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
+                                                {!! Form::label('', '', ['id' => 'lbestado_civil']) !!} 
+                                                @error('estado_civil')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
+                                            
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                {!! Form::label('instruccion', 'Instrucción:') !!}
+                                                {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
+                                                {!! Form::label('', '', ['id' => 'lbinstruccion']) !!} 
+                                                @error('instruccion')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
+                                            
+                                            </div>
+                                            
+                                            
+                                            <div class="form-group">
+                                                {!! Form::label('ocupacion', 'Ocupación:') !!}
+                                                {!! Form::text('ocupacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ocupación del Paciente']) !!} 
+                                                {!! Form::label('', '', ['id' => 'lbocupacion']) !!} 
+                                                @error('ocupacion')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
+                                            
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="form-group">
+                                                {!! Form::label('telefono', 'Teléfono:') !!}
+                                                {!! Form::number('telefono', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del Paciente', 'maxlength' => 10]) !!} 
+                                                {!! Form::label('', '', ['id' => 'lbtelefono']) !!} 
+                                                @error('telefono')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
+                                            
+                                            </div>
                                             
                                             <div class="form-group">
                                                 {!! Form::label('sexo_id', 'Sexo:') !!}
@@ -525,12 +524,19 @@
         var apellido_materno = $('#apellido_materno').val();
         var nombre = $('#nombre').val();
         var fecha_nacimiento = $('#fecha_nacimiento').val();
+        var telefono = $('#telefono').val();
+        var direccion = $('#direccion').val();
+        var ocupacion = $('#ocupacion').val();
+        var estado_civil = $('#estado_civil').val();
+        var instruccion = $('#instruccion').val();
         var sexo_id = $('#sexo_id').val();
+        var ciudad_id = $('#ciudad_id').val();
+        var provincia_id = $('#provincia_id').val();
         var ced = $('#ced').val();
         var cedula = $('#cedula').val();
 
         // Validar si los campos requeridos están vacíos
-        if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !sexo_id) {
+        if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !telefono || !direccion || !ocupacion || !estado_civil || !instruccion || !sexo_id || !ciudad_id || !provincia_id) {
             // Mostrar mensaje de error si hay campos vacíos
             mostrarMensajeError('Por favor, complete todos los campos obligatorios.');
             return;
@@ -656,7 +662,14 @@
                 apellido_materno: apellido_materno,
                 nombre: nombre,
                 fecha_nacimiento: fecha_nacimiento,
+                telefono: telefono,
+                direccion: direccion,
+                ocupacion: ocupacion,
+                estado_civil: estado_civil,
+                instruccion: instruccion,
                 sexo_id: sexo_id,
+                ciudad_id: ciudad_id,
+                provincia_id: provincia_id,
                 _token: "{{ csrf_token() }}"
             },
             success: function(response) {

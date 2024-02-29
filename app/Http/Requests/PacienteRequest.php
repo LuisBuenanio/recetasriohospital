@@ -33,7 +33,6 @@ class PacienteRequest extends FormRequest
         'apellido_paterno' => 'required',           
         'nombre' => 'required',          
         'fecha_nacimiento' => 'required',
-        'telefono' => 'required',
     ];
 
     // Si la nacionalidad es ecuatoriana y se ha seleccionado que el paciente tiene cédula

@@ -55,6 +55,11 @@ class Paciente extends Model
         return $this->hasMany(Receta::class);
     } */
 
+     /* /* Relacion de uno a muchos */
+    public function formulario008(){
+        return $this->hasMany(Formulario008::class);
+    } 
+
     public function getNombreCompletoAttribute()
     {
         $apellidoPaterno = $this->apellido_paterno ? $this->apellido_paterno : '';
@@ -64,12 +69,21 @@ class Paciente extends Model
         return "{$nombre} {$apellidoPaterno} {$apellidoMaterno} ";
     }
 
-    public function getNombreCompletoCedulaAttribute()
+    public function getNombreCompletoCedula1Attribute()
     {
         $NombreCompleto = $this->nombre_completo;
         $cedula = $this->cedula ? "{$this->cedula}" : '';
         // Concatenar la cédula al nombre completo
         $nombreCompletoCedula = "{$NombreCompleto} - {$this->cedula}";
+
+        return $nombreCompletoCedula;
+    }
+    public function getNombreCompletoCedulaAttribute()
+    {
+        $NombreCompleto = $this->nombre_completo;
+        $cedula = $this->cedula ? "{$this->cedula}" : '';
+        // Concatenar la cédula al nombre completo
+        $nombreCompletoCedula = "{$this->cedula} {$NombreCompleto}  ";
 
         return $nombreCompletoCedula;
     }

@@ -140,7 +140,6 @@ class PacienteController extends Controller
     public function store1(PacienteRequest $request)
     {
         // Validar si la cédula del paciente ya está registrada
-        // Validar si la cédula del paciente ya está registrada
         if ($request->ced == '2') {
             $cedulaExistente = Paciente::where('cedula', $request->cedula)->exists();
 
@@ -183,12 +182,17 @@ class PacienteController extends Controller
    
     public function edit(Paciente $paciente)
     {
-        
         $sexo = Sexo::pluck('descripcion', 'id');
         $provincias = Provincia::all();
-        $ciudades = Ciudad::where('provincia_id', $paciente->ciudad->provincia_id)->get();
-        return view('admin.paciente.edit', compact('paciente','sexo', 'provincias', 'ciudades'));
+        $ciudades = null;
+        
+        if ($paciente->ciudad) {
+            $ciudades = Ciudad::where('provincia_id', $paciente->ciudad->provincia_id)->get();
+        }
+
+        return view('admin.paciente.edit', compact('paciente', 'sexo', 'provincias', 'ciudades'));
     }
+
 
     public function update(PacienteRequest $request, Paciente $paciente)
     {

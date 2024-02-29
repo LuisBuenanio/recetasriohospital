@@ -22,32 +22,36 @@
 
             {!! Form::hidden('users_id', auth()->user()->id) !!}
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>{!! Form::label('id', 'Número de Receta:') !!} </th>
-                        <th>{!! Form::label('ciudad', 'Ciudad:') !!}</th>
-                        <th>{!! Form::label('fecha', 'Fecha:') !!}</th>
+            <div class="form-group">
+                {!! Form::label('id', 'Número de Receta:') !!}
 
-                    </tr>
+                {!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}
+            </div>
 
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{!! Form::text('id', $nextId, ['class' => 'form-control', 'readonly']) !!}</td>
-                        <td>{!! Form::text('ciudad', 'RIOBAMBA', ['class' => 'form-control', 'readonly']) !!}</td>
-                        <td>{!! Form::date('fecha', \Carbon\Carbon::now(), [
-                            'class' => 'form-control',
-                            'placeholder' => 'Ingrese la fecha de la Receta',
-                        ]) !!}
-                        @error('fecha')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
+            <div class="form-group">
+                {!! Form::label('ciudad', 'Ciudad:') !!}
+                {!! Form::text('ciudad', 'RIOBAMBA', ['class' => 'form-control', 'placeholder' => 'Ingrese la Ciudad']) !!}
+
+                @error('ciudad')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
+
+            <div class="form-group">
+                {!! Form::label('fecha', 'Fecha:') !!}
+                {!! Form::date('fecha', \Carbon\Carbon::now(), [
+                    'class' => 'form-control',
+                    'placeholder' => 'Ingrese la fecha de la Receta',
+                ]) !!}
+
+
+                @error('fecha')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
 
             <!-- For defining autocomplete -->
             <div class="form-group">
@@ -201,7 +205,7 @@
                                                 @enderror
                                             
                                             </div>
-                                            {{-- <div class="form-group">
+                                            <div class="form-group">
                                                 {!! Form::label('direccion', 'Dirección de Residencia:') !!}
                                                 {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la dirección de residencia del Paciente']) !!} 
                                                 {!! Form::label('', '', ['id' => 'lbdireccion']) !!} 
@@ -266,7 +270,7 @@
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
                                             
-                                            </div> --}}
+                                            </div>
                                             
                                             <div class="form-group">
                                                 {!! Form::label('sexo_id', 'Sexo:') !!}
@@ -526,12 +530,19 @@ $(document).ready(function() {
         var apellido_materno = $('#apellido_materno').val();
         var nombre = $('#nombre').val();
         var fecha_nacimiento = $('#fecha_nacimiento').val();
+        var telefono = $('#telefono').val();
+        var direccion = $('#direccion').val();
+        var ocupacion = $('#ocupacion').val();
+        var estado_civil = $('#estado_civil').val();
+        var instruccion = $('#instruccion').val();
         var sexo_id = $('#sexo_id').val();
+        var ciudad_id = $('#ciudad_id').val();
+        var provincia_id = $('#provincia_id').val();
         var ced = $('#ced').val();
         var cedula = $('#cedula').val();
 
         // Validar si los campos requeridos están vacíos
-        if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !sexo_id) {
+        if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !fecha_nacimiento || !telefono || !direccion || !ocupacion || !estado_civil || !instruccion || !sexo_id || !ciudad_id || !provincia_id) {
             // Mostrar mensaje de error si hay campos vacíos
             mostrarMensajeError('Por favor, complete todos los campos obligatorios.');
             return;
@@ -657,7 +668,14 @@ $(document).ready(function() {
                 apellido_materno: apellido_materno,
                 nombre: nombre,
                 fecha_nacimiento: fecha_nacimiento,
+                telefono: telefono,
+                direccion: direccion,
+                ocupacion: ocupacion,
+                estado_civil: estado_civil,
+                instruccion: instruccion,
                 sexo_id: sexo_id,
+                ciudad_id: ciudad_id,
+                provincia_id: provincia_id,
                 _token: "{{ csrf_token() }}"
             },
             success: function(response) {
@@ -708,9 +726,9 @@ $(document).ready(function() {
 
                         /////////////////////////////////////////////////////////////////////////////////////////
 
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $(document).ready(function() {
-            $("#diagnostico_search").autocomplete({
+                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                        $(document).ready(function() {
+                            $("#diagnostico_search").autocomplete({
                                 source: function(request, response) {
                                     // Fetch data
                                     $.ajax({
@@ -954,51 +972,51 @@ $(document).ready(function() {
 
                         var cedula = document.getElementById('cedula');
 
-        // Evento para cambiar la visibilidad del campo de cédula según la opción seleccionada
-        document.getElementById('si').addEventListener('click', function() {
-            document.getElementById('cedula').style.display = 'block';
-            cedula.disabled = false;
-        });
+// Evento para cambiar la visibilidad del campo de cédula según la opción seleccionada
+document.getElementById('si').addEventListener('click', function() {
+    document.getElementById('cedula').style.display = 'block';
+    cedula.disabled = false;
+});
 
-        document.getElementById('no').addEventListener('click', function() {
-            document.getElementById('cedula').style.display = 'none';
-            cedula.disabled = true;
-            cedula.value = ''; // Limpiamos el valor del campo cédula si se deshabilita
-        });
+document.getElementById('no').addEventListener('click', function() {
+    document.getElementById('cedula').style.display = 'none';
+    cedula.disabled = true;
+    cedula.value = ''; // Limpiamos el valor del campo cédula si se deshabilita
+});
 
-        // Evento para verificar la longitud de la cédula según la nacionalidad seleccionada
-        document.getElementById('nacionalidad').addEventListener('change', function() {
-            var nacionalidad = this.value;
-            
-            if (nacionalidad === 'ecuatoriano') {
-                cedula.maxLength = 10;
-            } else {
-                cedula.removeAttribute('maxLength');
-            }
-        });
+// Evento para verificar la longitud de la cédula según la nacionalidad seleccionada
+document.getElementById('nacionalidad').addEventListener('change', function() {
+    var nacionalidad = this.value;
+    
+    if (nacionalidad === 'ecuatoriano') {
+        cedula.maxLength = 10;
+    } else {
+        cedula.removeAttribute('maxLength');
+    }
+});
 
 
-        $('#provincia_id').on('change', function () {
-                var provinciaId = $(this).val();
-                if (provinciaId) {
-                    $.ajax({
-                        url: '/admin/obtener-ciudades/' + provinciaId,
-                        
-                        type: "GET",
-                        dataType: "json",
-                        success: function (data) {
-                            $('#ciudad_id').empty();
-                            $.each(data, function (key, value) {
-                                $('#ciudad_id').append('<option value="' + key + '">' + value + '</option>');
-                            });
-                        }
-                    });
-                } else {
+$('#provincia_id').on('change', function () {
+        var provinciaId = $(this).val();
+        if (provinciaId) {
+            $.ajax({
+                url: '/admin/obtener-ciudades/' + provinciaId,
+                   
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
                     $('#ciudad_id').empty();
+                    $.each(data, function (key, value) {
+                        $('#ciudad_id').append('<option value="' + key + '">' + value + '</option>');
+                    });
                 }
             });
+        } else {
+            $('#ciudad_id').empty();
+        }
+    });
 
-            
-            
+    
+    
 </script>
 @stop

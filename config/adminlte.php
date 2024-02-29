@@ -370,6 +370,25 @@ return [
                 
             ],
         ],
+        [
+            'text'    => 'Formulario 008',
+            'icon'    => 'fas fa-fw fa-first-aid',
+            'can'   => 'admin.formulario008.index',
+            'submenu' => [
+                [
+                    'text' => 'Listar Formularios 008',
+                    'route'  => 'admin.formulario008.index',
+                    'icon' => 'fas fa-fw fa-first-aid',
+                    
+                ],
+                [
+                    'text' => 'Crear Formulario 008',
+                    'route'  => 'admin.formulario008.create',
+                    'icon' => 'fas fa-fw fa-first-aid',
+                ],
+                
+            ],
+        ],
         
         [
             'text'    => 'Medicamento',
@@ -389,83 +408,99 @@ return [
                 ],
                 
             ],
-        ],          
-        [
-            'text'    => 'Grupos CIE-10',
-            'icon'    => 'fas fa-fw fa-object-group',
-            'can'   => 'admin.gruposcie10.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Grupos CIE-10',
-                    'route'  => 'admin.gruposcie10.index',
-                    'icon' => 'fas fa-fw fa-object-group',
-                    
-                ],
-                [
-                    'text' => 'Crear  Grupos CIE-10',
-                    'route'  => 'admin.gruposcie10.create',
-                    'icon' => 'fas fa-fw fa-object-group',
-                ],
-                
-            ],
         ],
-        [
-            'text'    => 'Sub Grupos CIE-10',
-            'icon'    => 'fal fa-fw fa-layer-group',
-            'can'   => 'admin.subgruposcie10.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Sub Grupos CIE-10',
-                    'route'  => 'admin.subgruposcie10.index',
-                    'icon' => 'fal fa-fw fa-layer-group',
-                    
-                ],
-                [
-                    'text' => 'Crear Sub Grupos CIE-10',
-                    'route'  => 'admin.subgruposcie10.create',
-                    'icon' => 'fal fa-fw fa-layer-group',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => 'Categorías CIE-10',
-            'icon'    => 'fas fa-fw fa-layer-group',
-            'can'   => 'admin.categoriascie10.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Categorías CIE-10',
-                    'route'  => 'admin.categoriascie10.index',
-                    'icon' => 'fas fa-fw fa-layer-group',
-                    
-                ],
-                [
-                    'text' => 'Crear Categorías CIE-10',
-                    'route'  => 'admin.categoriascie10.create',
-                    'icon' => 'fas fa-fw fa-layer-group',
-                ],
-                
-            ],
-        ],
+
         [
             'text'    => 'Diagnósticos CIE-10',
             'icon'    => 'fas fa-fw fa-stethoscope',
             'can'   => 'admin.diagnosticoscie10.index',
             'submenu' => [
+                
                 [
-                    'text' => 'Listar Diagnósticos CIE-10',
-                    'route'  => 'admin.diagnosticoscie10.index',
-                    'icon' => 'fas fa-fw fa-stethoscope',
-                    
+                    'text'    => 'Diagnósticos CIE-10',
+                    'icon'    => 'fas fa-fw fa-stethoscope',
+                    'can'   => 'admin.diagnosticoscie10.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar Diagnósticos CIE-10',
+                            'route'  => 'admin.diagnosticoscie10.index',
+                            'icon' => 'fas fa-fw fa-stethoscope',
+                            
+                        ],
+                        [
+                            'text' => 'Crear Diagnósticos CIE-10',
+                            'route'  => 'admin.diagnosticoscie10.create',
+                            'icon' => 'fas fa-fw fa-stethoscope',
+                        ],
+                        
+                    ],
                 ],
                 [
-                    'text' => 'Crear Diagnósticos CIE-10',
-                    'route'  => 'admin.diagnosticoscie10.create',
-                    'icon' => 'fas fa-fw fa-stethoscope',
+                    'text'    => 'Grupos CIE-10',
+                    'icon'    => 'fas fa-fw fa-object-group',
+                    'can'   => 'admin.gruposcie10.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar Grupos CIE-10',
+                            'route'  => 'admin.gruposcie10.index',
+                            'icon' => 'fas fa-fw fa-object-group',
+                            
+                        ],
+                        [
+                            'text' => 'Crear  Grupos CIE-10',
+                            'route'  => 'admin.gruposcie10.create',
+                            'icon' => 'fas fa-fw fa-object-group',
+                        ],
+                        
+                    ],
                 ],
+                [
+                    'text'    => 'Sub Grupos CIE-10',
+                    'icon'    => 'fal fa-fw fa-layer-group',
+                    'can'   => 'admin.subgruposcie10.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar Sub Grupos CIE-10',
+                            'route'  => 'admin.subgruposcie10.index',
+                            'icon' => 'fal fa-fw fa-layer-group',
+                            
+                        ],
+                        [
+                            'text' => 'Crear Sub Grupos CIE-10',
+                            'route'  => 'admin.subgruposcie10.create',
+                            'icon' => 'fal fa-fw fa-layer-group',
+                        ],
+                        
+                    ],
+                ],
+                [
+                    'text'    => 'Categorías CIE-10',
+                    'icon'    => 'fas fa-fw fa-layer-group',
+                    'can'   => 'admin.categoriascie10.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Listar Categorías CIE-10',
+                            'route'  => 'admin.categoriascie10.index',
+                            'icon' => 'fas fa-fw fa-layer-group',
+                            
+                        ],
+                        [
+                            'text' => 'Crear Categorías CIE-10',
+                            'route'  => 'admin.categoriascie10.create',
+                            'icon' => 'fas fa-fw fa-layer-group',
+                        ],
+                        
+                    ],
+                ],
+                
                 
             ],
         ],
+
+        
+
+
+        
 
         
         

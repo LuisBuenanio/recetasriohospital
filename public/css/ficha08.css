@@ -1,0 +1,41 @@
+body {
+    color: #663300; /* Color café oscuro para todas las letras */
+  }
+  
+  .container, fieldset {
+    border-color: #663300; /* Color café oscuro para los bordes */
+  }
+  
+  input[type="number"] {
+    border: 1px solid #663300;
+  }
+  
+  button[type="submit"] {
+    background-color: #663300;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #salida {
+    color: red;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 3px;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .header img {
+    width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: auto;
+  }
