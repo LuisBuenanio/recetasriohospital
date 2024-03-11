@@ -4,8 +4,7 @@
     </head> --}}
     <div id="content-container">
         <header>
-
-            <div id="result">
+            <div id="result">             
             <span id="numberContainer">N° </span> {{$nextId}} <span id="numbers"></span>
           </div>  
           {!! Form::hidden('users_id', auth()->user()->id) !!}
@@ -13,7 +12,7 @@
       </div>
 </div>
 
-<table border="1" cellspacing="-5" cellpadding="3" width="100%">
+<table border="1" cellspacing="-5" cellpadding="0" width="100%">
     <thead>
       <tr>
         <th style="font-size: 10px">INSTITUCIÓN DEL SISTEMA</th>
@@ -39,7 +38,7 @@
           <label for="parroquia">PARROQUIA:</label>
           <input type="text" id="parroquia" name="parroquia" value="LIZARZABURU" disabled />
         </td>
-        <td style="font-size: 10px"><input type="text" id="numero_historia_clinica" name="numero_historia_clinica" /></td>
+        <td style="font-size: 10px"><input type="text" id="historia_clinica" name="historia_clinica" /></td>
       </tr>
     </tbody>
   </table>

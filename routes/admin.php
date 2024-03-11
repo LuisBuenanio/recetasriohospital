@@ -80,14 +80,14 @@ Route::get('/obtener-ciudades/{provinciaId}', [PacienteController::class, 'Ciuda
 
 
 
-Route::resource('formulario008', Formulario008Controller::class)->except('show')->names('admin.formulario008');
-Route::get('/formulario008/getPacientes/','App\Http\Controllers\Admin\Formulario008Controller@getPacientes')->name('admin.formulario008.getPacientes');
-Route::post('/admin/formulario008/getPacienteByCedula', 'Formulario008Controller@getPacienteByCedula')->name('admin.formulario008.getPacienteByCedula');
-/* Route::get('/formulario008/imprimirpdf/{id}', [Formulario008Controller::class, 'imprimirpdf'])->name('admin.imprimirpdf'); */
+Route::resource('formulario008', Formulario008Controller::class)->names('admin.formulario008');
 Route::get('/formulario008/imprimirpdf/{id}','App\Http\Controllers\Admin\Formulario008Controller@imprimirpdf')->name('admin.formulario008.imprimirpdf');
+Route::get('/formulario008/imprimirpdf1/{id}','App\Http\Controllers\Admin\Formulario008Controller@imprimirpdf1')->name('admin.formulario008.imprimirpdf1');
 
 
+Route::get('/admin/formulario008/getPacientes', 'App\Http\Controllers\Admin\Formulario008Controller@getPacientes')->name('admin.formulario008.getPacientes');
 
-Route::post('/formulario008/getDiagnosticoscie10/','App\Http\Controllers\Admin\Formulario008Controller@getDiagnosticoscie10')->name('admin.formulario008.getDiagnosticoscie10');
+
+Route::get('/formulario008/getDiagnosticoscie10/','App\Http\Controllers\Admin\Formulario008Controller@getDiagnosticoscie10')->name('admin.formulario008.getDiagnosticoscie10');
 /* Route::get('/imprimir/{id}', [ImprimirFormulario008Controller::class, 'imprimirpdf'])->name('admin.imprimirpdf');
  */

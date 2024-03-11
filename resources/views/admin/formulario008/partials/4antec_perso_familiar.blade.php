@@ -1,61 +1,23 @@
 <div class="form-group">
     <h3>4. ANTECEDENTES PERSONALES Y FAMILIARES RELEVANTES
-        <label for="aplica_antecedentes" style="margin-left: 220px;">No Aplica</label>
-        <input type="checkbox" id="aplica_antecedentes";/>
+        <label for="aplica_antecedentes" style="margin-left: 620px;">NO APLICA</label>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_antecedentes";/>
+        <h6>PARA DESCRIBIR SEÑALE EL NÚMERO Y LA LETRA CORRESPONDIENTE</h6>
+        <h6> P = PERSONAL F = FAMILIAR</h6>
       </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%" >
         <thead>
-            <td>
-                <label for="alergicos">1. Alergicos</label>
-                <select id="alergicos" name="alergicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="clinicos">2.Clínicos</label>
-                <select id="clinicos" name="clinicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
+            <th>
+                <label for="alergicos" style="margin-right: 10px;">1. ALÉRGICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="alergicos" name="alergicos" value="Sí"/></label>
+                <label for="clinicos" style="margin-right: 10px;">2. CLÍNICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="clinicos" name="clinicos" value="Sí"/></label>
+                <label for="ginecologicos" style="margin-right: 10px;">3. GINECOLÓGICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="ginecologicos" name="ginecologicos" value="Sí"/></label>
+                <label for="traumatologicos" style="margin-right: 10px;">4.TRAUMATOLÓGICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="traumatologicos" name="traumatologicos" value="Sí"/></label>
+                <label for="pediatricos" style="margin-right: 10px;">5. PEDIÁTRICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="pediatricos" name="pediatricos" value="Sí"/></label>
+                <label for="quirurgicos" style="margin-right: 10px;">6. QUIRÚRGICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="quirurgicos" name="quirurgicos" value="Sí"/></label>
+                <label for="farmacologicos" style="margin-right: 10px;">7. FARMACOLÓGICOS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="farmacologicos" name="farmacologicos" value="Sí"/></label>
+                <label for="otros" style="margin-right: 10px;">8. OTROS<input style=" margin-right: 10px; margin-left: 10px;"  type="checkbox" id="otros" name="otros" value="Sí"/></label>
                 
-        
-                <label for="ginecologicos">3.Ginecológicos</label>
-                <select id="ginecologicos" name="ginecologicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="traumatologicos">4.Traumatologicos</label>
-                <select id="traumatologicos" name="traumatologicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="pediatricos">5.Pediátricos</label>
-                <select id="pediatricos" name="pediatricos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="quirurgicos">6.Quirúrgicos</label>
-                <select id="quirurgicos" name="quirurgicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="farmacologicos">7.Farmacológicos</label>
-                <select id="farmacologicos" name="farmacologicos">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-        
-                <label for="otros">8.Otros</label>
-                <select id="otros" name="otros">
-                    <option value="personal">Personal</option>
-                    <option value="familiar">Familiar</option>
-                </select>
-            </td>
+            </th>
 
         </thead>
         <tbody>

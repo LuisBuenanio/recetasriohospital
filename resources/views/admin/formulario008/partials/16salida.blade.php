@@ -9,14 +9,12 @@
               <table>                  
                   <tbody>
                       <tr>
-                        <th style="font-size: 12px">Domicilio </th> <td><input type="checkbox" name="salida" id="domicilio" value="domicilio" onclick="checkboxsalida(this)"> </td>
-                        <th style="font-size: 12px">Consulta Externa </th> <td><input type="checkbox" name="salida" id="consulta_externa" value="consulta_externa" onclick="checkboxsalida(this)"> </td>
-                        <th style="font-size: 12px">Referencia</th> <td><input type="checkbox" name="salida" id="observacion" value="observacion" onclick="checkboxtipoeventos(this)"> </td>
-                        <th style="font-size: 12px">Observación </th> <td><input type="checkbox" name="salida" id="internacion" value="internacion" onclick="checkboxsalida(this)"> </td>
-                        <th style="font-size: 12px">Internación </th> <td><input type="checkbox" name="salida" id="referencia" value="referencia" onclick="checkboxsalida(this)" > </td>
-                        
-                     
-        
+                        <th style="font-size: 12px">DOMICILIO </th> <td><input type="checkbox" name="salida" id="domicilio" value="domicilio" onclick="checkboxsalida(this)"> </td>
+                        <th style="font-size: 12px">CONSULTA EXTERNA </th> <td><input type="checkbox" name="salida" id="consulta_externa" value="consulta_externa" onclick="checkboxsalida(this)"> </td>
+                        <th style="font-size: 12px">REFERENCIA</th> <td><input type="checkbox" name="salida" id="observacion" value="observacion" onclick="checkboxtipoeventos(this)"> </td>
+                        <th style="font-size: 12px">OBSERVACIÓN </th> <td><input type="checkbox" name="salida" id="internacion" value="internacion" onclick="checkboxsalida(this)"> </td>
+                        <th style="font-size: 12px">INTERNACIÓN </th> <td><input type="checkbox" name="salida" id="referencia" value="referencia" onclick="checkboxsalida(this)" > </td>
+                       
 
                         <script>
                             function checkboxsalida(checkbox) {
@@ -33,9 +31,9 @@
                         </script>
                       </tr>
                       <tr>
-                        <th style="font-size: 12px">Servicio</th>
+                        <th style="font-size: 12px">SERVICIO</th>
                         <td colspan="4" style="font-size: 12px"><input class="form-control" type="text" name="servicio"></td>
-                        <th style="font-size: 12px">Establecimiento</th>      
+                        <th style="font-size: 12px">ESTABLECIMIENTO</th>      
                         <td colspan="4" style="font-size: 12px"><input class="form-control" type="text" name="establecimiento"></td>
                          
                       </tr>                    
@@ -48,9 +46,9 @@
               <table>
                 <tbody>
                     <tr>
-                      <th style="font-size: 12px">Vivo </th> <td><input type="checkbox" name="estado_salida" id="vivo" value="vivo" onclick="checkboxestado_salida(this)" > </td>
-                      <th style="font-size: 12px">Estable</th> <td><input type="checkbox" name="estado_salida" id="estable" value="estable" onclick="checkboxestado_salida(this)" > </td>
-                      <th style="font-size: 12px">Inestable </th> <td><input type="checkbox" name="estado_salida" id="inestable" value="inestable" onclick="checkboxestado_salida(this)" > </td>
+                      <th style="font-size: 12px">VIVO </th> <td><input type="checkbox" name="estado_salida" id="vivo" value="vivo" onclick="checkboxestado_salida(this)" > </td>
+                      <th style="font-size: 12px">ESTABLE</th> <td><input type="checkbox" name="estado_salida" id="estable" value="estable" onclick="checkboxestado_salida(this)" > </td>
+                      <th style="font-size: 12px">INESTABLE </th> <td><input type="checkbox" name="estado_salida" id="inestable" value="inestable" onclick="checkboxestado_salida(this)" > </td>
                       <script>
                         function checkboxestado_salida(checkbox) {
                             // Obtener todos los checkboxes con el mismo nombre
@@ -64,11 +62,11 @@
                             });
                         }
                     </script>
-                      <th style="font-size: 12px">Días de Incapacidad </th> <td><input class="form-control" type="text" name="dias_incapacidad" id="pt_indicaciones_generales"> </td>
+                      <th style="font-size: 12px">DÍAS DE INCAPACIDAD </th> <td><input class="form-control" type="text" name="dias_incapacidad" id="pt_indicaciones_generales"> </td>
                     </tr>
                     <tr>
-                        <th style="font-size: 12px">Muerto en Emergencia</th> <td><input type="checkbox" name="muerto_emergencia" id="muerto_emergencia" value="Si"> </td>
-                        <th style="font-size: 12px">Causa</th>      
+                        <th style="font-size: 12px">MUERTO EN EMERGENCIA</th> <td><input type="checkbox" name="muerto_emergencia" id="muerto_emergencia" value="Si"> </td>
+                        <th style="font-size: 12px">CAUSA</th>      
                         <td colspan="5" style="font-size: 12px"><input class="form-control" type="text" name="causa_muerte" id="causa_muerte" disabled></td>
                         <script>
                             // Accedemos al checkbox
@@ -104,14 +102,14 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <tbody>
             <tr>
-              <td><label for="fecha_salida">Fecha de Salida:</label></td>
+              <td><label for="fecha_salida">FECHA DE SALIDA:</label></td>
               <td><input class="form-control" type="date" id="fecha_salida" name="fecha_salida"></td>
 
-              <td><label for="hora_salida">Hora de Salida:</label></td>
+              <td><label for="hora_salida">HORA DE SALIDA:</label></td>
               <td><input class="form-control" type="time" id="hora_salida" name="hora_salida"></td>
-              <td><label for="medico_salida">Médico:</label></td>
+              <td><label for="medico_salida">MÉDICO:</label></td>
               <td colspan="2"><input class="form-control" type="text" id="medico_salida" name="medico_salida"></td>
-              <td><label for="codigo_salida">Código:</label></td>
+              <td><label for="codigo_salida">CÓDIGO:</label></td>
               <td><input class="form-control" type="text" id="codigo_salida" name="codigo_salida"></td>
             </tr>
           </tbody>

@@ -18,17 +18,12 @@ return new class extends Migration
             
             
             $table->id();
-            $table->string('n_institucion')->nullable();
-            $table->string('n_unidad_ope')->nullable();
             $table->string('codigo',10)->nullable();
-            $table->string('provincia')->nullable();
-            $table->string('canton')->nullable();
-            $table->string('parroquia')->nullable();
             $table->string('historia_clinica',10)->nullable(); 
 
             /*1. Registro de Admición*/ 
 
-            $table->enum('seguro_salud', ['iess', 'otro'])->nullable();
+            $table->string('seguro_salud', 150)->nullable();
             $table->date('fecha_atencion')->nullable(); 
             $table->time('hora_atencion')->nullable();
             $table->string('per_notific_nombre')->nullable();
@@ -88,15 +83,15 @@ return new class extends Migration
 
             /*  4. ANTECEDENTES PERSONALES Y FAMILIARES RELEVANTES*/ 
 
-            $table->enum('alergicos', ['personal', 'familiar'])->nullable(); 
+            $table->enum('alergicos', ['Si', 'No'])->nullable(); 
             
-            $table->enum('clinicos', ['personal', 'familiar'])->nullable(); 
-            $table->enum('ginecologicos', ['personal', 'familiar'])->nullable(); 
-            $table->enum('traumatologicos', ['personal', 'familiar'])->nullable(); 
-            $table->enum('pediatricos', ['personal', 'familiar'])->nullable(); 
-            $table->enum('quirurgicos', ['personal', 'familiar'])->nullable(); 
-            $table->enum('farmacologico', ['personal', 'familiar'])->nullable(); 
-            $table->enum('otros', ['personal', 'familiar'])->nullable();           
+            $table->enum('clinicos', ['Si', 'No'])->nullable(); 
+            $table->enum('ginecologicos', ['Si', 'No'])->nullable(); 
+            $table->enum('traumatologicos', ['Si', 'No'])->nullable(); 
+            $table->enum('pediatricos', ['Si', 'No'])->nullable(); 
+            $table->enum('quirurgicos', ['Si', 'No'])->nullable(); 
+            $table->enum('farmacologicos', ['Si', 'No'])->nullable(); 
+            $table->enum('otros', ['Si', 'No'])->nullable();           
             $table->longtext('obser_antec_personales')->nullable();  
             
             /* 5. ENFERMEDAD ACTUAL Y REVISION DE SISTEMA*/               
@@ -118,15 +113,7 @@ return new class extends Migration
             $table->enum('modificaciones_2', ['posicion', 'ingesta', 'esfuerzo', 'digito presion', 'se irradia'])->nullable();  
             $table->enum('alivia_con_2', ['antiespasmodico', 'opiaceo', 'aine', 'no alivia'])->nullable();  
             $table->enum('intensidad_2', ['leve', 'moderado', 'grave'])->nullable();  
-
-            $table->string('region_anatomica_3')->nullable(); 
-            $table->string('punto_doloroso_3')->nullable();
-            $table->enum('evolucion_3', ['agudo', 'sub agudo', 'cronico'])->nullable(); 
-            $table->enum('tipo_3', ['episodico', 'continuo', 'colico'])->nullable();  
-            $table->enum('modificaciones_3', ['posicion', 'ingesta', 'esfuerzo', 'digito presion', 'se irradia'])->nullable();  
-            $table->enum('alivia_con_3', ['antiespasmodico', 'opiaceo', 'aine', 'no alivia'])->nullable();  
-            $table->enum('intensidad_3', ['leve', 'moderado', 'grave'])->nullable();  
-
+            
             /* 7. SIGNOS VITALES, MEDICIONES Y VALORES */
             $table->string('presion_arterial')->nullable(); 
             $table->string('frecuencia_cardiaca')->nullable();             
@@ -225,7 +212,8 @@ return new class extends Migration
             $table->enum('resonancia', ['Si', 'No'])->nullable();
             $table->enum('ecografia_abdominal', ['Si', 'No'])->nullable();
             $table->enum('pd_otros', ['Si', 'No'])->nullable();      
-            
+
+            $table->string('obser_plan_diagnostico', 150)->nullable(); 
 
                 
                 
@@ -235,7 +223,7 @@ return new class extends Migration
             $table->enum('pt_indicaciones_generales', ['Si', 'No'])->nullable();             
             $table->enum('pt_procedimientos', ['Si', 'No'])->nullable();             
             $table->enum('pt_consentimiento_informado', ['Si', 'No'])->nullable();
-            $table->enum('pt', ['Si', 'No'])->nullable(); 
+            $table->enum('pt_otros', ['Si', 'No'])->nullable(); 
            
             $table->string('medicamento_generico_1', 50)->nullable();
             $table->enum('via_1', ['intravenoso','via_vaginal', 'via_oral','intramuscular','via rectal','subcutanea','sublingual', 'via topica', 'via vaginal', 'via oftalmica', 'via optica'])->nullable(); 
@@ -269,13 +257,13 @@ return new class extends Migration
             $table->string('obser_plan_tratamiento_4', 100)->nullable();
                 
             /*  16. SALIDA */
-            $table->enum('salida',['domicilio', 'consulta externa','observacion', 'internacion','referencia','vivo','estable','inestable','muerto en emergencia'])->nullable();  
+            $table->enum('salida',['domicilio', 'consulta externa','observacion', 'internacion','referencia'])->nullable();  
             $table->enum('estado_salida',['vivo','estable','inestable'])->nullable();  
                
             $table->integer('dias_incapacidad')->nullable();   
             $table->string('servicio')->nullable();   
             $table->string('establecimiento')->nullable();
-            $table->enum('muertO_emergencia',['Si', 'No'])->nullable();  
+            $table->enum('muerto_emergencia',['Si', 'No'])->nullable();  
             
             $table->string('causa_muerte')->nullable();                
             $table->date('fecha_salida')->nullable();  

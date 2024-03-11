@@ -28,9 +28,17 @@ class Diagnosticoscie10 extends Model
         return $this->hasMany(Receta::class);
     }
 
-    //Relacion de uno a muchos
-    public function formulario008(){
-        return $this->hasMany(formulario008::class);
+   
+    // Relación con los formularios para los diagnósticos presuntivos
+    public function formulariosPresuntivos()
+    {
+        return $this->belongsToMany(Formulario008::class, 'diagnosticoscie10_formulario008', 'diagnosticoscie10_id', 'formulario008_id');
+    }
+
+    // Relación con los formularios para los diagnósticos definitivos
+    public function formulariosDefinitivos()
+    {
+        return $this->belongsToMany(Formulario008::class, 'diagnosticoscie10f_formulario008', 'diagnosticoscie10_id', 'formulario008_id');
     }
 
     public function getRouteKeyName()

@@ -29,35 +29,33 @@
                                 <td>{!!$formulario008->paciente->cedula!!}</td>                                   
                                                    
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.formulario008.imprimirpdf', $formulario008->id)}}">Descargar Formularo</a>
+                                    <a class="btn btn-success btn-sm " href="{{route('admin.formulario008.imprimirpdf', $formulario008->id)}}">Descargar Formulario</a>
                                   
-                                    {{-- @can('admin.formulario008.edit')
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.formulario008.imprimirpdf', $formulario008->id)}}">Descargar Formularo</a>
-                                    @endcan --}}
                                 </td with="10px">  
+                                                   
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.formulario008.edit', $formulario008->id)}}">Editar</a>
-                                   
-                                    {{-- @can('admin.formulario008.edit')
+                                    @can('admin.formulario008.show')
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.formulario008.imprimirpdf1', $formulario008->id)}}">Detalle</a>
+                                    @endcan
+                                </td with="10px"> 
+
+                                <td with="10px">
+                                    
+                                    @can('admin.formulario008.edit')
                                         <a class="btn btn-primary btn-sm " href="{{route('admin.formulario008.edit', $formulario008->id)}}">Editar</a>
-                                    @endcan --}}
+                                    @endcan 
                                 </td with="10px">  
                                 <td>
-
                                     
-                                    @csrf
-                                            @method('DELETE')
-
-                                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                       
-                                        {{-- @can('admin.formulario008.destroy')
+                                    @csrf                                                                                  
+                                        @can('admin.formulario008.destroy')
                                         <form action="{{route('admin.formulario008.destroy', $formulario008->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
 
                                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                                         </form>
-                                    @endcan --}}
+                                    @endcan 
 
                                 </td>
                             </tr>  

@@ -13,8 +13,8 @@
                           <th></th>
                           <th style="font-size: 14px">MEDICAMENTO GENÉRICO</th>
                           <th style="font-size: 14px">VIA</th>
-                          <th style="font-size: 14px">DOSIS</th>
-                          <th style="font-size: 14px">POSOLOGIA</th>
+                          <th style="font-size: 14px">DÓSIS</th>
+                          <th style="font-size: 14px">POSOLOGÍA</th>
                           <th style="font-size: 14px">DÍAS</th>
                       </tr>
                   </thead>
@@ -31,10 +31,10 @@
                               <option value="via_rectal">VÍA RECTAL</option>
                               <option value="subcutanea">SUBCUTÁNEA</option>
                               <option value="sublingual">SUBLINGUAL</option>
-                              <option value="via topica">VÍA TÓPICA</option>
+                              <option value="via_topica">VÍA TÓPICA</option>
                               <option value="via_vaginal">VÍA VAGINAL</option>
-                              <option value="via oftalmica">VÍA OFTÁLMICA</option>
-                              <option value="via optica">VÍA ÓPTICA</option>
+                              <option value="via_oftalmica">VÍA OFTÁLMICA</option>
+                              <option value="via_optica">VÍA ÓPTICA</option>
                             </select>
                           </td>
 
@@ -55,10 +55,10 @@
                             <option value="via_rectal">VÍA RECTAL</option>
                             <option value="subcutanea">SUBCUTÁNEA</option>
                             <option value="sublingual">SUBLINGUAL</option>
-                            <option value="via topica">VÍA TÓPICA</option>
+                            <option value="via_topica">VÍA TÓPICA</option>
                             <option value="via_vaginal">VÍA VAGINAL</option>
-                            <option value="via oftalmica">VÍA OFTÁLMICA</option>
-                            <option value="via optica">VÍA ÓPTICA</option>
+                            <option value="via_oftalmica">VÍA OFTÁLMICA</option>
+                            <option value="via_optica">VÍA ÓPTICA</option>
                           </select>
                         </td>
 
@@ -79,10 +79,10 @@
                             <option value="via_rectal">VÍA RECTAL</option>
                             <option value="subcutanea">SUBCUTÁNEA</option>
                             <option value="sublingual">SUBLINGUAL</option>
-                            <option value="via topica">VÍA TÓPICA</option>
+                            <option value="via_topica">VÍA TÓPICA</option>
                             <option value="via_vaginal">VÍA VAGINAL</option>
-                            <option value="via oftalmica">VÍA OFTÁLMICA</option>
-                            <option value="via optica">VÍA ÓPTICA</option>
+                            <option value="via_oftalmica">VÍA OFTÁLMICA</option>
+                            <option value="via_optica">VÍA ÓPTICA</option>
                           </select>
                         </td>
 
@@ -103,10 +103,10 @@
                             <option value="via_rectal">VÍA RECTAL</option>
                             <option value="subcutanea">SUBCUTÁNEA</option>
                             <option value="sublingual">SUBLINGUAL</option>
-                            <option value="via topica">VÍA TÓPICA</option>
+                            <option value="via_topica">VÍA TÓPICA</option>
                             <option value="via_vaginal">VÍA VAGINAL</option>
-                            <option value="via oftalmica">VÍA OFTÁLMICA</option>
-                            <option value="via optica">VÍA ÓPTICA</option>
+                            <option value="via_oftalmica">VÍA OFTÁLMICA</option>
+                            <option value="via_optica">VÍA ÓPTICA</option>
                           </select>
                         </td>
 
@@ -124,7 +124,7 @@
                   <thead>
                       <tr>
                           <th style="font-size: 12px">1. INDICACIONES GENERALES   <input type="checkbox" name="pt_plan_tratamiento" id="pt_indicaciones_generales" value="Si"></th>
-                          <th style="font-size: 12px">2. PROCEDIMIENOS <input type="checkbox" name="pt_plan_tratamiento" id="pt_procedimientos" value="Si"></th>
+                          <th style="font-size: 12px">2. PROCEDIMIENTOS <input type="checkbox" name="pt_plan_tratamiento" id="pt_procedimientos" value="Si"></th>
                           <th style="font-size: 12px">3. CONSENTIMIENTO INFORMADO <input type="checkbox" name="pt_consentimiento_informado" id="pt_consentimiento_informado" value="Si"></th>
                           <th style="font-size: 12px">4. OTROS  <input type="checkbox" name="pt_otros" id="pt_otros" value="Si"></th>
 

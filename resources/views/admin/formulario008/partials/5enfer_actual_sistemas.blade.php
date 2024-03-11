@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>5. ENFERMEDAD ACTUAL Y REVISION DE SISTEMA        
-        <label for="aplica_actual_sistemas" style="margin-left: 350px;">No Aplica</label>
-        <input type="checkbox" id="aplica_actual_sistemas";/>
+        <label for="aplica_actual_sistemas" style="margin-left: 680px;">NO APLICA</label>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_actual_sistemas";/>
       </h3>
     <div id="aplica_actual_sistemas_ocult" class="form-group">
         <table border="1" cellspacing="-5" cellpadding="3" width="100%" >

@@ -3,11 +3,11 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
           <tr>
-            <th>Hora de Llegada</th>
-            <th>Vía Aérea Libre</th>
-            <th>Vía Aérea Obstruida</th>
-            <th>Grupo de RH</th>
-            <th>Condiciones de Llegada</th>
+            <th>HORA DE LLEGADA</th>
+            <th>VÍA AÉREA LIBRE</th>
+            <th>VÍA AÉREA OBSTRUIDA</th>
+            <th>GRUPO-RH</th>
+            <th>CONDICIONES DE LLEGADA</th>
           </tr>
         </thead>
         <style>
@@ -18,24 +18,24 @@
         </style>
         <tbody>
           <tr>
-            <td><input class="form-control" type="time" id="hora_llegada" name="hora_llegada" /></td>
-            <td><input type="checkbox" id="via_aerea_libre" name="via_aerea_libre" value="Si"/></td>
-            <td><input  type="checkbox" id="via_aerea_obstruida" name="via_aerea_obstruida" value="Si"/></td>
+            <td><input class="form-control" type="time" id="hora_llegada" name="hora_llegada"/></td>
+            <td><input style="margin-left: 10px" type="checkbox" id="via_aerea_libre" name="via_aerea_libre" value="Si" /></td>
+            <td><input style="margin-left: 10px" type="checkbox" id="via_aerea_obstruida" name="via_aerea_obstruida" value="Si" onclick="checkboxvias(this)"></td>
         
             <td><input class="form-control" type="text" id="grupo_rh" name="grupo_rh" /></td>
             <td>
               <select class="form-control" id="condicion_llegada" name="condicion_llegada">
-                <option value="Estable">Estable</option>
-                <option value="Inestable">Inestable</option>
-                <option value="Otro">Otro</option>
+                <option value="Estable">ESTABLE</option>
+                <option value="Inestable">INESTABLE</option>
+                <option value="Otro">OTRO</option>
               </select>
-            </td>
+            </td>           
            
           </tr>
         </tbody>
         <tbody>
             <tr>
-                <th>Motivo de Llegada</th>
+                <th>MOTIVO DE LLEGADA</th>
                 
                     <td colspan="4" ><input class="form-control" type="text" id="motivo_llegada" name="motivo_llegada" /></td>
                 

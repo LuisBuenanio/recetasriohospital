@@ -1,16 +1,16 @@
 <div class="form-group">
-    <h3 >3. Accidente, violencia, intoxicación
-        <label for="aplica_intoxicacion" style="margin-left: 500px;">No Aplica</label>
-        <input type="checkbox" id="aplica_intoxicacion";/>
+    <h3 >3. ACCIDENTE, VIOLENCIA, INTOXICACIÓN
+        <label for="aplica_intoxicacion" style="margin-left: 720px;">NO APLICA</label>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_intoxicacion";/>
     </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
             <tr>
-                <th>Lugar del Evento</th>
-                <th>Dirección del Evento</th>
-                <th>Fecha del Evento</th>
-                <th>Hora del Evento</th>
-                <th>Vehículo o Arma</th>
+                <th>LUGAR DEL EVENTO</th>
+                <th>DIRECCIÓN DEL EVENTO</th>
+                <th>FECHA DEL EVENTO</th>
+                <th>HORA DEL EVENTO</th>
+                <th>VEHÍCULO O ARMA</th>
             </tr>
         </thead>
 
@@ -27,19 +27,19 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
             <tr>
-                <th>Tipo de Evento</th>
-                <th>Autoridad Competente</th>
-                <th>Hora de Denuncia</th>
-                <th>Custodia Policial</th>
+                <th>TIPO DE EVENTO</th>
+                <th>AUTORIDAD COMPETENTE</th>
+                <th>HORA DE CUSTODIA</th>
+                <th>CUSTODIA POLICIAL</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento" name="tipo_evento" value="accidente" onclick="checkboxtipoeventos(this)"/>Accidente</label>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento1" name="tipo_evento" value="envenenamiento" onclick="checkboxtipoeventos(this)"/>Envenenamiento</label>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento2" name="tipo_evento" value="violencia" onclick="checkboxtipoeventos(this)"/>Violencia</label>
-                    <label><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento3" name="tipo_evento" value="otro" onclick="checkboxtipoeventos(this)"/>Otro</label>
+                    <label style="margin-right: 10px;"><input style=" margin-left: 10px; margin-right: 10px;"  type="checkbox" id="tipo_evento" name="tipo_evento" value="accidente" onclick="checkboxtipoeventos(this)"/>ACCIDENTE</label>
+                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento1" name="tipo_evento" value="envenenamiento" onclick="checkboxtipoeventos(this)"/>ENVENENAMIENTO</label>
+                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento2" name="tipo_evento" value="violencia" onclick="checkboxtipoeventos(this)"/>VIOLENCIA</label>
+                    <label><input style=" margin-right: 10px;"  type="checkbox" id="tipo_evento3" name="tipo_evento" value="otro" onclick="checkboxtipoeventos(this)"/>OTRO</label>
                 </td>
             
                 <td><input class="form-control" type="text" id="autoridad_competente" name="autoridad_competente" /></td>
@@ -66,7 +66,7 @@
         <tbody>
             <tr>
                 
-                <td colspan="4" >Observaciones<input class="form-control" type="textarea" id="observaciones" name="observaciones" /></td>
+                <td colspan="4" >OBSERVACIONES<input class="form-control" type="textarea" id="observaciones" name="observaciones" /></td>
                     
             </tr>
         </tbody> 
@@ -76,45 +76,46 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
               <tr>
-                <th>INTOXICACION</th>
+                <th>INTOXICACIÓN</th>
                 <th>VIOLENCIA</th>  
               </tr>
         </thead>
   
         <tbody>
               <tr>
-                <td> <label for="aliento_etilico">Aliento Etilico</label>
-                    <input type="checkbox" id="aliento_etilico" name="aliento_etilico" value="Si" /> 
+                <br>
+                <td> <label for="aliento_etilico">ALIENTO ETÍLICO</label>
+                    <input style="margin-left: 10px" type="checkbox" id="aliento_etilico" name="aliento_etilico" value="Si" /> 
   
-                    <label for="valor_alcochekc">Valor Alcochek</label>
-                    <input  type="text" id="valor_alcochekc" name="valor_alcochekc" />
+                    <label style="margin-left: 10px" for="valor_alcochekc">VALOR ALCOCHEK</label>
+                    <input style="margin-left: 10px" type="text" id="valor_alcochekc" name="valor_alcochekc" />
     
-                    <label for="hora_examen">Hora de Examen </label>
-                    <input type="time" id="hora_examen" name="hora_examen" />
+                    <label style="margin-left: 10px" for="hora_examen">HORA DE EXÁMEN</label>
+                    <input style="margin-left: 10px" type="time" id="hora_examen" name="hora_examen" />
 
                     
-                    <label for="alcoholemia">Alcoholemia </label>
-                    <input type="checkbox" id="alcoholemia" name="alcoholemia" value="Si"/>
+                    <label style="margin-left: 10px" for="alcoholemia">ALCOHOLEMIA </label>
+                    <input style="margin-left: 10px" type="checkbox" id="alcoholemia" name="alcoholemia" value="Si"/>
     
-                    <label for="otras_sustancias1">Otras Sustancias</label>
-                    <input type="checkbox" id="otras_sustancias1" name="otras_sustancias1" value="Si" /> 
+                    <label style="margin-left: 10px" for="otras_sustancias1">OTRAS SUSTANCIAS</label>
+                    <input style="margin-left: 10px" type="checkbox" id="otras_sustancias1" name="otras_sustancias1" value="Si" /> 
                     
-                    <label for="otras_sustancias2">Otras Sustancias</label>
-                    <input type="checkbox" id="otras_sustancias2" name="otras_sustancias2" value="Si"/> 
+                    <label for="otras_sustancias2">OTRAS SUSTANCIAS</label>
+                    <input style="margin-left: 10px" type="checkbox" id="otras_sustancias2" name="otras_sustancias2" value="Si"/> 
                 </td>
   
                 <td>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="v_sospecha" name="v_sospecha" value="Si"/>Sospecha</label>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="v_abuso_fisico" name="v_abuso_fisico" value="Si"/>Abuso Físico</label>
-                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="v_abuso_psicologico" name="v_abuso_psicologico" value="Si"/>Abuso Psicológico</label>
-                    <label><input style=" margin-right: 10px;"  type="checkbox" id="v_abuso_sexual" name="v_abuso_sexual" value="Si"/>Abuso Sexual</label>
+                    <label style="margin-right: 10px;"><input style=" margin-left: 10px; margin-right: 10px;"  type="checkbox" id="v_sospecha" name="v_sospecha" value="Si"/>SOSPECHA</label>
+                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="v_abuso_fisico" name="v_abuso_fisico" value="Si"/>ABUSO FÍSICO</label>
+                    <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="v_abuso_psicologico" name="v_abuso_psicologico" value="Si"/>ABUSO PSICOLÓGICO</label>
+                    <label><input style=" margin-left: 10px; margin-right: 10px;"  type="checkbox" id="v_abuso_sexual" name="v_abuso_sexual" value="Si"/>ABUSO SEXUAL</label>
                 </td>
               </tr>
   
         </tbody>
         <tbody>
                
-                <td colspan="2" >Observaciones: <input class="form-control" type="textarea" id="obser_intoxi_violen" name="obser_intoxi_violen" /></td>
+                <td colspan="2" >OBSERVACIONES: <input class="form-control" type="textarea" id="obser_intoxi_violen" name="obser_intoxi_violen" /></td>
                 
         </tbody>
     </table>
@@ -124,7 +125,7 @@
         <thead>
           <tr>
             <th>QUEMADURAS</th>
-            <th>Porcentaje Superficie </th>
+            <th>PORCENTAJE SUPERFICIE</th>
             <th>PICADURA</th>
             <th>MORDEDURA</th>
           </tr>
@@ -134,7 +135,7 @@
           <tr>
             <td>
                 
-                <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="quemaduras" name="quemaduras" value="grado i" onclick="checkboxquemaduras(this)"/>GRADO I</label>
+                <label style="margin-right: 10px;"><input style=" margin-left: 10px; margin-right: 10px;"  type="checkbox" id="quemaduras" name="quemaduras" value="grado i" onclick="checkboxquemaduras(this)"/>GRADO I</label>
                 <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="quemaduras1" name="quemaduras" value="grado ii" onclick="checkboxquemaduras(this)"/>GRADO II</label>
                 <label style="margin-right: 10px;"><input style=" margin-right: 10px;"  type="checkbox" id="quemaduras2" name="quemaduras" value="grado iii" onclick="checkboxquemaduras(this)"/>GRADO III</label>
                 

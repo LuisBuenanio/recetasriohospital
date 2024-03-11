@@ -8,26 +8,26 @@
                 <th>APELLIDO MATERNO</th>
                 <th>NOMBRES</th>
                 <th>NACIONALIDAD</th>
-                <th>N CEDULA DE CIUDADANIA </th>               
+                <th>N° CÉDULA DE CIUDADANIA </th>               
 
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td><input style="width: 200px; height: 20px; padding: 3px;" type="text" class="form-control"  id="apellido_paterno" name="apellido_paterno"readonly /></td>
+                <td><input type="text" class="form-control"  id="apellido_paterno" name="apellido_paterno"readonly /></td>
 
-                <td><input style="width: 200px; height: 20px; padding: 3px;"  type="text" class="form-control"   id="apellido_materno" name="apellido_materno" readonly /></td>
+                <td><input type="text" class="form-control"   id="apellido_materno" name="apellido_materno" readonly /></td>
                 <td>
-                    <input style="width: 200px; height: 20px; padding: 3px;" type="text" class="form-control" id="nombre" name="nombre" readonly />
+                    <input type="text" class="form-control" id="nombre" name="nombre" readonly />
                 </td>
-                <td><input style="width: 200px; height: 20px; padding: 3px;" type="text" class="form-control" id="nacionalidad" name="nacionalidad" readonly></td>
+                <td><input type="text" class="form-control" id="nacionalidad" name="nacionalidad" readonly></td>
             
-                <td style="display: flex; align-items: center; ">        
+                <td style="height: 20px; padding: 3px;  align-items: center; ">        
                        
                      {!! Form::select('paciente_id', ['' => 'Seleccione un paciente'] + $pacientes->pluck('nombrecompletocedula', 'id')->all(),
                     null, ['class' => 'form-control select2', 'id' => 'select-paciente', 'data-placeholder' => 'Seleccione un paciente','margin-right' => '10px'],) !!} 
-                    <button type="button" class="btn btn-secondary mt-2 ;" data-toggle="modal" data-target="#modalAgregarPaciente">Crear Paciente</button>
+                    <button style="height: 20px; padding: 3px; display: flex; align-items: center; " type="button" class="btn btn-secondary mt-2 ;" data-toggle="modal" data-target="#modalAgregarPaciente">Crear Paciente</button>
                     
                 </td>               
                 
@@ -39,7 +39,7 @@
     <table style="border-collapse: collapse; border-spacing: 0;" >
         <thead>
             <tr>
-                <th style="padding: 0px;" >DIRECCION DE RESIDENCIA HABITUAL</th>
+                <th style="padding: 0px;" >DIRECCIÓN DE RESIDENCIA HABITUAL</th>
                 <th style="padding: 3px;" >CANTÓN</th>
                 <th style="padding: 3px;" >PROVINCIA</th>
                 <th style="padding: 3px;">N° TELÉFONO</th>
@@ -60,13 +60,13 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
           <tr>
-            <th>FECHA DE ATENCION</th>
+            <th>FECHA DE ATENCIÓN</th>
             <th>HORA</th>
             <th>EDAD</th>
             <th>SEXO</th>
             <th>ESTADO CIVIL</th>
-            <th>INSTRUCCION</th>
-            <th>OCUPACION</th>
+            <th>INSTRUCCIÓN</th>
+            <th>OCUPACIÓN</th>
             <th>SEGURO DE SALUD</th>
           </tr>
         </thead>
@@ -75,8 +75,7 @@
             {{-- <td><input type="date" class="form-control" id="fecha_atencion" name="fecha_atencion" /></td> --}}
             
             <td style="padding: 3px;">{!! Form::date('fecha_atencion', \Carbon\Carbon::now(), ['class' => 'form-control', 'id'=> 'fecha_atencion', ]) !!}</td>
-            {{-- <td><input type="time" class="form-control" id="hora_atencion" name="hora_atencion"  /></td> --}}
-            <td><input type="time" class="form-control" id="hora_atencion" name="hora_atencion" /></td>
+            <td><input type="time" class="form-control" id="hora_atencion" name="hora_atencion"/></td>
 
             {{-- <td>{!! Form::time('hora_atencion', \Carbon\Carbon::now(), ['class' => 'form-control', 'id'=> 'hora_atencion', ]) !!}</td> --}}
             <td><input type="text" class="form-control" id="edad" name="edad" readonly /></td>
@@ -84,13 +83,19 @@
             <td><input type="text" class="form-control" id="estado_civil" name="estado_civil" readonly /></td>    
             <td><input type="text" class="form-control"id="instruccion" name="instruccion" readonly /></td>   
             <td><input type="text" class="form-control" id="ocupacion" name="ocupacion" readonly /></td>    
-           <td>
-                <select class="form-control" id="seguro_salud" name="seguro_salud">
-                    <option value="">...</option anable>
-                    <option value="iess">IESS</option>
-                    <option value="otro">OTRO</option>
-                  </select> 
-            </td>
+          <td>
+            <select class="form-control" id="seguro_salud" name="seguro_salud">
+                <option value="">...</option anable>                        
+                <option value="IESS">IESS</option>
+                <option value="BMI">BMI</option>
+                <option value="PANAMERICAN">PANAMERICAN</option>
+                <option value="ECUASANITAS">ECUASANITAS</option>
+                <option value="SALUDSA">SALUDSA</option>
+                <option value="BUPA">BUPA</option>
+                <option value="CONFIAMED">CONFIAMED</option>
+            </select>
+          </td>
+            
             {{-- <td>
                 <select id="seguro_salud" name="seguro_salud" onchange="habilitarInput()">
                     <option value="">...</option anable>
@@ -123,9 +128,9 @@
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>
           <tr>
-            <th>NOMBRE DE LA PERSONA PARA NOTIFICACION </th>
+            <th>NOMBRE DE LA PERSONA PARA NOTIFICACIÓN </th>
             <th>PARENTESCO AFINIDAD </th>
-            <th>DIRECCION</th>
+            <th>DIRECCIÓN</th>
             <th>N° TELÉFONO</th>
           </tr>
         </thead>
@@ -135,7 +140,7 @@
             <td><input class="form-control" type="text" id="per_notific_nombre" name="per_notific_nombre" /></td>
             <td><input class="form-control" type="text" id="per_notific_parentesco" name="per_notific_parentesco" /> </td>
             <td><input class="form-control" type="text" id="per_notific_direccion" name="per_notific_direccion" /></td>
-            <td><input class="form-control" type="number" id="per_notific_telefono" name="per_notific_telefono" /> </td>
+            <td><input class="form-control" type="text" id="per_notific_telefono" name="per_notific_telefono" /> </td>
           </tr>
         </tbody>
 
@@ -146,7 +151,7 @@
           <tr>
                 <th>NOMBRE DEL ACOMPAÑANTE </th>
                 <th>N° DE IDENTIDAD </th>
-                <th>DIRECCION</th>
+                <th>DIRECCIÓN</th>
                 <th>N° TELÉFONO</th>
           </tr>
         </thead>
@@ -156,7 +161,7 @@
                 <td><input class="form-control" type="text" id="acompa_nombre" name="acompa_nombre" /></td>
                 <td><input class="form-control" type="text" id="acompa_cedula" name="acompa_cedula" /> </td>
                 <td><input class="form-control" type="text" id="acompa_direccion" name="acompa_direccion" /></td>
-                <td><input class="form-control" type="number" id="acompa_telefono" name="acompa_telefono" /> </td>
+                <td><input class="form-control" type="text" id="acompa_telefono" name="acompa_telefono" /> </td>
           </tr>
         </tbody>
       </table>
@@ -165,7 +170,7 @@
         <thead>
           <tr>
                 <th>FORMA DE LLEGADA </th>
-                <th>FUENTE DE INFORMACION</th>
+                <th>FUENTE DE INFORMACIÓN</th>
                 <th>INSTITUCIÓN O PERSONA QUE ENTREGA AL PACIENTE </th>
                 <th>N° TELÉFONO</th>
           </tr>
@@ -174,13 +179,19 @@
         <tbody>
           <tr>
                 <td> <select class="form-control" id="forma_llegada" name="forma_llegada">
-                    <option value="Ambulatorio">Ambulatorio</option>
-                    <option value="Silla de Ruedas">Silla de Ruedas</option>
-                    <option value="Camilla">Camilla</option>
+                    <option value="Ambulatorio">AMBULATORIO</option>
+                    <option value="Silla de Ruedas">SILLA DE RUEDAS</option>
+                    <option value="Camilla">CAMILLA</option>
                 </select></td>
-                <td><input class="form-control" type="text" id="fuente_informacion" name="fuente_informacion" /> </td>
+                <td>
+                    <select class="form-control" id="fuente_informacion" name="fuente_informacion">
+                        <option value="Directa">DIRECTA</option>
+                        <option value="Indirecta">INDIRECTA</option>
+                    </select>
+                </td>
+
                 <td><input class="form-control" type="text" id="institucion_pers_entrega" name="institucion_pers_entrega" /></td>
-                <td><input class="form-control" type="number" id="telefono_pers_institucion" name="telefono_pers_institucion" /> </td>
+                <td><input class="form-control" type="text" id="telefono_pers_entrega" name="telefono_pers_entrega" /> </td>
           </tr>
         </tbody>
       </table>

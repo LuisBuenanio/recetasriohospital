@@ -9,6 +9,9 @@ body {
   input[type="number"] {
     border: 1px solid #663300;
   }
+  input{
+    text-transform: uppercase;
+  }
   
   button[type="submit"] {
     background-color: #663300;
@@ -29,6 +32,7 @@ body {
   th, td {
     border: 1px solid black;
     padding: 3px;
+    font-size: 10px;
   }
   
   .header {

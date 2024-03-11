@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>6. CARACTERÍSTICAS DEL DOLOR        
-        <label for="aplica_caracteristicas_dolor" style="margin-left: 540px;">No Aplica</label>
-        <input type="checkbox" id="aplica_caracteristicas_dolor";/>
+        <label for="aplica_caracteristicas_dolor" style="margin-left: 770px;">NO APLICA</label>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_caracteristicas_dolor";/>
       </h3>
     <div id="aplica__caracteristicas_dolor_ocult" class="form-group">        
         <table border="1" cellspacing="-5" cellpadding="3" width="100%">
@@ -46,8 +46,8 @@
                     </td>
                     <td colspan="3">
                     <select id="alivia_con_1" name="alivia_con_1">
-                        <option value="antiespasmodico">ANTIESPASMODICO</option>
-                        <option value="modico">OPIACEO</option>
+                        <option value="antiespasmodico">ANTIESPASMÓDICO</option>
+                        <option value="modico">OPIÁCEO</option>
                         <option value="aine">AINE</option>
                         <option value="no alivia">NO ALIVIA</option>
                     </select>
@@ -88,8 +88,8 @@
                     </td>
                     <td colspan="3">
                     <select id="alivia_con_2" name="alivia_con_2">
-                        <option value="antiespasmodico">ANTIESPASMODICO</option>
-                        <option value="modico">OPIACEO</option>
+                        <option value="antiespasmodico">ANTIESPASMÓDICO</option>
+                        <option value="modico">OPIÁCEO</option>
                         <option value="aine">AINE</option>
                         <option value="no alivia">NO ALIVIA</option>
                     </select>
@@ -101,48 +101,7 @@
                     </select>
                     </td>
                 </tr>
-                {{-- caracteristicas dolor 3 --}}
-                <tr>
-                    <td colspan="3"><input class="form-control" type="text" id="region_anatomica_3" name="region_anatomica_3" /></td>
-                    <td colspan="3"><input class="form-control" type="text" id="punto_doloroso_3" name="punto_doloroso_3" /></td>              
-                    <td colspan="3">
-                    <select id="evolucion_3" name="evolucion_3">
-                        <option value="agudo">AGUDO</option>
-                        <option value="sub agudo">SUB AGUDO</option>
-                        <option value="cronico">CRÓNICO</option>
-                    </select>
-                    </td>
-                    <td colspan="3">
-                    <select id="tipo_3" name="tipo_3">
-                        <option value="episodico">EPISÓDICO</option>
-                        <option value="continuo">CONTINUO</option>
-                        <option value="colico">CÓLICO</option>
-                    </select>
-                    </td>
-                    <td colspan="3">
-                    <select id="modificaciones_3" name="modificaciones_3">
-                        <option value="posicion">POSICIÓN</option>
-                        <option value="ingesta">INGESTA</option>
-                        <option value="esfuerzo">ESFUERZO</option>
-                        <option value="digito presion">DIGITO PRESIÓN</option>
-                        <option value="se irradia">SE IRRADIA</option>
-                    </select>
-                    </td>
-                    <td colspan="3">
-                    <select id="alivia_con_3" name="alivia_con_3">
-                        <option value="antiespasmodico">ANTIESPASMODICO</option>
-                        <option value="modico">OPIACEO</option>
-                        <option value="aine">AINE</option>
-                        <option value="no alivia">NO ALIVIA</option>
-                    </select>
-                    <td colspan="3">
-                    <select id="intensidad_3" name="intensidad_3">
-                        <option value="leve">LEVE</option>
-                        <option value="moderado">MODERADO</option>
-                        <option value="grave">GRAVE</option>
-                    </select>
-                    </td>
-                </tr>
+                
             </tbody>
         </table>
     </div>

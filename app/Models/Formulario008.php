@@ -19,11 +19,18 @@ class Formulario008 extends Model
         return $this->belongsTo(User::class);
     }
 
-    /*   Relacion de uno a muchos inversa */
-    public function diagnosticoscie10(){
-        return $this->belongsTo(Diagnosticoscie10::class);
-    }
     
+      // Relación para los diagnósticos presuntivos
+    public function diagnosticosPresuntivos()
+    {
+        return $this->belongsToMany(DiagnosticosCie10::class, 'diagnosticoscie10_formulario008', 'formulario008_id', 'diagnosticoscie10_id');
+    }
+
+    // Relación para los diagnósticos definitivos
+    public function diagnosticosDefinitivos()
+    {
+        return $this->belongsToMany(DiagnosticosCie10::class, 'diagnosticoscie10f_formulario008', 'formulario008_id', 'diagnosticoscie10_id');
+    }
    
     
     /*   Relacion de uno a muchos inversa Paciente */
