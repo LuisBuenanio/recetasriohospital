@@ -3,7 +3,7 @@
     <select name="nacionalidad" id="nacionalidad" class="form-control">
         <option value="otro" @if (isset($paciente) && $paciente->nacionalidad === 'otro') selected @endif>Seleccione una Nacionalidad</option>
         <option value="ecuatoriano" @if (isset($paciente) && $paciente->nacionalidad === 'ecuatoriano') selected @endif>Ecuatoriano</option>
-        <option value="extranjero" @if (isset($paciente) && $paciente->nacionalidad === 'extranjero') selected @endif>Estranjero</option>
+        <option value="extranjero" @if (isset($paciente) && $paciente->nacionalidad === 'extranjero') selected @endif>Extranjero</option>
         </select>
 </div>
 
