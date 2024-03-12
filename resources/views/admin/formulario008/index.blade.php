@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Medicamentos')
+@section('title', 'Formularios 008')
 
 @section('content_header')
     @can('admin.medicamento.create')

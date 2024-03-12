@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Receta médica</title>
+        <title>Formulario 008</title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
         {{-- <link rel="stylesheet" href="{{ asset('css/ficha08.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/ficha.css') }}" /> --}}
@@ -1294,9 +1294,8 @@
                                                                                         
                    </tr>
                    <tr>
-                    <td colspan="16">
-                        <textarea style="font-size: 9px; height: 25px;" readonly>{{ mb_strtoupper($formulario008->obser_plan_diagnostico) }}</textarea>
-
+                    <td colspan="16" tyle="font-size: 9px; height: 20px;">
+                       {{ mb_strtoupper($formulario008->obser_plan_diagnostico) }}
                     </td>
                    </tr>
 
@@ -1326,8 +1325,8 @@
                                     <tr>
 
                                         <td> <strong> {{ $loop->iteration }}</td>
-                                        <td colspan="3">{{ $diagnostico->descripcion }}</td>                                    
-                                        <td>{{ $diagnostico->clave }}</td>
+                                        <td colspan="3" style="font-size: 6px">{{ $diagnostico->descripcion }}</td>                                    
+                                        <td style="font-size: 6px">{{ $diagnostico->clave }}</td>
 
                                     </tr>
                                 @endforeach                                            
@@ -1357,8 +1356,8 @@
                                                 <tr>
 
                                                     <td> <strong> {{ $loop->iteration }}</td>
-                                                    <td colspan="3">{{ $diagnostico->descripcion }}</td>                                    
-                                                    <td>{{ $diagnostico->clave }}</td>
+                                                    <td colspan="3" style="font-size: 6px">{{ $diagnostico->descripcion }}</td>                                    
+                                                    <td style="font-size: 6px">{{ $diagnostico->clave }}</td>
 
                                                 </tr>
                                             @endforeach                                            
@@ -1410,40 +1409,40 @@
                 <tbody>
                        
                     <tr>
-                        <td>1</td>
-                        <td >{{ mb_strtoupper($formulario008->medicamento_generico_1 )}}</td>                                                
-                        <td >{{ mb_strtoupper($formulario008->via_1 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dosis_1 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->posologia_1 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dias_1 )}}</td> 
-                        <td colspan="8">{{ $formulario008->obser_plan_tratamiento_1 }}</td> 
+                        <td  style="font-size: 6px" >1</td>
+                        <td  style="font-size: 6px" >{{ mb_strtoupper($formulario008->medicamento_generico_1 )}}</td>                                                
+                        <td  style="font-size: 6px" >{{ mb_strtoupper($formulario008->via_1 )}}</td>
+                        <td  style="font-size: 6px" >{{ mb_strtoupper($formulario008->dosis_1 )}}</td>
+                        <td  style="font-size: 6px" >{{ mb_strtoupper($formulario008->posologia_1 )}}</td>
+                        <td  style="font-size: 6px" >{{ mb_strtoupper($formulario008->dias_1 )}}</td> 
+                        <td colspan="8" style="font-size: 6px" >{{ $formulario008->obser_plan_tratamiento_1 }}</td> 
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td >{{ mb_strtoupper($formulario008->medicamento_generico_2 )}}</td>                                                
-                        <td >{{ mb_strtoupper($formulario008->via_2 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dosis_2 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->posologia_2 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dias_2 )}}</td>  
-                        <td colspan="8">{{ $formulario008->obser_plan_tratamiento_2 }}</td>
+                        <td  style="font-size: 6px">2</td>
+                        <td  style="font-size: 6px">{{ mb_strtoupper($formulario008->medicamento_generico_2 )}}</td>                                                
+                        <td  style="font-size: 6px">{{ mb_strtoupper($formulario008->via_2 )}}</td>
+                        <td  style="font-size: 6px">{{ mb_strtoupper($formulario008->dosis_2 )}}</td>
+                        <td  style="font-size: 6px">{{ mb_strtoupper($formulario008->posologia_2 )}}</td>
+                        <td  style="font-size: 6px">{{ mb_strtoupper($formulario008->dias_2 )}}</td>  
+                        <td colspan="8" style="font-size: 6px">{{ $formulario008->obser_plan_tratamiento_2 }}</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td >{{ mb_strtoupper($formulario008->medicamento_generico_3 )}}</td>                                                
-                        <td >{{ mb_strtoupper($formulario008->via_3 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dosis_3 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->posologia_3 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dias_3 )}}</td>  
-                        <td colspan="8">{{ $formulario008->obser_plan_tratamiento_3 }}</td>
+                        <td style="font-size: 6px">3</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->medicamento_generico_3 )}}</td>                                                
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->via_3 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->dosis_3 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->posologia_3 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->dias_3 )}}</td>  
+                        <td colspan="8"style="font-size: 6px">{{ $formulario008->obser_plan_tratamiento_3 }}</td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td >{{ mb_strtoupper($formulario008->medicamento_generico_4 )}}</td>                                                
-                        <td >{{ mb_strtoupper($formulario008->via_4 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dosis_4 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->posologia_4 )}}</td>
-                        <td >{{ mb_strtoupper($formulario008->dias_4 )}}</td>  
-                        <td colspan="8">{{ $formulario008->obser_plan_tratamiento_4 }}</td>
+                        <td style="font-size: 6px">4</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->medicamento_generico_4 )}}</td>                                                
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->via_4 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->dosis_4 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->posologia_4 )}}</td>
+                        <td style="font-size: 6px">{{ mb_strtoupper($formulario008->dias_4 )}}</td>  
+                        <td colspan="8" style="font-size: 6px">{{ $formulario008->obser_plan_tratamiento_4 }}</td>
                     </tr>  
                 </tbody>                
  
