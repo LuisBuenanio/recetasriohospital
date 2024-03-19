@@ -56,7 +56,7 @@
             }
     
             table th {
-                background-color: #c07223;
+                background-color: #756657;
                 color: #ffff;
                 font-size: 9px;
                 text-align: center;

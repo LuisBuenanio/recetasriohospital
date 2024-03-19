@@ -8,9 +8,11 @@ use App\Models\Receta;
 use Dompdf\Dompdf;
 use PDF;
 
+use Illuminate\Support\Facades\Response;
+
 class ImprimirRecetaController extends Controller
 {
-    public function imprimirpdf($id)
+   /*  public function imprimirpdf($id)
     {
         
         $receta = Receta::findOrFail($id);
@@ -21,5 +23,27 @@ class ImprimirRecetaController extends Controller
         $dompdf->setPaper('A4', 'landscape'); // vertical portrait    /// orizontal landscape
         $dompdf->render();
         $dompdf->stream("Receta-{$receta->id}-.pdf");
+    } */
+    public function imprimirpdf($id)
+    {
+        
+        $receta = Receta::findOrFail($id);
+
+        $html = view('admin.receta.recetapdf', compact('receta'))->render();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape'); // vertical portrait    /// orizontal landscape
+        $dompdf->render();
+        // Cambiar de stream a output para mostrar en pantalla
+        $pdfOutput = $dompdf->output();
+
+        // Retornar una respuesta con el PDF en pantalla
+        return Response::make($pdfOutput, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="Receta-' . $receta->id . '.pdf"'
+        ]);
+        
     }
+
+    
 }

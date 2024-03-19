@@ -721,95 +721,7 @@
                 });
             });
 
-            document.addEventListener("DOMContentLoaded", function() {
-                var checkbox = document.getElementById("aplica_signos_vitales");
-                var presionArterial = document.getElementById("presion_arterial");
-                var frecuencia_cardiaca = document.getElementById("frecuencia_cardiaca");
-                var frecuencia_respiratoria = document.getElementById("frecuencia_respiratoria");
-                var temperatura_bucal = document.getElementById("temperatura_bucal");
-                var temperatura_axilar = document.getElementById("temperatura_axilar");
-                var peso = document.getElementById("peso");
-                var talla = document.getElementById("talla");
-                var glasgow_ocular = document.getElementById("glasgow_ocular");
-                var glasgow_verbal = document.getElementById("glasgow_verbal");
-                var glasgow_motora = document.getElementById("glasgow_motora");
-                var glasgow_total = document.getElementById("glasgow_total");
-                var rec_pupila_derecha = document.getElementById("rec_pupila_derecha");
-                var rec_pupila_izquierda = document.getElementById("rec_pupila_izquierda");
-                var tej_llenado_capilar = document.getElementById("tej_llenado_capilar");
-                var perimetro_cefalico = document.getElementById("perimetro_cefalico");
-                checkbox.addEventListener("change", function() {
-                    if (this.checked) {
-
-                        presionArterial.disabled = true;
-                        frecuencia_cardiaca.disabled = true;
-                        frecuencia_respiratoria.disabled = true;
-                        temperatura_bucal.disabled = true;
-                        temperatura_axilar.disabled = true;
-                        peso.disabled = true;
-                        talla.disabled = true;
-                        glasgow_ocular.disabled = true;
-                        glasgow_verbal.disabled = true;
-                        glasgow_motora.disabled = true;
-                        glasgow_total.disabled = true;
-                        rec_pupila_derecha.disabled = true;
-                        rec_pupila_izquierda.disabled = true;
-                        tej_llenado_capilar.disabled = true;
-                        perimetro_cefalico.disabled = true;
-
-                        ////////////////////////////////////////////////
-                        presionArterial.style.display = 'none';
-                        frecuencia_cardiaca.style.display = 'none';
-                        frecuencia_respiratoria.style.display = 'none';
-                        temperatura_bucal.style.display = 'none';
-                        temperatura_axilar.style.display = 'none';
-                        peso.style.display = 'none';
-                        talla.style.display = 'none';
-                        glasgow_ocular.style.display = 'none';
-                        glasgow_verbal.style.display = 'none';
-                        glasgow_motora.style.display = 'none';
-                        glasgow_total.style.display = 'none';
-                        rec_pupila_derecha.style.display = 'none';
-                        rec_pupila_izquierda.style.display = 'none';
-                        tej_llenado_capilar.style.display = 'none';
-                        perimetro_cefalico.style.display = 'none';
-
-                    } else {
-                        presionArterial.disabled = false;
-                        frecuencia_cardiaca.disabled = false;
-                        frecuencia_respiratoria.disabled = false;
-                        temperatura_bucal.disabled = false;
-                        temperatura_axilar.disabled = false;
-                        peso.disabled = false;
-                        talla.disabled = false;
-                        glasgow_ocular.disabled = false;
-                        glasgow_verbal.disabled = false;
-                        glasgow_motora.disabled = false;
-                        glasgow_total.disabled = false;
-                        rec_pupila_derecha.disabled = false;
-                        rec_pupila_izquierda.disabled = false;
-                        tej_llenado_capilar.disabled = false;
-                        perimetro_cefalico.disabled = false;
-
-                        //////////////////////////////////////////////
-                        presionArterial.style.display = 'block';
-                        frecuencia_cardiaca.style.display = 'block';
-                        frecuencia_respiratoria.style.display = 'block';
-                        temperatura_bucal.style.display = 'block';
-                        temperatura_axilar.style.display = 'block';
-                        peso.style.display = 'block';
-                        talla.style.display = 'block';
-                        glasgow_ocular.style.display = 'block';
-                        glasgow_verbal.style.display = 'block';
-                        glasgow_motora.style.display = 'block';
-                        glasgow_total.style.display = 'block';
-                        rec_pupila_derecha.style.display = 'block';
-                        rec_pupila_izquierda.style.display = 'block';
-                        tej_llenado_capilar.style.display = 'block';
-                        perimetro_cefalico.style.display = 'block';
-                    }
-                });
-            });
+            
 
             document.addEventListener("DOMContentLoaded", function() {
                 var checkbox = document.getElementById("aplica_embarazo_parto");
@@ -1152,113 +1064,86 @@
 
 
            ////////////////////////////// DIAGRAMA TOPOGRÁFICO //////////////////////////////////
-           document.addEventListener("DOMContentLoaded", function () {
-            let contenedor = document.getElementById("contenedor-imagen");
-            let numerosContainer = document.getElementById("numeros-container");
-            let isSelecting = false;
-            let lesionIdCounter = 1;
+            
+                  
+           $(document).ready(function() {
+                    var contenedor = $('#contenedor-imagen');
+                    var numerosContainer = $('#numeros-container');
 
-            contenedor.addEventListener("dblclick", function (event) {
-                let x = event.pageX - contenedor.offsetLeft;
-                let y = event.pageY - contenedor.offsetTop;
+                    contenedor.on('click', function(event) {
+                        var posX = event.offsetX; // Obtiene la posición X relativa al contenedor de la imagen
+                        var posY = event.offsetY; // Obtiene la posición Y relativa al contenedor de la imagen
 
-                let lesionId = prompt("Ingrese el ID de la lesión:");
-                if (lesionId !== null && !isNaN(lesionId)) {
-                    let numeroDiv = document.createElement("div");
-                    numeroDiv.textContent = lesionId;
-                    numeroDiv.classList.add("numero-ingresado");
-                    numeroDiv.setAttribute("data-lesion", lesionIdCounter++);
-                    numeroDiv.style.left = x + "px";
-                    numeroDiv.style.top = y + "px";
-                    numerosContainer.appendChild(numeroDiv);
+                        var idLesion = $('input[type="checkbox"]:checked').val();
 
-                    // Hacer el número arrastrable
-                    makeDraggable(numeroDiv);
+                        if (idLesion) {
+                            // Variable count específica para este número ingresado
+                            var count = $('.numero-ingresado[data-id-lesion="' + idLesion + '"]').length;
 
-                    // Agregar la opción de eliminar al hacer clic derecho
-                    numeroDiv.addEventListener("contextmenu", function (e) {
-                        e.preventDefault();
-                        numerosContainer.removeChild(numeroDiv);
-                    });
-                } else {
-                    alert("Por favor, ingrese un ID de lesión válido (número).");
-                }
-            });
+                            var numeroIngresado = $('<div class="numero-ingresado" data-id-lesion="' + idLesion + '">' + idLesion + '</div>').css({
+                                top: posY,
+                                left: posX
+                            }).appendTo(contenedor);
 
-            function makeDraggable(element) {
-                let isDragging = false;
-                let offsetX, offsetY;
+                            // Agregar coordenadas al formulario
+                            var coordenadaX = $('<input type="hidden" name="lesiones[' + idLesion + '][coordenadas][' + count + '][posicion_x]" value="' + posX + '">');
+                            var coordenadaY = $('<input type="hidden" name="lesiones[' + idLesion + '][coordenadas][' + count + '][posicion_y]" value="' + posY + '">');
+                            $('#table-container').append(coordenadaX);
+                            $('#table-container').append(coordenadaY);
 
-                element.addEventListener("mousedown", function (e) {
-                    isDragging = true;
-                    offsetX = e.clientX - parseFloat(element.style.left);
-                    offsetY = e.clientY - parseFloat(element.style.top);
+                            console.log('Lesión ' + idLesion + ': Posición X = ' + posX + ', Posición Y = ' + posY);
+                            // Hacer los números movibles
+                            numeroIngresado.draggable({
+                                containment: contenedor,
+                                scroll: false,
+                                drag: function(event, ui) {
+                                    var posX = ui.position.left;
+                                    var posY = ui.position.top;
+                                    $(this).css({ top: posY, left: posX });
 
-                    // Evitar que se solicite ingresar un nuevo número durante el arrastre
-                    isSelecting = true;
-                });
+                                    // Actualizar las coordenadas en los campos ocultos
+                                    var idLesion = $(this).data('id-lesion');
+                                    var index = $('.numero-ingresado[data-id-lesion="' + idLesion + '"]').index($(this));
+                                    $('input[name="lesiones[' + idLesion + '][coordenadas][' + index + '][posicion_x]"]').val(posX);
+                                    $('input[name="lesiones[' + idLesion + '][coordenadas][' + index + '][posicion_y]"]').val(posY);
 
-                document.addEventListener("mousemove", function (e) {
-                    if (isDragging) {
-                        element.style.left = e.clientX - offsetX + "px";
-                        element.style.top = e.clientY - offsetY + "px";
-                    }
-                });
+                                    // Imprimir las coordenadas en la consola
+                                    //console.log('Lesión ' + idLesion + ': Posición X = ' + posX + ', Posición Y = ' + posY);
+                                }
+                                
+                            });
 
-                document.addEventListener("mouseup", function () {
-                    isDragging = false;
+                             
+                            
 
-                    // Permitir ingresar un nuevo número después de soltar el arrastre
-                    isSelecting = false;
-                });
-            }
+                            // Añadir evento para eliminar al hacer clic derecho
+                            numeroIngresado.on('contextmenu', function(e) {
+                                e.preventDefault();
+                                var idLesion = $(this).data('id-lesion');
+                                var index = $('.numero-ingresado[data-id-lesion="' + idLesion + '"]').index($(this));
 
-            // Actualizar coordenadas al seleccionar una lesión
-            let lesionCheckboxes = document.querySelectorAll('.lesion-checkbox');
-            lesionCheckboxes.forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    let coordX = this.getAttribute('data-coord-x');
-                    let coordY = this.getAttribute('data-coord-y');
-                    if (this.checked) {
-                        let lesionId = this.value;
-                        let numeroDiv = document.querySelector(`.numero-ingresado[data-lesion="${lesionId}"]`);
-                        if (numeroDiv) {
-                            numeroDiv.style.left = coordX + 'px';
-                            numeroDiv.style.top = coordY + 'px';
+                                // Eliminar las coordenadas del formulario
+                                $('input[name="lesiones[' + idLesion + '][coordenadas][' + index + '][posicion_x]"]').remove();
+                                $('input[name="lesiones[' + idLesion + '][coordenadas][' + index + '][posicion_y]"]').remove();
+
+                                // Eliminar también las coordenadas y datos de la lesión asociada en la base de datos
+                                $(this).remove();
+
+                                // Imprimir el mensaje de eliminación en la consola
+                                console.log('Lesión ' + idLesion + ' eliminada junto con sus coordenadas');
+                            });
+
+                        } else {
+                            alert('Por favor, seleccione una lesión primero.');
                         }
-                    } else {
-                        // Si no está seleccionado, eliminar el número de la imagen
-                        let lesionId = this.value;
-                        let numeroDiv = document.querySelector(`.numero-ingresado[data-lesion="${lesionId}"]`);
-                        if (numeroDiv) {
-                            numerosContainer.removeChild(numeroDiv);
-                        }
-                    }
-                });
+                    });          
             });
+        
+        
+        
+       
 
-            // Botón de Guardar
-            let guardarBtn = document.getElementById('guardar-btn');
-            guardarBtn.addEventListener('click', function () {
-                // Recopilar datos de las lesiones seleccionadas
-                let lesionesSeleccionadas = {};
-                let numeros = document.querySelectorAll('.numero-ingresado');
-                numeros.forEach(function (numero) {
-                    let lesionId = numero.getAttribute('data-lesion');
-                    let coordX = parseFloat(numero.style.left);
-                    let coordY = parseFloat(numero.style.top);
-                    lesionesSeleccionadas[lesionId] = { posicion_x: coordX, posicion_y: coordY };
-                });
-
-                // Asignar a un campo oculto en el formulario antes de enviar
-                let lesionesInput = document.getElementById('lesiones-seleccionadas');
-                lesionesInput.value = JSON.stringify(lesionesSeleccionadas);
-
-                // Ahora puedes enviar el formulario
-                // document.getElementById('tuFormulario').submit();
-            });
-        });
-
-
-        </script>
+       
+       
+       </script>
     @stop

@@ -117,14 +117,10 @@ class Formulario008Controller extends Controller
 
     public function create()
     {
-        $maxFormulario008Id = Formulario008::max('id'); // Obtenemos el valor máximo actual del campo 'id' en la tabla 'formulario008'
-        $nextId = $maxFormulario008Id + 1; // Incrementamos en uno para obtener el próximo número de formulario008
-
+        $maxFormulario008Id = Formulario008::max('id'); 
+        $nextId = $maxFormulario008Id + 1; 
         $formulario008 = new Formulario008();
-        $users = User::pluck('name', 'id');
-        // Obtener medicamentos disponibles para la selección
-
-       /*  $diagnosticoscie10s = Diagnosticoscie10::pluck('clave', 'id'); */
+        $users = User::pluck('name', 'id');      
 
         $sexo = Sexo::pluck('descripcion', 'id');
         $pacientes = Paciente::all();
@@ -161,35 +157,29 @@ class Formulario008Controller extends Controller
             
             $formulario008->save();
 
-            
-                    // Procesar las lesiones
-                $lesiones = $request->input('lesiones', []);
+            // Procesar las lesiones
+            $lesiones = $request->input('lesiones', []);
 
-                foreach ($lesiones as $lesion) {
-                    if (isset($lesion['id'])) {
-                        $lesion_id = $lesion['id'];
-                        $posicion_x = $lesion['posicion_x'];
-                        $posicion_y = $lesion['posicion_y'];
+            foreach ($lesiones as $lesionId => $lesionData) {
+                //dd($lesiones);
+                if (isset($lesionData['coordenadas'])) {
+                    $coordenadas = $lesionData['coordenadas'];
+                    
+                    foreach ($coordenadas as $coordenada) {
+                        
+                        $posicion_x = $coordenada['posicion_x'];
+                        $posicion_y = $coordenada['posicion_y'];
 
                         // Guardar la relación en la tabla lesion_formulario
-                        $formulario008->lesiones()->attach($lesion_id, [
+                        $formulario008->lesiones()->attach($lesionId, [
                             'posicion_x' => $posicion_x,
                             'posicion_y' => $posicion_y
                         ]);
                     }
                 }
-
-
-                /* // Luego, generas el PDF
-                    $html = view('admin.formulario008.formulario008pdf', compact('formulario008'))->render();
-                    
-                    $dompdf = new Dompdf();
-                    $dompdf->loadHtml($html);
-                    $dompdf->setPaper('A4', 'portrait');
-                    $dompdf->render();
-
-                    $dompdf->stream("Formulario-{$formulario008->id}-.pdf");
-            */
+            }
+         
+               
         
 
         // Verificar si hay diagnósticos presuntivos seleccionados
@@ -216,11 +206,7 @@ class Formulario008Controller extends Controller
                 $formulario008->diagnosticosDefinitivos()->attach($diagnosticosIds);
             }            
         }
-
-
-
-  
-
+        
 
         return redirect()->route('admin.formulario008.index')-> with('info', 'Formulario 008 Creado correctamente');
 
@@ -247,7 +233,7 @@ class Formulario008Controller extends Controller
     public function imprimirpdf1($id)
     {
         $formulario008 = Formulario008::findOrFail($id);       
-        $lesiones = Lesion::all();
+        $lesiones = Lesion::all();        
 
         $html = view('admin.formulario008.formulario008pdf', compact('formulario008', 'lesiones'))->render();
     
@@ -284,23 +270,18 @@ class Formulario008Controller extends Controller
     {
         $formulario008 = Formulario008::findOrFail($id);
 
-        /* $this->authorize('author', $formulario008); */
+        $this->authorize('author', $formulario008);
         $users = User::pluck('name', 'id');
 
 
         $sexo = Sexo::pluck('descripcion', 'id');
-        $lesiones = Lesion::all();
+       
         $pacientes = Paciente::all();
         $provincias = Provincia::all();
         $ciudades = Ciudad::all(); 
         $diagnosticoscie10s = Diagnosticoscie10::all();
 
-      /*   $medicamentos = Medicamento::selectRaw("CONCAT(nombre, ' (', concentracion, ') ', tipo) as nombre_concentracion, id")
-        ->pluck('nombre_concentracion', 'id');
-         */
-
-        
-              
+      
          // Recuperar los diagnósticos presuntivos asociados al formulario
         $diagnosticosPresuntivos = $formulario008->diagnosticosPresuntivos;
 
@@ -310,7 +291,11 @@ class Formulario008Controller extends Controller
         // Obtener todos los diagnósticos disponibles para el formulario
         $diagnosticos = Diagnosticoscie10::all();
 
-        return view('admin.formulario008.edit', compact('formulario008', 'users', 'diagnosticos' , 'diagnosticoscie10s' ,'pacientes', 'provincias', 'ciudades', 'sexo','diagnosticosPresuntivos', 'diagnosticosDefinitivos' ,'lesiones'));
+        $lesiones = Lesion::all(); 
+        
+        $selectedLesiones = $formulario008->lesiones()->get(); ;
+
+        return view('admin.formulario008.edit', compact('formulario008', 'users', 'diagnosticos' , 'diagnosticoscie10s' ,'pacientes', 'provincias', 'ciudades', 'sexo','diagnosticosPresuntivos', 'diagnosticosDefinitivos' ,'selectedLesiones','lesiones'));
     }
  
     public function update(Request $request, $id)
@@ -318,7 +303,7 @@ class Formulario008Controller extends Controller
          //
         $formulario008 = Formulario008::findOrFail($id);
 
-       /*  $this->authorize('author', $formulario008); */
+       $this->authorize('author', $formulario008);
 
         //        
         $formulario008->via_aerea_libre = $request->has('via_aerea_libre') ? 'Si' : 'No';
@@ -585,7 +570,58 @@ class Formulario008Controller extends Controller
             }
         }
 
+
         
+
+     // Lógica para manejar las lesiones
+   
+
+  
+
+          // Obtener las lesiones enviadas desde la vista
+        $lesionesEnviadas = $request->input('lesiones', []);
+
+        // Obtener todas las lesiones existentes en la base de datos
+        $lesionesBaseDatos = $formulario008->lesiones;
+
+        // Recorrer las lesiones de la base de datos
+        foreach ($lesionesBaseDatos as $lesion) {
+            // Verificar si la lesión está presente en las lesiones enviadas desde la vista
+            if (!isset($lesionesEnviadas[$lesion->id])) {
+                // Si la lesión no está presente en las lesiones enviadas, eliminarla y sus coordenadas asociadas
+                $formulario008->lesiones()->detach($lesion->id);
+            }
+        }
+
+        // Procesar las lesiones enviadas desde la vista (actualizar o agregar)
+        foreach ($lesionesEnviadas as $lesionId => $lesionData) {
+            if (isset($lesionData['coordenadas'])) {
+                foreach ($lesionData['coordenadas'] as $coordenada) {
+                    // Verificar si $coordenada es un array
+                    if (is_array($coordenada)) {
+                        $posicion_x = $coordenada['posicion_x'];
+                        $posicion_y = $coordenada['posicion_y'];
+
+                        // Verificar si la lesión ya está asociada al formulario
+                        if (!$formulario008->lesiones->contains($lesionId)) {
+                            // Si la lesión no está asociada al formulario, guardar la relación en la tabla lesion_formulario
+                            $formulario008->lesiones()->attach($lesionId, [
+                                'posicion_x' => $posicion_x,
+                                'posicion_y' => $posicion_y
+                            ]);
+                        } else {
+                            // Si la lesión ya está asociada, actualizar sus coordenadas
+                            $formulario008->lesiones()->updateExistingPivot($lesionId, [
+                                'posicion_x' => $posicion_x,
+                                'posicion_y' => $posicion_y
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+
+     
       
          
         return redirect()->route('admin.formulario008.index')->with('info', 'Formulario 008 actualizado correctamente');
@@ -598,7 +634,7 @@ class Formulario008Controller extends Controller
         
         $formulario008 = Formulario008::findOrFail($id);
         
-        /* $this->authorize('author', $formulario008); */
+        $this->authorize('author', $formulario008);
 
         $formulario008->delete();
 

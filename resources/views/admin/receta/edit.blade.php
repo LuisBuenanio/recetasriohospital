@@ -67,6 +67,17 @@
 
             </div>
 
+            <div class="form-group">
+                {!! Form::label('diagnostico_secundario_id', 'Diagnóstico Secundario:') !!}
+                {!! Form::select('diagnostico_secundario_id', ['' => 'Seleccione'] + $diagnosticoscie10->all(), null, ['class' => 'form-control select2']) !!}
+
+                
+                @error('diagnostico_secundario_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+            </div>
+
             {{-- <div class="form-group">
                 {!! Form::label('paciente_id', 'Paciente:') !!}
                 {!! Form::select('paciente_id', $paciente.NombreCompleto, null, ['class' => 'form-control select2']) !!}

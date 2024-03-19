@@ -372,19 +372,19 @@ return [
         ],
         [
             'text'    => 'Formulario 008',
-            'icon'    => 'fas fa-fw fa-first-aid',
+            'icon'    => 'fas fa-solid fa-clipboard',
             'can'   => 'admin.formulario008.index',
             'submenu' => [
                 [
                     'text' => 'Listar Formularios 008',
                     'route'  => 'admin.formulario008.index',
-                    'icon' => 'fas fa-fw fa-first-aid',
+                    'icon'    => 'fas fa-solid fa-clipboard',
                     
                 ],
                 [
                     'text' => 'Crear Formulario 008',
                     'route'  => 'admin.formulario008.create',
-                    'icon' => 'fas fa-fw fa-first-aid',
+                    'icon'    => 'fas fa-solid fa-clipboard',
                 ],
                 
             ],

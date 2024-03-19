@@ -293,7 +293,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="text-align: center; font-size: 9px">{{ $receta->paciente->nombre }}</td>
+                                <td style="text-align: center; font-size: 9px">{{ $receta->paciente->NombreCompleto }}</td>
                             </tr>
 
                         </tbody>
@@ -330,7 +330,18 @@
 
 
                             </tr>
+                            <tr>
+                                <td style="font-size: 9px">{{ $receta->diagnosticoSecundario->descripcion ?? '' }}</td>
+                                <td colspan="2" style="font-size: 9px">{{ $receta->diagnosticoSecundario->clave ?? '' }}</td>
+                                
+                                
+                                
+
+
+                            </tr>
+
                         </tbody>
+                        
                     </table>
                 </td>
                 <td style="width: 50%;">

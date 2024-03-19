@@ -160,6 +160,7 @@ class RecetaController extends Controller
             'medico' => $recetaOriginal->medico,
             'users_id' => auth()->user()->id, // O asigna el ID del usuario actual
             'diagnosticoscie10_id' => $recetaOriginal->diagnosticoscie10_id,
+            'diagnostico_secundario_id' => $recetaOriginal->diagnostico_secundario_id,
             'paciente_id' => $recetaOriginal->paciente_id,
         ]);
 

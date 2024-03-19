@@ -56,6 +56,12 @@ class Receta extends Model
         return $this->belongsTo(Diagnosticoscie10::class);
     }
     
+
+    
+    public function diagnosticoSecundario()
+    {
+        return $this->belongsTo(Diagnosticoscie10::class, 'diagnostico_secundario_id');
+    }
    
     
     /*   Relacion de uno a muchos inversa Paciente */

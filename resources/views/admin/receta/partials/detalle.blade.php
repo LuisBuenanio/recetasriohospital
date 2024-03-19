@@ -65,6 +65,22 @@
     </tbody>
 
     </thead>
+    <thead>
+        <tr>
+
+            <th>CIE-10</th>
+            <th>DESCRIPCIÓN</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{!! $receta->diagnosticoSecundario->clave ?? '' !!}</td>
+            <td>{!! $receta->diagnosticoSecundario->descripcion ?? '' !!}</td>
+            <th colspan="2"></th>
+        </tr>
+    </tbody>
 
 </table>
 

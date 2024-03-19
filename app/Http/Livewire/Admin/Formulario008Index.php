@@ -20,7 +20,7 @@ class Formulario008Index extends Component
         $this->resetPage();
     }
     
-    public function render()
+   /*  public function render()
     {
         $user = Auth::user();
         
@@ -38,5 +38,41 @@ class Formulario008Index extends Component
             ->paginate(10);
 
         return view('livewire.admin.formulario008-index', ['formulario008s' => $formulario008s]);
+    } */
+    public function render()
+    {
+        $user = Auth::user();
+
+        
+        if ($user->hasRole('Admin')) {
+            $formulario008s = Formulario008::where(function ($query) {
+                    $query->where('codigo', 'LIKE', '%'.$this->search.'%')
+                        ->orWhereHas('paciente', function ($query) {
+                            $query->where('cedula', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('apellido_paterno', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('apellido_materno', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('nombre', 'LIKE', '%'.$this->search.'%');
+                        });
+                })
+                ->latest('id')
+                ->paginate(10);
+        } else {
+            
+            $formulario008s = Formulario008::where('users_id', $user->id)
+                ->where(function ($query) {
+                    $query->where('codigo', 'LIKE', '%'.$this->search.'%')
+                        ->orWhereHas('paciente', function ($query) {
+                            $query->where('cedula', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('apellido_paterno', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('apellido_materno', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('nombre', 'LIKE', '%'.$this->search.'%');
+                        });
+                })
+                ->latest('id')
+                ->paginate(10);
+        }
+
+        return view('livewire.admin.formulario008-index', ['formulario008s' => $formulario008s]);
     }
+
 }

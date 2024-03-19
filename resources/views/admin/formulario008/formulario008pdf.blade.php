@@ -56,15 +56,15 @@
             }
     
             table th {
-                background-color: #c07223;
-                color: #ffff;
+                background-color: #b3a386;
+                color: #240c0c;
                 font-size: 9px;
                 text-align: center;
             }
     
             footer {
                 font-size: 9px;
-                color: #3e2001;
+                color: #756657;
                 position: absolute;
                 bottom: 0;
                 width: 100%;
@@ -90,7 +90,7 @@
     
             }
     
-            .img-2 {
+           /*  .img-2 {
     
                 display: flex;
                 justify-content: center;
@@ -99,7 +99,7 @@
                 max-width: none;
     
     
-            }
+            } */
     
             footer {
                 font-size: 9px;
@@ -273,7 +273,7 @@
                     <td colspan="6"> {{ $formulario008->paciente->direccion ?? '' }} </td>
                     <td> {{ mb_strtoupper($formulario008->paciente->ciudad->descripcion ?? '' )}} </td>
                     <td> {{ mb_strtoupper($formulario008->paciente->ciudad->provincia->descripcion ?? '' )}} </td>
-                    <td> {{ mb_strtoupper ($formulario008->paciente->telefono ?? '')}}</td>      
+                    <td style="font-size: 9px"> {{ mb_strtoupper ($formulario008->paciente->telefono ?? '')}}</td>      
                     
                 </tbody>
                 
@@ -671,7 +671,7 @@
                 <tbody>
                     <tr>
                         <td colspan="16">
-                            <textarea style="font-size: 9px; height: 25px;" readonly>{{ mb_strtoupper($formulario008->obser_antec_personales) }}</textarea>
+                            <textarea style="font-size: 7px; text-align: justify; height: 25px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_antec_personales) }}</textarea>
 
                         </td>                      
                          
@@ -699,7 +699,7 @@
                 <tbody>
                     <tr>
                         <td colspan="3">
-                            <textarea style="font-size: 9px; height: 25px;" readonly>{{ mb_strtoupper($formulario008->enf_actual_sistemas) }}</textarea>
+                            <textarea style="font-size: 7px; text-align: justify; height: 25px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->enf_actual_sistemas) }}</textarea>
 
                         </td>                      
                          
@@ -860,99 +860,100 @@
                     
                 </thead>    
                 <tbody>
-                    <tr>        
+                    <tr>    
+                                                
                 
-                        <th style="font-size: 6px" >1-R PIEL Y FANERAS</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_piel_faneras == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_piel_faneras == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >6-R BOCA</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_boca == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_boca == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >11-R ABDOMEN</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_abdomen == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_abdomen == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >1-S ÓRGANOS DE <br> LOS SENTIDOS</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_organos_sentidos == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_organos_sentidos == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >6-S URINARIO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_urinario == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_urinario == 'SP' ? 'checked' : '' }}/></td>        
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >1-R PIEL Y FANERAS</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_piel_faneras == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_piel_faneras == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" > 6-R BOCA</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_boca == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_boca == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" > 11-R ABDOMEN</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_abdomen == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_abdomen == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" > 1-S ÓRGANOS DE <br> LOS SENTIDOS</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_organos_sentidos == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_organos_sentidos == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" > 6-S URINARIO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_urinario == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_urinario == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
 
                     <tr>
-                        <th style="font-size: 6px" >2-R CABEZA</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_cabeza == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >7-R ORO FARINGE</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_oro_faringe == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_oro_faringe == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >12-R COLUMNA <br> VERTEBRAL</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_columna_vertebral == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_columna_vertebral == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >2-S RESPIRATORIO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_respiratorio == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_respiratorio == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >7-S MÚSCULO <br> ESQUELÉTICO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_musculo_esqueletico == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_musculo_esqueletico == 'SP' ? 'checked' : '' }}/></td>        
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >2-R CABEZA</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_cabeza == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >7-R ORO FARINGE</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_oro_faringe == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.5rem;" type="checkbox" {{ $formulario008->r_oro_faringe == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >12-R COLUMNA <br> VERTEBRAL</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_columna_vertebral == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_columna_vertebral == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >2-S RESPIRATORIO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_respiratorio == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_respiratorio == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >7-S MÚSCULO <br> ESQUELÉTICO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_musculo_esqueletico == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_musculo_esqueletico == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
 
                     <tr>
-                        <th style="font-size: 6px" >3-R OJOS</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_ojos == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_ojos == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >8-R CUELLO</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_cuello == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_cuello == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >13-INGLE-PERINÉ</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_ingle_perine == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_ingle_perine == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >3-S CARDIOVASCULAR</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_cardiovascular == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_cardiovascular == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >8-S ENDÓCRINO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_endocrino == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_endocrino == 'SP' ? 'checked' : '' }}/></td>        
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >3-R OJOS</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_ojos == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_ojos == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >8-R CUELLO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_cuello == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_cuello == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >13-INGLE-PERINÉ</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_ingle_perine == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->r_ingle_perine == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >3-S CARDIOVASCULAR</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->s_cardiovascular == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->s_cardiovascular == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >8-S ENDÓCRINO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->s_endocrino == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"  type="checkbox" {{ $formulario008->s_endocrino == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
 
                     <tr>
-                        <th style="font-size: 6px" >4-R OIDOS</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_oidos == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_oidos == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >9-R AXILAS-MAMAS</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_axilas_mamas == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_axilas_mamas == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >14-R MIEMBROS <br> SUPERIORES</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_miembros_superiores == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_miembros_superiores == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >4-S DIGESTIVO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_digestivo == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_digestivo == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >9-S HEMOLENFÁTICO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_hemolinfatico == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_hemolinfatico == 'SP' ? 'checked' : '' }}/></td>        
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >4-R OIDOS</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_oidos == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_oidos == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >9-R AXILAS-MAMAS</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_axilas_mamas == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_axilas_mamas == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >14-R MIEMBROS <br> SUPERIORES</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_miembros_superiores == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->r_miembros_superiores == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >4-S DIGESTIVO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_digestivo == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_digestivo == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >9-S HEMOLENFÁTICO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_hemolinfatico == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;"   type="checkbox" {{ $formulario008->s_hemolinfatico == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
 
                     <tr>
-                        <th style="font-size: 6px" >5-R NARIZ</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_nariz == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_nariz == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >10-R TÓRAX</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_torax == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_torax == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >15-R MIEMBROS <br> INFERIORES</th>
-                        <td><input  type="checkbox" {{ $formulario008->r_miembros_inferiores == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->r_miembros_inferiores == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >5-S GENITAL</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_genital == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_genital == 'SP' ? 'checked' : '' }}/></td>
-                        <th style="font-size: 6px" >10-S NEUROLÓGICO</th>
-                        <td><input  type="checkbox" {{ $formulario008->s_neurologico == 'CP' ? 'checked' : '' }}/></td>
-                        <td><input  type="checkbox" {{ $formulario008->s_neurologico == 'SP' ? 'checked' : '' }}/></td>        
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >5-R NARIZ</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_nariz == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_nariz == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >10-R TÓRAX</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_torax == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_torax == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >15-R MIEMBROS <br> INFERIORES</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_miembros_inferiores == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->r_miembros_inferiores == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >5-S GENITAL</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_genital == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_genital == 'SP' ? 'checked' : '' }}/></td>
+                        <th style="font-size: 6px ; line-height: 1; white-space: nowrap;" >10-S NEUROLÓGICO</th>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_neurologico == 'CP' ? 'checked' : '' }}/></td>
+                        <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_neurologico == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
                     <tr>
                         <td colspan="15">
-                            <textarea style="font-size: 9px; height: 20px;" readonly>{{ mb_strtoupper($formulario008->obser_examen_fisico) }}</textarea>
+                            <textarea style="font-size: 7px; text-align: justify; height: 40px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_examen_fisico) }}</textarea>
 
                         </td>
                     </tr>
@@ -977,111 +978,77 @@
                                 <td style="width: 50%;">
                                     <!-- Primera subtabla izquierda -->
                                     <table style="width: 100%;">
-                                        
+                                        <tr>
                                             <td>
-                                                <img class="img-2"
-                                                src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('img/008/diagrama.jpeg'))) }}"/>
-                                             </td>
-                                            
+                                                
+                                                <style>
+                                                    .contenedor {
+                                                        position: relative;
+                                                    }
                                         
+                                                    .numero-ingresado {
+                                                        position: absolute;
+                                                        cursor: move;
+                                                        user-select: none;
+                                                        border: 2px solid #007bff;
+                                                        padding: 1px;
+                                                        background-color: rgba(0, 123, 255, 0.4);
+                                                        border-radius: 50%;
+                                                        font-size: 7px;
+                                                        color: #007bff;
+                                                    }
+                                                </style>
+                                                <div class="contenedor" id="contenedor-imagen" style="flex: 1;">
+                                                    <img id="movable-image" style="width: 220px;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('img/008/diagrama.jpeg'))) }}" />
+                                                    <div id="numeros-container">
+                                                        @foreach ($formulario008->lesiones as $lesion)
+                                                        @if ($lesion->pivot->posicion_x !== null && $lesion->pivot->posicion_y !== null)
+                                                        <?php
+                                                        $original_width = 600; // Ancho original de la imagen
+                                                        $original_height = 400; // Alto original de la imagen
+                                                        $nueva_width = 220; // Nuevo ancho deseado
+                                                        $nueva_height = ($original_height / $original_width) * $nueva_width; // Calcula la nueva altura proporcionalmente
+                                                        $posicion_x_proporcional = ($lesion->pivot->posicion_x / $original_width) * $nueva_width; // Calcula la nueva posición X proporcionalmente
+                                                        $posicion_y_proporcional = ($lesion->pivot->posicion_y / $original_height) * $nueva_height; // Calcula la nueva posición Y proporcionalmente
+                                                        ?>
+                                                        <div class="numero-ingresado coordenada" data-id-lesion="{{ $lesion->id }}" data-posicion-x="{{ $lesion->pivot->posicion_x }}" data-posicion-y="{{ $lesion->pivot->posicion_y }}" style="position: absolute; top: {{ $posicion_y_proporcional }}px; left: {{ $posicion_x_proporcional }}px;">
+                                                            {{ $lesion->id }}
+                                                        </div>
+                                                        @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div>                                        
+                                               
+                                            </td>
+                                        </tr>                                        
+                                                       
                                     </table>
                                 </td>
                                 <td style="width: 50%;">
                                     <!-- Segunda subtabla derecha -->
                                     <table style="width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">1</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">HERIDA PENETRANTE</th>
-                                                <td></td>
-                                                {{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                             --}}</tr>
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">2</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">HERIDA NO PENETRANTE</th>
-                                                <td></td>
-                                                {{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                            --}} </tr>
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">3</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">FRACTURA EXPUESTA</th>
-                                                <td></td>
-                                                {{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">4</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">FRACTURA CERRADA</th>
-                                                <td></td>
-                                               {{--  <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                            --}} </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">5</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">AMPUTACIÓN</th>
-                                                <td></td>
-                                                {{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                            --}} </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">6</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">HEMORRAGIA</th>
-                                                <td></td>
-                                               {{--  <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">7</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">MORDEDURA</th>
-                                                <td></td>{{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                           
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">8</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">PICADURA</th>
-                                                <td></td>{{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                            --}} </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">9</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">EXCORIACIÓN</th>
-                                               <td></td>{{--  <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">10</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">DEFORMIDAD O MASA</th>
-                                               <td></td> {{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                            --}} </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">11</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">HEMATOMA</th>
-                                               <td></td>{{--  <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">12</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">QUEMADURA G I</th>
-                                                <td></td>{{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                             --}}</tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">13</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">QUEMADURA G II</th>
-                                                <td></td>{{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                             --}}</tr>
-                                            
-                                            <tr>
-                                                <td style="font-size: 8px; padding: 2px; vertical-align: middle;">14</td>
-                                                <th style="font-size: 8px; padding: 2px; vertical-align: middle;">QUEMADURA G III</th>
-                                                <td></td>{{-- <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block;" type="checkbox" {{ $formulario008->r_cabeza == 'CP' ? 'checked' : '' }}/></td>
-                                           --}}  </tr>
-                                            
-                                            
-
-                                        </tbody>   
+                                        <tbody>    
+                                            @foreach ($lesiones as $lesion)
+                                                <?php
+                                                    $esta_en_imagen = false;
+                                                    if ($formulario008->lesiones) {
+                                                        foreach ($formulario008->lesiones as $lesion_agregada) {
+                                                            if ($lesion_agregada->id === $lesion->id) {
+                                                                $esta_en_imagen = true;
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
+                                                <tr>
+                                                    <td style="font-size: 6px; line-height: 1; white-space: nowrap;" >{{ $lesion->id }}</td>
+                                                    <td style="font-size: 6px; line-height: 1; white-space: nowrap;">{{ $lesion->nombre }}</td>
+                                                    <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.5); display: inline-block; height: 0.7rem; " type="checkbox" {{ $esta_en_imagen ? 'checked' : '' }} disabled></td>
+                                                    
+                                                 </tr>
+                                            @endforeach
+                                        </tbody>
+                                        
                                     </table>
                                 </td>
                             </tr>
@@ -1157,7 +1124,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="8">
-                                                    <textarea style="font-size: 9px; height: 20px;" readonly>{{ mb_strtoupper($formulario008->obser_embarazo_parto) }}</textarea>
+                                                    <textarea style="font-size: 7px; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_embarazo_parto) }}</textarea>
                         
                                                 </td> 
                                             </tr>                                            
@@ -1176,7 +1143,7 @@
                                             
                                             <tr>
                                                 <td colspan="3">
-                                                    <textarea style="font-size: 9px; height: 20px;" readonly>{{ mb_strtoupper($formulario008->analisis_problemas) }}</textarea>
+                                                    <textarea style="font-size: 7px; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->analisis_problemas) }}</textarea>
                         
                                                 </td> 
                                             </tr>                                            
@@ -1294,9 +1261,11 @@
                                                                                         
                    </tr>
                    <tr>
-                    <td colspan="16" tyle="font-size: 9px; height: 20px;">
-                       {{ mb_strtoupper($formulario008->obser_plan_diagnostico) }}
+                    
+                    <td colspan="16" style="text-align: justify; font-size: 7px; height: 20px; font-family: Arial, sans-serif;">
+                        {{ mb_strtoupper($formulario008->obser_plan_diagnostico) }}
                     </td>
+                    
                    </tr>
 
                 </tbody>                

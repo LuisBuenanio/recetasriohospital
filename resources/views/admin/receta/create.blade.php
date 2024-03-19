@@ -46,64 +46,167 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-            <br>
-
-            <!-- For defining autocomplete -->
-            <div class="form-group">
-                {!! Form::label('descripcion', 'Diagnóstico') !!}
-                {!! Form::text('descripcion', null, [
-                    'class ' => 'form-control',
-                    'id' => 'diagnostico_search',
-                    'placeholder' => 'Ingrese el Diagnóstico del Paciente',
-                ]) !!}
-                @error('descripcion')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-
-            <div class="form-group">
-
-                {!! Form::hidden('diagnosticoscie10_id', null, [
-                    'class' => 'form-control',
-                    'id' => 'diagnosticoscie10id',
-                    'placeholder' => 'Nombre del Paciente',
-                    'readonly',
-                ]) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('diagnosticoscie10_clave', 'CIE-10:') !!}
-                {!! Form::text('diagnosticoscie10_clave', null, [
-                    'class' => 'form-control',
-                    'id' => 'diagnosticoscie10clave',
-                    'placeholder' => 'Código CIE-10',
-                    'readonly',
-                ]) !!}
-            </div>           
-
-            <div class="card">
-                        <div class="form-group">                            
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        {!! Form::label('', 'Paciente:') !!}
-                                        
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#modalAgregarPaciente">Crear Paciente</button>
-                                    </div>
-                                    
-                                    <div class="card-body">
-                                        {!! Form::label('', 'Paciente:') !!}
-                                        {!! Form::select('paciente_id', ['' => 'Seleccione un paciente'] + $pacientes->pluck('nombrecompletocedula', 'id')->all(),
-                                            null,
-                                            ['class' => 'form-control select2', 'id' => 'select-paciente', 'data-placeholder' => 'Seleccione un paciente'],
-                                        ) !!}
-                                    </div>                                    
-                                </div>
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <div class="form-group">
+                                {!! Form::label('descripcion', 'Diagnóstico') !!}
+                                {!! Form::text('descripcion', null, [
+                                    'class ' => 'form-control',
+                                    'id' => 'diagnostico_search',
+                                    'placeholder' => 'Ingrese el Diagnóstico del Paciente',
+                                ]) !!}
+                                @error('descripcion')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                </div>
+                        </th>
+                        
+                        <th>
+                            <div class="form-group">
+                                {!! Form::label('diagnosticoscie10_clave', 'CIE-10:') !!}
+                                {!! Form::text('diagnosticoscie10_clave', null, [
+                                    'class' => 'form-control',
+                                    'id' => 'diagnosticoscie10clave',
+                                    'placeholder' => 'Código CIE-10',
+                                    'readonly',
+                                ]) !!}
+                            </div>
+                            <div class="form-group">
+
+                                {!! Form::hidden('diagnosticoscie10_id', null, [
+                                    'class' => 'form-control',
+                                    'id' => 'diagnosticoscie10id',
+                                    'placeholder' => 'Nombre del Paciente',
+                                    'readonly',
+                                ]) !!}
+                            </div>      
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">
+                            <div class="form-group">
+                                {!! Form::label('descripcion', 'Diagnóstico Secundario') !!}
+                                {!! Form::text('descripcion', null, [
+                                    'class ' => 'form-control',
+                                    'id' => 'diagnostico_search1',
+                                    'placeholder' => 'Ingrese el Diagnóstico secundario del Paciente',
+                                ]) !!}
+                                @error('descripcion')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </th>
+                        <th>
+                            
+                
+                            <div class="form-group">
+                                {!! Form::label('diagnosticoscie10_clave', 'CIE-10:') !!}
+                                {!! Form::text('diagnosticoscie10_clave', null, [
+                                    'class' => 'form-control',
+                                    'id' => 'diagnosticoscie10clave1',
+                                    'placeholder' => 'Código CIE-10',
+                                    'readonly',
+                                ]) !!}
+                            </div> 
+                            <div class="form-group">
+
+                                {!! Form::hidden('diagnostico_secundario_id', null, [
+                                    'class' => 'form-control',
+                                    'id' => 'diagnosticoscie10id1',
+                                    'placeholder' => 'Nombre del Paciente',
+                                    'readonly',
+                                ]) !!}
+                            </div>
+                        </th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <div class="card">
+                                <div class="form-group">                            
+        
+                                        <div class="card">
+                                            
+                                            <div>
+                                                <button type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#modalAgregarPaciente">Crear Paciente</button>
+                                            </div>
+                                            
+                                            <div class="card-body">
+                                                {!! Form::label('', 'Paciente:') !!}
+                                                {!! Form::select('paciente_id', ['' => 'Seleccione un paciente'] + $pacientes->pluck('nombrecompletocedula', 'id')->all(),
+                                                    null,
+                                                    ['class' => 'form-control select2', 'id' => 'select-paciente', 'data-placeholder' => 'Seleccione un paciente'],
+                                                ) !!}
+                                            </div>                                    
+                                        </div>
+                                </div>
+                    </div>
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                {!! Form::label('historia', 'Historia Clínica:') !!}
+                                {!! Form::text('historia', null, [
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Ingrese la Historia Clínica del Paciente',
+                                ]) !!}
+
+                                @error('historia')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <p class="font-weight-bold">Alergia</p>
+
+                                <label class="mr-2" id="sialer">
+                                    {!! Form::radio('aler', 1, true) !!}
+                                    SI
+                                </label>
+                                <label class="mr-2" id="noaler">
+                                    {!! Form::radio('aler', 2) !!}
+                                    NO
+                                </label id="alergia">
+                                
+
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                {!! Form::text('alergia', null, [
+                                        'class ' => 'form-control',
+                                        'id' => 'alergia',
+                                        'placeholder' => 'Ingrese Alergia del Paciente',
+                                    ]) !!}
+
+                                    @error('alergia')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                        </td>
+                    </tr>
+                    
+            </table>
+
+            
+
+                
+            
+            <!-- For defining autocomplete -->
+           
+
+              
+
+            
                         
 
 
@@ -307,41 +410,9 @@
 
 
                             {{-- /**//******************************************************************* --}}
-                            <div class="form-group">
-                                {!! Form::label('historia', 'Historia Clínica:') !!}
-                                {!! Form::text('historia', null, [
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Ingrese la Historia Clínica del Paciente',
-                                ]) !!}
+                            
 
-                                @error('historia')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-
-                            </div>
-
-                            <div class="form-group">
-                                <p class="font-weight-bold">Alergia</p>
-
-                                <label class="mr-2" id="sialer">
-                                    {!! Form::radio('aler', 1, true) !!}
-                                    SI
-                                </label>
-                                <label class="mr-2" id="noaler">
-                                    {!! Form::radio('aler', 2) !!}
-                                    NO
-                                </label id="alergia">
-                                {!! Form::text('alergia', null, [
-                                    'class ' => 'form-control',
-                                    'id' => 'alergia',
-                                    'placeholder' => 'Ingrese Alergia del Paciente',
-                                ]) !!}
-
-                                @error('alergia')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-
-                            </div>
+                           
 
                             <div class="container">
                                 <div class="form-group">
@@ -459,35 +530,53 @@
                                 </div>
                             </div>
 
-
-                            <div class="form-group"> 
-                                {!! Form::label('signos', 'Signos de Alarma:') !!}
-                                {!! Form::text('signos', null, [
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Ingrese los signos de Alarma',
-                                ]) !!}
-
-                                @error('signos')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('sugerencia', 'Sugerencia no Farmacológica:') !!}
-                                {!! Form::textarea('sugerencia', null, ['rows' => 4, 'cols' => 50]) !!}
-                            </div>
-                            <div class="form-group">
-                                {!! Form::label('medico', 'Médico Tratante:') !!}
-                                {!! Form::text('medico', null, [
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Ingrese el Médico Tratante la Receta',
-                                ]) !!}
-
-                                @error('medico')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-
-                            </div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" >
+                                        <div class="form-group"> 
+                                            {!! Form::label('signos', 'Signos de Alarma:') !!}
+                                            {!! Form::text('signos', null, [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Ingrese los signos de Alarma',
+                                            ]) !!}
+            
+                                            @error('signos')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+            
+                                        </div>
+            
+                                    </td>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            {!! Form::label('sugerencia', 'Sugerencia no Farmacológica:') !!}
+                                            <br>
+                                            {!! Form::textarea('sugerencia', null, ['rows' => 4, 'cols' => 50]) !!}
+                                        </div>
+            
+                                    </td>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            {!! Form::label('medico', 'Médico Tratante:') !!}
+                                            {!! Form::text('medico', null, [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Ingrese el Médico Tratante la Receta',
+                                            ]) !!}
+            
+                                            @error('medico')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+            
+                                        </div>
+                                    </td>
+                                    
+                                </tr>    
+                            </tbody>
+                        </table>
+                            
+                            
+                            
 
                             {!! Form::submit('Crear  Receta', ['class' => 'btn btn-primary']) !!}
 
@@ -736,6 +825,39 @@ $(document).ready(function() {
                             });
 
                         });
+
+
+                        ////////////////////////////////////////////////////////////////
+                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function() {
+            $("#diagnostico_search1").autocomplete({
+                                source: function(request, response) {
+                                    // Fetch data
+                                    $.ajax({
+                                        url: "{{ route('admin.receta.getDiagnosticoscie10') }}",
+                                        type: 'post',
+                                        dataType: "json",
+                                        data: {
+                                            _token: CSRF_TOKEN,
+                                            search: request.term
+                                        },
+                                        success: function(data) {
+                                            response(data);
+                                        }
+                                    });
+                                },
+                                select: function(event, ui) {
+                                    // Set selection
+                                    $('#diagnostico_search1').val(ui.item.label); // display the selected text
+                                    $('#diagnosticoscie10id1').val(ui.item.value); // save selected id to input
+                                    $('#diagnosticoscie10clave1').val(ui.item.value1);
+                                    return false;
+                                }
+                            });
+
+                        });
+
+                        /////////////////////////////////////////////////////////////////
 
                         $(document).ready(function() {
                             $("#nombre").stringToSlug({
