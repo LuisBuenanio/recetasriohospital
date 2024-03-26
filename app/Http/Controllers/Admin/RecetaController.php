@@ -74,7 +74,7 @@ class RecetaController extends Controller
 
 
 
-
+/* 
     public function getDiagnosticoscie10(Request $request){
 
         $search = $request->search;
@@ -87,11 +87,45 @@ class RecetaController extends Controller
   
         $response = array();
         foreach($diagnosticoscie10s as $diagnosticoscie10){
-           $response[] = array("value"=>$diagnosticoscie10->id,"value1"=>$diagnosticoscie10->clave,"label"=>$diagnosticoscie10->descripcion);
+           $response[] = array(
+            "value"=>$diagnosticoscie10->id,
+            "value1"=>$diagnosticoscie10->clave,
+            "label"=>$diagnosticoscie10->descripcion);
         }
   
         return response()->json($response);
+    } */ 
+
+    public function getDiagnosticoscie10(Request $request){
+        $search = $request->search;
+    
+        $diagnosticoscie10s = Diagnosticoscie10::query();
+    
+        if($search){
+            $diagnosticoscie10s->where(function($query) use ($search) {
+                $query->where('descripcion', 'like', '%' . $search . '%')
+                      ->orWhere('clave', 'like', '%' . $search . '%');
+            });
+        }
+    
+        $diagnosticoscie10s = $diagnosticoscie10s->orderBy('descripcion', 'asc')
+                                               ->select('id', 'clave', 'descripcion')
+                                               ->limit(15)
+                                               ->get();
+    
+        $response = array();
+        foreach($diagnosticoscie10s as $diagnosticoscie10){
+           $response[] = array(
+                "value" => $diagnosticoscie10->id, 
+                "value1" => $diagnosticoscie10->clave,
+                "label" => $diagnosticoscie10->descripcion . ' (' . $diagnosticoscie10->clave . ')'
+      
+            );
+        }
+    
+        return response()->json($response);
     } 
+    
     
 
 

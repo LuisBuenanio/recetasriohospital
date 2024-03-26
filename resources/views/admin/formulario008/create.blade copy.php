@@ -255,7 +255,7 @@
 
 
 
-            /*var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           /* var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $(document).ready(function() {
                 $("#diagnostico_search").autocomplete({
                     source: function(request, response) {
@@ -409,7 +409,36 @@
 
                         //Oculata Campos
 
-                       
+                        /* lugarEvento.style.display = 'none';
+                        direccionEvento.style.display = 'none';
+                        fechaEvento.style.display = 'none';
+                        horaEvento.style.display = 'none';
+                        vehiculoArma.style.display = 'none';
+                        tipoEvento.style.display = 'none';
+                        tipoEvento1.style.display = 'none';
+                        tipoEvento2.style.display = 'none';
+                        tipoEvento3.style.display = 'none';
+                        autoridadCompetente.style.display = 'none';
+                        horaDenuncia.style.display = 'none';
+                        custodiaPolicial.style.display = 'none';
+                        observaciones.style.display = 'none';
+                        alientoEtilico.style.display = 'none';
+                        valorAlcochekc.style.display = 'none';
+                        horaExamen.style.display = 'none';
+                        alcoholemia.style.display = 'none';
+                        otrasSustancias1.style.display = 'none';
+                        otrasSustancias2.style.display = 'none';
+                        vSospecha.style.display = 'none';
+                        vAbusoFisico.style.display = 'none';
+                        vAbusoPsicologico.style.display = 'none';
+                        vAbusSexual.style.display = 'none';
+                        obserintoxiviolen.style.display = 'none';
+                        quemaduras.style.display = 'none';
+                        quemaduras1.style.display = 'none';
+                        quemaduras2.style.display = 'none';
+                        porcentSuperficie.style.display = 'none';
+                        picadura.style.display = 'none';
+                        mordedura.style.display = 'none'; */
 
 
 
@@ -449,6 +478,36 @@
 
                         // Muestra campos
 
+                        /* lugarEvento.style.display = 'block';
+                        direccionEvento.style.display = 'block';
+                        fechaEvento.style.display = 'block';
+                        horaEvento.style.display = 'block';
+                        vehiculoArma.style.display = 'block';
+                        tipoEvento.style.display = 'block';
+                        tipoEvento1.style.display = 'block';
+                        tipoEvento2.style.display = 'block';
+                        tipoEvento3.style.display = 'block';
+                        autoridadCompetente.style.display = 'block';
+                        horaDenuncia.style.display = 'block';
+                        custodiaPolicial.style.display = 'block';
+                        observaciones.style.display = 'block';
+                        alientoEtilico.style.display = 'block';
+                        valorAlcochekc.style.display = 'block';
+                        horaExamen.style.display = 'block';
+                        alcoholemia.style.display = 'block';
+                        otrasSustancias1.style.display = 'block';
+                        otrasSustancias2.style.display = 'block';
+                        vSospecha.style.display = 'block';
+                        vAbusoFisico.style.display = 'block';
+                        vAbusoPsicologico.style.display = 'block';
+                        vAbusSexual.style.display = 'block';
+                        obserintoxiviolen.style.display = 'block';
+                        quemaduras.style.display = 'block';
+                        quemaduras1.style.display = 'block';
+                        quemaduras2.style.display = 'block';
+                        porcentSuperficie.style.display = 'block';
+                        picadura.style.display = 'block';
+                        mordedura.style.display = 'block'; */
 
 
                     }
@@ -897,7 +956,7 @@
 
             //punto 13 diagnosticos presuntivos
             // Inicializar Select2 en el campo de selección de diagnosticocie10s
-            /* $('.select2cie10').select2();
+            $('.select2cie10').select2();
 
 
             let diagnosticocie10Index = 1;
@@ -1026,186 +1085,9 @@
 
             $(document).on('click', '.btn-remove-diagnosticocie10f', function() {
                 $(this).closest('tr').remove();
-            }); */
+            });
 
            ////////////////////////////////////////////////////////////
-          /*  $(document).ready(function() {
-    // Inicializar Select2
-    $('.select2cie10, .select2cie10f').select2();
-
-    let diagnosticocie10Index = 2; // Comenzamos en 2 porque ya hay una fila inicial
-    let diagnosticocie10fIndex = 2; // Comenzamos en 2 porque ya hay una fila inicial
-
-    $('#btn-add-diagnosticocie10').on('click', function() {
-        let newRowHtml = `
-            <tr id="diagnosticocie10-${diagnosticocie10Index}">
-                <td>
-                    <select name="diagnosticos_presuntivos[]" class="form-control select2cie10">
-                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
-                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
-                                        <option value="{{ $diagnosticoscie10->id }}">
-                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
-                                        </option>
-                                    @endforeach
-                    </select>
-                </td>
-                <td style="font-size: 12px">
-                    <input class="form-control diagnosticocie10-clave" type="text" name="diagnosticocie10_generico_3" readonly>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-        $('#diagnosticoscie10_table tbody').append(newRowHtml);
-        $('.select2cie10').select2(); // Re-inicializar Select2 para la nueva fila
-        diagnosticocie10Index++;
-    });
-
-    $(document).on('click', '.btn-remove-diagnosticocie10', function() {
-        $(this).closest('tr').remove();
-    });
-
-    $('#btn-add-diagnosticocie10f').on('click', function() {
-        let newRowHtml = `
-            <tr id="diagnosticocie10f-${diagnosticocie10fIndex}">
-                <td>
-                    <select name="diagnosticos_definitivos[]" class="form-control select2cie10f">
-                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
-                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
-                                        <option value="{{ $diagnosticoscie10->id }}">
-                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
-                                        </option>
-                                    @endforeach
-                    </select>
-                </td>
-                <td style="font-size: 12px">
-                    <input class="form-control diagnosticocie10f-clave" type="text" name="diagnosticocie10f_generico_3" readonly>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10f">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-        $('#diagnosticoscie10f_table tbody').append(newRowHtml);
-        $('.select2cie10f').select2(); // Re-inicializar Select2 para la nueva fila
-        diagnosticocie10fIndex++;
-    });
-
-    $(document).on('click', '.btn-remove-diagnosticocie10f', function() {
-        $(this).closest('tr').remove();
-    });
-
-    $(document).on('change', '.select2cie10, .select2cie10f', function() {
-        let selectedOption = $(this).find('option:selected');
-        let clave = selectedOption.text().split('(')[1].replace(')', '').trim();
-        $(this).closest('tr').find('.diagnosticocie10-clave, .diagnosticocie10f-clave').val(clave);
-    });
-}); */
-
-////////////////////////////////////////////////////////////////////
-
-$(document).ready(function() {
-    // Inicializar Select2
-    $('.select2cie10, .select2cie10f').select2();
-
-    let diagnosticocie10Index = 2; 
-    let diagnosticocie10fIndex = 2; // Comenzamos en 2 porque ya hay una fila inicial
-    const maxDiagnosticoPresuntivo = 4;
-    const maxDiagnosticoDefinitivo = 4;
-
-    $('#btn-add-diagnosticocie10').on('click', function() {
-        if (diagnosticocie10Index <= maxDiagnosticoPresuntivo) {
-            let newRowHtml = `
-            <tr id="diagnosticocie10-${diagnosticocie10Index}">
-                <td>
-                    <select name="diagnosticos_presuntivos[]" class="form-control select2cie10">
-                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
-                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
-                                        <option value="{{ $diagnosticoscie10->id }}">
-                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
-                                        </option>
-                                    @endforeach
-                    </select>
-                </td>
-                <td style="font-size: 12px">
-                    <input class="form-control diagnosticocie10-clave" type="text" name="diagnosticocie10_generico_3" readonly>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-            `;
-            $('#diagnosticoscie10_table tbody').append(newRowHtml);
-            $('.select2cie10').select2(); // Re-inicializar Select2 para la nueva fila
-            diagnosticocie10Index++;
-            toggleAddButton('#btn-add-diagnosticocie10', diagnosticocie10Index, maxDiagnosticoPresuntivo);
-        }
-    });
-
-    $(document).on('click', '.btn-remove-diagnosticocie10', function() {
-        $(this).closest('tr').remove();
-        diagnosticocie10Index--;
-        toggleAddButton('#btn-add-diagnosticocie10', diagnosticocie10Index, maxDiagnosticoPresuntivo);
-    });
-
-    $('#btn-add-diagnosticocie10f').on('click', function() {
-        if (diagnosticocie10fIndex <= maxDiagnosticoDefinitivo) {
-            let newRowHtml = `
-            <tr id="diagnosticocie10f-${diagnosticocie10fIndex}">
-                <td>
-                    <select name="diagnosticos_definitivos[]" class="form-control select2cie10f">
-                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
-                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
-                                        <option value="{{ $diagnosticoscie10->id }}">
-                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
-                                        </option>
-                                    @endforeach
-                    </select>
-                </td>
-                <td style="font-size: 12px">
-                    <input class="form-control diagnosticocie10f-clave" type="text" name="diagnosticocie10f_generico_3" readonly>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10f">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-            `;
-            $('#diagnosticoscie10f_table tbody').append(newRowHtml);
-            $('.select2cie10f').select2(); // Re-inicializar Select2 para la nueva fila
-            diagnosticocie10fIndex++;
-            toggleAddButton('#btn-add-diagnosticocie10f', diagnosticocie10fIndex, maxDiagnosticoDefinitivo);
-        }
-    });
-
-    $(document).on('click', '.btn-remove-diagnosticocie10f', function() {
-        $(this).closest('tr').remove();
-        diagnosticocie10fIndex--;
-        toggleAddButton('#btn-add-diagnosticocie10f', diagnosticocie10fIndex, maxDiagnosticoDefinitivo);
-    });
-
-    $(document).on('change', '.select2cie10, .select2cie10f', function() {
-        let selectedOption = $(this).find('option:selected');
-        let clave = selectedOption.text().split('(')[1].replace(')', '').trim();
-        $(this).closest('tr').find('.diagnosticocie10-clave, .diagnosticocie10f-clave').val(clave);
-    });
-
-    function toggleAddButton(buttonSelector, currentIndex, maxIndex) {
-        if (currentIndex >= maxIndex) {
-            $(buttonSelector).prop('disabled', true);
-        } else {
-            $(buttonSelector).prop('disabled', false);
-        }
-    }
-});
 
 
 

@@ -47,7 +47,7 @@
     
             table th,
             table td {
-                padding: 3px;
+                padding: 2.7px;
                 text-align: center;
                 border-bottom: 1px solid #0f0904;
                 border: 1px solid #333;
@@ -696,7 +696,7 @@
                             }
                             ?>
                 
-                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 35px; font-family: Arial, sans-serif;" readonly><?= $observacion_ant ?></textarea>
+                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: left; height: 35px; font-family: Arial, sans-serif;" readonly><?= $observacion_ant ?></textarea>
                         </td>                     
                          
                     </tr>
@@ -765,8 +765,7 @@
                 <thead>
                     <tr> 
                         <th colspan="5" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 6. CARACTERÍSTICAS DEL DOLOR</th>
-                        <th>NO APLICA</th>
-                        
+                        <th>NO APLICA</th>                        
                         <td>
                             <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_caracteristicas_dolor == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_caracteristicas_dolor == 'Si' ? 'checked' : '' }} />
                              
@@ -815,6 +814,7 @@
         </div>   
         
        {{--  PAGINA DOS --}} 
+       <br>
 
         {{-- 7 SIGNOS VITALES, MEDICIONES Y VALORES --}}              
         <div class= "form-group">
@@ -882,7 +882,7 @@
         {{-- 8 EXÁMEN FÍSICO --}}     
         <div class= "form-group">
            
-            <table border="0" width="100%" style="border-spacing: 0px 0px;" >
+            <table border="0" cellspacing="-5" cellpadding="3" width="100%">
                 <br>
                 <thead>
                     <tr> 
@@ -1026,7 +1026,7 @@
                             }
                             ?>
                 
-                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly><?= $observacion_exam ?></textarea>
+                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: left; height: 30px; font-family: Arial, sans-serif;" readonly><?= $observacion_exam ?></textarea>
                         </td> 
                     </tr>
                 </tbody>               
@@ -1246,7 +1246,7 @@
                                                 <th  style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 11. ANÁLISIS DE PROBLEMAS</th>
                                                 <th>NO APLICA</th>
                                                 <td >
-                                                    <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_analisis_sistemas == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_analisis_sistemas == 'Si' ? 'checked' : '' }} />
+                                                    <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_analisis_problemas == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_analisis_problemas == 'Si' ? 'checked' : '' }} />
                                                 </td>
                                             </tr>
                                             

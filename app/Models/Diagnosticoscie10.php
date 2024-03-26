@@ -41,6 +41,11 @@ class Diagnosticoscie10 extends Model
         return $this->belongsToMany(Formulario008::class, 'diagnosticoscie10f_formulario008', 'diagnosticoscie10_id', 'formulario008_id');
     }
 
+    public function getNombreCompletoAttribute()
+    {
+        return "{$this->descripcion} ({$this->clave})";
+    }
+
     public function getRouteKeyName()
     {
         return 'descripcion';

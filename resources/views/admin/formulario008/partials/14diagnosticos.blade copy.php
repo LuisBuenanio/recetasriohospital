@@ -33,7 +33,7 @@
                 <tbody>
                     <tr id="diagnosticocie100">
                         <td>                        
-                            <select name="diagnosticoscie10s[]" class="form-control select2cie10">
+                            <select name="diagnosticos_presuntivos[]" class="form-control select2cie10">
                                 <option value="">SELECCIONE UN DIAGNÓSTICO</option>
                                     @foreach ($diagnosticoscie10s as $diagnosticoscie10)
                                         <option value="{{ $diagnosticoscie10->id }}">
@@ -71,7 +71,7 @@
                 <tbody>
                     <tr id="diagnosticocie100">
                         <td>                        
-                            <select name="diagnosticoscie10s[]" class="form-control select2cie10f">
+                            <select name="diagnosticos_definitivos[]" class="form-control select2cie10f">
                                 <option value="">SELECCIONE UN DIAGNÓSTICO</option>
                                     @foreach ($diagnosticoscie10s as $diagnosticoscie10)
                                         <option value="{{ $diagnosticoscie10->id }}">

@@ -235,7 +235,7 @@
 
 
 
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            /* var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $(document).ready(function() {
                 $("#diagnostico_search").autocomplete({
                     source: function(request, response) {
@@ -262,7 +262,7 @@
                     }
                 });
 
-            });
+            }); */
 
             // Evento para cambiar la visibilidad del campo de cédula según la opción seleccionada
             document.getElementById('si').addEventListener('click', function() {
@@ -614,7 +614,7 @@
 
            ////////////////////////////////////////////////////////////
 
-//punto 13 diagnosticos presuntivos
+            /* //punto 13 diagnosticos presuntivos
             // Inicializar Select2 en el campo de selección de diagnosticocie10s
             $('.select2cie10').select2();
 
@@ -745,7 +745,113 @@
 
             $(document).on('click', '.btn-remove-diagnosticocie10f', function() {
                 $(this).closest('tr').remove();
-            });
+            }); */
+
+            /////////////////////////////////////////////////////////////////////////////////////
+
+$(document).ready(function() {
+    // Inicializar Select2
+    $('.select2cie10, .select2cie10f').select2();
+
+    let diagnosticocie10Index = $('.select2cie10').length + 1; // Obtener el número de diagnósticos presuntivos existentes
+    let diagnosticocie10fIndex = $('.select2cie10f').length + 1; // Obtener el número de diagnósticos definitivos existentes
+    const maxDiagnosticoPresuntivo = 4;
+    const maxDiagnosticoDefinitivo = 4;
+
+    toggleAddButton('#btn-add-diagnosticocie10', diagnosticocie10Index, maxDiagnosticoPresuntivo);
+    toggleAddButton('#btn-add-diagnosticocie10f', diagnosticocie10fIndex, maxDiagnosticoDefinitivo);
+
+    $('#btn-add-diagnosticocie10').on('click', function() {
+        if (diagnosticocie10Index <= maxDiagnosticoPresuntivo) {
+            let newRowHtml = `
+            <tr id="diagnosticocie10-${diagnosticocie10Index}">
+                <td>
+                    <select name="diagnosticos_presuntivos[]" class="form-control select2cie10">
+                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
+                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
+                                        <option value="{{ $diagnosticoscie10->id }}">
+                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
+                                        </option>
+                                    @endforeach
+                    </select>
+                </td>
+                <td style="font-size: 12px">
+                    <input class="form-control diagnosticocie10-clave" type="text" name="diagnosticocie10_generico_3" readonly>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+            $('#diagnosticoscie10_table tbody').append(newRowHtml);
+            $('.select2cie10').select2(); // Re-inicializar Select2 para la nueva fila
+            diagnosticocie10Index++;
+            toggleAddButton('#btn-add-diagnosticocie10', diagnosticocie10Index, maxDiagnosticoPresuntivo);
+        }
+    });
+
+    $(document).on('click', '.btn-remove-diagnosticocie10', function() {
+        $(this).closest('tr').remove();
+        diagnosticocie10Index--;
+        toggleAddButton('#btn-add-diagnosticocie10', diagnosticocie10Index, maxDiagnosticoPresuntivo);
+    });
+
+    $('#btn-add-diagnosticocie10f').on('click', function() {
+        if (diagnosticocie10fIndex <= maxDiagnosticoDefinitivo) {
+            let newRowHtml = `
+            <tr id="diagnosticocie10f-${diagnosticocie10fIndex}">
+                <td>
+                    <select name="diagnosticos_definitivos[]" class="form-control select2cie10f">
+                        <option value="">SELECCIONE UN DIAGNÓSTICO</option>
+                        @foreach ($diagnosticoscie10s as $diagnosticoscie10)
+                                        <option value="{{ $diagnosticoscie10->id }}">
+                                            {{ $diagnosticoscie10->descripcion }} ({{ $diagnosticoscie10->clave }}) 
+                                        </option>
+                                    @endforeach
+                    </select>
+                </td>
+                <td style="font-size: 12px">
+                    <input class="form-control diagnosticocie10f-clave" type="text" name="diagnosticocie10f_generico_3" readonly>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-remove-diagnosticocie10f">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+            $('#diagnosticoscie10f_table tbody').append(newRowHtml);
+            $('.select2cie10f').select2(); // Re-inicializar Select2 para la nueva fila
+            diagnosticocie10fIndex++;
+            toggleAddButton('#btn-add-diagnosticocie10f', diagnosticocie10fIndex, maxDiagnosticoDefinitivo);
+        }
+    });
+
+    $(document).on('click', '.btn-remove-diagnosticocie10f', function() {
+        $(this).closest('tr').remove();
+        diagnosticocie10fIndex--;
+        toggleAddButton('#btn-add-diagnosticocie10f', diagnosticocie10fIndex, maxDiagnosticoDefinitivo);
+    });
+
+    $(document).on('change', '.select2cie10, .select2cie10f', function() {
+        let selectedOption = $(this).find('option:selected');
+        let clave = selectedOption.text().split('(')[1].replace(')', '').trim();
+        $(this).closest('tr').find('.diagnosticocie10-clave, .diagnosticocie10f-clave').val(clave);
+    });
+
+    function toggleAddButton(buttonSelector, currentIndex, maxIndex) {
+        if (currentIndex >= maxIndex) {
+            $(buttonSelector).prop('disabled', true);
+        } else {
+            $(buttonSelector).prop('disabled', false);
+        }
+    }
+});
+
+
+
 
            ////////////////////////////// DIAGRAMA TOPOGRÁFICO //////////////////////////////////
           
