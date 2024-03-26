@@ -25,6 +25,7 @@
                           
                           <td style="font-size: 12px">
                             <select name="via_1">
+                              <option value="">...</option anable>
                               <option value="intravenoso">INTRAVENOSO</option>
                               <option value="via_oral">VIA ORAL</option>
                               <option value="intramuscular">INTRAMUSCULAR</option>
@@ -35,6 +36,8 @@
                               <option value="via_vaginal">VÍA VAGINAL</option>
                               <option value="via_oftalmica">VÍA OFTÁLMICA</option>
                               <option value="via_optica">VÍA ÓPTICA</option>
+                              <option value="inhalacion">INHALACIÓN</option>
+                              <option value="nebulizacion">NEBULIZACIÓN</option>
                             </select>
                           </td>
 
@@ -49,6 +52,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_2">
+                            <option value="">...</option anable>
                             <option value="intravenoso">INTRAVENOSO</option>
                             <option value="via_oral">VIA ORAL</option>
                             <option value="intramuscular">INTRAMUSCULAR</option>
@@ -59,6 +63,8 @@
                             <option value="via_vaginal">VÍA VAGINAL</option>
                             <option value="via_oftalmica">VÍA OFTÁLMICA</option>
                             <option value="via_optica">VÍA ÓPTICA</option>
+                            <option value="inhalacion">INHALACIÓN</option>
+                            <option value="nebulizacion">NEBULIZACIÓN</option>
                           </select>
                         </td>
 
@@ -73,6 +79,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_3">
+                            <option value="">...</option anable>
                             <option value="intravenoso">INTRAVENOSO</option>
                             <option value="via_oral">VIA ORAL</option>
                             <option value="intramuscular">INTRAMUSCULAR</option>
@@ -83,6 +90,8 @@
                             <option value="via_vaginal">VÍA VAGINAL</option>
                             <option value="via_oftalmica">VÍA OFTÁLMICA</option>
                             <option value="via_optica">VÍA ÓPTICA</option>
+                            <option value="inhalacion">INHALACIÓN</option>
+                            <option value="nebulizacion">NEBULIZACIÓN</option>
                           </select>
                         </td>
 
@@ -97,6 +106,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_4">
+                            <option value="">...</option anable>
                             <option value="intravenoso">INTRAVENOSO</option>
                             <option value="via_oral">VIA ORAL</option>
                             <option value="intramuscular">INTRAMUSCULAR</option>
@@ -107,6 +117,8 @@
                             <option value="via_vaginal">VÍA VAGINAL</option>
                             <option value="via_oftalmica">VÍA OFTÁLMICA</option>
                             <option value="via_optica">VÍA ÓPTICA</option>
+                            <option value="inhalacion">INHALACIÓN</option>
+                            <option value="nebulizacion">NEBULIZACIÓN</option>
                           </select>
                         </td>
 

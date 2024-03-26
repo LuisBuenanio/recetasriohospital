@@ -11,6 +11,7 @@
                     <tr>
                         <th>N°</th>
                         <th>Médico</th>
+                        <th>Fecha de Atención</th>
                         <th>Código</th>
                         <th>Médico Salida</th>
                         <th>Paciente</th>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td>{{$formulario008->id}}</td>
                                 <td>{!!$formulario008->users->name!!}</td> 
+                                <td>{!!$formulario008->fecha_atencion!!}</td> 
                                 <td>{{$formulario008->codigo}}</td>
                                 <td>{!!$formulario008->medico_salida!!}</td> 
                                 <td>{!!$formulario008->paciente->NombreCompleto!!}</td> 

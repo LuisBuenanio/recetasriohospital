@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3 >3. ACCIDENTE, VIOLENCIA, INTOXICACIÓN
         <label for="aplica_intoxicacion" style="margin-left: 720px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_intoxicacion";/>
+        <input style="margin-left: 10px;" type="checkbox" id="aplica_intoxicacion" name="aplica_intoxicacion" value="Si"/>
     </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <thead>

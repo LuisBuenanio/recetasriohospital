@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>4. ANTECEDENTES PERSONALES Y FAMILIARES RELEVANTES
         <label for="aplica_antecedentes" style="margin-left: 620px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_antecedentes";/>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_antecedentes" name="aplica_antecedentes" value="Si"/>
         <h6>PARA DESCRIBIR SEÑALE EL NÚMERO Y LA LETRA CORRESPONDIENTE</h6>
         <h6> P = PERSONAL F = FAMILIAR</h6>
       </h3>

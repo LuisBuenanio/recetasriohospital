@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>12. PLAN DE DIAGNÓSTICO       
         <label for="aplica_plan_diagnostico" style="margin-left: 800px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_plan_diagnostico";/>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_plan_diagnostico" name="aplica_plan_diagnostico" value="Si"  {{ $formulario008->aplica_plan_diagnostico == 'Si' ? 'checked' : '' }} />
     </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <tbody>
@@ -52,8 +52,8 @@
                 <td> <input type="checkbox" id="resonancia" name="resonancia" value="Si" {{ $formulario008->resonancia == 'Si' ? 'checked' : '' }} /></td>
 
 
-                <td> <label for="ecografia_abdomen">ECOGRAFÍA ABDOMINAL</label></td>
-                <td> <input type="checkbox" id="ecografia_abdominal" name="ecografia_abdomen" value="Si" {{ $formulario008->ecografia_abdominal == 'Si' ? 'checked' : '' }} /></td>
+                <td> <label for="ecografia_abdominal">ECOGRAFÍA ABDOMINAL</label></td>
+                <td> <input type="checkbox" id="ecografia_abdominal" name="ecografia_abdominal" value="Si" {{ $formulario008->ecografia_abdominal == 'Si' ? 'checked' : '' }} /></td>
 
                 <td><label for="pd_otros">OTROS</label></td>
                 <td> <input type="checkbox" id="pd_otros" name="pd_otros" value="Si" {{ $formulario008->pd_otros == 'Si' ? 'checked' : '' }} /></td>

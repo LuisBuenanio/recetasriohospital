@@ -27,6 +27,7 @@
               <td><input class="form-control" type="text" id="grupo_rh" name="grupo_rh" value="{{ $formulario008->grupo_rh ?? '' }}" /></td>
               <td>
                   <select class="form-control" id="condicion_llegada" name="condicion_llegada">
+                      <option value="">...</option anable>
                       <option value="Estable" {{ $formulario008->condicion_llegada == 'Estable' ? 'selected' : '' }}>ESTABLE</option>
                       <option value="Inestable" {{ $formulario008->condicion_llegada == 'Inestable' ? 'selected' : '' }}>INESTABLE</option>
                       <option value="Otro" {{ $formulario008->condicion_llegada == 'Otro' ? 'selected' : '' }}>OTRO</option>

@@ -25,6 +25,7 @@
                           
                           <td style="font-size: 12px">
                             <select name="via_1">
+                              <option value="">...</option anable>
                               <option value="intravenoso" {{ $formulario008->via_1 == 'intravenoso' ? 'selected' : '' }}>INTRAVENOSO</option>
                               <option value="via_oral" {{ $formulario008->via_1 == 'via_oral' ? 'selected' : '' }} >VIA ORAL</option>
                               <option value="intramuscular" {{ $formulario008->via_1 == 'intramuscular' ? 'selected' : '' }} >INTRAMUSCULAR</option>
@@ -35,6 +36,8 @@
                               <option value="via_vaginal" {{ $formulario008->via_1 == 'via_vaginal' ? 'selected' : '' }} >VÍA VAGINAL</option>
                               <option value="via_oftalmica" {{ $formulario008->via_1 == 'via_oftalmica' ? 'selected' : '' }} >VÍA OFTÁLMICA</option>
                               <option value="via_optica" {{ $formulario008->via_1 == 'via_optica' ? 'selected' : '' }} >VÍA ÓPTICA</option>
+                              <option value="inhalacion" {{ $formulario008->via_1 == 'inhalacion' ? 'selected' : '' }} >INHALACIÓN</option>
+                              <option value="nebulizacion" {{ $formulario008->via_1 == 'nebulizacion' ? 'selected' : '' }} >NEBULLIZACIÓN</option>
                             </select>
                           </td>                          
 
@@ -49,6 +52,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_2">
+                            <option value="">...</option anable>
                             <option value="intravenoso" {{ $formulario008->via_2 == 'intravenoso' ? 'selected' : '' }}>INTRAVENOSO</option>
                             <option value="via_oral" {{ $formulario008->via_2 == 'via_oral' ? 'selected' : '' }} >VIA ORAL</option>
                             <option value="intramuscular" {{ $formulario008->via_2 == 'intramuscular' ? 'selected' : '' }} >INTRAMUSCULAR</option>
@@ -59,6 +63,8 @@
                             <option value="via_vaginal" {{ $formulario008->via_2 == 'via_vaginal' ? 'selected' : '' }} >VÍA VAGINAL</option>
                             <option value="via_oftalmica" {{ $formulario008->via_2 == 'via_oftalmica' ? 'selected' : '' }} >VÍA OFTÁLMICA</option>
                             <option value="via_optica" {{ $formulario008->via_2 == 'via_optica' ? 'selected' : '' }} >VÍA ÓPTICA</option>
+                            <option value="inhalacion" {{ $formulario008->via_2 == 'inhalacion' ? 'selected' : '' }} >INHALACIÓN</option>
+                            <option value="nebulizacion" {{ $formulario008->via_2 == 'nebulizacion' ? 'selected' : '' }} >NEBULLIZACIÓN</option>
                           </select>
                         </td>
 
@@ -73,6 +79,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_3">
+                            <option value="">...</option anable>
                             <option value="intravenoso" {{ $formulario008->via_3 == 'intravenoso' ? 'selected' : '' }}>INTRAVENOSO</option>
                             <option value="via_oral" {{ $formulario008->via_3 == 'via_oral' ? 'selected' : '' }} >VIA ORAL</option>
                             <option value="intramuscular" {{ $formulario008->via_3 == 'intramuscular' ? 'selected' : '' }} >INTRAMUSCULAR</option>
@@ -83,6 +90,8 @@
                             <option value="via_vaginal" {{ $formulario008->via_3 == 'via_vaginal' ? 'selected' : '' }} >VÍA VAGINAL</option>
                             <option value="via_oftalmica" {{ $formulario008->via_3 == 'via_oftalmica' ? 'selected' : '' }} >VÍA OFTÁLMICA</option>
                             <option value="via_optica" {{ $formulario008->via_3 == 'via_optica' ? 'selected' : '' }} >VÍA ÓPTICA</option>
+                            <option value="inhalacion" {{ $formulario008->via_3 == 'inhalacion' ? 'selected' : '' }} >INHALACIÓN</option>
+                            <option value="nebulizacion" {{ $formulario008->via_3 == 'nebulizacion' ? 'selected' : '' }} >NEBULLIZACIÓN</option>
                           </select>
                         </td>
 
@@ -97,6 +106,7 @@
                         
                         <td style="font-size: 12px">
                           <select name="via_4">
+                            <option value="">...</option anable>
                             <option value="intravenoso" {{ $formulario008->via_4 == 'intravenoso' ? 'selected' : '' }}>INTRAVENOSO</option>
                             <option value="via_oral" {{ $formulario008->via_4 == 'via_oral' ? 'selected' : '' }} >VIA ORAL</option>
                             <option value="intramuscular" {{ $formulario008->via_4 == 'intramuscular' ? 'selected' : '' }} >INTRAMUSCULAR</option>
@@ -107,6 +117,8 @@
                             <option value="via_vaginal" {{ $formulario008->via_4 == 'via_vaginal' ? 'selected' : '' }} >VÍA VAGINAL</option>
                             <option value="via_oftalmica" {{ $formulario008->via_4 == 'via_oftalmica' ? 'selected' : '' }} >VÍA OFTÁLMICA</option>
                             <option value="via_optica" {{ $formulario008->via_4 == 'via_optica' ? 'selected' : '' }} >VÍA ÓPTICA</option>
+                            <option value="inhalacion" {{ $formulario008->via_4 == 'inhalacion' ? 'selected' : '' }} >INHALACIÓN</option>
+                            <option value="nebulizacion" {{ $formulario008->via_4 == 'nebulizacion' ? 'selected' : '' }} >NEBULLIZACIÓN</option>
                           </select>
                         </td>
 

@@ -544,6 +544,16 @@ class Formulario008Controller extends Controller
             $formulario008->causa_muerte = null;
         }
 
+        $formulario008->aplica_intoxicacion = $request->has('aplica_intoxicacion') ? 'Si' : 'No';
+        $formulario008->aplica_antecedentes = $request->has('aplica_antecedentes') ? 'Si' : 'No';
+        $formulario008->aplica_actual_sistemas = $request->has('aplica_actual_sistemas') ? 'Si' : 'No';
+        $formulario008->aplica_caracteristicas_dolor = $request->has('aplica_caracteristicas_dolor') ? 'Si' : 'No';
+        $formulario008->aplica_diagrama_topografico = $request->has('aplica_diagrama_topografico') ? 'Si' : 'No';
+        $formulario008->aplica_embarazo_parto = $request->has('aplica_embarazo_parto') ? 'Si' : 'No';
+        $formulario008->aplica_analisis_problemas = $request->has('aplica_analisis_problemas') ? 'Si' : 'No';
+        $formulario008->aplica_plan_diagnostico = $request->has('aplica_plan_diagnostico') ? 'Si' : 'No';
+
+
         $formulario008->update($request->all());
         // 
         $formulario008->save();

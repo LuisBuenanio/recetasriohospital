@@ -25,6 +25,7 @@
             <td><input class="form-control" type="text" id="grupo_rh" name="grupo_rh" /></td>
             <td>
               <select class="form-control" id="condicion_llegada" name="condicion_llegada">
+                <option value="">...</option anable>
                 <option value="Estable">ESTABLE</option>
                 <option value="Inestable">INESTABLE</option>
                 <option value="Otro">OTRO</option>

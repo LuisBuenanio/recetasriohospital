@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>10. EMBARAZO - PARTO        
         <label for="aplica_embarazo_parto" style="margin-left: 830px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_embarazo_parto";/>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_embarazo_parto" name="aplica_embarazo_parto" value="Si"  {{ $formulario008->aplica_embarazo_parto == 'Si' ? 'checked' : '' }} />
     </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <tbody>
@@ -25,6 +25,7 @@
                 <th>MOVIMIENTO FETAL</th>
                 <td colspan="2">
                     <select class="form-control" id="movimiento_fetal" name="movimiento_fetal">
+                        <option value="">...</option anable>
                         <option value="Presentes" {{ $formulario008->movimiento_fetal == 'Presentes' ? 'selected' : '' }}>PRESENTES</option>
                         <option value="Ausentes" {{ $formulario008->movimiento_fetal == 'Ausentes' ? 'selected' : '' }}>AUSENTES</option>
                     </select>

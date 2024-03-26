@@ -85,7 +85,7 @@
             <td><input type="text" class="form-control" id="ocupacion" name="ocupacion" readonly /></td>    
           <td>
             <select class="form-control" id="seguro_salud" name="seguro_salud">
-                <option value="">...</option anable>                        
+                <option value="NINGUNO">NINGUNO</option>                     
                 <option value="IESS">IESS</option>
                 <option value="BMI">BMI</option>
                 <option value="PANAMERICAN">PANAMERICAN</option>
@@ -93,34 +93,11 @@
                 <option value="SALUDSA">SALUDSA</option>
                 <option value="BUPA">BUPA</option>
                 <option value="CONFIAMED">CONFIAMED</option>
+                <option value="OTROS">OTROS</option> 
             </select>
           </td>
             
-            {{-- <td>
-                <select id="seguro_salud" name="seguro_salud" onchange="habilitarInput()">
-                    <option value="">...</option anable>
-                    <option value="iess">IESS</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                  <input type="text" id="otro_seguro" name="otro_seguro" disabled />
-                  <script>
-                    function habilitarInput() {
-                      var seguroSaludSelect = document.getElementById("seguro_salud");
-                      var observacionesInput = document.getElementById("otro_seguro");
-    
-                      if (seguroSaludSelect.value === "iess") {
-                        // Bloquear el cuadro de texto si selecciona "IESS"
-                        observacionesInput.disabled = true;
-                        observacionesInput.value = "";// Limpiar el valor si estaba escrito anteriormente
-                        observacionesInput.value = "IESS";
-                      } else {
-                        // Habilitar el cuadro de texto para cualquier otra opción
-                        observacionesInput.disabled = false;
-                        observacionesInput.value = "";
-                      }
-                    } 
-                  </script>
-            </td> --}}  
+              
           </tr>
         </tbody>
     </table>
@@ -141,6 +118,7 @@
             <td><input class="form-control" type="text" id="per_notific_parentesco" name="per_notific_parentesco" /> </td>
             <td><input class="form-control" type="text" id="per_notific_direccion" name="per_notific_direccion" /></td>
             <td><input class="form-control" type="text" id="per_notific_telefono" name="per_notific_telefono" /> </td>
+            
           </tr>
         </tbody>
 
@@ -179,12 +157,14 @@
         <tbody>
           <tr>
                 <td> <select class="form-control" id="forma_llegada" name="forma_llegada">
+                    <option value="">...</option anable>
                     <option value="Ambulatorio">AMBULATORIO</option>
                     <option value="Silla de Ruedas">SILLA DE RUEDAS</option>
                     <option value="Camilla">CAMILLA</option>
                 </select></td>
                 <td>
                     <select class="form-control" id="fuente_informacion" name="fuente_informacion">
+                        <option value="">...</option anable>
                         <option value="Directa">DIRECTA</option>
                         <option value="Indirecta">INDIRECTA</option>
                     </select>
@@ -212,10 +192,10 @@
 
                                             <div class="form-group">
                                                 <label for="nacionalidad">Nacionalidad:</label>
-                                                <select name="nacionalidad" id="nacionalidad" class="form-control">
-                                                    <option value="otro" @if (isset($paciente) && $paciente->nacionalidad === 'otro') selected @endif>Seleccione una Nacionalidad</option>
-                                                    <option value="ecuatoriano" @if (isset($paciente) && $paciente->nacionalidad === 'ecuatoriano') selected @endif>Ecuatoriano</option>
-                                                    <option value="extranjero" @if (isset($paciente) && $paciente->nacionalidad === 'extranjero') selected @endif>Estranjero</option>
+                                                <select name="nacionalidad_p" id="nacionalidad_p" class="form-control">
+                                                    <option value="otro" @if (isset($paciente) && $paciente->nacionalidad === 'otro') selected @endif>SELECCIONE UNA NACIONALIDAD</option>
+                                                    <option value="ecuatoriano" @if (isset($paciente) && $paciente->nacionalidad === 'ecuatoriano') selected @endif>ECUATORIANO</option>
+                                                    <option value="extranjero" @if (isset($paciente) && $paciente->nacionalidad === 'extranjero') selected @endif>EXTRANJERO</option>
                                                     </select>
                                             </div>
                                             
@@ -251,8 +231,8 @@
                                             
                                             
                                             <div class="form-group">
-                                                {!! Form::label('apellido_paterno', 'Apellido Paterno:') !!}
-                                                {!! Form::text('apellido_paterno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Paterno del Paciente']) !!} 
+                                                {!! Form::label('apellido_paterno_p', 'Apellido Paterno:') !!}
+                                                {!! Form::text('apellido_paterno_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Paterno del Paciente']) !!} 
                                                 
                                                 {!! Form::label('', '', ['id' => 'lbapellido_paterno']) !!}                                                
                                                 @error('apellido_paterno')
@@ -262,18 +242,22 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                {!! Form::label('apellido_materno', 'Apellido Materno:') !!}
-                                                {!! Form::text('apellido_materno', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Materno del Paciente']) !!} 
+                                                {!! Form::label('apellido_materno_p', 'Apellido Materno:') !!}
+                                                {!! Form::text('apellido_materno_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Apellido Materno del Paciente']) !!} 
                                                 {!! Form::label('', '', ['id' => 'lbapellido_materno']) !!} 
                                                 @error('apellido_materno')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
                                             
                                             </div>
+                                            {{-- <div class="form-group">
+                                                <label for="nombre_p">Nombre:</label>
+                                                <input type="text" id="nombre_p" name="nombre_p" class="form-control">
+                                            </div> --}}
                                             
                                             <div class="form-group">
-                                                {!! Form::label('nombre', 'Nombres Completos:') !!}
-                                                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese los nombres del Paciente']) !!} 
+                                                {!! Form::label('nombre_p', 'Nombres Completos:') !!}
+                                                {!! Form::text('nombre_p', null, ['class' => 'form-control', 'placeholder' => 'Ingrese los nombres del Paciente']) !!} 
                                                 {!! Form::label('', '', ['id' => 'lbnombre']) !!} 
                                                 @error('nombre')
                                                     <small class="text-danger">{{$message}}</small>
@@ -302,54 +286,54 @@
                                             
                                             </div>
                                                 
-                                        <div class="form-group">
-                                                {!! Form::label('provincia_id', 'Provincia') !!}
-                                                {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
-                                                {!! Form::label('', '', ['id' => 'lbprovincia_id']) !!} 
-                                            </div>
+                                                <div class="form-group">
+                                                    {!! Form::label('provincia_id', 'Provincia') !!}
+                                                    {!! Form::select('provincia_id', $provincias->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'id' => 'provincia_id']) !!}
+                                                    {!! Form::label('', '', ['id' => 'lbprovincia_id']) !!} 
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    {!! Form::label('ciudad_id', 'Ciudad') !!}
+                                                    {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
+                                                    {!! Form::label('', '', ['id' => 'lbciudad_id']) !!} 
+                                                </div>
+                                                
+                                                
+                                                
+                                                <div class="form-group">
+                                                    {!! Form::label('estado_civil', 'Estado Civil:') !!}
+                                                    {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
+                                                    {!! Form::label('', '', ['id' => 'lbestado_civil']) !!} 
+                                                    @error('estado_civil')
+                                                        <small class="text-danger">{{$message}}</small>
+                                                    @enderror
+                                                
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    {!! Form::label('instruccion', 'Instrucción:') !!}
+                                                    {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
+                                                    {!! Form::label('', '', ['id' => 'lbinstruccion']) !!} 
+                                                    @error('instruccion')
+                                                        <small class="text-danger">{{$message}}</small>
+                                                    @enderror
+                                                
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group">
+                                                    {!! Form::label('ocupacion', 'Ocupación:') !!}
+                                                    {!! Form::text('ocupacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ocupación del Paciente']) !!} 
+                                                    {!! Form::label('', '', ['id' => 'lbocupacion']) !!} 
+                                                    @error('ocupacion')
+                                                        <small class="text-danger">{{$message}}</small>
+                                                    @enderror
+                                                
+                                                </div>
                                             
-                                            <div class="form-group">
-                                                {!! Form::label('ciudad_id', 'Ciudad') !!}
-                                                {!! Form::select('ciudad_id', [], null, ['class' => 'form-control', 'id' => 'ciudad_id']) !!}
-                                                {!! Form::label('', '', ['id' => 'lbciudad_id']) !!} 
-                                            </div>
                                             
                                             
-                                            
-                                            <div class="form-group">
-                                                {!! Form::label('estado_civil', 'Estado Civil:') !!}
-                                                {!! Form::select('estado_civil', ['soltero/a' => 'Soltero/a', 'casado/a' => 'Casado/a', 'divorciado/a' => 'Divorciado/a', 'viudo/a' => 'Viudo/a', 'union libre' => 'Unión Libre'], null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbestado_civil']) !!} 
-                                                @error('estado_civil')
-                                                    <small class="text-danger">{{$message}}</small>
-                                                @enderror
-                                            
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                {!! Form::label('instruccion', 'Instrucción:') !!}
-                                                {!! Form::select('instruccion', ['sin instrucción basica' => 'Sin Instrucción Básica', 'basica' => 'Básica', 'bachiller' => 'Bachiller', 'superior' => 'Superior', 'especialidad' => 'Especialidad'], null, ['class' => 'form-control']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbinstruccion']) !!} 
-                                                @error('instruccion')
-                                                    <small class="text-danger">{{$message}}</small>
-                                                @enderror
-                                            
-                                            </div>
-                                            
-                                            
-                                            <div class="form-group">
-                                                {!! Form::label('ocupacion', 'Ocupación:') !!}
-                                                {!! Form::text('ocupacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la ocupación del Paciente']) !!} 
-                                                {!! Form::label('', '', ['id' => 'lbocupacion']) !!} 
-                                                @error('ocupacion')
-                                                    <small class="text-danger">{{$message}}</small>
-                                                @enderror
-                                            
-                                            </div>
-                                            
-                                            
-                                            
-                                            <div class="form-group">
+                                                <div class="form-group">
                                                 {!! Form::label('telefono', 'Teléfono:') !!}
                                                 {!! Form::number('telefono', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del Paciente', 'maxlength' => 10]) !!} 
                                                 {!! Form::label('', '', ['id' => 'lbtelefono']) !!} 

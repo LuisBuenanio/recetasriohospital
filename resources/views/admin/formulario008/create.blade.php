@@ -122,14 +122,21 @@
                     // Evento para guardar un paciente
                     $('#btnGuardarPaciente').on('click', function() {
                         // Obtener los datos del formulario del modal
-                        var nacionalidad = $('#nacionalidad').val();
-                        var apellido_paterno = $('#apellido_paterno').val();
-                        var apellido_materno = $('#apellido_materno').val();
-                        var nombre = $('#nombre').val();
+                        var nacionalidad = $('#nacionalidad_p').val();
+                        var apellido_paterno = $('#apellido_paterno_p').val();
+                        var apellido_materno = $('#apellido_materno_p').val();
+                        var nombre = $('#nombre_p').val();
                         var fecha_nacimiento = $('#fecha_nacimiento').val();
                         var sexo_id = $('#sexo_id').val();
                         var ced = $('#ced').val();
                         var cedula = $('#cedula').val();
+
+                        console.log('Nacionalidad:', nacionalidad);
+                        console.log('Apellido Paterno:', apellido_paterno);
+                        console.log('Apellido Materno:', apellido_materno);
+                        console.log('Nombre:', nombre);
+                        console.log('Fecha de Nacimiento:', fecha_nacimiento);
+                        console.log('Sexo ID:', sexo_id);
 
                         // Validar si los campos requeridos están vacíos
                         if (!nacionalidad || !apellido_paterno || !apellido_materno || !nombre || !
@@ -195,6 +202,7 @@
                                 }
 
                             }
+                            
                         });
                     });
 
@@ -289,7 +297,7 @@
             });
 
             // Evento para verificar la longitud de la cédula según la nacionalidad seleccionada
-            document.getElementById('nacionalidad').addEventListener('change', function() {
+            document.getElementById('nacionalidad_p').addEventListener('change', function() {
                 var nacionalidad = this.value;
 
                 if (nacionalidad === 'ecuatoriano') {
@@ -350,7 +358,7 @@
                 var horaExamen = document.getElementById("hora_examen");
                 var alcoholemia = document.getElementById("alcoholemia");
                 var otrasSustancias1 = document.getElementById("otras_sustancias1");
-                var otrasSustancias2 = document.getElementById("otras_sustancias1");
+                var otrasSustancias2 = document.getElementById("otras_sustancias2");
                 var vSospecha = document.getElementById("v_sospecha");
                 var vAbusoFisico = document.getElementById("v_abuso_fisico");
                 var vAbusoPsicologico = document.getElementById("v_abuso_psicologico");
@@ -835,6 +843,26 @@
                 });
             });
 
+
+            document.addEventListener("DOMContentLoaded", function() {
+                var checkboxDiagramaTopografico = document.getElementById("aplica_diagrama_topografico");
+                var checkboxesLesiones = document.querySelectorAll('[id^="lesion_checkbox_"]');
+
+                checkboxDiagramaTopografico.addEventListener("change", function() {
+                    var isChecked = this.checked;
+                    checkboxesLesiones.forEach(function(checkbox) {
+                        checkbox.disabled = isChecked;
+                    });
+                });
+
+                // Verifica el estado inicial del checkbox de diagrama topográfico al cargar la página
+                if (checkboxDiagramaTopografico.checked) {
+                    checkboxesLesiones.forEach(function(checkbox) {
+                        checkbox.disabled = true;
+                    });
+                }
+            });
+
             document.addEventListener("DOMContentLoaded", function() {
                 var checkbox = document.getElementById("aplica_analisis_problemas");
 
@@ -1074,7 +1102,9 @@
                         var posX = event.offsetX; // Obtiene la posición X relativa al contenedor de la imagen
                         var posY = event.offsetY; // Obtiene la posición Y relativa al contenedor de la imagen
 
-                        var idLesion = $('input[type="checkbox"]:checked').val();
+                        //var idLesion = $('input[type="checkbox"]:checked').val();
+                        var idLesion = $('input[type="checkbox"][id^="lesion_checkbox_"]:checked').val();
+
 
                         if (idLesion) {
                             // Variable count específica para este número ingresado
@@ -1139,6 +1169,56 @@
                     });          
             });
         
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                // Seleccionar todos los campos de entrada de texto
+                var inputs = document.querySelectorAll('input[type="text"]');
+
+                // Iterar sobre cada campo de entrada
+                inputs.forEach(function(input) {
+                    // Agregar un evento de escucha para cuando se ingrese texto
+                    input.addEventListener("input", function() {
+                        // Convertir el valor del campo a mayúsculas
+                        this.value = this.value.toUpperCase();
+                    });
+                });
+            });
+
+
+             
+            function validarTelefono(input) {
+                var telefono = input.value;
+
+                // Eliminar todos los caracteres no numéricos excepto el signo más al inicio
+                telefono = telefono.replace(/[^0-9+]/g, '');
+
+                
+                if (!isNaN(telefono) && telefono.replace(/\+/g, '').length <= 10) {
+                    
+                    input.value = telefono; 
+                } else {
+                    
+                    alert('El teléfono debe contener números y tener máximo 10 dígitos numéricos.');
+                    input.value = ''; 
+                }
+            } 
+            
+            // Evento para validar el formato del número de teléfono cuando se ingresa texto
+            document.getElementById('per_notific_telefono').addEventListener('input', function() {
+                validarTelefono(this);
+            });
+
+            document.getElementById('acompa_telefono').addEventListener('input', function() {
+                validarTelefono(this);
+            });
+
+            document.getElementById('telefono_pers_entrega').addEventListener('input', function() {
+                validarTelefono(this);
+            });
+
+
+          
         
         
        

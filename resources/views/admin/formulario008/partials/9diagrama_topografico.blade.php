@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>9. DIAGRAMA TOPOGRÁFICA
         <label for="aplica_diagrama_topografico" style="margin-left: 810px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_diagrama_topografico"; />
+        <input style="margin-left: 10px" type="checkbox" id="aplica_diagrama_topografico" name="aplica_diagrama_topografico" value="Si" />
     </h3>
 
     <div style="display: flex;">
@@ -46,7 +46,7 @@
                                 <label class="form-check-label" for="lesion{{ $lesion->id }}">{{ $lesion->nombre }}</label>
                                  </td>
                             <td>
-                                <input type="checkbox" id="lesion{{ $lesion->id }}" name="lesiones[{{ $lesion->id }}][id]" value="{{ $lesion->id }}">
+                                <input type="checkbox" id="lesion_checkbox_{{ $lesion->id }}" name="lesiones[{{ $lesion->id }}][id]" value="{{ $lesion->id }}">
                            
                             </td>
                         </tr>

@@ -1,7 +1,7 @@
 <div class="form-group">
     <h3>10. EMBARAZO - PARTO        
         <label for="aplica_embarazo_parto" style="margin-left: 830px;">NO APLICA</label>
-        <input style="margin-left: 10px" type="checkbox" id="aplica_embarazo_parto";/>
+        <input style="margin-left: 10px" type="checkbox" id="aplica_embarazo_parto" name="aplica_embarazo_parto" value="Si" />
     </h3>
     <table border="1" cellspacing="-5" cellpadding="3" width="100%">
         <tbody>
@@ -25,6 +25,7 @@
                 <th>MOVIMIENTO FETAL</th>
                 <td colspan="2">
                     <select class="form-control" id="movimiento_fetal" name="movimiento_fetal">
+                        <option value="">...</option anable>
                         <option value="Presentes">PRESENTES</option>
                         <option value="Ausentes">AUSENTES</option>
                     </select>

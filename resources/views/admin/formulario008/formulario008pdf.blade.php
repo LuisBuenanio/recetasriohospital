@@ -450,7 +450,8 @@
                         <th colspan="18" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 3 ACCIDENTE, VIOLENCIA, INTOXICACIÓN </th>
                         <th>NO APLICA</th>
                         <td>
-                            <input style="  transform: scale(1.3); display: inline-block;"  type="checkbox" />
+                            <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_intoxicacion == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_intoxicacion == 'Si' ? 'checked' : '' }} />
+                       
                         </td>
                     </tr>
                     <tr>
@@ -626,7 +627,8 @@
                         <th colspan="14" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 4. ANTECEDENTES PERSONALES Y FAMILIARES RELEVANTES </th>
                         <th>NO APLICA</th>
                         <td>
-                            <input style="  transform: scale(1.3); display: inline-block;"  type="checkbox" />
+                            <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_antecedentes == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_antecedentes == 'Si' ? 'checked' : '' }} />
+                             
                         </td>
                     </tr>
                     <tr>
@@ -670,10 +672,32 @@
         
                 <tbody>
                     <tr>
-                        <td colspan="16">
+                        {{-- <td colspan="16">
                             <textarea style="font-size: 7px; text-align: justify; height: 25px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_antec_personales) }}</textarea>
 
-                        </td>                      
+                        </td>  --}}    
+                        <td colspan="16">
+                            <?php
+                            // Obtener el texto de la observación desde tu variable $formulario008
+                            $observacion_ant = mb_strtoupper($formulario008->obser_antec_personales);
+                
+                            // Contar la cantidad de palabras en el texto
+                            $palabras = str_word_count($observacion_ant);
+                
+                            // Determinar el tamaño de la fuente según la cantidad de palabras
+                            $tamañoFuente = '12px'; // Tamaño de fuente por defecto
+                
+                            if ($palabras <= 10) {
+                                $tamañoFuente = '9px'; // Si hay 10 palabras o menos
+                            } elseif ($palabras > 10 && $palabras <= 50) {
+                                $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                            } else {
+                                $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                            }
+                            ?>
+                
+                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 35px; font-family: Arial, sans-serif;" readonly><?= $observacion_ant ?></textarea>
+                        </td>                     
                          
                     </tr>
                 </tbody>                
@@ -690,7 +714,9 @@
                         <th style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 5. ENFERMEDAD ACTUAL Y REVISIÓN DE SISTEMAS</th>
                         <th>NO APLICA</th>
                         <td>
-                            <input style="  transform: scale(1.3); display: inline-block;"  type="checkbox" />
+                            <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_actual_sistemas == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_actual_sistemas == 'Si' ? 'checked' : '' }} />
+                                  
+          
                         </td>
                     </tr>                   
                       
@@ -698,10 +724,32 @@
         
                 <tbody>
                     <tr>
-                        <td colspan="3">
+                        {{-- <td colspan="3">
                             <textarea style="font-size: 7px; text-align: justify; height: 25px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->enf_actual_sistemas) }}</textarea>
 
-                        </td>                      
+                        </td> --}}  
+                        <td colspan="3">
+                            <?php
+                            // Obtener el texto de la observación desde tu variable $formulario008
+                            $obser_enf_actual = mb_strtoupper($formulario008->enf_actual_sistemas);
+                
+                            // Contar la cantidad de palabras en el texto
+                            $palabras = str_word_count($obser_enf_actual);
+                
+                            // Determinar el tamaño de la fuente según la cantidad de palabras
+                            $tamañoFuente = '12px'; // Tamaño de fuente por defecto
+                
+                            if ($palabras <= 10) {
+                                $tamañoFuente = '9px'; // Si hay 10 palabras o menos
+                            } elseif ($palabras > 10 && $palabras <= 50) {
+                                $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                            } else {
+                                $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                            }
+                            ?>
+                
+                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 25px; font-family: Arial, sans-serif;" readonly><?= $obser_enf_actual ?></textarea>
+                        </td>                     
                          
                     </tr>
                 </tbody>                
@@ -718,8 +766,10 @@
                     <tr> 
                         <th colspan="5" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 6. CARACTERÍSTICAS DEL DOLOR</th>
                         <th>NO APLICA</th>
+                        
                         <td>
-                            <input style="  transform: scale(1.3); display: inline-block;"  type="checkbox" />
+                            <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_caracteristicas_dolor == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_caracteristicas_dolor == 'Si' ? 'checked' : '' }} />
+                             
                         </td>
                     </tr>
                     <tr>
@@ -952,10 +1002,32 @@
                         <td style="padding: 2px; vertical-align: middle;"><input style="transform: scale(0.75); display: inline-block; height: 0.75rem;" type="checkbox" {{ $formulario008->s_neurologico == 'SP' ? 'checked' : '' }}/></td>        
                     </tr>
                     <tr>
-                        <td colspan="15">
+                        {{-- <td colspan="15">
                             <textarea style="font-size: 7px; text-align: justify; height: 40px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_examen_fisico) }}</textarea>
 
-                        </td>
+                        </td --}}>
+                        <td colspan="15">
+                            <?php
+                            // Obtener el texto de la observación desde tu variable $formulario008
+                            $observacion_exam = mb_strtoupper($formulario008->obser_examen_fisico);
+                
+                            // Contar la cantidad de palabras en el texto
+                            $palabras = str_word_count($observacion_exam);
+                
+                            // Determinar el tamaño de la fuente según la cantidad de palabras
+                            $tamañoFuente = '12px'; // Tamaño de fuente por defecto
+                
+                            if ($palabras <= 10) {
+                                $tamañoFuente = '9px'; // Si hay 10 palabras o menos
+                            } elseif ($palabras > 10 && $palabras <= 50) {
+                                $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                            } else {
+                                $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                            }
+                            ?>
+                
+                            <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly><?= $observacion_exam ?></textarea>
+                        </td> 
                     </tr>
                 </tbody>               
 
@@ -971,8 +1043,13 @@
                         <!-- Primera tabla izquierda -->
                         <table style="width: 100%;">
                             <tr> 
-                                <th colspan="4" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 9. DIAGRAMA TOPOGRÁFICO</th>
-                                
+                                <th  style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 9. DIAGRAMA TOPOGRÁFICO</th>
+                                <th>NO APLICA</th>
+                                <td>
+                                    
+                                    <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_diagrama_topografico == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_diagrama_topografico == 'Si' ? 'checked' : '' }} />
+                                                    
+                                </td>
                             </tr>
                             <tr>
                                 <td style="width: 50%;">
@@ -1024,7 +1101,7 @@
                                                        
                                     </table>
                                 </td>
-                                <td style="width: 50%;">
+                                <td colspan="2" style="width: 50%;">
                                     <!-- Segunda subtabla derecha -->
                                     <table style="width: 100%;">
                                         <tbody>    
@@ -1058,15 +1135,24 @@
                         
                         <!-- Segunda tabla derecha -->
                         <table style="width: 100%;">
-                            <tr> 
-                                <th  style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 10. EMBARAZO - PARTO</th>
-                                
-                            </tr>
+                            
                             <tr>
                                 <td style="width: 50%;">
+                                    
                                     <!-- Tercera subtabla izquierda -->
                                     <table style="width: 100%;">       
                                         <tbody>
+                                            <tr> 
+                                                <th colspan="6" style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 10. EMBARAZO - PARTO</th>
+                                                <th>NO APLICA</th>
+                                                <td>
+                                                    
+                                                    <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_embarazo_parto == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_embarazo_parto == 'Si' ? 'checked' : '' }} />
+                                                    
+                                                    
+                                                </td>
+                                                
+                                            </tr>
                                             <tr>
                                                 <th style="  font-size: 6px">GESTAS</th>                                                                     
                                                 <td >{{ mb_strtoupper($formulario008->gestas )}}</td>
@@ -1123,10 +1209,33 @@
                                                 
                                             </tr>
                                             <tr>
-                                                <td colspan="8">
+                                                {{-- <td colspan="8">
                                                     <textarea style="font-size: 7px; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->obser_embarazo_parto) }}</textarea>
                         
+                                                </td>  --}}
+                                                <td colspan="8">
+                                                    <?php
+                                                    // Obtener el texto de la observación desde tu variable $formulario008
+                                                    $observacion_embar = mb_strtoupper($formulario008->obser_embarazo_parto);
+                                        
+                                                    // Contar la cantidad de palabras en el texto
+                                                    $palabras = str_word_count($observacion_embar);
+                                        
+                                                    // Determinar el tamaño de la fuente según la cantidad de palabras
+                                                    $tamañoFuente = '12px'; // Tamaño de fuente por defecto
+                                        
+                                                    if ($palabras <= 10) {
+                                                        $tamañoFuente = '9px'; // Si hay 10 palabras o menos
+                                                    } elseif ($palabras > 10 && $palabras <= 50) {
+                                                        $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                                                    } else {
+                                                        $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                                                    }
+                                                    ?>
+                                        
+                                                    <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly><?= $observacion_embar ?></textarea>
                                                 </td> 
+                                                
                                             </tr>                                            
 
                                         </tbody>
@@ -1137,14 +1246,41 @@
                                                 <th  style="text-align:left; font-size: 11px; color: #270000;  background-color: #723c07;" > 11. ANÁLISIS DE PROBLEMAS</th>
                                                 <th>NO APLICA</th>
                                                 <td >
-                                                    <input style="  transform: scale(1.3); display: inline-block;"  type="checkbox" />
+                                                    <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_analisis_sistemas == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_analisis_sistemas == 'Si' ? 'checked' : '' }} />
                                                 </td>
                                             </tr>
                                             
                                             <tr>
-                                                <td colspan="3">
+                                                {{-- <td colspan="3">
                                                     <textarea style="font-size: 7px; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly>{{ mb_strtoupper($formulario008->analisis_problemas) }}</textarea>
-                        
+
+                                                </td>  --}}
+                                                {{-- <td colspan="3" style="text-align: justify; font-size: 5px; height: 20px; font-family: Arial, sans-serif;">
+                                                    {{ mb_strtoupper($formulario008->analisis_problemas) }}
+                                                </td> --}}
+                                                
+
+                                                <td colspan="3">
+                                                    <?php
+                                                    // Obtener el texto de la observación desde tu variable $formulario008
+                                                    $observacion_analis = mb_strtoupper($formulario008->analisis_problemas);
+                                        
+                                                    // Contar la cantidad de palabras en el texto
+                                                    $palabras = str_word_count($observacion_analis);
+                                        
+                                                    // Determinar el tamaño de la fuente según la cantidad de palabras
+                                                    $tamañoFuente = '12px'; // Tamaño de fuente por defecto
+                                        
+                                                    if ($palabras <= 10) {
+                                                        $tamañoFuente = '9px'; // Si hay 10 palabras o menos
+                                                    } elseif ($palabras > 10 && $palabras <= 50) {
+                                                        $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                                                    } else {
+                                                        $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                                                    }
+                                                    ?>
+                                        
+                                                    <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 30px; font-family: Arial, sans-serif;" readonly><?= $observacion_analis ?></textarea>
                                                 </td> 
                                             </tr>                                            
 
@@ -1168,8 +1304,10 @@
                         <th colspan="14" style="text-align:left; font-size: 10px; color: #270000;  background-color: #723c07;" > 12. PLAN DE DIÁGNOSTICO</th>
                         <th>NO APLICA</th>
                         <td >
-                            {{-- <input style="  transform: scale(0.5); display: inline-block;"  type="checkbox" />
-                        --}} </td>
+                            <input style="transform: scale(1.3); display: inline-block; color: {{ $formulario008->aplica_plan_diagnostico == 'Si' ? 'red' : 'inherit' }};" type="checkbox" {{ $formulario008->aplica_plan_diagnostico == 'Si' ? 'checked' : '' }} />
+                                  
+                        
+                        </td>
                     </tr>
                     <tr>
                          <th  style="font-size: 7px">1. BIOMETRIA</th>     
@@ -1241,7 +1379,7 @@
 
                         <th style="font-size: 7px">10. R-X ÓSEA </th>                         
                         <td>
-                            <input type="checkbox" {{ $formulario008->r_x_torax == 'Si' ? 'checked' : '' }}/>
+                            <input type="checkbox" {{ $formulario008->r_x_osea == 'Si' ? 'checked' : '' }}/>
                         </td>
 
                         <th style="font-size: 7px">12. RESONANCIA</th>                     
@@ -1262,8 +1400,30 @@
                    </tr>
                    <tr>
                     
-                    <td colspan="16" style="text-align: justify; font-size: 7px; height: 20px; font-family: Arial, sans-serif;">
+                    {{-- <td colspan="16" style="text-align: justify; font-size: 7px; height: 20px; font-family: Arial, sans-serif;">
                         {{ mb_strtoupper($formulario008->obser_plan_diagnostico) }}
+                    </td> --}}
+                    <td colspan="16">
+                        <?php
+                        // Obtener el texto de la observación desde tu variable $formulario008
+                        $observacion_plan_d = mb_strtoupper($formulario008->obser_plan_diagnostico);
+            
+                        // Contar la cantidad de palabras en el texto
+                        $palabras = str_word_count($observacion_plan_d);
+            
+                        // Determinar el tamaño de la fuente según la cantidad de palabras
+                        $tamañoFuente = '8px'; // Tamaño de fuente por defecto
+            
+                        if ($palabras <= 10) {
+                            $tamañoFuente = '7px'; // Si hay 10 palabras o menos
+                        } elseif ($palabras > 10 && $palabras <= 50) {
+                            $tamañoFuente = '6px'; // Si hay entre 11 y 100 palabras
+                        } else {
+                            $tamañoFuente = '5px'; // Si hay más de 100 palabras
+                        }
+                        ?>
+            
+                        <textarea style="font-size: <?= $tamañoFuente ?>; text-align: justify; height: 20px; font-family: Arial, sans-serif;" readonly><?= $observacion_plan_d ?></textarea>
                     </td>
                     
                    </tr>
