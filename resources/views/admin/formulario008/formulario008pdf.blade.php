@@ -828,25 +828,25 @@
                    </tr>
                    <tr>
                         <th  style="font-size: 5px; padding: 2px; vertical-align: middle;" >PRESIÓN <br> ARTERIAL</th>                     
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->presion_arterial )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->presion_arterial )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >F. CARDIACA <br> min</th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->frecuencia_cardiaca )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->frecuencia_cardiaca )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" colspan="3" >F. RESPIRATORIA <br> min</th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->frecuencia_respiratoria )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->frecuencia_respiratoria )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >TEMP BUCAL <br> °C </th>                     
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->temperatura_bucal )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->temperatura_bucal )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >TEMP AXILAR <br> °C </th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->temperatura_axilar )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  >{{ mb_strtoupper($formulario008->temperatura_axilar )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >PESO <br> Kg. </th>                     
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  colspan="2" >{{ mb_strtoupper($formulario008->peso )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  colspan="2" >{{ mb_strtoupper($formulario008->peso )}}</td>
 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;"  >TALLA <br> m</th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;"  colspan="2" >{{ mb_strtoupper($formulario008->talla )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;"  colspan="2" >{{ mb_strtoupper($formulario008->talla )}}</td>
                                                                                         
                    </tr>
                      
@@ -856,22 +856,22 @@
                     <tr>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >GLASGOW</th>                     
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >OCULAR </th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_ocular )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_ocular )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >VERBAL</th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_verbal )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_verbal )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >MOTORA</th>                     
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_motora )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_motora )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >TOTAL</th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_total )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->glasgow_total )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >REACCIÓN PUPILA <br> DER. </th>                     
-                            <td  style="font-size: 5px; padding: 2px; vertical-align: middle;">{{ mb_strtoupper($formulario008->rec_pupila_derecha )}}</td>
+                            <td  style="font-size: 7px; padding: 2px; vertical-align: middle;">{{ mb_strtoupper($formulario008->rec_pupila_derecha )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >REACCIÓN PUPILA <br> IZQ. </th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->rec_pupila_izquierda )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->rec_pupila_izquierda )}}</td>
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >T. LLENADO <br> CAPILAR </th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->tej_llenado_capilar )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" >{{ mb_strtoupper($formulario008->tej_llenado_capilar )}}</td>
                                 
                         <th style="font-size: 5px; padding: 2px; vertical-align: middle;" >PERI. CEFAL <br> cm </th>                         
-                            <td style="font-size: 5px; padding: 2px; vertical-align: middle;" colspan="2">{{ mb_strtoupper($formulario008->perimetro_cefalico )}}</td>
+                            <td style="font-size: 7px; padding: 2px; vertical-align: middle;" colspan="2">{{ mb_strtoupper($formulario008->perimetro_cefalico )}}</td>
                                                                                         
                 </tr>
                </tbody>                
@@ -882,7 +882,7 @@
         {{-- 8 EXÁMEN FÍSICO --}}     
         <div class= "form-group">
            
-            <table border="0" cellspacing="-5" cellpadding="3" width="100%">
+            <table border="0" width="100%" style="border-spacing: 0px 0px;" >
                 <br>
                 <thead>
                     <tr> 
