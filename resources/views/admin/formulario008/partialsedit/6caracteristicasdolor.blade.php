@@ -52,7 +52,7 @@
                     <select id="alivia_con_1" name="alivia_con_1">
                         <option value="">...</option anable>
                         <option value="antiespasmodico"  {{ $formulario008->alivia_con_1 == 'antiespasmodico' ? 'selected' : '' }} >ANTIESPASMÓDICO</option>
-                        <option value="modico" {{ $formulario008->alivia_con_1 == 'modico' ? 'selected' : '' }} >OPIÁCEO</option>
+                        <option value="opiaceo" {{ $formulario008->alivia_con_1 == 'opiaceo' ? 'selected' : '' }} >OPIÁCEO</option>
                         <option value="aine" {{ $formulario008->alivia_con_1 == 'aine' ? 'selected' : '' }} >AINE</option>
                         <option value="no alivia" {{ $formulario008->alivia_con_1 == 'no alivia' ? 'selected' : '' }} >NO ALIVIA</option>
                     </select>
@@ -100,7 +100,7 @@
                     <select id="alivia_con_2" name="alivia_con_2">
                         <option value="">...</option anable>
                         <option value="antiespasmodico"  {{ $formulario008->alivia_con_2 == 'antiespasmodico' ? 'selected' : '' }} >ANTIESPASMÓDICO</option>
-                        <option value="modico" {{ $formulario008->alivia_con_2 == 'modico' ? 'selected' : '' }} >OPIÁCEO</option>
+                        <option value="apiaceo" {{ $formulario008->alivia_con_2 == 'opiaceo' ? 'selected' : '' }} >OPIÁCEO</option>
                         <option value="aine" {{ $formulario008->alivia_con_2 == 'aine' ? 'selected' : '' }} >AINE</option>
                         <option value="no alivia" {{ $formulario008->alivia_con_2 == 'no alivia' ? 'selected' : '' }} >NO ALIVIA</option>
                     </select>

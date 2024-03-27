@@ -51,7 +51,7 @@
                     <select id="alivia_con_1" name="alivia_con_1">
                         <option value="">...</option anable>    
                         <option value="antiespasmodico">ANTIESPASMÓDICO</option>
-                        <option value="modico">OPIÁCEO</option>
+                        <option value="opiaceo">OPIÁCEO</option>
                         <option value="aine">AINE</option>
                         <option value="no alivia">NO ALIVIA</option>
                     </select>
@@ -98,7 +98,7 @@
                     <select id="alivia_con_2" name="alivia_con_2">
                         <option value="">...</option anable>    
                         <option value="antiespasmodico">ANTIESPASMÓDICO</option>
-                        <option value="modico">OPIÁCEO</option>
+                        <option value="opiaceo">OPIÁCEO</option>
                         <option value="aine">AINE</option>
                         <option value="no alivia">NO ALIVIA</option>
                     </select>
