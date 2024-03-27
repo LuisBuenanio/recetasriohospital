@@ -100,7 +100,7 @@
                     <select id="alivia_con_2" name="alivia_con_2">
                         <option value="">...</option anable>
                         <option value="antiespasmodico"  {{ $formulario008->alivia_con_2 == 'antiespasmodico' ? 'selected' : '' }} >ANTIESPASMÓDICO</option>
-                        <option value="apiaceo" {{ $formulario008->alivia_con_2 == 'opiaceo' ? 'selected' : '' }} >OPIÁCEO</option>
+                        <option value="opiaceo" {{ $formulario008->alivia_con_2 == 'opiaceo' ? 'selected' : '' }} >OPIÁCEO</option>
                         <option value="aine" {{ $formulario008->alivia_con_2 == 'aine' ? 'selected' : '' }} >AINE</option>
                         <option value="no alivia" {{ $formulario008->alivia_con_2 == 'no alivia' ? 'selected' : '' }} >NO ALIVIA</option>
                     </select>
